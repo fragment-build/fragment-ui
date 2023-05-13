@@ -2,24 +2,28 @@
   "name": "@fragment-build/ui",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/nextsaas/ui.git",
+  "repository": "https://github.com/fragment-build/fragment-ui.git",
   "author": "Paul Tiedtke <PaulTiedtke@web.de>",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.5",
-    "@storybook/addon-interactions": "^7.0.5",
-    "@storybook/addon-links": "^7.0.5",
-    "@storybook/blocks": "^7.0.5",
-    "@storybook/nextjs": "^7.0.5",
-    "@storybook/react": "^7.0.5",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "next": "^13.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.0.5"
+    "@storybook/addon-essentials": "7.0.11",
+    "@storybook/addon-interactions": "7.0.11",
+    "@storybook/addon-links": "7.0.11",
+    "@storybook/blocks": "7.0.11",
+    "@storybook/nextjs": "7.0.11",
+    "@storybook/react": "7.0.11",
+    "@storybook/testing-library": "0.1.0",
+    "next": "13.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.0.11"
   },
   "scripts": {
+    "update": "yarn upgrade-interactive --latest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@nextui-org/react": "0.0.0-dev-v2-20230511041421"
   }
 }
