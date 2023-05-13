@@ -61,19 +61,19 @@ yarn add @fragment-build/ui
 npm install @fragment-build/ui
 ```
 
-As a next step you must configure your the library by the way you want to. See [**Configuration**](#🔧-configuration) section.
+As a next step you must configure the library the way you want to. See [**Configuration**](#🔧-configuration) section.
 
 All done. Enjoy 🎉
 
 ## 🔧 Configuration
 
-To start your journey with **Navigation plugin** you must first setup it using the dedicated Settings page (`v2.0.3` and newer) or for any version, put your configuration in `config/plugins.js`. Anyway we're recommending the click-through option where your configuration is going to be properly validated.
+Coming soon.
 
 ## 🤝 Contributing
 
-Feel free to fork and make a Pull Request to this plugin project. All the input is warmly welcome!
+Feel free to fork and make a Pull Request to this project. All the input is warmly welcome!
 
-To increase the amount of PRs beeing merge asap, we have some guidlines:
+To increase the amount of PRs being merged asap, we have some guidelines:
 
 1. **Bugfixes**: If it's just a small fix you can just create a PR for it and explain your thoughts if necessary, otherwise use GitHub or Discord to start a discussion before you put a lot of effort into code changes.
 2. **Features**: If you want to add new features, please use GitHub or Discord to start a discussion and we can figure out design and architectural decisions together.
