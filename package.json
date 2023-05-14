@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/fragment-build/fragment-ui.git",
   "author": "Paul Tiedtke <PaulTiedtke@web.de>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@storybook/addon-essentials": "7.0.11",
     "@storybook/addon-interactions": "7.0.11",
