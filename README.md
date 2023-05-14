@@ -7,7 +7,7 @@
   <a href="https://www.npmjs.org/package/@fragment-build/ui">
     <img alt="NPM package version" src="https://img.shields.io/github/package-json/v/@fragment-build/ui?label=npm&logo=npm">
   </a>
-  <a href="https://www.npmjs.org/package/@fragment-build/ui">
+  <a href="https://fragment-build.github.io/fragment-ui/">
     <img alt="Fragment UI Storybook" src="https://raw.githubusercontent.com/storybookjs/brand/main/badge/badge-storybook.svg">
   </a>
 </div>
