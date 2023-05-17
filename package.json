@@ -9,11 +9,14 @@
     "@storybook/addon-essentials": "7.0.11",
     "@storybook/addon-interactions": "7.0.11",
     "@storybook/addon-links": "7.0.11",
+    "@storybook/addon-styling": "1.0.8",
     "@storybook/blocks": "7.0.11",
     "@storybook/nextjs": "7.0.11",
     "@storybook/react": "7.0.11",
     "@storybook/testing-library": "0.1.0",
+    "autoprefixer": "10.4.14",
     "next": "13.4.2",
+    "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook": "7.0.11"
@@ -24,6 +27,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@nextui-org/react": "0.0.0-dev-v2-20230511041421"
+    "@nextui-org/react": "0.0.0-dev-v2-20230511041421",
+    "framer-motion": "10.12.11"
   }
 }

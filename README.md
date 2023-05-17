@@ -2,7 +2,7 @@
   <img style="height: 100px; margin-bottom: 10px;" src="public/assets/logo.svg" alt="Logo - Fragment UI" />
 </div>
 <div align="center">
-  <h1>Fragment UI</h1>
+  <h1>Fragment UI (Work in Progress)</h1>
   <p>Create SaaS UIs with a simple and straightforward design system and component library</p>
   <a href="https://www.npmjs.org/package/@fragment-build/ui">
     <img alt="NPM package version" src="https://img.shields.io/github/package-json/v/@fragment-build/ui?label=npm&logo=npm">
