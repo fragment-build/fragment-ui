@@ -11,23 +11,36 @@
     "@storybook/addon-links": "7.0.11",
     "@storybook/addon-styling": "1.0.8",
     "@storybook/blocks": "7.0.11",
-    "@storybook/nextjs": "7.0.11",
+    "@storybook/builder-vite": "7.0.17",
     "@storybook/react": "7.0.11",
+    "@storybook/react-vite": "7.0.17",
     "@storybook/testing-library": "0.1.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
+    "@vitejs/plugin-react-swc": "3.3.1",
     "autoprefixer": "10.4.14",
+    "eslint": "8.38.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-refresh": "0.3.4",
+    "eslint-plugin-storybook": "0.6.12",
     "next": "13.4.2",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "storybook": "7.0.11"
+    "storybook": "7.0.11",
+    "typescript": "5.0.2",
+    "vite": "4.3.8"
   },
   "scripts": {
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "update": "yarn upgrade-interactive --latest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@nextui-org/react": "0.0.0-dev-v2-20230511041421",
+    "@nextui-org/react": "0.0.0-dev-v2-20230521141624",
     "framer-motion": "10.12.11"
   }
 }

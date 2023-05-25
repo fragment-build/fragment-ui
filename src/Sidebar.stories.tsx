@@ -1,19 +1,21 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Sidebar } from './Sidebar';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-export default {
+const meta = {
   title: 'components/Sidebar',
   component: Sidebar,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
   },
-};
+} satisfies Meta<typeof Sidebar>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary = {
+export const Primary: Story = {
   args: {
     items: [
       {
@@ -30,17 +32,17 @@ export const Primary = {
         align: 'top',
         navigation: [
           {
-            label: 'Test',
+            label: 'Test1',
             link: '/test',
             navigation: [],
           },
           {
-            label: 'Test',
+            label: 'Test2',
             link: '/test',
             navigation: [],
           },
           {
-            label: 'Test',
+            label: 'Test3',
             link: '/test',
             navigation: [],
           },
