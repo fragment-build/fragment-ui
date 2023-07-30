@@ -28,8 +28,7 @@ export const Primary: Story = {
       {
         type: 'navigation',
         label: 'Navigation',
-        orientation: 'vertical',
-        align: 'top',
+        align: 'center',
         navigation: [
           {
             label: 'Test1',
@@ -44,13 +43,29 @@ export const Primary: Story = {
           {
             label: 'Test3',
             link: '/test',
+            navigation: [
+              {
+                label: 'Test3',
+                link: '/test',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'navigation',
+        align: 'bottom',
+        navigation: [
+          {
+            label: 'Settings',
+            link: '/settings',
             navigation: [],
           },
         ],
       },
       {
         type: 'custom',
-        render: <div>Test</div>,
+        render: <div>Custom</div>,
       },
     ]
   },
