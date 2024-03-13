@@ -86,13 +86,13 @@ To increase the amount of PRs being merged asap, we have some guidelines:
     ```bash
     git clone git@github.com:fragment-build/fragment-ui.git
     cd fragment-ui
-    yarn install
+    npm install
     ```
 
 - Run storybook
 
     ```bash
-    yarn storybook
+    npm run storybook
     ```
 
 ## 🤝 Community support
