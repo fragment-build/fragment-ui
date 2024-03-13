@@ -55,13 +55,13 @@ const parameters: Preview['parameters'] = {
       background: 'black',
       appContentBg: 'black',
       appBorderRadius: 14,
-      brandImage: '/assets/logo-dark.svg',
+      brandImage: 'assets/logo-dark.svg',
     },
     light: {
       ...themes.light,
       ...commonTheme,
       appBorderRadius: 14,
-      brandImage: '/assets/logo-light.svg',
+      brandImage: 'assets/logo-light.svg',
     },
   },
 };
