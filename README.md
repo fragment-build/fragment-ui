@@ -58,7 +58,7 @@ Fragment UI is a design system and React component library which provides alread
 yarn add @fragment-build/ui
 
 # npm
-npm install @fragment-build/ui
+npm install -S @fragment-build/ui
 ```
 
 As a next step you must configure the library the way you want to. See [**Configuration**](#🔧-configuration) section.
@@ -83,14 +83,15 @@ To increase the amount of PRs being merged asap, we have some guidelines:
 ## 👨‍💻 Development
 - Clone repository
 
-    ```
+    ```bash
     git clone git@github.com:fragment-build/fragment-ui.git
     cd fragment-ui
+    yarn install
     ```
 
 - Run storybook
 
-    ```ts
+    ```bash
     yarn storybook
     ```
 

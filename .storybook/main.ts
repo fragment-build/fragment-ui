@@ -3,10 +3,11 @@ import type { StorybookConfig } from "@storybook/react-vite";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    '@storybook/addon-styling',
+    '@storybook/addon-a11y',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-links',
+    'storybook-dark-mode',
   ],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
@@ -29,7 +30,7 @@ const config: StorybookConfig = {
   refs: {
     'design-system': {
       title: 'NextUI',
-      url: 'https://storiesv2.nextui.org',
+      url: 'https://storybook.nextui.org/',
     },
   },
 };
