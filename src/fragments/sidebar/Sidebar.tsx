@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   AvatarProps,
@@ -60,7 +59,7 @@ interface SidebarItemCustom extends SidebarItem {
   showCollapsed?: boolean;
 }
 
-interface SidebarProps {
+export interface SidebarProps {
   items: Array<SidebarItemNavigation | SidebarItemUser | SidebarItemCustom>;
   layout?: 'collapsed' | 'expanded';
   autoLayout?: boolean;
@@ -165,42 +164,44 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
 };
 
 export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', autoLayout }) => {
-  const [renderedLayout, setRenderedLayout] = useState(autoLayout ? undefined : layout);
   const isMobile = useSmaller('xl');
 
-  useEffect(() => {
-    if (!autoLayout) return;
+  let renderedLayout = autoLayout ? undefined : layout;
+  if (autoLayout) {
     if (isMobile) {
-      setRenderedLayout('collapsed');
+      renderedLayout = 'collapsed';
     } else {
-      setRenderedLayout('expanded');
+      renderedLayout = 'expanded';
     }
-  }, [autoLayout, isMobile]);
+  }
 
   const layoutStyles = renderedLayout === 'expanded' ? 'w-72' : 'w-20 items-center';
 
   return (
-    <div className={`fixed flex flex-col h-screen bg-content1 gap-8`}>
-      <ScrollShadow className={`${layoutStyles} flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
-        {items.map((item) => {
-          const children = renderedLayout && item.align !== 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
-          return children ? (
-            <div key={item.key} className={getAlignmentClasses(item.align)}>
-              {children}
-            </div>
-          ) : null;
-        })}
-      </ScrollShadow>
-      <div className={`${layoutStyles} flex flex-col gap-8 px-3 pb-8`}>
-        {items.map((item) => {
-          const children = renderedLayout && item.align === 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
-          return children ? (
-            <div key={item.key} className={getAlignmentClasses(item.align)}>
-              {children}
-            </div>
-          ) : null;
-        })}
+    <>
+      <div className={`${layoutStyles} h-screen`} />
+      <div className={`fixed flex flex-col h-screen bg-content1 gap-8`}>
+        <ScrollShadow className={`${layoutStyles} flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+          {items.map((item) => {
+            const children = renderedLayout && item.align !== 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+            return children ? (
+              <div key={item.key} className={getAlignmentClasses(item.align)}>
+                {children}
+              </div>
+            ) : null;
+          })}
+        </ScrollShadow>
+        <div className={`${layoutStyles} flex flex-col gap-8 px-3 pb-8`}>
+          {items.map((item) => {
+            const children = renderedLayout && item.align === 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+            return children ? (
+              <div key={item.key} className={getAlignmentClasses(item.align)}>
+                {children}
+              </div>
+            ) : null;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
