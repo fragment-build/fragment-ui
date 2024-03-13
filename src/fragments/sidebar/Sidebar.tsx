@@ -15,6 +15,7 @@ import {
   ListboxItem,
   ListboxProps,
   ListboxSection,
+  ScrollShadow,
   Tooltip,
   User,
 } from '@nextui-org/react';
@@ -165,7 +166,7 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
 
 export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', autoLayout }) => {
   const [renderedLayout, setRenderedLayout] = useState(autoLayout ? undefined : layout);
-  const isMobile = useSmaller('lg');
+  const isMobile = useSmaller('xl');
 
   useEffect(() => {
     if (!autoLayout) return;
@@ -176,16 +177,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
     }
   }, [autoLayout, isMobile]);
 
-  const width = renderedLayout === 'expanded' ? 'w-72' : 'w-20 items-center'
+  const layoutStyles = renderedLayout === 'expanded' ? 'w-72' : 'w-20 items-center';
 
   return (
-    <div className={width}>
-      <div
-        // eslint-disable-next-line max-len
-        className={`${width} fixed flex flex-col h-screen bg-content1 px-3 py-8 gap-8 overflow-y-auto`}
-      >
+    <div className={`fixed flex flex-col h-screen bg-content1 gap-8`}>
+      <ScrollShadow className={`${layoutStyles} flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
         {items.map((item) => {
-          const children = renderedLayout ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+          const children = renderedLayout && item.align !== 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+          return children ? (
+            <div key={item.key} className={getAlignmentClasses(item.align)}>
+              {children}
+            </div>
+          ) : null;
+        })}
+      </ScrollShadow>
+      <div className={`${layoutStyles} flex flex-col gap-8 px-3 pb-8`}>
+        {items.map((item) => {
+          const children = renderedLayout && item.align === 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
           return children ? (
             <div key={item.key} className={getAlignmentClasses(item.align)}>
               {children}
