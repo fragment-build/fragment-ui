@@ -124,8 +124,7 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
       return (
         <Dropdown
           placement="bottom-start"
-          classNames={{ trigger: 'justify-start px-2' }}
-          isDisabled
+          classNames={{ trigger: option.layout === 'expanded' ? 'justify-start px-2' : 'justify-start' }}
           {...item.dropdown}
         >
           <DropdownTrigger>
@@ -177,11 +176,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
     }
   }, [autoLayout, isMobile]);
 
+  const width = renderedLayout === 'expanded' ? 'w-72' : 'w-20 items-center'
+
   return (
-    <div className="w-20 lg:w-72">
+    <div className={width}>
       <div
         // eslint-disable-next-line max-len
-        className="fixed flex flex-col h-screen w-20 items-center lg:w-72 lg:items-start bg-content1 px-3 py-8 gap-8 overflow-y-auto"
+        className={`${width} fixed flex flex-col h-screen bg-content1 px-3 py-8 gap-8 overflow-y-auto`}
       >
         {items.map((item) => {
           const children = renderedLayout ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
