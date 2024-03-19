@@ -3,11 +3,11 @@ import { ColorSelector } from "./ColorSelector";
 import { IconCheck } from "@tabler/icons-react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta = {
+const meta: Meta<typeof ColorSelector> = {
   title: "components/ColorSelector",
   component: ColorSelector,
   tags: ["autodocs"],
-} satisfies Meta<typeof ColorSelector>;
+};
 
 export default meta;
 

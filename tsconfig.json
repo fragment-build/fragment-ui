@@ -11,5 +11,6 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "declaration": true,
+    "skipLibCheck": true,
   }
 }

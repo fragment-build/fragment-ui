@@ -10,14 +10,14 @@ import {
 import { Sidebar } from "./Sidebar";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta = {
+const meta: Meta<typeof Sidebar> = {
   title: "components/Sidebar",
   component: Sidebar,
   // tags: ['autodocs'],
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof Sidebar>;
+};
 
 export default meta;
 

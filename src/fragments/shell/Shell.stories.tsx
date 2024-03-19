@@ -22,14 +22,14 @@ import {
 import { Shell } from "./Shell";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta = {
+const meta: Meta<typeof Shell> = {
   title: "components/Shell",
   component: Shell,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof Shell>;
+};
 
 export default meta;
 
@@ -139,20 +139,20 @@ export const Primary: Story = {
 export const Collapsed: Story = {
   args: {
     ...Primary.args,
-    sidebar: {
+    sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
       layout: "collapsed",
-    },
+    } : undefined,
   },
 };
 
 export const Auto: Story = {
   args: {
     ...Primary.args,
-    sidebar: {
+    sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
       autoLayout: true,
-    },
+    } : undefined,
   },
 };
 
