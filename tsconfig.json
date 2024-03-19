@@ -1,5 +1,7 @@
 {
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "rootDir": "src",
     "target": "es6",
     "module": "es6",
     "outDir": "dist",
@@ -8,5 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "moduleResolution": "node",
+    "declaration": true,
   }
 }
