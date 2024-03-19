@@ -1,17 +1,21 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Card, Input } from '@nextui-org/react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button, Card, Input } from "@nextui-org/react";
 import {
-  IconBox, IconBoxMultiple, IconHome, IconMessageCircle,
-} from '@tabler/icons-react';
-import { Sidebar } from './Sidebar';
+  IconBox,
+  IconBoxMultiple,
+  IconCirclePlus,
+  IconHome,
+  IconMessageCircle,
+} from "@tabler/icons-react";
+import { Sidebar } from "./Sidebar";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: 'components/Sidebar',
+  title: "components/Sidebar",
   component: Sidebar,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } satisfies Meta<typeof Sidebar>;
 
@@ -22,89 +26,112 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
+    currentPath: "/projects",
     items: [
       {
-        type: 'user',
-        key: 'user',
-        name: 'Tony Reichert',
-        description: 'ACME Inc.',
+        type: "user",
+        key: "user",
+        name: "Tony Reichert",
+        description: "ACME Inc.",
         avatar: {
-          src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+          src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
         },
         dropdownItems: [
           {
-            label: 'My Profile',
+            label: "My Profile",
           },
           {
-            label: 'Settings',
+            label: "Settings",
           },
           {
-            label: 'Organization Settings',
+            label: "Organization Settings",
             showDivider: true,
           },
           {
-            label: 'Logout',
-            color: 'danger',
+            label: "Logout",
+            color: "danger",
           },
         ],
       },
       {
-        type: 'custom',
-        key: 'search',
+        type: "custom",
+        key: "search",
         render: <Input label="Search..." />,
       },
       {
-        type: 'navigation',
-        key: 'navigation-overview',
-        label: 'Overview',
+        type: "navigation",
+        key: "navigation-overview",
+        label: "Overview",
         navigation: [
           {
-            label: 'Home',
-            link: '/',
+            label: "Home",
+            link: "/",
             icon: <IconHome stroke={1.5} />,
           },
           {
-            label: 'My Projects',
-            link: '/projects',
+            label: "My Projects",
+            link: "/projects",
             icon: <IconBoxMultiple stroke={1.5} />,
+            endContent: (
+              <Button size="sm" variant="light" isIconOnly>
+                <IconCirclePlus size={18} />
+              </Button>
+            ),
+            items: [
+              {
+                type: "navigation",
+                key: "navigation-projects",
+                navigation: [
+                  {
+                    label: "Project 1",
+                    link: "/projects/1",
+                  },
+                  {
+                    label: "Project 2",
+                    link: "/projects/2",
+                  },
+                  {
+                    label: "Project 3",
+                    link: "/projects/3",
+                  },
+                ],
+              },
+            ],
           },
           {
-            label: 'Chat',
-            link: '/chat',
+            label: "Chat",
+            link: "/chat",
             icon: <IconMessageCircle stroke={1.5} />,
           },
         ],
       },
       {
-        type: 'navigation',
-        key: 'navigation-projects',
-        label: 'Projects',
+        type: "navigation",
+        key: "navigation-projects",
+        label: "Projects",
         navigation: [
           {
-            label: 'Project 1',
-            link: '/projects/1',
+            label: "Project 1",
+            link: "/projects/1",
             icon: <IconBox stroke={1.5} />,
           },
           {
-            label: 'Project 2',
-            link: '/projects/2',
+            label: "Project 2",
+            link: "/projects/2",
             icon: <IconBox stroke={1.5} />,
           },
           {
-            label: 'Project 3',
-            link: '/projects/3',
+            label: "Project 3",
+            link: "/projects/3",
             icon: <IconBox stroke={1.5} />,
           },
         ],
       },
       {
-        type: 'custom',
-        key: 'bottom-banner',
+        type: "custom",
+        key: "bottom-banner",
         render: (
-          <Card
-            radius="lg"
-            className="border-none"
-          >
+          <Card radius="lg" className="border-none">
             <img
               alt="Woman listing to music"
               className="object-cover w-full"
@@ -114,7 +141,7 @@ export const Primary: Story = {
             />
           </Card>
         ),
-        align: 'bottom',
+        align: "bottom",
       },
     ],
   },
@@ -123,7 +150,7 @@ export const Primary: Story = {
 export const Collapsed: Story = {
   args: {
     ...Primary.args,
-    layout: 'collapsed',
+    layout: "collapsed",
   },
 };
 

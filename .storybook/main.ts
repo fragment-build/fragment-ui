@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     'storybook-dark-mode',
   ],
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: 'react-docgen',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
@@ -21,8 +21,7 @@ const config: StorybookConfig = {
     options: {},
   },
   core: {
-    disableTelemetry: true,
-    builder: '@storybook/builder-vite',
+    disableTelemetry: true
   },
   docs: {
     autodocs: "tag",

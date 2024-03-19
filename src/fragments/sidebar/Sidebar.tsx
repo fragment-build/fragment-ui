@@ -20,6 +20,8 @@ import {
 } from '@nextui-org/react';
 
 import { useSmaller } from '../../hooks/breakpoints';
+import { IconChevronLeft } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
 
 /**
  * Primary UI component for Dashboard Sidebars
@@ -30,6 +32,8 @@ interface SidebarNavigationItem {
   link: string;
   onClick?: React.MouseEventHandler;
   icon?: React.ReactNode;
+  endContent?: React.ReactNode;
+  items?: SidebarItemVariants[];
 }
 
 interface SidebarItem {
@@ -59,10 +63,13 @@ interface SidebarItemCustom extends SidebarItem {
   showCollapsed?: boolean;
 }
 
+type SidebarItemVariants = SidebarItemNavigation | SidebarItemUser | SidebarItemCustom
+
 export interface SidebarProps {
-  items: Array<SidebarItemNavigation | SidebarItemUser | SidebarItemCustom>;
+  items: SidebarItemVariants[];
   layout?: 'collapsed' | 'expanded';
   autoLayout?: boolean;
+  currentPath?: string;
 }
 
 const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
@@ -76,10 +83,10 @@ const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
   }
 };
 
-const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarProps, 'items'>) => {
+const renderItems = (item: SidebarProps['items'][number], options: { layout: SidebarProps['layout'], activeNav: SidebarNavigationItem | undefined }) => {
   switch (item.type) {
     case 'navigation':
-      return option.layout === 'expanded' ? (
+      return options.layout === 'expanded' ? (
         <Listbox
           variant="flat"
           aria-label="Listbox menu with sections"
@@ -88,12 +95,14 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
           }}
           {...item.listboxProps}
         >
-          <ListboxSection title={item.label}>
+          <ListboxSection title={item.label} classNames={{ group: 'flex flex-col gap-1' }}>
             {item.navigation.map((navItem) => (
               <ListboxItem
                 key={navItem.label}
                 startContent={navItem.icon}
+                endContent={navItem.endContent}
                 href={navItem.link}
+                className={options.activeNav?.link === navItem.link ? "bg-default/40 text-default-foreground" : ''}
               >
                 {navItem.label}
               </ListboxItem>
@@ -101,7 +110,7 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
           </ListboxSection>
         </Listbox>
       ) : (
-        <nav className="flex flex-col">
+        <nav className="flex flex-col gap-1">
           {item.navigation.map((navItem) => (
             <Tooltip
               key={navItem.label}
@@ -109,12 +118,13 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
               content={navItem.label}
             >
               <Button
-                variant="light"
+                variant={options.activeNav?.link === navItem.link ? 'flat' : 'light'}
                 size="lg"
                 as="a"
                 startContent={navItem.icon}
                 href={navItem.link}
                 isIconOnly
+                
               />
             </Tooltip>
           ))}
@@ -124,11 +134,11 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
       return (
         <Dropdown
           placement="bottom-start"
-          classNames={{ trigger: option.layout === 'expanded' ? 'justify-start px-2' : 'justify-start' }}
+          classNames={{ trigger: options.layout === 'expanded' ? 'justify-start px-2' : 'justify-start' }}
           {...item.dropdown}
         >
           <DropdownTrigger>
-            {option.layout === 'expanded' ? (
+            {options.layout === 'expanded' ? (
               <User
                 as="button"
                 avatarProps={item.avatar}
@@ -157,14 +167,31 @@ const renderItems = (item: SidebarProps['items'][number], option: Omit<SidebarPr
         </Dropdown>
       );
     case 'custom':
-      return option.layout === 'expanded' || item.showCollapsed ? <div className="px-2">{item.render}</div> : null;
+      return options.layout === 'expanded' || item.showCollapsed ? <div className="px-2">{item.render}</div> : null;
     default:
       return null;
   }
 };
 
-export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', autoLayout }) => {
+const getActiveNav = (currentPath: SidebarProps['currentPath'], items: SidebarProps['items']) => {
+  if (!currentPath) return;
+
+  const navigations: SidebarNavigationItem[][] = [];
+
+  items.forEach((item) => {
+    if (item.type !== 'navigation') return;
+    navigations.push(item.navigation);
+  });
+
+  const possibleMatches = navigations.flat().filter((navItem) => navItem.link.startsWith(currentPath)).sort((a, b) => b.link.length - a.link.length);
+  return possibleMatches.find((pMatch) => pMatch.link === currentPath) || possibleMatches[0];
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', autoLayout, currentPath }) => {
   const isMobile = useSmaller('xl');
+  const [activeNav, setActiveNav] = useState<SidebarNavigationItem | undefined>(getActiveNav(currentPath, items))
+
+  useEffect(() => setActiveNav(getActiveNav(currentPath, items)), [currentPath, items]);
 
   let renderedLayout = autoLayout ? undefined : layout;
   if (autoLayout) {
@@ -175,15 +202,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
     }
   }
 
-  const layoutStyles = renderedLayout === 'expanded' ? 'w-72' : 'w-20 items-center';
+  const [collapsed, setCollapsed] = useState(renderedLayout === 'collapsed');
+
+  useEffect(() => { if (autoLayout) setCollapsed(isMobile) }, [isMobile, setCollapsed, autoLayout])
+
+  const layoutStyles = collapsed ? 'w-20 opacity-0 pointer-events-none' : 'w-72';
+  const collapseButtonStyles = collapsed ? 'left-20 translate-x-1/2 rotate-180' : 'left-72 -translate-x-1/2';
 
   return (
-    <>
-      <div className={`${layoutStyles} h-screen`} />
-      <div className={`fixed flex flex-col h-screen bg-content1 gap-8`}>
-        <ScrollShadow className={`${layoutStyles} flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+    <div className='flex border-r-[1px] border-default-100'>
+      <div className={`fixed top-0 left-0 flex flex-col h-screen bg-content1 gap-8 transition-all ${collapsed ? '' : 'opacity-0'}`}>
+        <ScrollShadow className={`w-20 items-center flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
           {items.map((item) => {
-            const children = renderedLayout && item.align !== 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+            const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
             return children ? (
               <div key={item.key} className={getAlignmentClasses(item.align)}>
                 {children}
@@ -191,9 +222,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             ) : null;
           })}
         </ScrollShadow>
-        <div className={`${layoutStyles} flex flex-col gap-8 px-3 pb-8`}>
+        <div className={`w-20 items-center flex flex-col gap-8 px-3 pb-8`}>
           {items.map((item) => {
-            const children = renderedLayout && item.align === 'bottom' ? renderItems(item, { layout: renderedLayout, autoLayout }) : null;
+            const children = item.align === 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
             return children ? (
               <div key={item.key} className={getAlignmentClasses(item.align)}>
                 {children}
@@ -202,6 +233,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
           })}
         </div>
       </div>
-    </>
+      <div className={`${layoutStyles} fixed top-0 left-0 flex flex-col h-screen bg-content1 gap-8 overflow-hidden transition-all`}>
+        <ScrollShadow className={`w-72 flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+          {items.map((item) => {
+            const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+            return children ? (
+              <div key={item.key} className={getAlignmentClasses(item.align)}>
+                {children}
+              </div>
+            ) : null;
+          })}
+        </ScrollShadow>
+        <div className={`w-72 flex flex-col gap-8 px-3 pb-8`}>
+          {items.map((item) => {
+            const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+            return children ? (
+              <div key={item.key} className={getAlignmentClasses(item.align)}>
+                {children}
+              </div>
+            ) : null;
+          })}
+        </div>
+      </div>
+      <div className={`${layoutStyles} transition-all h-screen`} />
+      <div className={`fixed top-6 transition-all ${collapseButtonStyles}`}>
+        <Button size="sm" isIconOnly radius="full" className="h-unit-6 w-unit-6 min-w-unit-6 bg-default-100" onClick={() => setCollapsed(!collapsed)}>
+          <IconChevronLeft size={14} />
+        </Button>
+      </div>
+    </div>
   );
 };
