@@ -54,6 +54,10 @@ Fragment UI is a design system and React component library which provides alread
 
 ## ⏳ Installation
 
+1. Setup Tailwind CSS  
+[Installation Guide](https://tailwindcss.com/docs/installation)
+
+2. Install Fragment UI
 ```bash
 npm install -S @fragment-build/ui
 ```
@@ -84,17 +88,6 @@ const config: Config = {
 };
 
 export default config;
-```
-
-```ts
-// postcss.config.js
-
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
 ```
 
 It is essential to add the NextUIProvider at the root of your application.
