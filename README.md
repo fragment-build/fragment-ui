@@ -26,6 +26,7 @@ Fragment UI is a design system and React component library which provides alread
 - [✨ Components](#-components)
 - [⏳ Installation](#-installation)
 - [🔧 Configuration](#-configuration)
+  - [Next.js 13+](#nextjs-13)
 - [🤝 Contributing](#-contributing)
 - [👨‍💻 Development](#-development)
 - [🤝 Community support](#-community-support)
@@ -54,10 +55,6 @@ Fragment UI is a design system and React component library which provides alread
 ## ⏳ Installation
 
 ```bash
-# Yarn
-yarn add @fragment-build/ui
-
-# npm
 npm install -S @fragment-build/ui
 ```
 
@@ -67,7 +64,68 @@ All done. Enjoy 🎉
 
 ## 🔧 Configuration
 
-Coming soon.
+```ts
+// tailwind.config.ts
+
+import type { Config } from 'tailwindcss';
+import { fragmentui, nextui } from '@fragment-build/ui';
+
+const config: Config = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: 'class',
+  plugins: [
+    fragmentui(),
+    nextui(),
+  ],
+};
+
+export default config;
+```
+
+```ts
+// postcss.config.js
+
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
+
+It is essential to add the NextUIProvider at the root of your application.
+
+```ts
+import React from "react";
+
+// 1. import `FragmentUIProvider` component
+import { FragmentUIProvider } from "@fragment-build/ui";
+
+function App() {
+  // 2. Wrap FragmentUIProvider at the root of your app
+  return (
+    <FragmentUIProvider>
+      <YourApplication />
+    </FragmentUIProvider>
+  );
+}
+```
+
+### Next.js 13+
+
+When using Next.js you will need to add a file to re-export Fragment UI using `'use client';` to tell Next.js to render them as client components.
+
+```ts
+'use client';
+
+export * from '@fragment-build/ui';
+```
+
+Now just import all the components you need from this file.
 
 ## 🤝 Contributing
 
