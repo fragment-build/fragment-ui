@@ -7,3 +7,5 @@ export * from './fragments/shell/Shell';
 export * from './fragments/sidebar/Sidebar';
 
 export * from './hooks/breakpoints';
+
+export * from './tailwind.plugin';

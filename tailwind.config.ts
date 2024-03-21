@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import { nextui } from '@nextui-org/react';
+import { fragmentui } from './src/tailwind.plugin';
 
 const config: Config = {
   content: [
@@ -11,6 +12,7 @@ const config: Config = {
   },
   darkMode: 'class',
   plugins: [
+    fragmentui(),
     nextui({
       themes: {
         dark: {
