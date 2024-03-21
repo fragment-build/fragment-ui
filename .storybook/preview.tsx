@@ -1,6 +1,6 @@
 import React from 'react';
 import { themes } from '@storybook/theming';
-import { NextUIProvider } from '@nextui-org/react';
+import { FragmentUIProvider } from '../src/provider';
 import type { Preview } from '@storybook/react';
 
 import './style.css';
@@ -12,11 +12,11 @@ const decorators: Preview['decorators'] = [
       locale && new Intl.Locale(locale)?.textInfo?.direction === 'rtl' ? 'rtl' : undefined;
 
     return (
-      <NextUIProvider locale={locale}>
+      <FragmentUIProvider locale={locale}>
         <div className='bg-dark' lang={locale} dir={direction}>
           <Story />
         </div>
-      </NextUIProvider>
+      </FragmentUIProvider>
     );
   },
 ];

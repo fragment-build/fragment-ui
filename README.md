@@ -90,7 +90,7 @@ const config: Config = {
 export default config;
 ```
 
-It is essential to add the NextUIProvider at the root of your application.
+It is essential to add the FragmentUIProvider at the root of your application.
 
 ```ts
 import React from "react";
