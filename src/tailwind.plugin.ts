@@ -14,5 +14,5 @@ export const fragmentui = () => plugin(function({ addBase, config }) {
       fontSize: config('theme.fontSize.xl'),
       fontWeight: config('theme.fontWeight.bold'),
     },
-  })
+  });
 });

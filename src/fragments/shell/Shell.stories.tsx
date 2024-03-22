@@ -5,12 +5,6 @@ import {
   Divider,
   Input,
   Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
   Tabs,
 } from "@nextui-org/react";
 import {
@@ -20,6 +14,14 @@ import {
   IconMessageCircle,
 } from "@tabler/icons-react";
 import { Shell } from "./Shell";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+} from "../../components/table/Table";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
@@ -169,7 +171,6 @@ export const WithTable: Story = {
             <Table
               aria-label="Example static collection table"
               selectionMode="multiple"
-              removeWrapper
             >
               <TableHeader>
                 <TableColumn>NAME</TableColumn>
