@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button, Card, Input } from "@nextui-org/react";
 import {
+  IconBell,
   IconBox,
   IconBoxMultiple,
   IconCirclePlus,
@@ -102,6 +103,13 @@ export const Primary: Story = {
             label: "Chat",
             link: "/chat",
             icon: <IconMessageCircle stroke={1.5} />,
+            badgeContent: '',
+          },
+          {
+            label: "Notifications",
+            link: "/notifications",
+            icon: <IconBell stroke={1.5} />,
+            badgeContent: '9+',
           },
         ],
       },

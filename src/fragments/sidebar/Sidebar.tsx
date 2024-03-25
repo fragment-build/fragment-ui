@@ -3,7 +3,9 @@
 import {
   Avatar,
   AvatarProps,
+  Badge,
   Button,
+  Chip,
   Dropdown,
   DropdownItem,
   DropdownItemProps,
@@ -33,6 +35,7 @@ interface SidebarNavigationItem {
   onClick?: React.MouseEventHandler;
   icon?: React.ReactNode;
   endContent?: React.ReactNode;
+  badgeContent?: React.ReactNode;
   items?: SidebarItemVariants[];
 }
 
@@ -100,7 +103,7 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
               <ListboxItem
                 key={navItem.label}
                 startContent={navItem.icon}
-                endContent={navItem.endContent}
+                endContent={typeof navItem.badgeContent === 'string' ? <Chip size="sm" color="primary" variant={navItem.badgeContent ? 'solid' : 'dot'} classNames={{ base: 'border-none' }}>{navItem.badgeContent}</Chip> : navItem.endContent}
                 href={navItem.link}
                 className={options.activeNav?.link === navItem.link ? "bg-default/40 text-default-foreground" : ''}
               >
@@ -121,11 +124,13 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
                 variant={options.activeNav?.link === navItem.link ? 'flat' : 'light'}
                 size="lg"
                 as="a"
-                startContent={navItem.icon}
                 href={navItem.link}
                 isIconOnly
-                
-              />
+              >
+                <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
+                  {navItem.icon}
+                </Badge>
+              </Button>
             </Tooltip>
           ))}
         </nav>
@@ -210,9 +215,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
   const collapseButtonStyles = collapsed ? 'left-20 translate-x-1/2 rotate-180' : 'left-72 -translate-x-1/2';
 
   return (
-    <div className='flex border-r-[1px] border-default-100'>
-      <div className={`fixed top-0 left-0 flex flex-col h-screen bg-content1 gap-8 transition-all ${collapsed ? '' : 'opacity-0'}`}>
-        <ScrollShadow className={`w-20 items-center flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+    <div className='flex'>
+      <div className={`fixed top-0 left-0 border-r-[1px] border-default-100 flex flex-col h-screen bg-content1 gap-8 transition-all ${collapsed ? '' : 'opacity-0'}`}>
+        <ScrollShadow hideScrollBar className={`w-20 items-center flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
           {items.map((item) => {
             const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
             return children ? (
@@ -233,8 +238,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
           })}
         </div>
       </div>
-      <div className={`${layoutStyles} fixed top-0 left-0 flex flex-col h-screen bg-content1 gap-8 overflow-hidden transition-all`}>
-        <ScrollShadow className={`w-72 flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+      <div className={`${layoutStyles} fixed top-0 left-0 border-r-[1px] border-default-100 flex flex-col h-screen bg-content1 gap-8 overflow-hidden transition-all`}>
+        <ScrollShadow hideScrollBar className={`w-72 flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
           {items.map((item) => {
             const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
             return children ? (
