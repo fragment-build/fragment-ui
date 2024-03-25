@@ -9,8 +9,8 @@ import {
 import { withFragment } from '../../withFragment'
 
 export const Table = withFragment(NextTable, 'table');
-export const TableBody = NextTableBody;
-export const TableCell = NextTableCell;
-export const TableColumn = NextTableColumn;
-export const TableHeader = NextTableHeader;
-export const TableRow = NextTableRow;
+export const TableBody = withFragment(NextTableBody, 'tableBody');
+export const TableCell = withFragment(NextTableCell, 'tableCell');
+export const TableColumn = withFragment(NextTableColumn, 'tableColumn');
+export const TableHeader = withFragment(NextTableHeader, 'tableHeader');
+export const TableRow = withFragment(NextTableRow, 'tableRow');
