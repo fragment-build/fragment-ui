@@ -1,7 +1,8 @@
 'use client';
 
-import { Avatar, Input, InputProps } from '@nextui-org/react';
+import type { InputProps } from '@nextui-org/react';
 import { useEffect, useMemo, useState } from 'react';
+import { Avatar, Input } from '../base';
 
 /**
  * Primary UI component for selecting a color

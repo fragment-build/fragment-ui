@@ -1,7 +1,8 @@
 'use client';
 
-import { Avatar, AvatarProps } from '@nextui-org/react';
+import type { AvatarProps } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
+import { Avatar } from '../base';
 
 /**
  * Primary UI component for selecting a color
