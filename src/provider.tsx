@@ -16,12 +16,12 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   defaults,
   ...rest
 }) => {
-  const initContext = defaults ? defaultsDeep(defaultContext, { defaults }) : defaultContext;
+  const initContext = defaults ? defaultsDeep({ defaults }, defaultContext) : defaultContext;
   const [context, setContext] = useState(initContext);
 
   useEffect(() => {
     if (!defaults) return;
-    setContext(defaultsDeep(defaultContext, { defaults }));
+    setContext(defaultsDeep({ defaults }, defaultContext));
   }, [defaults]);
 
   return (

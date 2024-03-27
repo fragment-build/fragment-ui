@@ -8,7 +8,7 @@ export function withFragment<C extends React.ComponentType<any>>(Component: C, c
     const context = useContext(FragmentUIContext);
     return (
       <Component
-        {...defaultsDeep(context['defaults'][configId] || {}, props)}
+        {...defaultsDeep(props, context['defaults'][configId] || {})}
         ref={ref}
         children={children}
       />
