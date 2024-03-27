@@ -6,7 +6,6 @@ import { FragmentUIContext, defaultContext } from "./context";
 
 interface FragmentUIProviderProps {
   children: React.ReactNode;
-  useNextJS?: boolean;
   locale?: NextUIProviderProps['locale'];
   navigate?: NextUIProviderProps['navigate'];
   defaults?: FragmentUIContext['defaults']
@@ -14,7 +13,6 @@ interface FragmentUIProviderProps {
 
 export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   children,
-  useNextJS = false,
   defaults = {},
   ...rest
 }) => {
@@ -24,13 +22,13 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
     setContext((oldContext) => deepMerge(oldContext, { defaults }))
   }, [defaults])
 
-  const render = useNextJS
-    ? <ThemeProvider attribute="class">{children}</ThemeProvider>
-    : children;
-
   return (
     <FragmentUIContext.Provider value={context}>
-      <NextUIProvider {...rest}>{render}</NextUIProvider>
+      <NextUIProvider {...rest}>
+        <ThemeProvider attribute="class">
+          {children}
+        </ThemeProvider>
+      </NextUIProvider>
     </FragmentUIContext.Provider>
   );
 }
