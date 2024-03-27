@@ -1,14 +1,13 @@
-'use client';
-
 import type { AvatarProps } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { Avatar } from '../base';
+import { withFragment } from '../../withFragment';
 
 /**
  * Primary UI component for selecting a color
  */
 
-interface ColorSelectorProps {
+export interface ColorSelectorProps {
   values: string[];
   defaultValue?: string;
   onValueChange: (color: string) => void;
@@ -17,7 +16,7 @@ interface ColorSelectorProps {
   icon?: React.ReactNode;
 }
 
-export const ColorSelector: React.FC<ColorSelectorProps> = ({ values, defaultValue, onValueChange, icon, ...rest }) => {
+export const ColorSelector: React.FC<ColorSelectorProps> = withFragment(({ values, defaultValue, onValueChange, icon, ...rest }) => {
   const [value, setValue] = useState(defaultValue && values.includes(defaultValue) ? defaultValue : values[0]);
 
   useEffect(() => onValueChange(value), [value, onValueChange]);
@@ -38,4 +37,4 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ values, defaultVal
       ))}
     </div>
   );
-};
+}, 'colorSelector');
