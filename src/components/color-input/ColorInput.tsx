@@ -1,15 +1,15 @@
-'use client';
-
-import { Avatar, Input, InputProps } from '@nextui-org/react';
+import type { InputProps } from '@nextui-org/react';
 import { useEffect, useMemo, useState } from 'react';
+import { Avatar, Input } from '../base';
+import { withFragment } from '../../withFragment';
 
 /**
  * Primary UI component for selecting a color
  */
 
-interface ColorInputProps extends InputProps {}
+export interface ColorInputProps extends InputProps {}
 
-export const ColorInput: React.FC<ColorInputProps> = ({
+export const ColorInput: React.FC<ColorInputProps> = withFragment(({
   defaultValue,
   label = 'Color',
   errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
@@ -50,4 +50,4 @@ export const ColorInput: React.FC<ColorInputProps> = ({
       )}
     />
   );
-};
+}, 'colorInput');

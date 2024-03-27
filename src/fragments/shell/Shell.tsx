@@ -1,5 +1,3 @@
-'use client';
-
 import { Sidebar, SidebarProps } from '../sidebar/Sidebar';
 
 /**

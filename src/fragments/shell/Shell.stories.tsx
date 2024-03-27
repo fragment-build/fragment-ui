@@ -1,13 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
-  Card,
-  CardBody,
-  Divider,
-  Input,
-  Tab,
-  Tabs,
-} from "@nextui-org/react";
-import {
   IconBox,
   IconBoxMultiple,
   IconHome,
@@ -15,13 +7,19 @@ import {
 } from "@tabler/icons-react";
 import { Shell } from "./Shell";
 import {
+  Card,
+  CardBody,
+  Divider,
+  Input,
   Table,
   TableBody,
   TableCell,
   TableColumn,
   TableHeader,
   TableRow,
-} from "../../components/table/Table";
+  Tab,
+  Tabs
+} from "../../components/base";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {

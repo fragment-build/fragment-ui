@@ -1,29 +1,29 @@
-'use client';
-
-import {
-  Avatar,
+import type {
   AvatarProps,
-  Badge,
-  Button,
-  Chip,
-  Dropdown,
-  DropdownItem,
   DropdownItemProps,
-  DropdownMenu,
   DropdownProps,
-  DropdownTrigger,
-  Listbox,
-  ListboxItem,
   ListboxProps,
-  ListboxSection,
-  ScrollShadow,
-  Tooltip,
-  User,
 } from '@nextui-org/react';
 
 import { useSmaller } from '../../hooks/breakpoints';
 import { IconChevronLeft } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import {
+  Avatar, 
+  Badge,
+  Button,
+  Chip,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Listbox,
+  ListboxItem,
+  ListboxSection,
+  ScrollShadow,
+  Tooltip,
+  User,
+} from '../../components/base';
 
 /**
  * Primary UI component for Dashboard Sidebars

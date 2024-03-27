@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, Card, Input } from "@nextui-org/react";
 import {
   IconBell,
   IconBox,
@@ -9,6 +8,7 @@ import {
   IconMessageCircle,
 } from "@tabler/icons-react";
 import { Sidebar } from "./Sidebar";
+import { Button, Card, Input } from "../../components/base";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {
