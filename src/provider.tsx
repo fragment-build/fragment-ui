@@ -21,7 +21,7 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   const [context, setContext] = useState(defaultContext);
 
   useEffect(() => {
-    setContext(deepMerge(context, { defaults }))
+    setContext((oldContext) => deepMerge(oldContext, { defaults }))
   }, [defaults])
 
   const render = useNextJS
