@@ -120,6 +120,8 @@ export * from '@fragment-build/ui';
 
 Now just import all the components you need from this file.
 
+Additionally you need to pass the `useNextJS` prop to the `FragmentUIProvider`.
+
 ## 🤝 Contributing
 
 Feel free to fork and make a Pull Request to this project. All the input is warmly welcome!
