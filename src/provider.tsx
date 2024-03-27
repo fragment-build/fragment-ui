@@ -25,7 +25,7 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   }, [defaults])
 
   const render = useNextJS
-    ? <ThemeProvider attribute="class" defaultTheme="dark">{children}</ThemeProvider>
+    ? <ThemeProvider attribute="class">{children}</ThemeProvider>
     : children;
 
   return (
