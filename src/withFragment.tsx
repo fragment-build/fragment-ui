@@ -4,9 +4,15 @@ import { FragmentUIContext } from "./context";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withFragment<C extends React.ComponentType<any>>(Component: C, configId: keyof FragmentUIContext['defaults']): C {
-  const ComponentWithContext = forwardRef((props: React.ComponentProps<C>, ref) => {
+  const ComponentWithContext = forwardRef(({ children, ...props}: React.ComponentProps<C>, ref) => {
     const context = useContext(FragmentUIContext);
-    return <Component {...deepMerge(context['defaults'][configId] as React.ComponentProps<C> || {}, props)} ref={ref} />
+    return (
+      <Component
+        {...deepMerge(context['defaults'][configId] as React.ComponentProps<C> || {}, props as React.ComponentProps<C>)}
+        ref={ref}
+        children={children}
+      />
+    );
   });
 
   // fix react-aria collection
