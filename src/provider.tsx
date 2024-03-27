@@ -1,7 +1,7 @@
 import { NextUIProvider, NextUIProviderProps } from "@nextui-org/react";
 import { ThemeProvider } from "next-themes";
 import { useEffect, useState } from "react";
-import deepMerge from "deepmerge";
+import defaultsDeep from "lodash.defaultsdeep";
 import { FragmentUIContext, defaultContext } from "./context";
 
 interface FragmentUIProviderProps {
@@ -13,14 +13,16 @@ interface FragmentUIProviderProps {
 
 export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   children,
-  defaults = {},
+  defaults,
   ...rest
 }) => {
-  const [context, setContext] = useState(defaultContext);
+  const initContext = defaults ? defaultsDeep(defaultContext, { defaults }) : defaultContext;
+  const [context, setContext] = useState(initContext);
 
   useEffect(() => {
-    setContext((oldContext) => deepMerge(oldContext, { defaults }))
-  }, [defaults])
+    if (!defaults) return;
+    setContext(defaultsDeep(defaultContext, { defaults }));
+  }, [defaults]);
 
   return (
     <FragmentUIContext.Provider value={context}>

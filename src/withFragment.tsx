@@ -1,5 +1,5 @@
 import { forwardRef, useContext } from "react";
-import deepMerge from "deepmerge";
+import defaultsDeep from "lodash.defaultsdeep";
 import { FragmentUIContext } from "./context";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -8,7 +8,7 @@ export function withFragment<C extends React.ComponentType<any>>(Component: C, c
     const context = useContext(FragmentUIContext);
     return (
       <Component
-        {...deepMerge(context['defaults'][configId] as React.ComponentProps<C> || {}, props as React.ComponentProps<C>)}
+        {...defaultsDeep(context['defaults'][configId] || {}, props)}
         ref={ref}
         children={children}
       />
