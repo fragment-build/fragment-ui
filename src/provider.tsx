@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import defaultsDeep from "lodash.defaultsdeep";
 import { FragmentUIContext, defaultContext } from "./context";
 
-interface FragmentUIProviderProps {
-  children: React.ReactNode;
-  locale?: NextUIProviderProps['locale'];
-  navigate?: NextUIProviderProps['navigate'];
-  defaults?: FragmentUIContext['defaults']
+interface FragmentUIProviderProps extends NextUIProviderProps {
+  defaults?: FragmentUIContext['defaults'];
 }
 
 export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
