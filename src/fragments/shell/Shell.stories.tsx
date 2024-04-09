@@ -20,6 +20,7 @@ import {
   Tab,
   Tabs
 } from "../../components/base";
+import { FormSection } from "../form/FormSection";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
@@ -199,15 +200,35 @@ export const WithTable: Story = {
               </TableBody>
             </Table>
           </Tab>
-          <Tab key="music" title="Music">
-            <Card>
-              <CardBody>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.
-              </CardBody>
-            </Card>
+          <Tab key="settings" title="Settings">
+            <form>
+              <h2>First Section</h2>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <h2>Second Section</h2>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+              <FormSection title="Title" description="Description">
+                <Input />
+              </FormSection>
+            </form>
           </Tab>
           <Tab key="videos" title="Videos">
             <Card>
