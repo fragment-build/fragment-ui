@@ -12,7 +12,7 @@ import { Button, Card, Input } from "../../components/base";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {
-  title: "components/Sidebar",
+  title: "fragments/Sidebar",
   component: Sidebar,
   // tags: ['autodocs'],
   parameters: {
@@ -75,7 +75,7 @@ export const Primary: Story = {
             icon: <IconBoxMultiple stroke={1.5} />,
             endContent: (
               <Button size="sm" variant="light" isIconOnly>
-                <IconCirclePlus size={18} />
+                <IconCirclePlus stroke={1.5} />
               </Button>
             ),
             items: [

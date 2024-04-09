@@ -9,7 +9,7 @@ import { useSmaller } from '../../hooks/breakpoints';
 import { IconChevronLeft } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import {
-  Avatar, 
+  Avatar,
   Badge,
   Button,
   Chip,
