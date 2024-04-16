@@ -9,7 +9,7 @@ import { withFragment } from '../../withFragment';
 
 export interface ColorInputProps extends InputProps {}
 
-export const ColorInput = withFragment(forwardRef<HTMLInputElement>(({
+export const ColorInput = withFragment(forwardRef<HTMLInputElement, ColorInputProps>(({
   defaultValue,
   label = 'Color',
   errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
