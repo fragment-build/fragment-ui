@@ -2,6 +2,7 @@ import { AccordionItemProps, AccordionProps, AutocompleteItemProps, Autocomplete
 import { createContext } from "react";
 import { RowProps } from '@react-types/table';
 import { ColorInputProps, ColorSelectorProps } from "./components";
+import { ChartProps } from "./components/chart/Chart";
 
 // Copied type due to missing export from @nextui-org/react
 export type TableRowProps<T = object> = RowProps<T> & Omit<HTMLNextUIProps<"tr">, keyof RowProps<T>>;
@@ -20,6 +21,7 @@ export interface FragmentUIContext {
     breadcrumbs?: Partial<BreadcrumbsProps>;
     breadcrumbItem?: Partial<BreadcrumbItemProps>;
     card?: Partial<CardProps>;
+    chart?: Partial<{[chartType in ChartProps['type']]: Partial<ChartProps>}>;
     checkbox?: Partial<CheckboxProps>;
     checkboxGroup?: Partial<CheckboxGroupProps>;
     chip?: Partial<ChipProps>;
@@ -96,6 +98,72 @@ export const defaultContext: FragmentUIContext = {
     user: {
       avatarProps: {
         radius: 'full',
+      },
+    },
+    chart: {
+      line: {
+        options: {
+          chart: {
+            type: "line",
+            height: '100%',
+            fontFamily: "Inter, sans-serif",
+            dropShadow: {
+              enabled: false,
+            },
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          tooltip: {
+            theme: 'dark',
+            enabled: true,
+            x: {
+              show: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            width: 3,
+            curve: 'smooth'
+          },
+          grid: {
+            show: true,
+            strokeDashArray: 4,
+            padding: {
+              left: 20,
+              right: 20,
+            },
+          },
+          legend: {
+            show: true,
+            position: 'top',
+            horizontalAlign: 'left'
+          },
+          xaxis: {
+            categories: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb'],
+            labels: {
+              show: true,
+              style: {
+                fontFamily: "Inter, sans-serif",
+                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+              }
+            },
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+          },
+          yaxis: {
+            show: false,
+          },
+        },
       },
     },
   },

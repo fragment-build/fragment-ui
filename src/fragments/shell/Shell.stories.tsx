@@ -21,6 +21,7 @@ import {
   Tabs
 } from "../../components/base";
 import { FormSection } from "../form/FormSection";
+import { Widget } from "../widget/Widget";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
@@ -239,6 +240,25 @@ export const WithTable: Story = {
             </Card>
           </Tab>
         </Tabs>
+      </>
+    ),
+  },
+};
+
+export const WithGrid: Story = {
+  args: {
+    ...Primary.args,
+    children: (
+      <>
+        <h1>Customers</h1>
+        <p className="mt-2 text-foreground-500">Blablabla</p>
+        <Divider className="my-4" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-6">
+          <Widget title="Bla">Bla</Widget>
+          <Widget title="Bla">Bla</Widget>
+          <Widget title="Bla">Bla</Widget>
+          <Widget title="Bla">Bla</Widget>
+        </div>
       </>
     ),
   },

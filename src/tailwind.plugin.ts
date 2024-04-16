@@ -18,6 +18,12 @@ export const fragmentui = () => plugin(function({ addBase, config }) {
       fontSize: config('theme.fontSize.xl'),
       fontWeight: config('theme.fontWeight.semibold'),
     },
+    '.apexcharts-yaxis-label, .apexcharts-xaxis-label': {
+      fill: 'currentColor !important',
+    },
+    '.apexcharts-legend-text': {
+      color: 'inherit !important',
+    },
   });
 });
 
