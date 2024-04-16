@@ -1,6 +1,6 @@
-import type { AvatarProps } from '@nextui-org/react';
+import { type AvatarProps } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { Avatar } from '../base';
+import { Avatar, Button } from '../base';
 import { withFragment } from '../../withFragment';
 
 /**
@@ -22,18 +22,19 @@ export const ColorSelector: React.FC<ColorSelectorProps> = withFragment(({ value
   useEffect(() => onValueChange(value), [value, onValueChange]);
 
   return (
-    <div className='flex gap-4'>
+    <div className='flex gap-3'>
       {values.map((color) => (
-        <Avatar
-          as="button"
-          showFallback
-          fallback={value === color && icon ? icon : <></>}
-          style={{ backgroundColor: color }}
-          classNames={{ base: 'shrink-0' }}
-          isBordered={value === color}
-          onClick={() => setValue(color) }
-          {...rest}
-        />
+        <Button radius="full" size={rest.size} isIconOnly disableRipple className="overflow-visible">
+          <Avatar
+            showFallback
+            fallback={value === color && icon ? icon : <></>}
+            style={{ backgroundColor: color }}
+            classNames={{ base: 'shrink-0' }}
+            isBordered={value === color}
+            onClick={() => setValue(color) }
+            {...rest}
+          />
+        </Button>
       ))}
     </div>
   );

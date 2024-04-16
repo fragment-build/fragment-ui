@@ -30,3 +30,12 @@ export const WithIcon: Story = {
     icon: <IconCheck size={24} stroke={1.5} />
   },
 };
+
+export const Small: Story = {
+  args: {
+    values: ['red', 'green', 'blue'],
+    onValueChange: console.log,
+    color: 'primary',
+    size: 'sm',
+  },
+};
