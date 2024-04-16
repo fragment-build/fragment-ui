@@ -262,7 +262,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
       </div>
       <div className={`${layoutStyles} transition-all h-screen`} />
       <div className={`fixed top-6 transition-all ${collapseButtonStyles}`}>
-        <Button size="sm" isIconOnly radius="full" className="h-unit-6 w-unit-6 min-w-unit-6 bg-default-100" onClick={() => setCollapsed(!collapsed)}>
+        <Button size="sm" isIconOnly radius="full" className="h-6 w-6 min-w-6 bg-default-100" onClick={() => setCollapsed(!collapsed)}>
           <IconChevronLeft size={14} />
         </Button>
       </div>
