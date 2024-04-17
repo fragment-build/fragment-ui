@@ -1,5 +1,5 @@
 import type { InputProps } from '@nextui-org/react';
-import { forwardRef, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { Avatar, Input } from '../base';
 import { withFragment } from '../../withFragment';
 
@@ -9,14 +9,14 @@ import { withFragment } from '../../withFragment';
 
 export interface ColorInputProps extends InputProps {}
 
-export const ColorInput = withFragment(forwardRef<HTMLInputElement, ColorInputProps>(({
+export const ColorInput = withFragment(({
   defaultValue,
   label = 'Color',
   errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
   onValueChange,
   isInvalid,
   ...rest
-}: ColorInputProps, ref) => {
+}: ColorInputProps) => {
   const [value, setValue] = useState(defaultValue || '#7d7d7d');
 
   useEffect(() => onValueChange && onValueChange(value), [value, onValueChange]);
@@ -29,10 +29,14 @@ export const ColorInput = withFragment(forwardRef<HTMLInputElement, ColorInputPr
     return validateHexColor(value) && !isInvalid ? false : true;
   }, [value, isInvalid]);
 
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (rest.onChange) rest.onChange(e);
+    setValue(e.currentTarget.value)
+  };
+
   return (
     <Input
       {...rest}
-      ref={ref}
       label={label}
       type="text"
       value={value}
@@ -44,11 +48,11 @@ export const ColorInput = withFragment(forwardRef<HTMLInputElement, ColorInputPr
           as="button"
           size="sm"
           showFallback
-          fallback={<input type='color' className="w-full h-full opacity-0 cursor-pointer" onChange={(e) => setValue(e.currentTarget.value)} />}
+          fallback={<input type='color' className="w-full h-full opacity-0 cursor-pointer" onChange={handleOnChange} />}
           style={{ backgroundColor: value }}
           classNames={{ base: 'shrink-0 self-center -mb-0.5', fallback: 'w-full h-full' }}
         />
       )}
     />
   );
-}), 'colorInput');
+}, 'colorInput');
