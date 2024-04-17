@@ -46,7 +46,7 @@ export const ColorInput = withFragment(forwardRef<HTMLInputElement, ColorInputPr
           showFallback
           fallback={<input type='color' className="w-full h-full opacity-0 cursor-pointer" onChange={(e) => setValue(e.currentTarget.value)} />}
           style={{ backgroundColor: value }}
-          classNames={{ base: 'shrink-0', fallback: 'w-full h-full' }}
+          classNames={{ base: 'shrink-0 self-center -mb-0.5', fallback: 'w-full h-full' }}
         />
       )}
     />
