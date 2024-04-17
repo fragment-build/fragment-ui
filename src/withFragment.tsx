@@ -6,6 +6,7 @@ import { FragmentUIContext } from "./context";
 export function withFragment<C extends React.ComponentType<any>>(Component: C, configId: keyof FragmentUIContext['defaults']): C {
   const ComponentWithContext = forwardRef(({ children, ...props}: React.ComponentProps<C>, ref) => {
     const context = useContext(FragmentUIContext);
+    // TODO: check if defaultsDeep is performance issue, consider introducing useMemo
     return (
       <Component
         {...defaultsDeep(props, context['defaults'][configId] || {})}
