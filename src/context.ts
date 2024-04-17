@@ -1,9 +1,8 @@
-import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbItemProps, BreadcrumbsProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, HTMLNextUIProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from "@nextui-org/react";
+import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbItemProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, HTMLNextUIProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from "@nextui-org/react";
 import { createContext } from "react";
 import { RowProps } from '@react-types/table';
 import type { Props as ApexChartProps } from "react-apexcharts";
-import { ColorInputProps, ColorSelectorProps } from "./components";
-import { ChartProps } from "./components/chart/Chart";
+import { ChartProps, ColorInputProps, ColorSelectorProps, MultiSwitchProps } from "./components";
 
 // Copied type due to missing export from @nextui-org/react
 export type TableRowProps<T = object> = RowProps<T> & Omit<HTMLNextUIProps<"tr">, keyof RowProps<T>>;
@@ -19,6 +18,7 @@ export interface FragmentUIContext {
     autocompleteSection?: Partial<AutocompleteSectionProps>;
     badge?: Partial<BadgeProps>;
     button?: Partial<ButtonProps>;
+    buttonGroup?: Partial<ButtonGroupProps>;
     breadcrumbs?: Partial<BreadcrumbsProps>;
     breadcrumbItem?: Partial<BreadcrumbItemProps>;
     card?: Partial<CardProps>;
@@ -48,6 +48,7 @@ export interface FragmentUIContext {
     modalContent?: Partial<ModalContentProps>;
     modalFooter?: Partial<ModalFooterProps>;
     modalHeader?: Partial<ModalHeaderProps>;
+    multiSwitch?: Partial<MultiSwitchProps>;
     navbar?: Partial<NavbarProps>;
     navbarBrand?: Partial<NavbarBrandProps>;
     navbarContent?: Partial<NavbarContentProps>;
@@ -100,6 +101,9 @@ export const defaultContext: FragmentUIContext = {
       avatarProps: {
         radius: 'full',
       },
+    },
+    multiSwitch: {
+      variant: 'flat',
     },
     chart: {
       area: {
