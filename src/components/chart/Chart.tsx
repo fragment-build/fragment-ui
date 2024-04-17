@@ -9,7 +9,7 @@ import { Spinner } from "../base";
 import { FragmentUIContext } from "../../context";
 
 export interface ChartProps {
-  type: 'line';
+  type: 'area' | 'line' | 'column' | 'bar' | 'pie' | 'donut' | 'radial';
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
   options?: ApexCharts.ApexOptions;
   height?: ApexChartProps['height'];
@@ -19,7 +19,7 @@ export interface ChartProps {
 export const Chart: React.FC<ChartProps> = (props) => {
   const context = useContext(FragmentUIContext);
   const defaults = context['defaults']['chart']?.[props.type];
-  const mergedProps: ChartProps = React.useMemo(() => defaultsDeep(structuredClone(props), defaults ?? {}), [props, defaults]);
+  const mergedProps: ApexChartProps = React.useMemo(() => defaultsDeep(structuredClone(props), defaults ?? {}), [props, defaults]);
   const [component, setComponent] = useState<React.ReactNode>(
     <div style={{ height: mergedProps.height, width: mergedProps.width }} className="flex justify-center align-center"><Spinner /></div>
   );
@@ -28,11 +28,24 @@ export const Chart: React.FC<ChartProps> = (props) => {
     const importComponent = async () => {
       const module = await import('react-apexcharts');
       const ApexChart = module.default;
-      setComponent(<ApexChart {...mergedProps} />);
+      setComponent(
+        <ApexChart
+          {...mergedProps}
+          type={defaults?.options?.chart?.type}
+          height={props.height ?? defaults?.options?.chart?.height}
+          width={props.width ??defaults?.options?.chart?.width}
+        />
+      );
     };
 
     importComponent();
-  }, [mergedProps]);
+  }, [
+    mergedProps,
+    defaults?.options?.chart?.type,
+    defaults?.options?.chart?.height,
+    defaults?.options?.chart?.width,
+    props.height, props.width,
+  ]);
 
   return component;
 };

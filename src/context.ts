@@ -1,6 +1,7 @@
 import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbItemProps, BreadcrumbsProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, HTMLNextUIProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from "@nextui-org/react";
 import { createContext } from "react";
 import { RowProps } from '@react-types/table';
+import type { Props as ApexChartProps } from "react-apexcharts";
 import { ColorInputProps, ColorSelectorProps } from "./components";
 import { ChartProps } from "./components/chart/Chart";
 
@@ -21,7 +22,7 @@ export interface FragmentUIContext {
     breadcrumbs?: Partial<BreadcrumbsProps>;
     breadcrumbItem?: Partial<BreadcrumbItemProps>;
     card?: Partial<CardProps>;
-    chart?: Partial<{[chartType in ChartProps['type']]: Partial<ChartProps>}>;
+    chart?: Partial<{[chartType in ChartProps['type']]: Partial<Pick<ApexChartProps, 'options' | 'series'>>}>;
     checkbox?: Partial<CheckboxProps>;
     checkboxGroup?: Partial<CheckboxGroupProps>;
     chip?: Partial<ChipProps>;
@@ -101,9 +102,69 @@ export const defaultContext: FragmentUIContext = {
       },
     },
     chart: {
+      area: {
+        options: {
+          chart: {
+            height: "100%",
+            width: "100%",
+            type: "area",
+            fontFamily: "Inter, sans-serif",
+            dropShadow: {
+              enabled: false,
+            },
+            toolbar: {
+              show: false,
+            },
+          },
+          tooltip: {
+            theme: 'dark',
+            enabled: true,
+            x: {
+              show: false,
+            },
+          },
+          fill: {
+            type: "gradient",
+            gradient: {
+              opacityFrom: 0.55,
+              opacityTo: 0,
+              shade: "#1C64F2",
+              gradientToColors: ["#1C64F2"],
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            width: 6,
+          },
+          grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+              left: 2,
+              right: 2,
+              top: 0
+            },
+          },
+          xaxis: {
+            categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+            labels: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+          },
+          yaxis: {
+            show: false,
+          },
+        },
+      },
       line: {
-        width: '100%',
-        height: '100%',
         options: {
           chart: {
             type: 'line',
@@ -168,8 +229,358 @@ export const defaultContext: FragmentUIContext = {
           },
         },
       },
+      column: {
+        options: {
+          colors: ["#1A56DB", "#FDBA8C"],
+          chart: {
+            type: "bar",
+            fontFamily: "Inter, sans-serif",
+            toolbar: {
+              show: false,
+            },
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "70%",
+              borderRadiusApplication: "end",
+              borderRadius: 8,
+            },
+          },
+          tooltip: {
+            theme: 'dark',
+            shared: true,
+            intersect: false,
+            style: {
+              fontFamily: "Inter, sans-serif",
+            },
+          },
+          states: {
+            hover: {
+              filter: {
+                type: "darken",
+                value: 1,
+              },
+            },
+          },
+          stroke: {
+            show: true,
+            width: 0,
+            colors: ["transparent"],
+          },
+          grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+              left: 2,
+              right: 2,
+              top: -14
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            show: false,
+          },
+          xaxis: {
+            floating: false,
+            labels: {
+              show: true,
+              style: {
+                fontFamily: "Inter, sans-serif",
+                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+              }
+            },
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+          },
+          yaxis: {
+            show: false,
+          },
+          fill: {
+            opacity: 1,
+          },
+        },
+      },
+      bar: {
+        options: {
+          chart: {
+            sparkline: {
+              enabled: false,
+            },
+            type: "bar",
+            width: "100%",
+            height: 400,
+            toolbar: {
+              show: false,
+            }
+          },
+          fill: {
+            opacity: 1,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              columnWidth: "100%",
+              borderRadiusApplication: "end",
+              borderRadius: 6,
+              dataLabels: {
+                position: "top",
+              },
+            },
+          },
+          legend: {
+            show: true,
+            position: "bottom",
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          tooltip: {
+            theme: 'dark',
+            shared: true,
+            intersect: false,
+            y: {
+              formatter: function (value) {
+                return "$" + value
+              }
+            }
+          },
+          xaxis: {
+            labels: {
+              show: true,
+              style: {
+                fontFamily: "Inter, sans-serif",
+                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+              },
+              formatter: function(value) {
+                return "$" + value
+              }
+            },
+            categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+          yaxis: {
+            labels: {
+              show: true,
+              style: {
+                fontFamily: "Inter, sans-serif",
+                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+              }
+            }
+          },
+          grid: {
+            show: true,
+            strokeDashArray: 4,
+            padding: {
+              left: 2,
+              right: 2,
+              top: -20
+            },
+          }
+        },
+      },
+      pie: {
+        options: {
+          colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+          chart: {
+            height: 420,
+            width: "100%",
+            type: "pie",
+          },
+          stroke: {
+            colors: ["white"],
+          },
+          plotOptions: {
+            pie: {
+              dataLabels: {
+                offset: -25,
+              }
+            },
+          },
+          labels: ["Direct", "Organic search", "Referrals"],
+          dataLabels: {
+            enabled: true,
+            style: {
+              fontFamily: "Inter, sans-serif",
+            },
+          },
+          legend: {
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "%"
+              },
+            },
+          },
+          xaxis: {
+            labels: {
+              formatter: function (value) {
+                return value  + "%"
+              },
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        },
+      },
+      donut: {
+        options: {
+          colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
+          chart: {
+            height: "100%",
+            width: "100%",
+            type: "donut",
+          },
+          stroke: {
+            colors: ["transparent"],
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  name: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: 20,
+                  },
+                  total: {
+                    showAlways: true,
+                    show: true,
+                    label: "Unique visitors",
+                    fontFamily: "Inter, sans-serif",
+                    formatter: function (w) {
+                      const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
+                        return a + b
+                      }, 0)
+                      return '$' + sum + 'k'
+                    },
+                  },
+                  value: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: -20,
+                    formatter: function (value) {
+                      return value + "k"
+                    },
+                  },
+                },
+                size: "80%",
+              },
+            },
+          },
+          grid: {
+            padding: {
+              top: -2,
+            },
+          },
+          labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "k"
+              },
+            },
+          },
+          xaxis: {
+            labels: {
+              formatter: function (value) {
+                return value  + "k"
+              },
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        },
+      },
+      radial: {
+        options: {
+          colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+          chart: {
+            height: "380px",
+            width: "100%",
+            type: "radialBar",
+            sparkline: {
+              enabled: true,
+            },
+          },
+          plotOptions: {
+            radialBar: {
+              track: {
+                background: '#E5E7EB',
+              },
+              dataLabels: {
+                show: false,
+              },
+              hollow: {
+                margin: 0,
+                size: "32%",
+              }
+            },
+          },
+          grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+              left: 2,
+              right: 2,
+              top: -23,
+              bottom: -20,
+            },
+          },
+          labels: ["Done", "In progress", "To do"],
+          legend: {
+            show: true,
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          tooltip: {
+            enabled: true,
+            x: {
+              show: false,
+            },
+          },
+          yaxis: {
+            show: false,
+            labels: {
+              formatter: function (value) {
+                return value + '%';
+              }
+            }
+          }
+        },
+      },
     },
   },
-}
+};
 
 export const FragmentUIContext = createContext(defaultContext);
