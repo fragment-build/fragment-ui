@@ -102,9 +102,12 @@ export const defaultContext: FragmentUIContext = {
     },
     chart: {
       line: {
+        width: '100%',
+        height: '100%',
         options: {
           chart: {
-            type: "line",
+            type: 'line',
+            width: '100%',
             height: '100%',
             fontFamily: "Inter, sans-serif",
             dropShadow: {
