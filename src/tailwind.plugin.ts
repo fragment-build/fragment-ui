@@ -2,7 +2,6 @@ import { NextUIPluginConfig, nextui } from "@nextui-org/react";
 import defaultsDeep from "lodash.defaultsdeep";
 import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin"
-import { withTV } from 'tailwind-variants/transformer';
 
 export const fragmentui = () => plugin(function({ addBase, config }) {
   addBase({
@@ -31,7 +30,7 @@ interface TailwindFragmentOptions {
   nextUIPluginConfig?: NextUIPluginConfig;
 }
 
-export const withTailwindFragment = (config: Config, options?: TailwindFragmentOptions): Config => withTV({
+export const withTailwindFragment = (config: Config, options?: TailwindFragmentOptions): Config => ({
   darkMode: 'class',
   ...config,
   plugins: [
