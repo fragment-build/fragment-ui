@@ -1,4 +1,4 @@
-import { forwardRef, isValidElement, useContext } from "react";
+import { forwardRef, useContext } from "react";
 import defaultsDeep from "lodash.defaultsdeep";
 import { FragmentUIContext } from "./context";
 
@@ -22,9 +22,8 @@ export function withFragment<C extends React.ComponentType<any>>(Component: C, c
     (ComponentWithContext as any).getCollectionNode = Component.getCollectionNode;
   }
 
-  if (isValidElement(ComponentWithContext) && isValidElement(Component)) {
-    ComponentWithContext.type = Component.type;
-  }
+  // fix https://github.com/nextui-org/nextui/pull/2815
+  ComponentWithContext.displayName = Component.displayName;
 
   return ComponentWithContext as unknown as C;
 }

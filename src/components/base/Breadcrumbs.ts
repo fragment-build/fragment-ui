@@ -5,4 +5,4 @@ import {
 import { withFragment } from '../../withFragment'
 
 export const Breadcrumbs = withFragment(NextBreadcrumbs, 'breadcrumbs');
-export const BreadcrumbItem = withFragment(NextBreadcrumbItem, 'breadcrumbItem');
+export const BreadcrumbItem = NextBreadcrumbItem;
