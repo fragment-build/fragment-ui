@@ -29,7 +29,7 @@ const multiSwitch = tv({
         button: 'px-5'
       }
     }
-  }
+  },
 });
 
 export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitchProps>(({
@@ -37,7 +37,7 @@ export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitch
   onValueChange,
   size = 'md',
   ...props
-}: MultiSwitchProps, ref) => {
+}, ref) => {
   const [value, setValue] = useState(defaultValue ?? 0);
   const { button } = multiSwitch({ size });
 
