@@ -13,7 +13,7 @@ export interface FormSectionProps {
 
 const formSection = tv({
   slots: {
-    base: 'flex gap-4 py-6 border-t-1 border-default-100 max-w-3xl',
+    base: 'flex gap-4 py-6 border-t-1 border-default-100 max-w-3xl flex-col',
     content: 'flex flex-col gap-4 flex-1',
     info: 'flex-1',
     description: 'text-small text-foreground-500',
@@ -21,13 +21,10 @@ const formSection = tv({
   variants: {
     direction: {
       horizontal: {
-        base: 'flex-row',
-        content: 'items-end justify-center',
+        base: 'sm:flex-row',
+        content: 'sm:items-end sm:justify-center',
       },
-      vertical: {
-        base: 'flex-col',
-        content: 'items-start',
-      }
+      vertical: {},
     }
   },
   defaultVariants: {
