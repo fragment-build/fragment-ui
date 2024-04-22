@@ -19,7 +19,7 @@ export interface ChartProps {
 export const Chart: React.FC<ChartProps> = (props) => {
   const context = useContext(FragmentUIContext);
   const defaults = context['defaults']['chart']?.[props.type];
-  const mergedProps: ApexChartProps = React.useMemo(() => defaultsDeep(structuredClone(props), defaults ?? {}), [props, defaults]);
+  const mergedProps: ApexChartProps = React.useMemo(() => defaultsDeep({ ...props }, defaults ?? {}), [props, defaults]);
   const [component, setComponent] = useState<React.ReactNode>(
     <div style={{ height: mergedProps.height, width: mergedProps.width }} className="flex justify-center align-center"><Spinner /></div>
   );
@@ -33,7 +33,7 @@ export const Chart: React.FC<ChartProps> = (props) => {
           {...mergedProps}
           type={defaults?.options?.chart?.type}
           height={props.height ?? defaults?.options?.chart?.height}
-          width={props.width ??defaults?.options?.chart?.width}
+          width={props.width ?? defaults?.options?.chart?.width}
         />
       );
     };

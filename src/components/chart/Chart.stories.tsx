@@ -17,6 +17,11 @@ export const Area: Story = {
   args: {
     type: 'area',
     height: '500px',
+    options: {
+      xaxis: {
+        categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+      }
+    },
     series: [
       {
         name: "New users",
@@ -85,6 +90,15 @@ export const Bar: Story = {
   args: {
     type: 'bar',
     height: '500px',
+    options: {
+      tooltip: {
+        y: {
+          formatter: function (value) {
+            return "$" + value
+          }
+        }
+      },
+    },
     series: [
       {
         name: "Income",
@@ -104,6 +118,23 @@ export const Pie: Story = {
   args: {
     type: 'pie',
     height: '500px',
+    options: {
+      labels: ["Direct", "Organic search", "Referrals"],
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return value + "%"
+          },
+        },
+      },
+      xaxis: {
+        labels: {
+          formatter: function (value) {
+            return value  + "%"
+          },
+        },
+      }
+    },
     series: [52.8, 26.8, 20.4],
   },
 };
@@ -112,6 +143,45 @@ export const Donut: Story = {
   args: {
     type: 'donut',
     height: '500px',
+    options: {
+      labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+      plotOptions: {
+        pie: {
+          donut: {
+            labels: {
+              total: {
+                label: "Unique visitors",
+                formatter: function (w) {
+                  const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
+                    return a + b
+                  }, 0)
+                  return '$' + sum + 'k'
+                },
+              },
+              value: {
+                formatter: function (value) {
+                  return value + "k"
+                },
+              }
+            }
+          }
+        }
+      },
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return value + "k"
+          },
+        },
+      },
+      xaxis: {
+        labels: {
+          formatter: function (value) {
+            return value  + "k"
+          },
+        },
+      },
+    },
     series: [35.1, 23.5, 2.4, 5.4],
   },
 };
@@ -120,6 +190,16 @@ export const Radial: Story = {
   args: {
     type: 'radial',
     height: '500px',
+    options: {
+      labels: ["Done", "In progress", "To do"],
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return value + '%';
+          }
+        }
+      }
+    },
     series: [90, 85, 70],
   },
 };

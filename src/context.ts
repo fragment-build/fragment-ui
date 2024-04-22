@@ -117,6 +117,9 @@ export const defaultContext: FragmentUIContext = {
             toolbar: {
               show: false,
             },
+            zoom: {
+              enabled: false,
+            },
           },
           tooltip: {
             theme: 'dark',
@@ -138,7 +141,7 @@ export const defaultContext: FragmentUIContext = {
             enabled: false,
           },
           stroke: {
-            width: 6,
+            width: 3,
           },
           grid: {
             show: false,
@@ -150,7 +153,6 @@ export const defaultContext: FragmentUIContext = {
             },
           },
           xaxis: {
-            categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
             labels: {
               show: false,
             },
@@ -181,6 +183,9 @@ export const defaultContext: FragmentUIContext = {
             },
             animations: {
               enabled: false
+            },
+            zoom: {
+              enabled: false,
             },
           },
           tooltip: {
@@ -233,7 +238,6 @@ export const defaultContext: FragmentUIContext = {
       },
       column: {
         options: {
-          colors: ["#1A56DB", "#FDBA8C"],
           chart: {
             type: "bar",
             fontFamily: "Inter, sans-serif",
@@ -264,11 +268,6 @@ export const defaultContext: FragmentUIContext = {
                 value: 1,
               },
             },
-          },
-          stroke: {
-            show: true,
-            width: 0,
-            colors: ["transparent"],
           },
           grid: {
             show: false,
@@ -347,18 +346,12 @@ export const defaultContext: FragmentUIContext = {
             theme: 'dark',
             shared: true,
             intersect: false,
-            y: {
-              formatter: function (value) {
-                return "$" + value
-              }
-            }
           },
           xaxis: {
             labels: {
               show: true,
               style: {
                 fontFamily: "Inter, sans-serif",
-                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
               },
               formatter: function(value) {
                 return "$" + value
@@ -377,7 +370,6 @@ export const defaultContext: FragmentUIContext = {
               show: true,
               style: {
                 fontFamily: "Inter, sans-serif",
-                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
               }
             }
           },
@@ -394,46 +386,45 @@ export const defaultContext: FragmentUIContext = {
       },
       pie: {
         options: {
-          colors: ["#1C64F2", "#16BDCA", "#9061F9"],
           chart: {
-            height: 420,
+            height: "100%",
             width: "100%",
             type: "pie",
           },
           stroke: {
-            colors: ["white"],
+            width: 5,
           },
           plotOptions: {
             pie: {
+              expandOnClick: false,
               dataLabels: {
                 offset: -25,
               }
             },
           },
-          labels: ["Direct", "Organic search", "Referrals"],
           dataLabels: {
             enabled: true,
             style: {
               fontFamily: "Inter, sans-serif",
             },
+            background: {
+              enabled: true,
+              padding: 10,
+              borderWidth: 0,
+              borderRadius: 5,
+              dropShadow: {
+                enabled: true,
+              }
+            },
+            dropShadow: {
+              enabled: false,
+            }
           },
           legend: {
             position: "bottom",
             fontFamily: "Inter, sans-serif",
           },
-          yaxis: {
-            labels: {
-              formatter: function (value) {
-                return value + "%"
-              },
-            },
-          },
           xaxis: {
-            labels: {
-              formatter: function (value) {
-                return value  + "%"
-              },
-            },
             axisTicks: {
               show: false,
             },
@@ -445,14 +436,13 @@ export const defaultContext: FragmentUIContext = {
       },
       donut: {
         options: {
-          colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
           chart: {
             height: "100%",
             width: "100%",
             type: "donut",
           },
           stroke: {
-            colors: ["transparent"],
+            width: 5,
           },
           plotOptions: {
             pie: {
@@ -467,22 +457,12 @@ export const defaultContext: FragmentUIContext = {
                   total: {
                     showAlways: true,
                     show: true,
-                    label: "Unique visitors",
                     fontFamily: "Inter, sans-serif",
-                    formatter: function (w) {
-                      const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
-                        return a + b
-                      }, 0)
-                      return '$' + sum + 'k'
-                    },
                   },
                   value: {
                     show: true,
                     fontFamily: "Inter, sans-serif",
                     offsetY: -20,
-                    formatter: function (value) {
-                      return value + "k"
-                    },
                   },
                 },
                 size: "80%",
@@ -494,7 +474,6 @@ export const defaultContext: FragmentUIContext = {
               top: -2,
             },
           },
-          labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
           dataLabels: {
             enabled: false,
           },
@@ -502,19 +481,7 @@ export const defaultContext: FragmentUIContext = {
             position: "bottom",
             fontFamily: "Inter, sans-serif",
           },
-          yaxis: {
-            labels: {
-              formatter: function (value) {
-                return value + "k"
-              },
-            },
-          },
           xaxis: {
-            labels: {
-              formatter: function (value) {
-                return value  + "k"
-              },
-            },
             axisTicks: {
               show: false,
             },
@@ -526,20 +493,19 @@ export const defaultContext: FragmentUIContext = {
       },
       radial: {
         options: {
-          colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
           chart: {
-            height: "380px",
+            height: "100%",
             width: "100%",
             type: "radialBar",
             sparkline: {
               enabled: true,
             },
           },
+          stroke: {
+            lineCap: 'round',
+          },
           plotOptions: {
             radialBar: {
-              track: {
-                background: '#E5E7EB',
-              },
               dataLabels: {
                 show: false,
               },
@@ -559,13 +525,13 @@ export const defaultContext: FragmentUIContext = {
               bottom: -20,
             },
           },
-          labels: ["Done", "In progress", "To do"],
           legend: {
             show: true,
             position: "bottom",
             fontFamily: "Inter, sans-serif",
           },
           tooltip: {
+            theme: 'dark',
             enabled: true,
             x: {
               show: false,
@@ -573,11 +539,6 @@ export const defaultContext: FragmentUIContext = {
           },
           yaxis: {
             show: false,
-            labels: {
-              formatter: function (value) {
-                return value + '%';
-              }
-            }
           }
         },
       },
