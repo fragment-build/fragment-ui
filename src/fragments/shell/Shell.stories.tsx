@@ -18,10 +18,15 @@ import {
   TableHeader,
   TableRow,
   Tab,
-  Tabs
+  Tabs,
+  BreadcrumbItem,
+  Breadcrumbs,
+  Textarea,
+  Switch
 } from "../../components/base";
 import { FormSection } from "../form/FormSection";
 import { Widget } from "../widget/Widget";
+import { Chart, Grid } from "../../components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
@@ -161,6 +166,10 @@ export const Auto: Story = {
 export const WithTable: Story = {
   args: {
     ...Primary.args,
+    sidebar: Primary.args?.sidebar ? {
+      ...Primary.args.sidebar,
+      autoLayout: true,
+    } : undefined,
     children: (
       <>
         <h1>Customers</h1>
@@ -204,30 +213,24 @@ export const WithTable: Story = {
           <Tab key="settings" title="Settings">
             <form>
               <h2>First Section</h2>
-              <FormSection title="Title" description="Description">
-                <Input />
+              <FormSection title="Name" description="Description" direction="horizontal">
+                <Input label="First name" />
+                <Input label="Last name" />
               </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
+              <FormSection title="Biography" description="Description">
+                <Textarea label="Biography" minRows={6} />
               </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
-              </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
+              <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
+                <Switch />
               </FormSection>
               <h2>Second Section</h2>
-              <FormSection title="Title" description="Description">
-                <Input />
+              <FormSection title="Title" description="Description" direction="horizontal">
+                <Input label="First name" />
+                <Input label="Last name" />
               </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
-              </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
-              </FormSection>
-              <FormSection title="Title" description="Description">
-                <Input />
+              <FormSection title="Title" description="Description" direction="horizontal">
+                <Input label="First name" />
+                <Input label="Last name" />
               </FormSection>
             </form>
           </Tab>
@@ -248,17 +251,203 @@ export const WithTable: Story = {
 export const WithGrid: Story = {
   args: {
     ...Primary.args,
+    sidebar: Primary.args?.sidebar ? {
+      ...Primary.args.sidebar,
+      autoLayout: true,
+    } : undefined,
     children: (
       <>
+        <Breadcrumbs>
+          <BreadcrumbItem>Home</BreadcrumbItem>
+          <BreadcrumbItem>Customers</BreadcrumbItem>
+        </Breadcrumbs>
         <h1>Customers</h1>
         <p className="mt-2 text-foreground-500">Blablabla</p>
         <Divider className="my-4" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-6">
-          <Widget title="Bla">Bla</Widget>
-          <Widget title="Bla">Bla</Widget>
-          <Widget title="Bla">Bla</Widget>
-          <Widget title="Bla">Bla</Widget>
-        </div>
+        <Grid size="lg">
+          <Widget title="Analytics" colSpan={2}>
+            <Chart
+              type="line"
+              series={[
+                {
+                  name: "Clicks",
+                  data: [6500, 6418, 6456, 6526, 6356, 6456],
+                  color: "#1A56DB",
+                },
+                {
+                  name: "CPC",
+                  data: [6456, 6356, 6526, 6332, 6418, 6500],
+                  color: "#7E3AF2",
+                },
+              ]}
+              height="350px"
+            />
+          </Widget>
+          <Widget title="Traffic">
+            <Chart
+              type="pie"
+              options={{
+                labels: ["Direct", "Organic search", "Referrals"],
+                yaxis: {
+                  labels: {
+                    formatter: function (value) {
+                      return value + "%"
+                    },
+                  },
+                },
+                xaxis: {
+                  labels: {
+                    formatter: function (value) {
+                      return value  + "%"
+                    },
+                  },
+                }
+              }}
+              series={[52.8, 26.8, 20.4]}
+              height="350px"
+            />
+          </Widget>
+          <Widget title="Origins" colSpan={2}>
+            <Chart
+              type="column"
+              series={[
+                {
+                  name: "Organic",
+                  color: "#1A56DB",
+                  data: [
+                    { x: "Mon", y: 231 },
+                    { x: "Tue", y: 122 },
+                    { x: "Wed", y: 63 },
+                    { x: "Thu", y: 421 },
+                    { x: "Fri", y: 122 },
+                    { x: "Sat", y: 323 },
+                    { x: "Sun", y: 111 },
+                  ],
+                },
+                {
+                  name: "Social media",
+                  color: "#FDBA8C",
+                  data: [
+                    { x: "Mon", y: 232 },
+                    { x: "Tue", y: 113 },
+                    { x: "Wed", y: 341 },
+                    { x: "Thu", y: 224 },
+                    { x: "Fri", y: 522 },
+                    { x: "Sat", y: 411 },
+                    { x: "Sun", y: 243 },
+                  ],
+                },
+              ]}
+              height="350px"
+            />
+          </Widget>
+          <Widget title="Cost">
+            <Chart
+              type="bar"
+              options={{
+                tooltip: {
+                  y: {
+                    formatter: function (value) {
+                      return "$" + value
+                    }
+                  }
+                },
+              }}
+              series={[
+                {
+                  name: "Income",
+                  color: "#31C48D",
+                  data: [1420, 1620, 1820, 1420, 1650, 2120],
+                },
+                {
+                  name: "Expense",
+                  data: [788, 810, 866, 788, 1100, 1200],
+                  color: "#F05252",
+                }
+              ]}
+            />
+          </Widget>
+          <Widget title="New Users">
+            <Chart
+              type="area"
+              options={{
+                xaxis: {
+                  categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+                }
+              }}
+              series={[
+                {
+                  name: "New users",
+                  data: [6500, 6418, 6456, 6526, 6356, 6456],
+                  color: "#1A56DB",
+                },
+              ]}
+            />
+          </Widget>
+          <Widget title="Website traffic">
+            <Chart
+              type="donut"
+              options={{
+                labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+                plotOptions: {
+                  pie: {
+                    donut: {
+                      labels: {
+                        total: {
+                          label: "Unique visitors",
+                          formatter: function (w) {
+                            const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
+                              return a + b
+                            }, 0)
+                            return sum + 'k'
+                          },
+                        },
+                        value: {
+                          formatter: function (value) {
+                            return value + "k"
+                          },
+                        }
+                      }
+                    }
+                  }
+                },
+                yaxis: {
+                  labels: {
+                    formatter: function (value) {
+                      return value + "k"
+                    },
+                  },
+                },
+                xaxis: {
+                  labels: {
+                    formatter: function (value) {
+                      return value  + "k"
+                    },
+                  },
+                },
+              }}
+              series={[35.1, 23.5, 2.4, 5.4]}
+              height="350px"
+            />
+          </Widget>
+          <Widget title="New Users">
+            <Chart
+              type="radial"
+              options={{
+                labels: ["Done", "In progress", "To do"],
+                yaxis: {
+                  labels: {
+                    formatter: function (value) {
+                      return value + '%';
+                    }
+                  }
+                }
+              }}
+              series={[90, 85, 70]}
+              height="350px"
+            />
+          </Widget>
+        </Grid>
       </>
     ),
   },
