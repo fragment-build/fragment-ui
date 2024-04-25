@@ -5,7 +5,7 @@
   <h1>Fragment UI (Work in Progress)</h1>
   <p>Create SaaS UIs with a simple and straightforward design system and component library</p>
   <a href="https://www.npmjs.org/package/@fragment-build/ui">
-    <img alt="NPM package version" src="https://img.shields.io/github/package-json/v/@fragment-build/ui?label=npm&logo=npm">
+    <img alt="NPM package version" src="https://img.shields.io/npm/v/@fragment-build/ui?label=npm&logo=npm">
   </a>
   <a href="https://fragment-build.github.io/fragment-ui/">
     <img alt="Fragment UI Storybook" src="https://raw.githubusercontent.com/storybookjs/brand/main/badge/badge-storybook.svg">
