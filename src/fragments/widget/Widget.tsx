@@ -12,7 +12,7 @@ export interface WidgetProps {
     endContent?: React.ReactNode;
   };
   title: string;
-  colSpan?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  size?: 'sm' | 'md' | 'lg';
 }
 
 const widget = tv({
@@ -23,21 +23,15 @@ const widget = tv({
     body: 'px-7 pb-5',
   },
   variants: {
-    colSpan: {
-      1: 'lg:col-span-1',
-      2: 'lg:col-span-2',
-      3: 'lg:col-span-3',
-      4: 'lg:col-span-4',
-      5: 'lg:col-span-5',
-      6: 'lg:col-span-6',
-      7: 'lg:col-span-7',
-      8: 'lg:col-span-8',
-      9: 'lg:col-span-9',
-      10: 'lg:col-span-10',
-      11: 'lg:col-span-11',
-      12: 'lg:col-span-12',
+    size: {
+      sm: 'lg:col-span-1',
+      md: 'lg:col-span-2',
+      lg: 'lg:col-span-3',
     },
   },
+  defaultVariants: {
+    size: 'sm',
+  }
 });
 
 export const Widget: React.FC<WidgetProps> = ({ children, title, header, ...props }) => {

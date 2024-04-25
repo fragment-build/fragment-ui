@@ -265,7 +265,7 @@ export const WithGrid: Story = {
         <p className="mt-2 text-foreground-500">Blablabla</p>
         <Divider className="my-4" />
         <Grid size="lg">
-          <Widget title="Analytics" colSpan={2}>
+          <Widget title="Analytics" size="md">
             <Chart
               type="line"
               series={[
@@ -307,7 +307,7 @@ export const WithGrid: Story = {
               height="350px"
             />
           </Widget>
-          <Widget title="Origins" colSpan={2}>
+          <Widget title="Origins" size="md">
             <Chart
               type="column"
               series={[
