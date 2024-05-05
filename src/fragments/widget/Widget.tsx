@@ -151,32 +151,32 @@ const widget = tv({
     {
       variant: "flat",
       color: "default",
-      class: colorVariants.flat.default.replace('/20', '/10'),
+      class: [colorVariants.flat.default, 'bg-default/10'],
     },
     {
       variant: "flat",
       color: "primary",
-      class: colorVariants.flat.primary.replace('/20', '/10'),
+      class: [colorVariants.flat.primary, 'bg-primary/10'],
     },
     {
       variant: "flat",
       color: "secondary",
-      class: colorVariants.flat.secondary.replace('/20', '/10'),
+      class: [colorVariants.flat.secondary, 'bg-secondary/10'],
     },
     {
       variant: "flat",
       color: "success",
-      class: colorVariants.flat.success.replace('/20', '/10'),
+      class: [colorVariants.flat.success, 'bg-success/10'],
     },
     {
       variant: "flat",
       color: "warning",
-      class: colorVariants.flat.warning.replace('/20', '/10'),
+      class: [colorVariants.flat.warning, 'bg-warning/10'],
     },
     {
       variant: "flat",
       color: "danger",
-      class: colorVariants.flat.danger.replace('/20', '/10'),
+      class: [colorVariants.flat.danger, 'bg-danger/10'],
     },
     // faded / color
     {
