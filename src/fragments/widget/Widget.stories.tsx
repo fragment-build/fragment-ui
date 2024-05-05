@@ -48,3 +48,29 @@ export const Default: Story = {
     ),
   },
 };
+
+export const Flat: Story = {
+  args: {
+    children: (
+      <>
+        <h1 className="text-center text-5xl mt-3">30%</h1>
+        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
+      </>
+    ),
+    color: 'primary',
+    variant: 'flat',
+  },
+};
+
+export const BorderedColored: Story = {
+  args: {
+    children: (
+      <>
+        <h1 className="text-center text-5xl mt-3">30%</h1>
+        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
+      </>
+    ),
+    color: 'primary',
+    variant: 'bordered',
+  },
+};
