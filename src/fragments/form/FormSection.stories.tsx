@@ -49,3 +49,31 @@ export const HorizontalSimple: Story = {
     children: <Switch />,
   },
 };
+
+export const FullWidth: Story = {
+  args: {
+    title: 'Profile',
+    description: 'These are my personal information.',
+    fullWidth: true,
+    children: (
+      <>
+        <Input label="Firstname" />
+        <Input label="Lastname" />
+      </>
+    ),
+  },
+};
+
+export const NoBorder: Story = {
+  args: {
+    title: 'Profile',
+    description: 'These are my personal information.',
+    noBorder: true,
+    children: (
+      <>
+        <Input label="Firstname" />
+        <Input label="Lastname" />
+      </>
+    ),
+  },
+};
