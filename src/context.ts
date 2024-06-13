@@ -95,6 +95,13 @@ export const defaultContext: FragmentUIContext = {
     table: {
       removeWrapper: true,
     },
+    tabs: {
+      classNames: {
+        tabList: 'p-0',
+        panel: 'border-t-[1px] border-default-200 pt-6',
+      },
+      variant: "underlined",
+    },
     user: {
       avatarProps: {
         radius: 'full',
