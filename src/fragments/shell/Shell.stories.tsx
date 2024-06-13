@@ -4,6 +4,7 @@ import {
   IconBoxMultiple,
   IconHome,
   IconMessageCircle,
+  IconPlus,
 } from "@tabler/icons-react";
 import { Shell } from "./Shell";
 import {
@@ -22,7 +23,8 @@ import {
   BreadcrumbItem,
   Breadcrumbs,
   Textarea,
-  Switch
+  Switch,
+  Button
 } from "../../components/base";
 import { Form } from "../form/Form";
 import { FormSection } from "../form/FormSection";
@@ -173,9 +175,13 @@ export const WithTable: Story = {
     } : undefined,
     children: (
       <>
-        <h1>Customers</h1>
-        <p className="mt-2 text-foreground-500">Blablabla</p>
-        <Divider className="my-4" />
+        <header className="flex gap-4 justify-between sm:items-end mb-8 flex-col sm:flex-row">
+          <div>
+            <h1>Customers</h1>
+            <p className="mt-2 text-foreground-500">Blablabla</p>
+          </div>
+          <div><Button endContent={<IconPlus stroke={1.5} />} className="w-full" color="primary">Create</Button></div>
+        </header>
         <Tabs aria-label="Options">
           <Tab key="table" title="Table">
             <Table
