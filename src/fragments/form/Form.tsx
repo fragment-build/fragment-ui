@@ -6,7 +6,7 @@ import React from "react";
 import { tv } from "@nextui-org/react";
 import { Divider } from "../../components";
 
-interface FormProps {
+interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode[];
 }
 
@@ -17,16 +17,16 @@ const form = tv({
 });
 
 export const Form: React.FC<FormProps> = ({ children, ...props }) => {
-  const v = form(props);
+  const v = form();
 
   return (
-    <section>
+    <form {...props}>
       {children.map((child, index) => index === 0 ? child : (
         <React.Fragment key={index}>
           <Divider className={v.divider()} />
           {child}
         </React.Fragment>
       ))}
-    </section>
+    </form>
   );
 };
