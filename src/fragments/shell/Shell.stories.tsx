@@ -24,6 +24,7 @@ import {
   Textarea,
   Switch
 } from "../../components/base";
+import { Form } from "../form/Form";
 import { FormSection } from "../form/FormSection";
 import { Widget } from "../widget/Widget";
 import { Chart, Grid } from "../../components";
@@ -212,26 +213,26 @@ export const WithTable: Story = {
           </Tab>
           <Tab key="settings" title="Settings">
             <form>
-              <h2>First Section</h2>
-              <FormSection title="Name" description="Description" direction="horizontal">
-                <Input label="First name" />
-                <Input label="Last name" />
-              </FormSection>
-              <FormSection title="Biography" description="Description">
-                <Textarea label="Biography" minRows={6} />
-              </FormSection>
-              <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
-                <Switch />
-              </FormSection>
-              <h2>Second Section</h2>
-              <FormSection title="Title" description="Description" direction="horizontal">
-                <Input label="First name" />
-                <Input label="Last name" />
-              </FormSection>
-              <FormSection title="Title" description="Description" direction="horizontal">
-                <Input label="First name" />
-                <Input label="Last name" />
-              </FormSection>
+              <Form>
+                <FormSection title="Name" description="Description" direction="horizontal">
+                  <Input label="First name" />
+                  <Input label="Last name" />
+                </FormSection>
+                <FormSection title="Biography" description="Description">
+                  <Textarea label="Biography" minRows={6} />
+                </FormSection>
+                <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
+                  <Switch />
+                </FormSection>
+                <FormSection title="Title" description="Description" direction="horizontal">
+                  <Input label="First name" />
+                  <Input label="Last name" />
+                </FormSection>
+                <FormSection title="Full Width" description="Description" direction="horizontal" fullWidth>
+                  <Input label="First name" />
+                  <Input label="Last name" />
+                </FormSection>
+              </Form>
             </form>
           </Tab>
           <Tab key="videos" title="Videos">

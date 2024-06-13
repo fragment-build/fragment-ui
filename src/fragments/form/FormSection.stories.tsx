@@ -41,6 +41,35 @@ export const Horizontal: Story = {
   },
 };
 
+export const FullWidth: Story = {
+  args: {
+    title: 'Profile',
+    description: 'These are my personal information.',
+    direction: 'horizontal',
+    fullWidth: true,
+    children: (
+      <>
+        <Input label="Firstname" />
+        <Input label="Lastname" />
+      </>
+    ),
+  },
+};
+
+export const WithSectionTitle: Story = {
+  args: {
+    title: 'Profile',
+    description: 'These are my personal information.',
+    direction: 'horizontal',
+    children: (
+      <>
+        <Input label="Firstname" />
+        <Input label="Lastname" />
+      </>
+    ),
+  },
+};
+
 export const HorizontalSimple: Story = {
   args: {
     title: 'Notifications',
