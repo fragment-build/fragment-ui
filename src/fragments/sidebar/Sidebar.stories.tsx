@@ -142,10 +142,8 @@ export const Primary: Story = {
           <Card radius="lg" className="border-none">
             <img
               alt="Woman listing to music"
-              className="object-cover w-full"
-              height={200}
+              className="object-cover w-full h-28"
               src="https://nextui.org/images/hero-card.jpeg"
-              width={200}
             />
           </Card>
         ),
