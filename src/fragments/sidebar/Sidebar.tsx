@@ -282,18 +282,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
         onClick={() => setMobileMenuOpen(false)}
       >
         {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined )?.navigation?.map((navItem) => (
-          <Button
-            radius="md"
-            className="h-12 flex-1"
-            variant="light"
-            isIconOnly
-            color={activeNav?.link === navItem.link ? 'primary' : 'default'}
-            onClick={() => setMobileMenuOpen(false)}
+          <Tooltip
+            key={navItem.label}
+            placement="top"
+            content={navItem.label}
+            offset={10}
           >
-            <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
-              {navItem.icon}
-            </Badge>
-          </Button>
+            <Button
+              as="a"
+              radius="md"
+              className="h-12 flex-1"
+              variant="light"
+              isIconOnly
+              color={activeNav?.link === navItem.link ? 'primary' : 'default'}
+              onClick={() => setMobileMenuOpen(false)}
+              href={navItem.link}
+            >
+              <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
+                {navItem.icon}
+              </Badge>
+            </Button>
+          </Tooltip>
         ))}
         <Button radius="md" className="flex-col gap-0 h-12 flex-1" variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <IconDots size={24} stroke={1.5} />
