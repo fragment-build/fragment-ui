@@ -17,7 +17,7 @@ const formSection = tv({
   slots: {
     base: '',
     main: 'flex flex-col',
-    content: 'flex flex-col gap-4 flex-1',
+    content: 'flex flex-col gap-4 flex-1 min-w-0',
     info: 'flex-1 pb-4',
     description: 'text-small text-foreground-500',
   },
