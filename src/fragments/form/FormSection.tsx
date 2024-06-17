@@ -8,7 +8,7 @@ import { tv } from "@nextui-org/react";
 export interface FormSectionProps {
   children: React.ReactNode;
   title: string;
-  description?: string;
+  description?: React.ReactNode;
   direction?: 'vertical' | 'horizontal';
   fullWidth?: boolean;
 }
