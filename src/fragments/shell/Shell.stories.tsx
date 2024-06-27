@@ -79,6 +79,7 @@ export const Primary: Story = {
           type: "custom",
           key: "search",
           render: <Input label="Search..." />,
+          showExpandedOnly: true,
         },
         {
           type: "navigation",
@@ -137,6 +138,7 @@ export const Primary: Story = {
             </Card>
           ),
           align: "bottom",
+          showExpandedOnly: true,
         },
       ],
     },
