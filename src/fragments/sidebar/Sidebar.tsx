@@ -84,9 +84,9 @@ export interface SidebarProps {
 const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
   switch (align) {
     case 'center':
-      return 'my-auto';
+      return 'my-auto max-w-full';
     case 'bottom':
-      return 'mt-auto sticky bottom-0 bg-content1 w-full';
+      return 'mt-auto max-w-full sticky bottom-0 bg-content1';
     default:
       return '';
   }
