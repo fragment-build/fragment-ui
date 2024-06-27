@@ -68,7 +68,8 @@ interface SidebarItemUser extends SidebarItem {
 interface SidebarItemCustom extends SidebarItem {
   type: 'custom';
   render: React.ReactNode;
-  showCollapsed?: boolean;
+  showCollapsedOnly?: boolean;
+  showExpandedOnly?: boolean;
 }
 
 type SidebarItemVariants = SidebarItemNavigation | SidebarItemUser | SidebarItemCustom
@@ -179,7 +180,13 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
         </Dropdown>
       );
     case 'custom':
-      return options.layout === 'expanded' || item.showCollapsed ? <div className="px-2">{item.render}</div> : null;
+      return (
+        (!item.showExpandedOnly && !item.showCollapsedOnly) ||
+        (options.layout === 'expanded' && item.showExpandedOnly) ||
+        (options.layout === 'collapsed' && item.showCollapsedOnly)
+      )
+      ? <div className="px-2">{item.render}</div>
+      : null;
     default:
       return null;
   }
