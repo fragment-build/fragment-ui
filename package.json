@@ -21,8 +21,8 @@
     "@types/lodash.defaultsdeep": "4.6.9",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
-    "@typescript-eslint/eslint-plugin": "7.13.1",
-    "@typescript-eslint/parser": "7.13.1",
+    "@typescript-eslint/eslint-plugin": "7.14.1",
+    "@typescript-eslint/parser": "7.14.1",
     "@vitejs/plugin-react": "4.3.1",
     "@vitejs/plugin-react-swc": "3.7.0",
     "autoprefixer": "10.4.19",
@@ -34,8 +34,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "8.1.10",
-    "storybook-dark-mode": "4.0.1",
-    "typescript": "5.4.5",
+    "storybook-dark-mode": "4.0.2",
+    "typescript": "5.5.2",
     "vite": "5.3.1"
   },
   "scripts": {
@@ -43,14 +43,14 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "update": "npx npm-check-updates -i"
+    "update": "npx npm-check-updates -i --format group"
   },
   "dependencies": {
     "@nextui-org/react": "2.4.2",
     "@react-hooks-library/core": "0.6.2",
-    "@tabler/icons-react": "3.6.0",
-    "apexcharts": "3.49.1",
-    "framer-motion": "11.2.10",
+    "@tabler/icons-react": "3.7.0",
+    "apexcharts": "3.49.2",
+    "framer-motion": "11.2.12",
     "lodash.defaultsdeep": "4.6.1",
     "next-themes": "0.3.0",
     "react-apexcharts": "1.4.1",
