@@ -110,6 +110,9 @@ export const defaultContext: FragmentUIContext = {
     multiSwitch: {
       variant: 'flat',
     },
+    button: {
+      variant: 'flat',
+    },
     chart: {
       area: {
         options: {
