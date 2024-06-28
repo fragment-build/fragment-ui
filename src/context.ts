@@ -112,6 +112,7 @@ export const defaultContext: FragmentUIContext = {
     },
     button: {
       variant: 'flat',
+      radius: 'sm',
     },
     chart: {
       area: {
