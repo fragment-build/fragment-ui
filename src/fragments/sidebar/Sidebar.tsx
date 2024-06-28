@@ -86,7 +86,7 @@ const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
     case 'center':
       return 'my-auto max-w-full';
     case 'bottom':
-      return 'mt-auto max-w-full sticky bottom-0 bg-content1';
+      return 'mt-auto max-w-full sticky bottom-0';
     default:
       return '';
   }

@@ -8,7 +8,7 @@ import {
   IconMessageCircle,
 } from "@tabler/icons-react";
 import { Sidebar } from "./Sidebar";
-import { Button, Card, Input } from "../../components/base";
+import { Button, Card, Input, ThemeSwitch } from "../../components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {
@@ -135,6 +135,12 @@ export const Primary: Story = {
             icon: <IconBox stroke={1.5} />,
           },
         ],
+      },
+      {
+        type: "custom",
+        key: "theme-switch",
+        render: <ThemeSwitch />,
+        align: "bottom"
       },
       {
         type: "custom",
