@@ -10,7 +10,6 @@ import { Shell } from "./Shell";
 import {
   Card,
   CardBody,
-  Divider,
   Input,
   Table,
   TableBody,
@@ -30,6 +29,7 @@ import { Form } from "../form/Form";
 import { FormSection } from "../form/FormSection";
 import { Widget } from "../widget/Widget";
 import { Chart, Grid } from "../../components";
+import { PageHeader } from "../page/PageHeader";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
@@ -175,13 +175,9 @@ export const WithTable: Story = {
     } : undefined,
     children: (
       <>
-        <header className="flex gap-4 justify-between sm:items-end mb-8 flex-col sm:flex-row">
-          <div>
-            <h1>Customers</h1>
-            <p className="mt-2 text-foreground-500">Blablabla</p>
-          </div>
-          <div><Button endContent={<IconPlus stroke={1.5} />} className="w-full" color="primary">Create</Button></div>
-        </header>
+        <PageHeader title="Customers" description="Manage your customers and your profile.">
+          <Button endContent={<IconPlus stroke={1.5} />} fullWidth color="primary">Create</Button>
+        </PageHeader>
         <Tabs aria-label="Options">
           <Tab key="table" title="Table">
             <Table
@@ -266,9 +262,7 @@ export const WithGrid: Story = {
           <BreadcrumbItem>Home</BreadcrumbItem>
           <BreadcrumbItem>Customers</BreadcrumbItem>
         </Breadcrumbs>
-        <h1>Customers</h1>
-        <p className="mt-2 text-foreground-500">Blablabla</p>
-        <Divider className="my-4" />
+        <PageHeader title="Dashboard" />
         <Grid size="lg">
           <Widget title="Analytics" size="md">
             <Chart
