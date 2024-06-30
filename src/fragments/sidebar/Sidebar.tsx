@@ -331,7 +331,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
                   ) : null;
                 })}
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter className='flex flex-col gap-8'>
                 {items.map((item) => {
                   const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
