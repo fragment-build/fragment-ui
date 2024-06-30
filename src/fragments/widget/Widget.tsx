@@ -26,9 +26,9 @@ const widget = tv({
   },
   variants: {
     size: {
-      sm: 'lg:col-span-1',
-      md: 'lg:col-span-2',
-      lg: 'lg:col-span-3',
+      sm: 'col-span-1',
+      md: 'col-span-1 lg:col-span-2',
+      lg: 'col-span-1 lg:col-span-2 2xl:col-span-3',
     },
     variant: {
       solid: "border-none",
