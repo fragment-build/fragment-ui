@@ -30,4 +30,4 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
       </NextUIProvider>
     </FragmentUIContext.Provider>
   );
-}
+};

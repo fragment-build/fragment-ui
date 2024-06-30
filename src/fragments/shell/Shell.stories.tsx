@@ -10,6 +10,8 @@ import { Shell } from "./Shell";
 import {
   Card,
   CardBody,
+  Chart,
+  Grid,
   Input,
   Table,
   TableBody,
@@ -24,11 +26,10 @@ import {
   Textarea,
   Switch,
   Button
-} from "../../components/base";
+} from "../../components";
 import { Form } from "../form/Form";
 import { FormSection } from "../form/FormSection";
 import { Widget } from "../widget/Widget";
-import { Chart, Grid } from "../../components";
 import { PageHeader } from "../page/PageHeader";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
