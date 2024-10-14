@@ -22,7 +22,7 @@ const widget = tv({
     base: 'px-7 py-5 gap-5',
     headerEndContent: 'ml-auto',
     header: 'p-0',
-    body: 'p-0',
+    body: 'p-0 overflow-visible',
   },
   variants: {
     size: {
