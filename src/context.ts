@@ -550,6 +550,9 @@ export const defaultContext: FragmentUIContext = {
         },
       },
     },
+    pagination: {
+      variant: 'light',
+    }
   },
 };
 
