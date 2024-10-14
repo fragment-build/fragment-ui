@@ -7,7 +7,7 @@ import { withFragment } from '../../withFragment';
  * Primary UI component for selecting a color
  */
 
-export interface ColorInputProps extends InputProps {}
+export type ColorInputProps = InputProps;
 
 export const ColorInput = withFragment(({
   defaultValue,

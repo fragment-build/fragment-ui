@@ -4,7 +4,7 @@ import { FragmentUIContext } from "./context";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withFragment<C extends React.ComponentType<any>>(Component: C, configId: keyof FragmentUIContext['defaults']): C {
-  const ComponentWithContext = forwardRef(({ children, ...props }: React.ComponentProps<C>, ref) => {
+  const ComponentWithContext = forwardRef<unknown, React.ComponentProps<C>>(({ children, ...props }, ref) => {
     const context = useContext(FragmentUIContext);
     // TODO: check if defaultsDeep is performance issue, consider introducing useMemo
     return (

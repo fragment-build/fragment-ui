@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
  * Primary UI component for selecting a color
  */
 
-export interface ThemeSwitchProps extends ButtonProps {}
+export type ThemeSwitchProps = ButtonProps;
 
 export const ThemeSwitch: React.FC<ThemeSwitchProps> = (props) => {
   const [mounted, setMounted] = useState(false);
