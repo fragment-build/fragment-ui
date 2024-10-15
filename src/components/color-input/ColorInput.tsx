@@ -15,11 +15,17 @@ export const ColorInput = withFragment(({
   errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
   onValueChange,
   isInvalid,
+  value: controlledValue,
   ...rest
 }: ColorInputProps) => {
   const [value, setValue] = useState(defaultValue || '#7d7d7d');
 
   useEffect(() => onValueChange && onValueChange(value), [value, onValueChange]);
+
+  useEffect(() => {
+    if(!controlledValue) return;
+    setValue(controlledValue);
+  }, [controlledValue]);
 
   const validateHexColor = (value: string) => value.match(/^#(?:[0-9a-fA-F]{3}){1,2}$/i);
 
