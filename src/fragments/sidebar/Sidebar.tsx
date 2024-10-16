@@ -1,4 +1,5 @@
 import {
+  Link,
   type AvatarProps,
   type DropdownItemProps,
   type DropdownProps,
@@ -131,7 +132,7 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
                 color={options.activeNav?.link === navItem.link ? 'primary' : 'default'}
                 variant="light"
                 size="lg"
-                as="a"
+                as={Link}
                 href={navItem.link}
                 isIconOnly
               >
@@ -296,7 +297,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             offset={10}
           >
             <Button
-              as="a"
+              as={Link}
               radius="md"
               className="h-12 flex-1"
               variant="light"
