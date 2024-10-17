@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "@nextui-org/react": "2.4.8",
-    "@react-hooks-library/core": "0.6.2",
     "@tabler/icons-react": "3.19.0",
     "apexcharts": "3.54.1",
     "framer-motion": "11.11.9",
