@@ -18,3 +18,10 @@ export const Primary: Story = {
     onValueChange: console.log,
   },
 };
+
+export const PlaceholderValue: Story = {
+  args: {
+    onValueChange: console.log,
+    placeholderValue: '#7d7d7d',
+  },
+};
