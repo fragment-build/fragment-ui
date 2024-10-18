@@ -12,7 +12,7 @@ export interface ColorInputProps extends InputProps {
 };
 
 export const ColorInput = withFragment(({
-  defaultValue = '',
+  defaultValue,
   placeholderValue,
   label = 'Color',
   errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
@@ -22,19 +22,16 @@ export const ColorInput = withFragment(({
   placeholder,
   ...rest
 }: ColorInputProps) => {
-  const [value, setValue] = useState(controlledValue || defaultValue);
+  const [value, setValue] = useState<string | (readonly string[] & string) | undefined>(controlledValue || defaultValue);
 
-  useEffect(() => onValueChange && onValueChange(value), [value, onValueChange]);
+  useEffect(() => onValueChange && onValueChange(value || ''), [value, onValueChange]);
 
-  useEffect(() => {
-    if(!controlledValue) return;
-    setValue(controlledValue);
-  }, [controlledValue]);
+  useEffect(() => setValue(controlledValue), [controlledValue]);
 
   const validateHexColor = (value: string) => value.match(/^#(?:[0-9a-fA-F]{3}){1,2}$/i);
 
   const invalid = useMemo(() => {
-    if (value === "") return false;
+    if (!value) return false;
 
     return validateHexColor(value) && !isInvalid ? false : true;
   }, [value, isInvalid]);
