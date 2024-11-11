@@ -1,7 +1,7 @@
 import React from 'react';
-import { themes } from '@storybook/theming';
 import { FragmentUIProvider } from '../src/provider';
 import type { Preview } from '@storybook/react';
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 import './style.css';
 
@@ -12,20 +12,21 @@ const decorators: Preview['decorators'] = [
       locale && new Intl.Locale(locale)?.textInfo?.direction === 'rtl' ? 'rtl' : undefined;
 
     return (
-      <FragmentUIProvider locale={locale}>
+      <FragmentUIProvider locale={locale} defaults={{}}>
         <div className='bg-dark' lang={locale} dir={direction}>
           <Story />
         </div>
       </FragmentUIProvider>
     );
   },
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+  }),
 ];
-
-const commonTheme = {
-  brandTitle: 'Fragment UI',
-  brandUrl: 'https://fragment.build',
-  brandTarget: '_self',
-};
 
 const parameters: Preview['parameters'] = {
   options: {
@@ -38,29 +39,6 @@ const parameters: Preview['parameters'] = {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
-    },
-  },
-  darkMode: {
-    current: 'dark',
-    stylePreview: true,
-    darkClass: 'dark',
-    lightClass: 'light',
-    classTarget: 'html',
-    dark: {
-      ...themes.dark,
-      ...commonTheme,
-      appBg: '#161616',
-      barBg: 'black',
-      background: 'black',
-      appContentBg: 'black',
-      appBorderRadius: 14,
-      brandImage: 'assets/logo-dark.svg',
-    },
-    light: {
-      ...themes.light,
-      ...commonTheme,
-      appBorderRadius: 14,
-      brandImage: 'assets/logo-light.svg',
     },
   },
 };
