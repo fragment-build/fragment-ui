@@ -25,8 +25,8 @@ export const sidebar = tv({
   variants: {
     layout: {
       auto: {
-        expanded: 'w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-all',
-        placeholder: 'w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-all',
+        expanded: 'w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-auto',
+        placeholder: 'w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-auto',
         layoutButtonWrapper: 'left-20 translate-x-1/2 rotate-180 xl:left-72 xl:-translate-x-1/2 xl:rotate-0',
         collapsed: 'xl:opacity-0',
       },
