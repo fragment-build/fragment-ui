@@ -52,7 +52,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ children, title, descr
       <div className={v.main()}>
         <div className={v.info()}>
           <h3>{title}</h3>
-          <p className={v.description()}>{description}</p>
+          <div className={v.description()}>{description}</div>
         </div>
         <div className={v.content()}>
           {children}
