@@ -28,6 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     currentPath: "/projects",
+    layout: 'expanded',
     items: [
       {
         type: "user",
@@ -171,6 +172,6 @@ export const Collapsed: Story = {
 export const Auto: Story = {
   args: {
     ...Primary.args,
-    autoLayout: true,
+    layout: 'auto',
   },
 };

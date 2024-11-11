@@ -6,7 +6,6 @@ import {
   type ListboxProps,
 } from '@nextui-org/react';
 
-import { useSmaller } from '../../hooks/breakpoints';
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import {
@@ -30,6 +29,8 @@ import {
   Tooltip,
   User,
 } from '../../components/base';
+import { sidebar } from './Sidebar.styles';
+import { breakpointsTailwind } from '../../constants';
 
 /**
  * Primary UI component for Dashboard Sidebars
@@ -77,8 +78,7 @@ type SidebarItemVariants = SidebarItemNavigation | SidebarItemUser | SidebarItem
 
 export interface SidebarProps {
   items: SidebarItemVariants[];
-  layout?: 'collapsed' | 'expanded';
-  autoLayout?: boolean;
+  layout?: 'auto' | 'collapsed' | 'expanded';
   currentPath?: string;
 }
 
@@ -207,34 +207,30 @@ const getActiveNav = (currentPath: SidebarProps['currentPath'], items: SidebarPr
   return possibleMatches.find((pMatch) => pMatch.link === currentPath) || possibleMatches[0];
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', autoLayout, currentPath }) => {
-  const isMobile = useSmaller('xl');
+export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, ...props }) => {
+  const [layout, setLayout] = useState(props.layout);
+
+  const toggleLayout = () => {
+    if (layout === 'auto') {
+      if (document.body.clientWidth >= breakpointsTailwind.xl) {
+        return setLayout('collapsed');
+      }
+      return setLayout('expanded');
+    }
+    setLayout(layout === 'collapsed' ? 'expanded' : 'collapsed');
+  };
+
+  const v = sidebar({ layout });
   const [activeNav, setActiveNav] = useState<SidebarNavigationItem | undefined>(getActiveNav(currentPath, items))
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => setActiveNav(getActiveNav(currentPath, items)), [currentPath, items]);
 
-  let renderedLayout = autoLayout ? undefined : layout;
-  if (autoLayout) {
-    if (isMobile) {
-      renderedLayout = 'collapsed';
-    } else {
-      renderedLayout = 'expanded';
-    }
-  }
-
-  const [collapsed, setCollapsed] = useState(renderedLayout === 'collapsed');
-
-  useEffect(() => { if (autoLayout) setCollapsed(isMobile) }, [isMobile, setCollapsed, autoLayout])
-
-  const layoutStyles = collapsed ? 'w-20 opacity-0 pointer-events-none' : 'w-72';
-  const collapseButtonStyles = collapsed ? 'left-20 translate-x-1/2 rotate-180' : 'left-72 -translate-x-1/2';
-
   return (
     <>
-      <div className='hidden md:flex'>
-        <div className={`fixed top-0 left-0 border-r-[1px] border-default-100 flex flex-col h-screen bg-content1 gap-8 transition-all ${collapsed ? '' : 'opacity-0'}`}>
-          <ScrollShadow hideScrollBar className={`w-20 items-center flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+      <div className={v.base()}>
+        <div className={v.collapsed()}>
+          <ScrollShadow hideScrollBar className={v.collapsedBody()}>
             {items.map((item) => {
               const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
               return children ? (
@@ -244,7 +240,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
               ) : null;
             })}
           </ScrollShadow>
-          <div className={`w-20 items-center flex flex-col gap-8 px-3 pb-8`}>
+          <div className={v.collapsedFooter()}>
             {items.map((item) => {
               const children = item.align === 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
               return children ? (
@@ -255,8 +251,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             })}
           </div>
         </div>
-        <div className={`${layoutStyles} fixed top-0 left-0 border-r-[1px] border-default-100 flex flex-col h-screen bg-content1 gap-8 overflow-hidden transition-all`}>
-          <ScrollShadow hideScrollBar className={`w-72 flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1`}>
+        <div className={v.expanded()}>
+          <ScrollShadow hideScrollBar className={v.expandedBody()}>
             {items.map((item) => {
               const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
               return children ? (
@@ -266,7 +262,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
               ) : null;
             })}
           </ScrollShadow>
-          <div className={`w-72 flex flex-col gap-8 px-3 pb-8`}>
+          <div className={v.expandedFooter()}>
             {items.map((item) => {
               const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
               return children ? (
@@ -277,16 +273,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             })}
           </div>
         </div>
-        <div className={`${layoutStyles} transition-all h-screen`} />
-        <div className={`fixed top-6 transition-all ${collapseButtonStyles}`}>
-          <Button size="sm" isIconOnly radius="full" className="h-6 w-6 min-w-6 bg-default-100" onClick={() => setCollapsed(!collapsed)}>
+        <div className={v.placeholder()} />
+        <div className={v.layoutButtonWrapper()}>
+          <Button size="sm" isIconOnly radius="full" className={v.layoutButton()} onClick={toggleLayout}>
             <IconChevronLeft size={14} />
           </Button>
         </div>
       </div>
 
       <nav
-        className="fixed md:hidden z-50 bottom-0 bg-background flex w-full gap-2 px-2 py-1 border-t-[1px] border-default-100 [&>*:nth-child(n+5):not(:last-child)]:hidden"
+        className={v.bottomNav()}
         onClick={() => setMobileMenuOpen(false)}
       >
         {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined )?.navigation?.map((navItem) => (
@@ -299,7 +295,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             <Button
               as={Link}
               radius="md"
-              className="h-12 flex-1"
+              className={v.bottomNavButton()}
               variant="light"
               isIconOnly
               color={activeNav?.link === navItem.link ? 'primary' : 'default'}
@@ -312,17 +308,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
             </Button>
           </Tooltip>
         ))}
-        <Button radius="md" className="flex-col gap-0 h-12 flex-1" variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <Button radius="md" className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <IconDots size={24} stroke={1.5} />
         </Button>
       </nav>
 
-      <Modal isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} classNames={{ wrapper: 'pb-14 z-40', backdrop: 'z-40', base: 'max-w-full m-0 sm:m-0 h-full' }} isDismissable={false} radius="none">
+      <Modal isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} classNames={{ wrapper: v.bottomNavModalWrapper(), backdrop: v.bottomNavModalBackdrop(), base: v.bottomNavModalBase() }} isDismissable={false} radius="none">
         <ModalContent>
           {() => (
             <>
               <ModalHeader />
-              <ModalBody as={ScrollShadow} hideScrollBar className="flex flex-col gap-8">
+              <ModalBody as={ScrollShadow} hideScrollBar className={v.bottomNavModalFooter()}>
                 {items.map((item) => {
                   const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
@@ -332,7 +328,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, layout = 'expanded', au
                   ) : null;
                 })}
               </ModalBody>
-              <ModalFooter className='flex flex-col gap-8'>
+              <ModalFooter className={v.bottomNavModalBody()}>
                 {items.map((item) => {
                   const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
