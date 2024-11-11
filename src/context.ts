@@ -17,7 +17,7 @@ export interface FragmentUIContext {
     buttonGroup?: Partial<ButtonGroupProps>;
     breadcrumbs?: Partial<BreadcrumbsProps>;
     card?: Partial<CardProps>;
-    chart?: Partial<{[chartType in ChartProps['type']]: Partial<Pick<ApexChartProps, 'options' | 'series'>>}>;
+    chart?: Partial<Record<ChartProps['type'], Partial<Pick<ApexChartProps, 'options' | 'series'>>>>;
     checkbox?: Partial<CheckboxProps>;
     checkboxGroup?: Partial<CheckboxGroupProps>;
     chip?: Partial<ChipProps>;

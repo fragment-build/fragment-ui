@@ -4,7 +4,6 @@ export { getKeyValue, nextui, useDisclosure, VisuallyHidden } from '@nextui-org/
 
 export * from './components';
 export * from './fragments';
-export * from './hooks';
 
 export * from './provider';
 export * from './tailwind.plugin';

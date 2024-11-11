@@ -157,12 +157,12 @@ export const Collapsed: Story = {
   },
 };
 
-export const Auto: Story = {
+export const Expanded: Story = {
   args: {
     ...Primary.args,
     sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
-      autoLayout: true,
+      layout: "expanded",
     } : undefined,
   },
 };
@@ -170,10 +170,6 @@ export const Auto: Story = {
 export const WithTable: Story = {
   args: {
     ...Primary.args,
-    sidebar: Primary.args?.sidebar ? {
-      ...Primary.args.sidebar,
-      autoLayout: true,
-    } : undefined,
     children: (
       <>
         <PageHeader title="Customers" description="Manage your customers and your profile.">
@@ -255,7 +251,6 @@ export const WithGrid: Story = {
     ...Primary.args,
     sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
-      autoLayout: true,
     } : undefined,
     children: (
       <>
