@@ -5,8 +5,9 @@
 import React from 'react';
 import { tv } from '@heroui/react';
 import { Divider } from '../../components';
+import { withFragment } from '../../withFragment';
 
-interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode[];
 }
 
@@ -16,7 +17,7 @@ const form = tv({
   },
 });
 
-export const Form: React.FC<FormProps> = ({ children, ...props }) => {
+export const Form: React.FC<FormProps> = withFragment(({ children, ...props }) => {
   const v = form();
 
   return (
@@ -29,4 +30,4 @@ export const Form: React.FC<FormProps> = ({ children, ...props }) => {
       ))}
     </form>
   );
-};
+}, 'form');

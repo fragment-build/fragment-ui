@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { tv } from '@heroui/react';
+import { withFragment } from '../../withFragment';
 
 export interface FormSectionProps {
   children: React.ReactNode;
@@ -44,7 +45,7 @@ const formSection = tv({
   },
 });
 
-export const FormSection: React.FC<FormSectionProps> = ({ children, title, description, ...props }) => {
+export const FormSection: React.FC<FormSectionProps> = withFragment(({ children, title, description, ...props }) => {
   const v = formSection(props);
 
   return (
@@ -60,4 +61,4 @@ export const FormSection: React.FC<FormSectionProps> = ({ children, title, descr
       </div>
     </div>
   );
-};
+}, 'formSection');

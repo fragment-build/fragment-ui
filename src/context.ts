@@ -1,21 +1,24 @@
-import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from '@heroui/react';
+import { AccordionItemProps, AccordionProps, AlertProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CalendarProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DateInputProps, DatePickerProps, DateRangePickerProps, DividerProps, DrawerBodyProps, DrawerContentProps, DrawerFooterProps, DrawerHeaderProps, DrawerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputOtpProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, RangeCalendarProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TimeInputProps, TooltipProps, UserProps } from '@heroui/react';
 import { createContext } from 'react';
 import type { Props as ApexChartProps } from 'react-apexcharts';
 import { ChartProps, ColorInputProps, ColorSelectorProps, MultiSwitchProps } from './components';
+import { FormProps, FormSectionProps } from './fragments';
 
 export interface FragmentUIContext {
   defaults: {
-    avatar?: Partial<AvatarProps>;
-    avatarGroup?: Partial<AvatarGroupProps>;
     accordion?: Partial<AccordionProps>;
     accordionItem?: Partial<AccordionItemProps>;
+    alert?: Partial<AlertProps>;
     autocomplete?: Partial<AutocompleteProps>;
     autocompleteItem?: Partial<AutocompleteItemProps>;
     autocompleteSection?: Partial<AutocompleteSectionProps>;
+    avatar?: Partial<AvatarProps>;
+    avatarGroup?: Partial<AvatarGroupProps>;
     badge?: Partial<BadgeProps>;
+    breadcrumbs?: Partial<BreadcrumbsProps>;
     button?: Partial<ButtonProps>;
     buttonGroup?: Partial<ButtonGroupProps>;
-    breadcrumbs?: Partial<BreadcrumbsProps>;
+    calendar?: Partial<CalendarProps>;
     card?: Partial<CardProps>;
     chart?: Partial<Record<ChartProps['type'], Partial<Pick<ApexChartProps, 'options' | 'series'>>>>;
     checkbox?: Partial<CheckboxProps>;
@@ -25,14 +28,25 @@ export interface FragmentUIContext {
     code?: Partial<CodeProps>;
     colorInput?: Partial<ColorInputProps>;
     colorSelector?: Partial<ColorSelectorProps>;
+    dateInput?: Partial<DateInputProps>;
+    datePicker?: Partial<DatePickerProps>;
+    dateRangePicker?: Partial<DateRangePickerProps>;
     divider?: Partial<DividerProps>;
+    drawer?: Partial<DrawerProps>;
+    drawerBody?: Partial<DrawerBodyProps>;
+    drawerContent?: Partial<DrawerContentProps>;
+    drawerFooter?: Partial<DrawerFooterProps>;
+    drawerHeader?: Partial<DrawerHeaderProps>;
     dropdown?: Partial<DropdownProps>;
     dropdownItem?: Partial<DropdownItemProps>;
     dropdownMenu?: Partial<DropdownMenuProps>;
     dropdownSection?: Partial<DropdownSectionProps>;
     dropdownTrigger?: Partial<DropdownTriggerProps>;
+    form?: Partial<FormProps>;
+    formSection?: Partial<FormSectionProps>; // todo implement useFragment
     image?: Partial<ImageProps>;
     input?: Partial<InputProps>;
+    inputOtp?: Partial<InputOtpProps>;
     kbd?: Partial<KbdProps>;
     link?: Partial<LinkProps>;
     listbox?: Partial<ListboxProps>;
@@ -59,16 +73,17 @@ export interface FragmentUIContext {
     progress?: Partial<ProgressProps>;
     radio?: Partial<RadioProps>;
     radioGroup?: Partial<RadioGroupProps>;
+    rangeCalendar?: Partial<RangeCalendarProps>;
+    scrollShadow?: Partial<ScrollShadowProps>;
     select?: Partial<SelectProps>;
     selectItem?: Partial<SelectItemProps>;
     selectSection?: Partial<SelectSectionProps>;
     skeleton?: Partial<SkeletonProps>;
+    slider?: Partial<SliderProps>;
     snippet?: Partial<SnippetProps>;
-    scrollShadow?: Partial<ScrollShadowProps>;
     spacer?: Partial<SpacerProps>;
     spinner?: Partial<SpinnerProps>;
     switch?: Partial<SwitchProps>;
-    slider?: Partial<SliderProps>;
     table?: Partial<TableProps>;
     tableBody?: Partial<TableBodyProps<unknown>>;
     tableCell?: Partial<TableCellProps>;
@@ -78,6 +93,7 @@ export interface FragmentUIContext {
     tab?: Partial<TabItemProps>;
     tabs?: Partial<TabsProps>;
     textArea?: Partial<TextAreaProps>;
+    timeInput?: Partial<TimeInputProps>;
     tooltip?: Partial<TooltipProps>;
     user?: Partial<UserProps>;
   }
@@ -268,14 +284,6 @@ export const defaultContext: FragmentUIContext = {
               fontFamily: 'Inter, sans-serif',
             },
           },
-          states: {
-            hover: {
-              filter: {
-                type: 'darken',
-                value: 1,
-              },
-            },
-          },
           grid: {
             show: false,
             strokeDashArray: 4,
@@ -360,7 +368,7 @@ export const defaultContext: FragmentUIContext = {
               style: {
                 fontFamily: 'Inter, sans-serif',
               },
-              formatter: function(value) {
+              formatter: function(value: string) {
                 return '$' + value
               }
             },
