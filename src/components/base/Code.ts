@@ -1,4 +1,4 @@
-import { Code as NextCode } from '@nextui-org/react'
+import { Code as HeroCode } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Code = withFragment(NextCode, 'code');
+export const Code = withFragment(HeroCode, 'code');

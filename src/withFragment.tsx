@@ -1,6 +1,6 @@
-import { forwardRef, useContext } from "react";
-import defaultsDeep from "lodash.defaultsdeep";
-import { FragmentUIContext } from "./context";
+import { forwardRef, useContext } from 'react';
+import defaultsDeep from 'lodash.defaultsdeep';
+import { FragmentUIContext } from './context';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withFragment<C extends React.ComponentType<any>>(Component: C, configId: keyof FragmentUIContext['defaults']): C {
@@ -22,7 +22,7 @@ export function withFragment<C extends React.ComponentType<any>>(Component: C, c
     (ComponentWithContext as any).getCollectionNode = Component.getCollectionNode;
   }
 
-  // fix https://github.com/nextui-org/nextui/pull/2815
+  // fix https://github.com/heroui-inc/heroui/pull/2815
   ComponentWithContext.displayName = Component.displayName;
 
   return ComponentWithContext as unknown as C;

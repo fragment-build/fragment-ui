@@ -1,4 +1,4 @@
-import { Skeleton as NextSkeleton } from '@nextui-org/react'
+import { Skeleton as HeroSkeleton } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Skeleton = withFragment(NextSkeleton, 'skeleton');
+export const Skeleton = withFragment(HeroSkeleton, 'skeleton');

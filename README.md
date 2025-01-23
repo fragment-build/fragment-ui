@@ -72,18 +72,18 @@ All done. Enjoy 🎉
 // tailwind.config.ts
 
 import type { Config } from 'tailwindcss';
-import { fragmentui, nextui } from '@fragment-build/ui';
+import { fragmentui, heroui } from '@fragment-build/ui';
 
 const config: Config = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
     './node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   plugins: [
     fragmentui(),
-    nextui(),
+    heroui(),
   ],
 };
 
@@ -93,10 +93,10 @@ export default config;
 It is essential to add the FragmentUIProvider at the root of your application.
 
 ```ts
-import React from "react";
+import React from 'react';
 
 // 1. import `FragmentUIProvider` component
-import { FragmentUIProvider } from "@fragment-build/ui";
+import { FragmentUIProvider } from '@fragment-build/ui';
 
 function App() {
   // 2. Wrap FragmentUIProvider at the root of your app
@@ -160,6 +160,6 @@ For additional help, you can use one of these channels to ask a question:
 ## 🔧 Built with
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![NextUI](https://img.shields.io/badge/nextui-000000.svg?style=for-the-badge)
+![HeroUI](https://img.shields.io/badge/heroui-000000.svg?style=for-the-badge)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![TailwindVariants](https://img.shields.io/badge/tailwind_variants_-000000.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)

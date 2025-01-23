@@ -1,4 +1,4 @@
-import { Image as NextImage } from '@nextui-org/react'
+import { Image as HeroImage } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Image = withFragment(NextImage, 'image');
+export const Image = withFragment(HeroImage, 'image');

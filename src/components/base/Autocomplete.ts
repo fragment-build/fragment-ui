@@ -1,10 +1,10 @@
 import {
-  Autocomplete as NextAutocomplete,
-  AutocompleteItem as NextAutocompleteItem,
-  AutocompleteSection as NextAutocompleteSection,
-} from '@nextui-org/react'
+  Autocomplete as HeroAutocomplete,
+  AutocompleteItem as HeroAutocompleteItem,
+  AutocompleteSection as HeroAutocompleteSection,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Autocomplete = withFragment(NextAutocomplete, 'autocomplete');
-export const AutocompleteItem = withFragment(NextAutocompleteItem, 'autocompleteItem');
-export const AutocompleteSection = withFragment(NextAutocompleteSection, 'autocompleteSection');
+export const Autocomplete = withFragment(HeroAutocomplete, 'autocomplete');
+export const AutocompleteItem = withFragment(HeroAutocompleteItem, 'autocompleteItem');
+export const AutocompleteSection = withFragment(HeroAutocompleteSection, 'autocompleteSection');

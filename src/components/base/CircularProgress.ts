@@ -1,4 +1,4 @@
-import { CircularProgress as NextCircularProgress } from '@nextui-org/react'
+import { CircularProgress as HeroCircularProgress } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const CircularProgress = withFragment(NextCircularProgress, 'circularProgress');
+export const CircularProgress = withFragment(HeroCircularProgress, 'circularProgress');

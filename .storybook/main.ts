@@ -1,7 +1,7 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-essentials',
@@ -24,12 +24,12 @@ const config: StorybookConfig = {
     disableTelemetry: true
   },
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag',
   },
   refs: {
     'design-system': {
-      title: 'NextUI',
-      url: 'https://storybook.nextui.org/',
+      title: 'HeroUI',
+      url: 'https://storybook.heroui.com/',
     },
   },
 };

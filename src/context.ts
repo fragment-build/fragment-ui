@@ -1,7 +1,7 @@
-import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from "@nextui-org/react";
-import { createContext } from "react";
-import type { Props as ApexChartProps } from "react-apexcharts";
-import { ChartProps, ColorInputProps, ColorSelectorProps, MultiSwitchProps } from "./components";
+import { AccordionItemProps, AccordionProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DividerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TooltipProps, UserProps } from '@heroui/react';
+import { createContext } from 'react';
+import type { Props as ApexChartProps } from 'react-apexcharts';
+import { ChartProps, ColorInputProps, ColorSelectorProps, MultiSwitchProps } from './components';
 
 export interface FragmentUIContext {
   defaults: {
@@ -96,7 +96,7 @@ export const defaultContext: FragmentUIContext = {
         tabList: 'p-0',
         panel: 'border-t-[1px] border-default-200 pt-6',
       },
-      variant: "underlined",
+      variant: 'underlined',
     },
     user: {
       avatarProps: {
@@ -114,10 +114,10 @@ export const defaultContext: FragmentUIContext = {
       area: {
         options: {
           chart: {
-            height: "100%",
-            width: "100%",
-            type: "area",
-            fontFamily: "Inter, sans-serif",
+            height: '100%',
+            width: '100%',
+            type: 'area',
+            fontFamily: 'Inter, sans-serif',
             dropShadow: {
               enabled: false,
             },
@@ -136,12 +136,12 @@ export const defaultContext: FragmentUIContext = {
             },
           },
           fill: {
-            type: "gradient",
+            type: 'gradient',
             gradient: {
               opacityFrom: 0.55,
               opacityTo: 0,
-              shade: "#1C64F2",
-              gradientToColors: ["#1C64F2"],
+              shade: '#1C64F2',
+              gradientToColors: ['#1C64F2'],
             },
           },
           dataLabels: {
@@ -181,7 +181,7 @@ export const defaultContext: FragmentUIContext = {
             type: 'line',
             width: '100%',
             height: '100%',
-            fontFamily: "Inter, sans-serif",
+            fontFamily: 'Inter, sans-serif',
             dropShadow: {
               enabled: false,
             },
@@ -227,7 +227,7 @@ export const defaultContext: FragmentUIContext = {
             labels: {
               show: true,
               style: {
-                fontFamily: "Inter, sans-serif",
+                fontFamily: 'Inter, sans-serif',
                 cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
               }
             },
@@ -246,8 +246,8 @@ export const defaultContext: FragmentUIContext = {
       column: {
         options: {
           chart: {
-            type: "bar",
-            fontFamily: "Inter, sans-serif",
+            type: 'bar',
+            fontFamily: 'Inter, sans-serif',
             toolbar: {
               show: false,
             },
@@ -255,8 +255,8 @@ export const defaultContext: FragmentUIContext = {
           plotOptions: {
             bar: {
               horizontal: false,
-              columnWidth: "70%",
-              borderRadiusApplication: "end",
+              columnWidth: '70%',
+              borderRadiusApplication: 'end',
               borderRadius: 8,
             },
           },
@@ -265,13 +265,13 @@ export const defaultContext: FragmentUIContext = {
             shared: true,
             intersect: false,
             style: {
-              fontFamily: "Inter, sans-serif",
+              fontFamily: 'Inter, sans-serif',
             },
           },
           states: {
             hover: {
               filter: {
-                type: "darken",
+                type: 'darken',
                 value: 1,
               },
             },
@@ -296,7 +296,7 @@ export const defaultContext: FragmentUIContext = {
             labels: {
               show: true,
               style: {
-                fontFamily: "Inter, sans-serif",
+                fontFamily: 'Inter, sans-serif',
                 cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
               }
             },
@@ -321,8 +321,8 @@ export const defaultContext: FragmentUIContext = {
             sparkline: {
               enabled: false,
             },
-            type: "bar",
-            width: "100%",
+            type: 'bar',
+            width: '100%',
             height: 400,
             toolbar: {
               show: false,
@@ -334,17 +334,17 @@ export const defaultContext: FragmentUIContext = {
           plotOptions: {
             bar: {
               horizontal: true,
-              columnWidth: "100%",
-              borderRadiusApplication: "end",
+              columnWidth: '100%',
+              borderRadiusApplication: 'end',
               borderRadius: 6,
               dataLabels: {
-                position: "top",
+                position: 'top',
               },
             },
           },
           legend: {
             show: true,
-            position: "bottom",
+            position: 'bottom',
           },
           dataLabels: {
             enabled: false,
@@ -358,13 +358,13 @@ export const defaultContext: FragmentUIContext = {
             labels: {
               show: true,
               style: {
-                fontFamily: "Inter, sans-serif",
+                fontFamily: 'Inter, sans-serif',
               },
               formatter: function(value) {
-                return "$" + value
+                return '$' + value
               }
             },
-            categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            categories: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             axisTicks: {
               show: false,
             },
@@ -376,7 +376,7 @@ export const defaultContext: FragmentUIContext = {
             labels: {
               show: true,
               style: {
-                fontFamily: "Inter, sans-serif",
+                fontFamily: 'Inter, sans-serif',
               }
             }
           },
@@ -394,9 +394,9 @@ export const defaultContext: FragmentUIContext = {
       pie: {
         options: {
           chart: {
-            height: "100%",
-            width: "100%",
-            type: "pie",
+            height: '100%',
+            width: '100%',
+            type: 'pie',
           },
           stroke: {
             width: 5,
@@ -412,7 +412,7 @@ export const defaultContext: FragmentUIContext = {
           dataLabels: {
             enabled: true,
             style: {
-              fontFamily: "Inter, sans-serif",
+              fontFamily: 'Inter, sans-serif',
             },
             background: {
               enabled: true,
@@ -428,8 +428,8 @@ export const defaultContext: FragmentUIContext = {
             }
           },
           legend: {
-            position: "bottom",
-            fontFamily: "Inter, sans-serif",
+            position: 'bottom',
+            fontFamily: 'Inter, sans-serif',
           },
           xaxis: {
             axisTicks: {
@@ -444,9 +444,9 @@ export const defaultContext: FragmentUIContext = {
       donut: {
         options: {
           chart: {
-            height: "100%",
-            width: "100%",
-            type: "donut",
+            height: '100%',
+            width: '100%',
+            type: 'donut',
           },
           stroke: {
             width: 5,
@@ -458,21 +458,21 @@ export const defaultContext: FragmentUIContext = {
                   show: true,
                   name: {
                     show: true,
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: 'Inter, sans-serif',
                     offsetY: 20,
                   },
                   total: {
                     showAlways: true,
                     show: true,
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: 'Inter, sans-serif',
                   },
                   value: {
                     show: true,
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: 'Inter, sans-serif',
                     offsetY: -20,
                   },
                 },
-                size: "80%",
+                size: '80%',
               },
             },
           },
@@ -485,8 +485,8 @@ export const defaultContext: FragmentUIContext = {
             enabled: false,
           },
           legend: {
-            position: "bottom",
-            fontFamily: "Inter, sans-serif",
+            position: 'bottom',
+            fontFamily: 'Inter, sans-serif',
           },
           xaxis: {
             axisTicks: {
@@ -501,9 +501,9 @@ export const defaultContext: FragmentUIContext = {
       radial: {
         options: {
           chart: {
-            height: "100%",
-            width: "100%",
-            type: "radialBar",
+            height: '100%',
+            width: '100%',
+            type: 'radialBar',
             sparkline: {
               enabled: true,
             },
@@ -518,7 +518,7 @@ export const defaultContext: FragmentUIContext = {
               },
               hollow: {
                 margin: 0,
-                size: "32%",
+                size: '32%',
               }
             },
           },
@@ -534,8 +534,8 @@ export const defaultContext: FragmentUIContext = {
           },
           legend: {
             show: true,
-            position: "bottom",
-            fontFamily: "Inter, sans-serif",
+            position: 'bottom',
+            fontFamily: 'Inter, sans-serif',
           },
           tooltip: {
             theme: 'dark',

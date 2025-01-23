@@ -1,4 +1,4 @@
-import { Slider as NextSlider } from '@nextui-org/react'
+import { Slider as HeroSlider } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Slider = withFragment(NextSlider, 'slider');
+export const Slider = withFragment(HeroSlider, 'slider');

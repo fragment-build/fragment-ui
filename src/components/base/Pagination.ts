@@ -1,10 +1,10 @@
 import {
-  Pagination as NextPagination,
-  PaginationItem as NextPaginationItem,
-  PaginationCursor as NextPaginationCursor,
-} from '@nextui-org/react'
+  Pagination as HeroPagination,
+  PaginationItem as HeroPaginationItem,
+  PaginationCursor as HeroPaginationCursor,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Pagination = withFragment(NextPagination, 'pagination');
-export const PaginationItem = withFragment(NextPaginationItem, 'paginationItem');
-export const PaginationCursor = withFragment(NextPaginationCursor, 'paginationCursor');
+export const Pagination = withFragment(HeroPagination, 'pagination');
+export const PaginationItem = withFragment(HeroPaginationItem, 'paginationItem');
+export const PaginationCursor = withFragment(HeroPaginationCursor, 'paginationCursor');

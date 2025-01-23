@@ -1,4 +1,4 @@
-import { Link as NextLink } from '@nextui-org/react'
+import { Link as HeroLink } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Link = withFragment(NextLink, 'link');
+export const Link = withFragment(HeroLink, 'link');

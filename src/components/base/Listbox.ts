@@ -1,10 +1,10 @@
 import {
-  Listbox as NextListbox,
-  ListboxItem as NextListboxItem,
-  ListboxSection as NextListboxSection,
-} from '@nextui-org/react'
+  Listbox as HeroListbox,
+  ListboxItem as HeroListboxItem,
+  ListboxSection as HeroListboxSection,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Listbox = withFragment(NextListbox, 'listbox');
-export const ListboxItem = withFragment(NextListboxItem, 'listboxItem');
-export const ListboxSection = withFragment(NextListboxSection, 'listboxSection');
+export const Listbox = withFragment(HeroListbox, 'listbox');
+export const ListboxItem = withFragment(HeroListboxItem, 'listboxItem');
+export const ListboxSection = withFragment(HeroListboxSection, 'listboxSection');

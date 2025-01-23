@@ -1,8 +1,8 @@
 import {
-  Tab as NextTab,
-  Tabs as NextTabs,
-} from '@nextui-org/react'
+  Tab as HeroTab,
+  Tabs as HeroTabs,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Tab = withFragment(NextTab, 'tab');
-export const Tabs = withFragment(NextTabs, 'tabs');
+export const Tab = withFragment(HeroTab, 'tab');
+export const Tabs = withFragment(HeroTabs, 'tabs');

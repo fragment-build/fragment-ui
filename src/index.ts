@@ -1,6 +1,4 @@
-export * from "next-themes";
-
-export { getKeyValue, nextui, useDisclosure, VisuallyHidden } from '@nextui-org/react'
+export { getKeyValue, heroui, useDisclosure, VisuallyHidden } from '@heroui/react'
 
 export * from './components';
 export * from './fragments';

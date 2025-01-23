@@ -1,4 +1,4 @@
-import { Divider as NextDivider } from '@nextui-org/react'
+import { Divider as HeroDivider } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Divider = withFragment(NextDivider, 'divider');
+export const Divider = withFragment(HeroDivider, 'divider');

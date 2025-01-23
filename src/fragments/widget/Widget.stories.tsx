@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Widget } from "./Widget";
-import { Chart, Select, SelectItem } from "../../components";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Widget } from './Widget';
+import { Chart, Select, SelectItem } from '../../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Widget> = {
-  title: "fragments/Widget",
+  title: 'fragments/Widget',
   component: Widget,
   tags: ['autodocs'],
 };
@@ -33,14 +33,14 @@ export const Default: Story = {
         type="line"
         series={[
           {
-            name: "Clicks",
+            name: 'Clicks',
             data: [6500, 6418, 6456, 6526, 6356, 6456],
-            color: "#1A56DB",
+            color: '#1A56DB',
           },
           {
-            name: "CPC",
+            name: 'CPC',
             data: [6456, 6356, 6526, 6332, 6418, 6500],
-            color: "#7E3AF2",
+            color: '#7E3AF2',
           },
         ]}
         height="250px"

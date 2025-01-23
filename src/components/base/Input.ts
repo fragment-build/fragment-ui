@@ -1,4 +1,4 @@
-import { Input as NextInput } from '@nextui-org/react'
+import { Input as HeroInput } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Input = withFragment(NextInput, 'input');
+export const Input = withFragment(HeroInput, 'input');

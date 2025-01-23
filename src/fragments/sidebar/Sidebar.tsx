@@ -4,7 +4,7 @@ import {
   type DropdownItemProps,
   type DropdownProps,
   type ListboxProps,
-} from '@nextui-org/react';
+} from '@heroui/react';
 
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
@@ -39,7 +39,7 @@ import { breakpointsTailwind } from '../../constants';
 interface SidebarNavigationItem {
   label: string;
   link: string;
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler; // TODO: is this used?
   icon?: React.ReactNode;
   endContent?: React.ReactNode;
   badgeContent?: React.ReactNode;
@@ -113,7 +113,7 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
                 endContent={typeof navItem.badgeContent === 'string' ? <Chip size="sm" color="primary" variant={navItem.badgeContent ? 'solid' : 'dot'} classNames={{ base: 'border-none' }}>{navItem.badgeContent}</Chip> : navItem.endContent}
                 href={navItem.link}
                 color={options.activeNav?.link === navItem.link ? 'primary' : 'default'}
-                className={options.activeNav?.link === navItem.link ? "text-primary" : ''}
+                className={options.activeNav?.link === navItem.link ? 'text-primary' : ''}
               >
                 {navItem.label}
               </ListboxItem>
@@ -171,8 +171,8 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
           <DropdownMenu aria-label="User Actions" color="primary" variant="flat" items={item.dropdownItems || []}>
             {(dropdownItem) => (
               <DropdownItem
-                key={dropdownItem.label}
                 {...dropdownItem}
+                key={dropdownItem.label}
               >
                 {dropdownItem.label}
               </DropdownItem>
@@ -275,7 +275,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, ...props }
         </div>
         <div className={v.placeholder()} />
         <div className={v.layoutButtonWrapper()}>
-          <Button size="sm" isIconOnly radius="full" className={v.layoutButton()} onClick={toggleLayout}>
+          <Button size="sm" isIconOnly radius="full" className={v.layoutButton()} onPress={toggleLayout}>
             <IconChevronLeft size={14} />
           </Button>
         </div>
@@ -299,7 +299,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, ...props }
               variant="light"
               isIconOnly
               color={activeNav?.link === navItem.link ? 'primary' : 'default'}
-              onClick={() => setMobileMenuOpen(false)}
+              onPress={() => setMobileMenuOpen(false)}
               href={navItem.link}
             >
               <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
@@ -308,7 +308,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, ...props }
             </Button>
           </Tooltip>
         ))}
-        <Button radius="md" className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <Button radius="md" className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <IconDots size={24} stroke={1.5} />
         </Button>
       </nav>

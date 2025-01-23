@@ -1,14 +1,14 @@
 import {
-  Modal as NextModal,
-  ModalBody as NextModalBody,
-  ModalContent as NextModalContent,
-  ModalFooter as NextModalFooter,
-  ModalHeader as NextModalHeader,
-} from '@nextui-org/react'
+  Modal as HeroModal,
+  ModalBody as HeroModalBody,
+  ModalContent as HeroModalContent,
+  ModalFooter as HeroModalFooter,
+  ModalHeader as HeroModalHeader,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Modal = withFragment(NextModal, 'modal');
-export const ModalBody = withFragment(NextModalBody, 'modalBody');
-export const ModalContent = withFragment(NextModalContent, 'modalContent');
-export const ModalFooter = withFragment(NextModalFooter, 'modalFooter');
-export const ModalHeader = withFragment(NextModalHeader, 'modalHeader');
+export const Modal = withFragment(HeroModal, 'modal');
+export const ModalBody = withFragment(HeroModalBody, 'modalBody');
+export const ModalContent = withFragment(HeroModalContent, 'modalContent');
+export const ModalFooter = withFragment(HeroModalFooter, 'modalFooter');
+export const ModalHeader = withFragment(HeroModalHeader, 'modalHeader');

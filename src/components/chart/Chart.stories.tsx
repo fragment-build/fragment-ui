@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Chart } from "./Chart";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Chart } from './Chart';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Chart> = {
-  title: "components/Chart",
+  title: 'components/Chart',
   component: Chart,
   tags: ['autodocs'],
 };
@@ -24,9 +24,9 @@ export const Area: Story = {
     },
     series: [
       {
-        name: "New users",
+        name: 'New users',
         data: [6500, 6418, 6456, 6526, 6356, 6456],
-        color: "#1A56DB",
+        color: '#1A56DB',
       },
     ],
   },
@@ -38,14 +38,14 @@ export const Line: Story = {
     height: '500px',
     series: [
       {
-        name: "Clicks",
+        name: 'Clicks',
         data: [6500, 6418, 6456, 6526, 6356, 6456],
-        color: "#1A56DB",
+        color: '#1A56DB',
       },
       {
-        name: "CPC",
+        name: 'CPC',
         data: [6456, 6356, 6526, 6332, 6418, 6500],
-        color: "#7E3AF2",
+        color: '#7E3AF2',
       },
     ],
   },
@@ -57,29 +57,29 @@ export const Column: Story = {
     height: '500px',
     series: [
       {
-        name: "Organic",
-        color: "#1A56DB",
+        name: 'Organic',
+        color: '#1A56DB',
         data: [
-          { x: "Mon", y: 231 },
-          { x: "Tue", y: 122 },
-          { x: "Wed", y: 63 },
-          { x: "Thu", y: 421 },
-          { x: "Fri", y: 122 },
-          { x: "Sat", y: 323 },
-          { x: "Sun", y: 111 },
+          { x: 'Mon', y: 231 },
+          { x: 'Tue', y: 122 },
+          { x: 'Wed', y: 63 },
+          { x: 'Thu', y: 421 },
+          { x: 'Fri', y: 122 },
+          { x: 'Sat', y: 323 },
+          { x: 'Sun', y: 111 },
         ],
       },
       {
-        name: "Social media",
-        color: "#FDBA8C",
+        name: 'Social media',
+        color: '#FDBA8C',
         data: [
-          { x: "Mon", y: 232 },
-          { x: "Tue", y: 113 },
-          { x: "Wed", y: 341 },
-          { x: "Thu", y: 224 },
-          { x: "Fri", y: 522 },
-          { x: "Sat", y: 411 },
-          { x: "Sun", y: 243 },
+          { x: 'Mon', y: 232 },
+          { x: 'Tue', y: 113 },
+          { x: 'Wed', y: 341 },
+          { x: 'Thu', y: 224 },
+          { x: 'Fri', y: 522 },
+          { x: 'Sat', y: 411 },
+          { x: 'Sun', y: 243 },
         ],
       },
     ],
@@ -94,21 +94,21 @@ export const Bar: Story = {
       tooltip: {
         y: {
           formatter: function (value) {
-            return "$" + value
+            return '$' + value
           }
         }
       },
     },
     series: [
       {
-        name: "Income",
-        color: "#31C48D",
+        name: 'Income',
+        color: '#31C48D',
         data: [1420, 1620, 1820, 1420, 1650, 2120],
       },
       {
-        name: "Expense",
+        name: 'Expense',
         data: [788, 810, 866, 788, 1100, 1200],
-        color: "#F05252",
+        color: '#F05252',
       }
     ]
   },
@@ -119,18 +119,18 @@ export const Pie: Story = {
     type: 'pie',
     height: '500px',
     options: {
-      labels: ["Direct", "Organic search", "Referrals"],
+      labels: ['Direct', 'Organic search', 'Referrals'],
       yaxis: {
         labels: {
           formatter: function (value) {
-            return value + "%"
+            return value + '%'
           },
         },
       },
       xaxis: {
         labels: {
           formatter: function (value) {
-            return value  + "%"
+            return value  + '%'
           },
         },
       }
@@ -144,13 +144,13 @@ export const Donut: Story = {
     type: 'donut',
     height: '500px',
     options: {
-      labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+      labels: ['Direct', 'Sponsor', 'Affiliate', 'Email marketing'],
       plotOptions: {
         pie: {
           donut: {
             labels: {
               total: {
-                label: "Unique visitors",
+                label: 'Unique visitors',
                 formatter: function (w) {
                   const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
                     return a + b
@@ -160,7 +160,7 @@ export const Donut: Story = {
               },
               value: {
                 formatter: function (value) {
-                  return value + "k"
+                  return value + 'k'
                 },
               }
             }
@@ -170,14 +170,14 @@ export const Donut: Story = {
       yaxis: {
         labels: {
           formatter: function (value) {
-            return value + "k"
+            return value + 'k'
           },
         },
       },
       xaxis: {
         labels: {
           formatter: function (value) {
-            return value  + "k"
+            return value  + 'k'
           },
         },
       },
@@ -191,7 +191,7 @@ export const Radial: Story = {
     type: 'radial',
     height: '500px',
     options: {
-      labels: ["Done", "In progress", "To do"],
+      labels: ['Done', 'In progress', 'To do'],
       yaxis: {
         labels: {
           formatter: function (value) {

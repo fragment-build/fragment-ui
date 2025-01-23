@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   IconBox,
   IconBoxMultiple,
   IconHome,
   IconMessageCircle,
   IconPlus,
-} from "@tabler/icons-react";
-import { Shell } from "./Shell";
+} from '@tabler/icons-react';
+import { Shell } from './Shell';
 import {
   Card,
   CardBody,
@@ -26,19 +26,19 @@ import {
   Textarea,
   Switch,
   Button
-} from "../../components";
-import { Form } from "../form/Form";
-import { FormSection } from "../form/FormSection";
-import { Widget } from "../widget/Widget";
-import { PageHeader } from "../page/PageHeader";
+} from '../../components';
+import { Form } from '../form/Form';
+import { FormSection } from '../form/FormSection';
+import { Widget } from '../widget/Widget';
+import { PageHeader } from '../page/PageHeader';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Shell> = {
-  title: "fragments/Shell",
+  title: 'fragments/Shell',
   component: Shell,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
 };
 
@@ -52,98 +52,102 @@ export const Primary: Story = {
     sidebar: {
       items: [
         {
-          type: "user",
-          key: "user",
-          name: "Tony Reichert",
-          description: "ACME Inc.",
+          type: 'user',
+          key: 'user',
+          name: 'Tony Reichert',
+          description: 'ACME Inc.',
           avatar: {
-            src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+            src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
           },
           dropdownItems: [
             {
-              label: "My Profile",
+              key: 'profile',
+              label: 'My Profile',
             },
             {
-              label: "Settings",
+              key: 'settings',
+              label: 'Settings',
             },
             {
-              label: "Organization Settings",
+              key: 'organization-settings',
+              label: 'Organization Settings',
               showDivider: true,
             },
             {
-              label: "Logout",
-              color: "danger",
+              key: 'logout',
+              label: 'Logout',
+              color: 'danger',
             },
           ],
         },
         {
-          type: "custom",
-          key: "search",
+          type: 'custom',
+          key: 'search',
           render: <Input label="Search..." />,
           showExpandedOnly: true,
         },
         {
-          type: "navigation",
-          key: "navigation-overview",
-          label: "Overview",
+          type: 'navigation',
+          key: 'navigation-overview',
+          label: 'Overview',
           navigation: [
             {
-              label: "Home",
-              link: "/",
+              label: 'Home',
+              link: '/',
               icon: <IconHome stroke={1.5} />,
             },
             {
-              label: "My Projects",
-              link: "/projects",
+              label: 'My Projects',
+              link: '/projects',
               icon: <IconBoxMultiple stroke={1.5} />,
             },
             {
-              label: "Chat",
-              link: "/chat",
+              label: 'Chat',
+              link: '/chat',
               icon: <IconMessageCircle stroke={1.5} />,
             },
           ],
         },
         {
-          type: "navigation",
-          key: "navigation-projects",
-          label: "Projects",
+          type: 'navigation',
+          key: 'navigation-projects',
+          label: 'Projects',
           navigation: [
             {
-              label: "Project 1",
-              link: "/projects/1",
+              label: 'Project 1',
+              link: '/projects/1',
               icon: <IconBox stroke={1.5} />,
             },
             {
-              label: "Project 2",
-              link: "/projects/2",
+              label: 'Project 2',
+              link: '/projects/2',
               icon: <IconBox stroke={1.5} />,
             },
             {
-              label: "Project 3",
-              link: "/projects/3",
+              label: 'Project 3',
+              link: '/projects/3',
               icon: <IconBox stroke={1.5} />,
             },
           ],
         },
         {
-          type: "custom",
-          key: "bottom-banner",
+          type: 'custom',
+          key: 'bottom-banner',
           render: (
             <Card radius="lg" className="border-none">
               <img
                 alt="Woman listing to music"
                 className="object-cover w-full h-28"
-                src="https://nextui.org/images/hero-card.jpeg"
+                src="https://www.heroui.com/images/hero-card.jpeg"
               />
             </Card>
           ),
-          align: "bottom",
+          align: 'bottom',
           showExpandedOnly: true,
         },
       ],
     },
-    children: "CONTENT",
+    children: 'CONTENT',
   },
 };
 
@@ -152,7 +156,7 @@ export const Collapsed: Story = {
     ...Primary.args,
     sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
-      layout: "collapsed",
+      layout: 'collapsed',
     } : undefined,
   },
 };
@@ -162,7 +166,7 @@ export const Expanded: Story = {
     ...Primary.args,
     sidebar: Primary.args?.sidebar ? {
       ...Primary.args.sidebar,
-      layout: "expanded",
+      layout: 'expanded',
     } : undefined,
   },
 };
@@ -187,22 +191,22 @@ export const WithTable: Story = {
                 <TableColumn>STATUS</TableColumn>
               </TableHeader>
               <TableBody>
-                <TableRow key="1">
+                <TableRow key={1}>
                   <TableCell>Tony Reichert</TableCell>
                   <TableCell>CEO</TableCell>
                   <TableCell>Active</TableCell>
                 </TableRow>
-                <TableRow key="2">
+                <TableRow key={2}>
                   <TableCell>Zoey Lang</TableCell>
                   <TableCell>Technical Lead</TableCell>
                   <TableCell>Paused</TableCell>
                 </TableRow>
-                <TableRow key="3">
+                <TableRow key={3}>
                   <TableCell>Jane Fisher</TableCell>
                   <TableCell>Senior Developer</TableCell>
                   <TableCell>Active</TableCell>
                 </TableRow>
-                <TableRow key="4">
+                <TableRow key={4}>
                   <TableCell>William Howard</TableCell>
                   <TableCell>Community Manager</TableCell>
                   <TableCell>Vacation</TableCell>
@@ -265,14 +269,14 @@ export const WithGrid: Story = {
               type="line"
               series={[
                 {
-                  name: "Clicks",
+                  name: 'Clicks',
                   data: [6500, 6418, 6456, 6526, 6356, 6456],
-                  color: "#1A56DB",
+                  color: '#1A56DB',
                 },
                 {
-                  name: "CPC",
+                  name: 'CPC',
                   data: [6456, 6356, 6526, 6332, 6418, 6500],
-                  color: "#7E3AF2",
+                  color: '#7E3AF2',
                 },
               ]}
               height="350px"
@@ -282,18 +286,18 @@ export const WithGrid: Story = {
             <Chart
               type="pie"
               options={{
-                labels: ["Direct", "Organic search", "Referrals"],
+                labels: ['Direct', 'Organic search', 'Referrals'],
                 yaxis: {
                   labels: {
                     formatter: function (value) {
-                      return value + "%"
+                      return value + '%'
                     },
                   },
                 },
                 xaxis: {
                   labels: {
                     formatter: function (value) {
-                      return value  + "%"
+                      return value  + '%'
                     },
                   },
                 }
@@ -307,29 +311,29 @@ export const WithGrid: Story = {
               type="column"
               series={[
                 {
-                  name: "Organic",
-                  color: "#1A56DB",
+                  name: 'Organic',
+                  color: '#1A56DB',
                   data: [
-                    { x: "Mon", y: 231 },
-                    { x: "Tue", y: 122 },
-                    { x: "Wed", y: 63 },
-                    { x: "Thu", y: 421 },
-                    { x: "Fri", y: 122 },
-                    { x: "Sat", y: 323 },
-                    { x: "Sun", y: 111 },
+                    { x: 'Mon', y: 231 },
+                    { x: 'Tue', y: 122 },
+                    { x: 'Wed', y: 63 },
+                    { x: 'Thu', y: 421 },
+                    { x: 'Fri', y: 122 },
+                    { x: 'Sat', y: 323 },
+                    { x: 'Sun', y: 111 },
                   ],
                 },
                 {
-                  name: "Social media",
-                  color: "#FDBA8C",
+                  name: 'Social media',
+                  color: '#FDBA8C',
                   data: [
-                    { x: "Mon", y: 232 },
-                    { x: "Tue", y: 113 },
-                    { x: "Wed", y: 341 },
-                    { x: "Thu", y: 224 },
-                    { x: "Fri", y: 522 },
-                    { x: "Sat", y: 411 },
-                    { x: "Sun", y: 243 },
+                    { x: 'Mon', y: 232 },
+                    { x: 'Tue', y: 113 },
+                    { x: 'Wed', y: 341 },
+                    { x: 'Thu', y: 224 },
+                    { x: 'Fri', y: 522 },
+                    { x: 'Sat', y: 411 },
+                    { x: 'Sun', y: 243 },
                   ],
                 },
               ]}
@@ -343,21 +347,21 @@ export const WithGrid: Story = {
                 tooltip: {
                   y: {
                     formatter: function (value) {
-                      return "$" + value
+                      return '$' + value
                     }
                   }
                 },
               }}
               series={[
                 {
-                  name: "Income",
-                  color: "#31C48D",
+                  name: 'Income',
+                  color: '#31C48D',
                   data: [1420, 1620, 1820, 1420, 1650, 2120],
                 },
                 {
-                  name: "Expense",
+                  name: 'Expense',
                   data: [788, 810, 866, 788, 1100, 1200],
-                  color: "#F05252",
+                  color: '#F05252',
                 }
               ]}
             />
@@ -372,9 +376,9 @@ export const WithGrid: Story = {
               }}
               series={[
                 {
-                  name: "New users",
+                  name: 'New users',
                   data: [6500, 6418, 6456, 6526, 6356, 6456],
-                  color: "#1A56DB",
+                  color: '#1A56DB',
                 },
               ]}
             />
@@ -383,13 +387,13 @@ export const WithGrid: Story = {
             <Chart
               type="donut"
               options={{
-                labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+                labels: ['Direct', 'Sponsor', 'Affiliate', 'Email marketing'],
                 plotOptions: {
                   pie: {
                     donut: {
                       labels: {
                         total: {
-                          label: "Unique visitors",
+                          label: 'Unique visitors',
                           formatter: function (w) {
                             const sum = w.globals.seriesTotals.reduce((a: number, b: number) => {
                               return a + b
@@ -399,7 +403,7 @@ export const WithGrid: Story = {
                         },
                         value: {
                           formatter: function (value) {
-                            return value + "k"
+                            return value + 'k'
                           },
                         }
                       }
@@ -409,14 +413,14 @@ export const WithGrid: Story = {
                 yaxis: {
                   labels: {
                     formatter: function (value) {
-                      return value + "k"
+                      return value + 'k'
                     },
                   },
                 },
                 xaxis: {
                   labels: {
                     formatter: function (value) {
-                      return value  + "k"
+                      return value  + 'k'
                     },
                   },
                 },
@@ -429,7 +433,7 @@ export const WithGrid: Story = {
             <Chart
               type="radial"
               options={{
-                labels: ["Done", "In progress", "To do"],
+                labels: ['Done', 'In progress', 'To do'],
                 yaxis: {
                   labels: {
                     formatter: function (value) {

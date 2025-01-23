@@ -1,4 +1,4 @@
-import type { InputProps } from '@nextui-org/react';
+import type { InputProps } from '@heroui/react';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { Avatar, Input } from '../base';
 import { withFragment } from '../../withFragment';
@@ -15,7 +15,7 @@ export const ColorInput = withFragment(({
   defaultValue,
   placeholderValue,
   label = 'Color',
-  errorMessage = "Please enter a valid color in hex format e.g. #f3f or #ff33ff",
+  errorMessage = 'Please enter a valid color in hex format e.g. #f3f or #ff33ff',
   onValueChange,
   isInvalid,
   value: controlledValue,

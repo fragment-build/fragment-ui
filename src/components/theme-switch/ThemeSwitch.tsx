@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import { Button } from '../base';
-import { ButtonProps } from '@nextui-org/react';
+import { ButtonProps } from '@heroui/react';
 import { useEffect, useState } from 'react';
 
 /**
@@ -21,7 +21,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = (props) => {
   if(!mounted) return null;
 
   return (
-    <Button isIconOnly size="sm" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} {...props}>
+    <Button isIconOnly size="sm" onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')} {...props}>
       {theme === 'light' ? <IconSun size={18} /> : <IconMoon size={18} />}
     </Button>
   );

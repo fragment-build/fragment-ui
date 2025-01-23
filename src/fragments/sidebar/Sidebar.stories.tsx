@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   IconBell,
   IconBox,
@@ -6,17 +6,17 @@ import {
   IconCirclePlus,
   IconHome,
   IconMessageCircle,
-} from "@tabler/icons-react";
-import { Sidebar } from "./Sidebar";
-import { Button, Card, Input, ThemeSwitch } from "../../components";
+} from '@tabler/icons-react';
+import { Sidebar } from './Sidebar';
+import { Button, Card, Input, ThemeSwitch } from '../../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {
-  title: "fragments/Sidebar",
+  title: 'fragments/Sidebar',
   component: Sidebar,
   // tags: ['autodocs'],
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
 };
 
@@ -27,52 +27,56 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    currentPath: "/projects",
+    currentPath: '/projects',
     items: [
       {
-        type: "user",
-        key: "user",
-        name: "Tony Reichert",
-        description: "ACME Inc.",
+        type: 'user',
+        key: 'user',
+        name: 'Tony Reichert',
+        description: 'ACME Inc.',
         avatar: {
-          src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+          src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
         },
         dropdownItems: [
           {
-            label: "My Profile",
+            key: 'profile',
+            label: 'My Profile',
           },
           {
-            label: "Settings",
+            key: 'settings',
+            label: 'Settings',
           },
           {
-            label: "Organization Settings",
+            key: 'organization-settings',
+            label: 'Organization Settings',
             showDivider: true,
           },
           {
-            label: "Logout",
-            color: "danger",
+            key: 'logout',
+            label: 'Logout',
+            color: 'danger',
           },
         ],
       },
       {
-        type: "custom",
-        key: "search",
+        type: 'custom',
+        key: 'search',
         render: <Input label="Search..." />,
         showExpandedOnly: true,
       },
       {
-        type: "navigation",
-        key: "navigation-overview",
-        label: "Overview",
+        type: 'navigation',
+        key: 'navigation-overview',
+        label: 'Overview',
         navigation: [
           {
-            label: "Home",
-            link: "/",
+            label: 'Home',
+            link: '/',
             icon: <IconHome stroke={1.5} />,
           },
           {
-            label: "My Projects",
-            link: "/projects",
+            label: 'My Projects',
+            link: '/projects',
             icon: <IconBoxMultiple stroke={1.5} />,
             endContent: (
               <Button size="sm" variant="light" isIconOnly>
@@ -81,80 +85,80 @@ export const Primary: Story = {
             ),
             items: [
               {
-                type: "navigation",
-                key: "navigation-projects",
+                type: 'navigation',
+                key: 'navigation-projects',
                 navigation: [
                   {
-                    label: "Project 1",
-                    link: "/projects/1",
+                    label: 'Project 1',
+                    link: '/projects/1',
                   },
                   {
-                    label: "Project 2",
-                    link: "/projects/2",
+                    label: 'Project 2',
+                    link: '/projects/2',
                   },
                   {
-                    label: "Project 3",
-                    link: "/projects/3",
+                    label: 'Project 3',
+                    link: '/projects/3',
                   },
                 ],
               },
             ],
           },
           {
-            label: "Chat",
-            link: "/chat",
+            label: 'Chat',
+            link: '/chat',
             icon: <IconMessageCircle stroke={1.5} />,
             badgeContent: '',
           },
           {
-            label: "Notifications",
-            link: "/notifications",
+            label: 'Notifications',
+            link: '/notifications',
             icon: <IconBell stroke={1.5} />,
             badgeContent: '9+',
           },
         ],
       },
       {
-        type: "navigation",
-        key: "navigation-projects",
-        label: "Projects",
+        type: 'navigation',
+        key: 'navigation-projects',
+        label: 'Projects',
         navigation: [
           {
-            label: "Project 1",
-            link: "/projects/1",
+            label: 'Project 1',
+            link: '/projects/1',
             icon: <IconBox stroke={1.5} />,
           },
           {
-            label: "Project 2",
-            link: "/projects/2",
+            label: 'Project 2',
+            link: '/projects/2',
             icon: <IconBox stroke={1.5} />,
           },
           {
-            label: "Project 3",
-            link: "/projects/3",
+            label: 'Project 3',
+            link: '/projects/3',
             icon: <IconBox stroke={1.5} />,
           },
         ],
       },
       {
-        type: "custom",
-        key: "theme-switch",
+        type: 'custom',
+        key: 'theme-switch',
         render: <ThemeSwitch />,
-        align: "bottom"
+        align: 'bottom'
       },
       {
-        type: "custom",
-        key: "bottom-banner",
+        type: 'custom',
+        key: 'bottom-banner',
         render: (
           <Card radius="lg" className="border-none">
             <img
               alt="Woman listing to music"
               className="object-cover w-full h-28"
-              src="https://nextui.org/images/hero-card.jpeg"
+              src="https://www.heroui.com/images/hero-card.jpeg"
             />
           </Card>
         ),
-        align: "bottom",
+        align: 'bottom',
         showExpandedOnly: true,
       },
     ],

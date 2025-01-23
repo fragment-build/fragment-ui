@@ -1,7 +1,7 @@
-import { NextUIPluginConfig, nextui } from "@nextui-org/react";
-import defaultsDeep from "lodash.defaultsdeep";
-import { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin"
+import { HeroUIPluginConfig, heroui } from '@heroui/react';
+import defaultsDeep from 'lodash.defaultsdeep';
+import { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin'
 
 export const fragmentui = () => plugin(function({ addBase, theme }) {
   addBase({
@@ -54,7 +54,7 @@ export const fragmentui = () => plugin(function({ addBase, theme }) {
 });
 
 interface TailwindFragmentOptions {
-  nextUIPluginConfig?: NextUIPluginConfig;
+  heroUIPluginConfig?: HeroUIPluginConfig;
 }
 
 export const withTailwindFragment = (config: Config, options?: TailwindFragmentOptions): Config => ({
@@ -63,7 +63,7 @@ export const withTailwindFragment = (config: Config, options?: TailwindFragmentO
   plugins: [
     ...(config.plugins ?? []),
     fragmentui(),
-    nextui(defaultsDeep(options?.nextUIPluginConfig ?? {}, {
+    heroui(defaultsDeep(options?.heroUIPluginConfig ?? {}, {
       themes: {
         dark: {
           colors: {

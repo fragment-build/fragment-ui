@@ -13,7 +13,7 @@ const decorators: Preview['decorators'] = [
 
     return (
       <FragmentUIProvider locale={locale} defaults={{}}>
-        <div className='bg-dark' lang={locale} dir={direction}>
+        <div className="bg-dark" lang={locale} dir={direction}>
           <Story />
         </div>
       </FragmentUIProvider>

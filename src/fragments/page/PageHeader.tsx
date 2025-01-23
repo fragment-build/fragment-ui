@@ -2,8 +2,8 @@
  * Primary UI component for Form Sections
  */
 
-import React from "react";
-import { tv } from "@nextui-org/react";
+import React from 'react';
+import { tv } from '@heroui/react';
 
 export interface PageHeaderProps {
   children?: React.ReactNode;

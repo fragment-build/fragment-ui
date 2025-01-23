@@ -1,4 +1,4 @@
-import { Kbd as NextKbd } from '@nextui-org/react'
+import { Kbd as HeroKbd } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Kbd = withFragment(NextKbd, 'kbd');
+export const Kbd = withFragment(HeroKbd, 'kbd');

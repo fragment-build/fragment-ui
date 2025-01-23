@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import { Button, ButtonGroup } from '../base';
 import { withFragment } from '../../withFragment';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
-import { ButtonGroupProps, tv } from '@nextui-org/react';
+import { ButtonGroupProps, tv } from '@heroui/react';
 
 /**
  * Primary UI component for selecting a color
@@ -47,9 +47,9 @@ export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitch
     <>
       <input ref={ref} value={value} type="number" className="hidden" min={0} max={2} required />
       <ButtonGroup size={size} {...props}>
-        <Button className={button()} onClick={() => setValue(0)} {...value === 0 ? { color: 'danger' } : {}}><IconX size={20} /></Button>
-        <Button className={button()} onClick={() => setValue(1)} {...value === 1 ? { color: 'default', variant: 'solid' } : {}}><IconSlash size={20} /></Button>
-        <Button className={button()} onClick={() => setValue(2)} {...value === 2 ? { color: 'success' } : {}}><IconCheck size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(0)} {...value === 0 ? { color: 'danger' } : {}}><IconX size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(1)} {...value === 1 ? { color: 'default', variant: 'solid' } : {}}><IconSlash size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(2)} {...value === 2 ? { color: 'success' } : {}}><IconCheck size={20} /></Button>
       </ButtonGroup>
     </>
   );

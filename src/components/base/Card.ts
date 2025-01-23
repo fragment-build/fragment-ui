@@ -1,5 +1,5 @@
-import { Card as NextCard } from '@nextui-org/react';
+import { Card as HeroCard } from '@heroui/react';
 import { withFragment } from '../../withFragment';
 
-export const Card = withFragment(NextCard, 'card');
-export { CardBody, CardFooter, CardHeader } from '@nextui-org/react';
+export const Card = withFragment(HeroCard, 'card');
+export { CardBody, CardFooter, CardHeader } from '@heroui/react';

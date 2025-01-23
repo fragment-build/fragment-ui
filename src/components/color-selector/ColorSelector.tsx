@@ -1,4 +1,4 @@
-import { type AvatarProps } from '@nextui-org/react';
+import { type AvatarProps } from '@heroui/react';
 import { useEffect, useState } from 'react';
 import { Avatar, Button } from '../base';
 import { withFragment } from '../../withFragment';
@@ -29,7 +29,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = withFragment(({ value
   }, [controlledValue]);
 
   return (
-    <div className='flex gap-3'>
+    <div className="flex gap-3">
       {values.map((color) => (
         <Button radius="full" size={rest.size} isIconOnly disableRipple className="overflow-visible">
           <Avatar

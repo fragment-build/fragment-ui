@@ -1,8 +1,8 @@
 import {
-  Avatar as NextAvatar,
-  AvatarGroup as NextAvatarGroup,
-} from '@nextui-org/react'
+  Avatar as HeroAvatar,
+  AvatarGroup as HeroAvatarGroup,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Avatar = withFragment(NextAvatar, 'avatar');
-export const AvatarGroup = withFragment(NextAvatarGroup, 'avatarGroup');
+export const Avatar = withFragment(HeroAvatar, 'avatar');
+export const AvatarGroup = withFragment(HeroAvatarGroup, 'avatarGroup');

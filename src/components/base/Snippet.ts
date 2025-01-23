@@ -1,4 +1,4 @@
-import { Snippet as NextSnippet } from '@nextui-org/react'
+import { Snippet as HeroSnippet } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Snippet = withFragment(NextSnippet, 'snippet');
+export const Snippet = withFragment(HeroSnippet, 'snippet');

@@ -1,10 +1,10 @@
 import {
-  Select as NextSelect,
-  SelectItem as NextSelectItem,
-  SelectSection as NextSelectSection,
-} from '@nextui-org/react'
+  Select as HeroSelect,
+  SelectItem as HeroSelectItem,
+  SelectSection as HeroSelectSection,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Select = withFragment(NextSelect, 'select');
-export const SelectItem = withFragment(NextSelectItem, 'selectItem');
-export const SelectSection = withFragment(NextSelectSection, 'selectSection');
+export const Select = withFragment(HeroSelect, 'select');
+export const SelectItem = withFragment(HeroSelectItem, 'selectItem');
+export const SelectSection = withFragment(HeroSelectSection, 'selectSection');

@@ -1,10 +1,10 @@
 import {
-  Popover as NextPopover,
-  PopoverContent as NextPopoverContent,
-  PopoverTrigger as NextPopoverTrigger,
-} from '@nextui-org/react'
+  Popover as HeroPopover,
+  PopoverContent as HeroPopoverContent,
+  PopoverTrigger as HeroPopoverTrigger,
+} from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Popover = withFragment(NextPopover, 'popover');
-export const PopoverContent = withFragment(NextPopoverContent, 'popoverContent');
-export const PopoverTrigger = withFragment(NextPopoverTrigger, 'popoverTrigger');
+export const Popover = withFragment(HeroPopover, 'popover');
+export const PopoverContent = withFragment(HeroPopoverContent, 'popoverContent');
+export const PopoverTrigger = withFragment(HeroPopoverTrigger, 'popoverTrigger');

@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { PageHeader } from "./PageHeader";
-import { Button } from "../../components";
-import { IconPlus, IconTrash } from "@tabler/icons-react";
+import type { Meta, StoryObj } from '@storybook/react';
+import { PageHeader } from './PageHeader';
+import { Button } from '../../components';
+import { IconPlus, IconTrash } from '@tabler/icons-react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof PageHeader> = {
-  title: "fragments/PageHeader",
+  title: 'fragments/PageHeader',
   component: PageHeader,
   tags: ['autodocs'],
 };

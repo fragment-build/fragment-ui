@@ -1,4 +1,4 @@
-import { Textarea as NextTextarea } from '@nextui-org/react'
+import { Textarea as HeroTextarea } from '@heroui/react'
 import { withFragment } from '../../withFragment'
 
-export const Textarea = withFragment(NextTextarea, 'textArea');
+export const Textarea = withFragment(HeroTextarea, 'textArea');
