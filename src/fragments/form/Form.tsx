@@ -2,7 +2,7 @@
  * Primary UI component for Form Sections
  */
 
-import React from 'react';
+import React, { isValidElement } from 'react';
 import { tv } from '@heroui/react';
 import { Divider } from '../../components';
 import { withFragment } from '../../withFragment';
@@ -22,7 +22,7 @@ export const Form: React.FC<FormProps> = withFragment(({ children, ...props }) =
 
   return (
     <form {...props}>
-      {children.map((child, index) => index === 0 ? child : (
+      {children.filter(isValidElement).map((child, index) => index === 0 ? child : (
         <React.Fragment key={index}>
           <Divider className={v.divider()} />
           {child}
