@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Widget } from './Widget';
 import { Chart, Select, SelectItem } from '../../components';
 

@@ -1,5 +1,5 @@
-import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming';
+import { addons } from 'storybook/manager-api';
+import { create } from 'storybook/theming';
 
 const commonTheme = create({
   base: 'light',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FragmentUIProvider } from '../src/provider';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 import './style.css';
