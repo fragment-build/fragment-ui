@@ -43,7 +43,4 @@ export const sidebar = tv({
       },
     },
   },
-  defaultVariants: {
-    layout: 'auto',
-  },
 });

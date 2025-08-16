@@ -207,8 +207,8 @@ const getActiveNav = (currentPath: SidebarProps['currentPath'], items: SidebarPr
   return possibleMatches.find((pMatch) => pMatch.link === currentPath) || possibleMatches[0];
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, ...props }) => {
-  const [layout, setLayout] = useState(props.layout);
+export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: defaultLayout = "auto" }) => {
+  const [layout, setLayout] = useState(defaultLayout);
 
   const toggleLayout = () => {
     if (layout === 'auto') {
