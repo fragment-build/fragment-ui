@@ -21,7 +21,7 @@ export const Default: Story = {
       endContent: (
         <Select defaultSelectedKeys={['daily']} isRequired classNames={{ base: 'min-w-36' }}>
           {[{ label: 'Daily', value: 'daily' }, { label: 'Weekly', value: 'weekly' }, { label: 'Monthly', value: 'monthly' }].map((timespan) => (
-            <SelectItem key={timespan.value} value={timespan.value}>
+            <SelectItem key={timespan.value} textValue={timespan.value}>
               {timespan.label}
             </SelectItem>
           ))}
