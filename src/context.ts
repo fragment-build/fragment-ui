@@ -1,4 +1,4 @@
-import { AccordionItemProps, AccordionProps, AlertProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CalendarProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DateInputProps, DatePickerProps, DateRangePickerProps, DividerProps, DrawerBodyProps, DrawerContentProps, DrawerFooterProps, DrawerHeaderProps, DrawerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputOtpProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, RangeCalendarProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TimeInputProps, TooltipProps, UserProps } from '@heroui/react';
+import { AccordionItemProps, AccordionProps, AlertProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CalendarProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DateInputProps, DatePickerProps, DateRangePickerProps, DividerProps, DrawerBodyProps, DrawerContentProps, DrawerFooterProps, DrawerHeaderProps, DrawerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputOtpProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, NumberInputProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, RangeCalendarProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TimeInputProps, ToastProps, TooltipProps, UserProps } from '@heroui/react';
 import { createContext } from 'react';
 import type { Props as ApexChartProps } from 'react-apexcharts';
 import { ChartProps, ColorInputProps, ColorSelectorProps, MultiSwitchProps } from './components';
@@ -64,6 +64,7 @@ export interface FragmentUIContext {
     navbarItem?: Partial<NavbarItemProps>;
     navbarMenuItem?: Partial<NavbarMenuItemProps>;
     navbarMenuToggle?: Partial<NavbarMenuToggleProps>;
+    numberInput?: Partial<NumberInputProps>;
     pagination?: Partial<PaginationProps>;
     paginationItem?: Partial<PaginationItemProps>;
     paginationCursor?: Partial<PaginationCursorProps>;
@@ -94,6 +95,7 @@ export interface FragmentUIContext {
     tabs?: Partial<TabsProps>;
     textArea?: Partial<TextAreaProps>;
     timeInput?: Partial<TimeInputProps>;
+    toast?: Partial<ToastProps>;
     tooltip?: Partial<TooltipProps>;
     user?: Partial<UserProps>;
   }
