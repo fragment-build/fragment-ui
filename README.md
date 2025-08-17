@@ -69,25 +69,30 @@ All done. Enjoy 🎉
 ## 🔧 Configuration
 
 ```ts
-// tailwind.config.ts
+// fragment.ts
+import { fragmentui } from '@fragment-build/ui';
 
-import type { Config } from 'tailwindcss';
-import { fragmentui, heroui } from '@fragment-build/ui';
+export default fragmentui();
+```
 
-const config: Config = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}',
-  ],
-  darkMode: 'class',
-  plugins: [
-    fragmentui(),
-    heroui(),
-  ],
-};
+```ts
+// hero.ts
+import { heroui } from '@fragment-build/ui';
 
-export default config;
+export default heroui();
+```
+
+```ts
+// src/main.css
+
+@import 'tailwindcss';
+
+@plugin '../hero.ts';
+@plugin '../fragment.ts';
+
+/* Note: You may need to change the path to fit your project structure */
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
 ```
 
 It is essential to add the FragmentUIProvider at the root of your application.

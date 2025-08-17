@@ -1,7 +1,7 @@
 import { addons } from 'storybook/manager-api';
 import { create } from 'storybook/theming';
 
-const commonTheme = create({
+export const commonTheme = create({
   base: 'light',
   brandTitle: 'Fragment UI',
   brandUrl: 'https://fragment.build',

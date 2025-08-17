@@ -1,9 +1,10 @@
-import { HeroUIPluginConfig, heroui } from '@heroui/react';
-import defaultsDeep from 'lodash.defaultsdeep';
-import { Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin'
+// @ts-expect-error typescript doesn't notice the exports field in package.json of tailwindcss
+import plugin from 'tailwindcss/plugin.js';
+import type Plugin from 'tailwindcss/dist/plugin';
 
-export const fragmentui = () => plugin(function({ addBase, theme }) {
+type PluginAPI = Parameters<Parameters<typeof Plugin>[0]>[0]
+
+export const fragmentui = (): ReturnType<typeof Plugin> => plugin(function({ addBase, theme }: PluginAPI) {
   addBase({
     'h1': {
       fontSize: theme('fontSize.3xl'),
@@ -53,24 +54,4 @@ export const fragmentui = () => plugin(function({ addBase, theme }) {
   });
 });
 
-interface TailwindFragmentOptions {
-  heroUIPluginConfig?: HeroUIPluginConfig;
-}
-
-export const withTailwindFragment = (config: Config, options?: TailwindFragmentOptions): Config => ({
-  darkMode: 'class',
-  ...config,
-  plugins: [
-    ...(config.plugins ?? []),
-    fragmentui(),
-    heroui(defaultsDeep(options?.heroUIPluginConfig ?? {}, {
-      themes: {
-        dark: {
-          colors: {
-            background: '#131316',
-          }
-        },
-      },
-    })),
-  ],
-});
+export { heroui } from '@heroui/react';
