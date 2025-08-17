@@ -1,4 +1,4 @@
-export { Accordion } from './Accordion'
+export { Accordion, AccordionItem } from './Accordion'
 export { Alert } from './Alert'
 export { Autocomplete, AutocompleteItem, AutocompleteSection } from './Autocomplete'
 export { Avatar } from './Avatar'
