@@ -92,12 +92,13 @@ export default heroui();
 
 /* Note: You may need to change the path to fit your project structure */
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@source '../node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 ```
 
 It is essential to add the FragmentUIProvider at the root of your application.
 
-```ts
+```tsx
 import React from 'react';
 
 // 1. import `FragmentUIProvider` component
@@ -124,6 +125,20 @@ export * from '@fragment-build/ui';
 ```
 
 Now just import all the components you need from this file.
+
+And you need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+
+```ts
+// postcss.config.mjs
+
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+```
 
 ## 🤝 Contributing
 
