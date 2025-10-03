@@ -1,6 +1,9 @@
 export { getKeyValue } from '@heroui/shared-utils'
 export { useDisclosure } from '@heroui/use-disclosure'
 export { VisuallyHidden } from '@react-aria/visually-hidden';
+export { useTheme } from 'next-themes';
+
+export { FragmentUIProvider } from './provider';
 
 // base components
 export { Accordion, AccordionItem } from './components/base/Accordion'
@@ -67,5 +70,3 @@ export { PageHeader, type PageHeaderProps } from './fragments/page/PageHeader';
 export { Shell, type ShellProps } from './fragments/shell/Shell';
 export { Sidebar, type SidebarProps } from './fragments/sidebar/Sidebar';
 export { Widget, type WidgetProps } from './fragments/widget/Widget';
-
-export { FragmentUIProvider } from './provider';
