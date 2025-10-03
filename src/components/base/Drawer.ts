@@ -4,7 +4,7 @@ import {
   DrawerHeader as HeroDrawerHeader,
   DrawerBody as HeroDrawerBody,
   DrawerFooter as HeroDrawerFooter,
-} from '@heroui/react'
+} from '@heroui/drawer'
 import { withFragment } from '../../withFragment'
 
 export const Drawer = withFragment(HeroDrawer, 'drawer');

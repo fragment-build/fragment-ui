@@ -5,8 +5,8 @@ import {
   TableColumn as HeroTableColumn,
   TableHeader as HeroTableHeader,
   TableRow as HeroTableRow,
-} from '@heroui/react'
-import { withFragment } from '../../withFragment'
+} from '@heroui/table';
+import { withFragment } from '../../withFragment';
 
 export const Table = withFragment(HeroTable, 'table');
 export const TableBody = withFragment(HeroTableBody, 'tableBody');

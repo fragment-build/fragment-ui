@@ -1,4 +1,4 @@
-import { Code as HeroCode } from '@heroui/react'
+import { Code as HeroCode } from '@heroui/code'
 import { withFragment } from '../../withFragment'
 
 export const Code = withFragment(HeroCode, 'code');

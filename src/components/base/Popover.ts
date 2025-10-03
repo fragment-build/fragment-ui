@@ -2,7 +2,7 @@ import {
   Popover as HeroPopover,
   PopoverContent as HeroPopoverContent,
   PopoverTrigger as HeroPopoverTrigger,
-} from '@heroui/react'
+} from '@heroui/popover'
 import { withFragment } from '../../withFragment'
 
 export const Popover = withFragment(HeroPopover, 'popover');

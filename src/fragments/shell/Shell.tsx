@@ -1,4 +1,4 @@
-import { Sidebar, SidebarProps } from '../sidebar/Sidebar';
+import { Sidebar, type SidebarProps } from '../sidebar/Sidebar';
 
 /**
  * Primary UI component for Dashboard App Shell

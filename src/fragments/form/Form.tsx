@@ -3,7 +3,7 @@
  */
 
 import React, { isValidElement } from 'react';
-import { tv } from '@heroui/react';
+import { tv } from 'tailwind-variants';
 import { Divider } from '../../components';
 import { withFragment } from '../../withFragment';
 

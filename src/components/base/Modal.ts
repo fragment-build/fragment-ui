@@ -4,7 +4,7 @@ import {
   ModalContent as HeroModalContent,
   ModalFooter as HeroModalFooter,
   ModalHeader as HeroModalHeader,
-} from '@heroui/react'
+} from '@heroui/modal'
 import { withFragment } from '../../withFragment'
 
 export const Modal = withFragment(HeroModal, 'modal');

@@ -1,4 +1,4 @@
-import { tv } from '@heroui/react';
+import { tv } from 'tailwind-variants';
 
 /**
  * Primary UI component for selecting a color

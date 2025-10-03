@@ -6,7 +6,7 @@ import {
   NavbarMenu as HeroNavbarMenu,
   NavbarMenuItem as HeroNavbarMenuItem,
   NavbarMenuToggle as HeroNavbarMenuToggle,
-} from '@heroui/react'
+} from '@heroui/navbar'
 import { withFragment } from '../../withFragment'
 
 export const Navbar = withFragment(HeroNavbar, 'navbar');

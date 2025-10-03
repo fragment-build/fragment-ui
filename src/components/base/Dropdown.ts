@@ -4,7 +4,7 @@ import {
   DropdownMenu as HeroDropdownMenu,
   DropdownSection as HeroDropdownSection,
   DropdownTrigger as HeroDropdownTrigger,
-} from '@heroui/react'
+} from '@heroui/dropdown'
 import { withFragment } from '../../withFragment'
 
 export const Dropdown = withFragment(HeroDropdown, 'dropdown');

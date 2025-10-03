@@ -2,7 +2,8 @@
  * Primary UI component for Dashboard Widgets
  */
 
-import { collapseAdjacentVariantBorders, colorVariants, tv } from '@heroui/react';
+import { collapseAdjacentVariantBorders, colorVariants } from '@heroui/theme';
+import { tv } from 'tailwind-variants';
 import { Card, CardBody, CardHeader } from '../../components';
 
 export interface WidgetProps {

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { tv } from '@heroui/react';
+import { tv } from 'tailwind-variants';
 import { withFragment } from '../../withFragment';
 
 export interface FormSectionProps {

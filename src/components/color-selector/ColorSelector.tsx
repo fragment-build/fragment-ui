@@ -1,4 +1,4 @@
-import { type AvatarProps } from '@heroui/react';
+import type { AvatarProps } from '@heroui/avatar';
 import { useEffect, useState } from 'react';
 import { Avatar, Button } from '../base';
 import { withFragment } from '../../withFragment';

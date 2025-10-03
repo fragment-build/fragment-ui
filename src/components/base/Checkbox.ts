@@ -1,7 +1,7 @@
 import {
   Checkbox as HeroCheckbox,
   Checkbox as HeroCheckboxGroup,
-} from '@heroui/react';
+} from '@heroui/checkbox';
 import { withFragment } from '../../withFragment';
 
 export const Checkbox = withFragment(HeroCheckbox, 'checkbox');

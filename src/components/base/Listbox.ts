@@ -2,7 +2,7 @@ import {
   Listbox as HeroListbox,
   ListboxItem as HeroListboxItem,
   ListboxSection as HeroListboxSection,
-} from '@heroui/react'
+} from '@heroui/listbox'
 import { withFragment } from '../../withFragment'
 
 export const Listbox = withFragment(HeroListbox, 'listbox');

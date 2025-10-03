@@ -1,4 +1,6 @@
-export { getKeyValue, useDisclosure, VisuallyHidden } from '@heroui/react'
+export { getKeyValue } from '@heroui/shared-utils'
+export { useDisclosure } from '@heroui/use-disclosure'
+export { VisuallyHidden } from '@react-aria/visually-hidden';
 
 export {
   // base

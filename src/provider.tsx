@@ -1,4 +1,4 @@
-import { HeroUIProvider, HeroUIProviderProps } from '@heroui/react';
+import { HeroUIProvider, type HeroUIProviderProps } from '@heroui/system';
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 import defaultsDeep from 'lodash.defaultsdeep';

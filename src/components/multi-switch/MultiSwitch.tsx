@@ -2,7 +2,8 @@ import { forwardRef, useEffect, useState } from 'react';
 import { Button, ButtonGroup } from '../base';
 import { withFragment } from '../../withFragment';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
-import { ButtonGroupProps, tv } from '@heroui/react';
+import type { ButtonGroupProps } from '@heroui/button';
+import { tv } from 'tailwind-variants';
 
 /**
  * Primary UI component for selecting a color

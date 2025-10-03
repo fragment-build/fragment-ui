@@ -1,4 +1,4 @@
-import { Button as HeroButton, ButtonGroup as HeroButtonGroup } from '@heroui/react'
+import { Button as HeroButton, ButtonGroup as HeroButtonGroup } from '@heroui/button'
 import { withFragment } from '../../withFragment'
 
 export const Button = withFragment(HeroButton, 'button');

@@ -2,7 +2,7 @@ import {
   Pagination as HeroPagination,
   PaginationItem as HeroPaginationItem,
   PaginationCursor as HeroPaginationCursor,
-} from '@heroui/react'
+} from '@heroui/pagination'
 import { withFragment } from '../../withFragment'
 
 export const Pagination = withFragment(HeroPagination, 'pagination');

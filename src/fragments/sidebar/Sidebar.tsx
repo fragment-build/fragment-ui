@@ -1,10 +1,7 @@
-import {
-  Link,
-  type AvatarProps,
-  type DropdownItemProps,
-  type DropdownProps,
-  type ListboxProps,
-} from '@heroui/react';
+import type { AvatarProps } from '@heroui/avatar';
+import type { DropdownItemProps, DropdownProps } from '@heroui/dropdown';
+import type { ListboxProps } from '@heroui/listbox';
+import { Link } from '@heroui/link';
 
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
