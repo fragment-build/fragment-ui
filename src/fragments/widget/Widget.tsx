@@ -4,7 +4,7 @@
 
 import { collapseAdjacentVariantBorders, colorVariants } from '@heroui/theme';
 import { tv } from 'tailwind-variants';
-import { Card, CardBody, CardHeader } from '../../components';
+import { Card, CardBody, CardHeader } from '../../components/base/Card';
 
 export interface WidgetProps {
   children: React.ReactNode;

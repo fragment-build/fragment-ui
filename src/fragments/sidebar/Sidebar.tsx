@@ -1,31 +1,20 @@
 import type { AvatarProps } from '@heroui/avatar';
 import type { DropdownItemProps, DropdownProps } from '@heroui/dropdown';
 import type { ListboxProps } from '@heroui/listbox';
-import { Link } from '@heroui/link';
 
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import {
-  Avatar,
-  Badge,
-  Button,
-  Chip,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Listbox,
-  ListboxItem,
-  ListboxSection,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ScrollShadow,
-  Tooltip,
-  User,
-} from '../../components/base';
+import { Listbox, ListboxItem, ListboxSection } from '../../components/base/Listbox';
+import { Chip } from '../../components/base/Chip';
+import { Tooltip } from '../../components/base/Tooltip';
+import { Button } from '../../components/base/Button';
+import { Badge } from '../../components/base/Badge';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '../../components/base/Dropdown';
+import { User } from '../../components/base/User';
+import { Avatar } from '../../components/base/Avatar';
+import { ScrollShadow } from '../../components/base/ScrollShadow';
+import { Link } from '../../components/base/Link';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '../../components/base/Modal';
 import { sidebar } from './Sidebar.styles';
 import { breakpointsTailwind } from '../../constants';
 

@@ -1,6 +1,7 @@
 import type { InputProps } from '@heroui/input';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { Avatar, Input } from '../base';
+import { Avatar } from '../base/Avatar';
+import { Input } from '../base/Input';
 import { withFragment } from '../../withFragment';
 
 /**

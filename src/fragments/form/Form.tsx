@@ -4,7 +4,7 @@
 
 import React, { isValidElement } from 'react';
 import { tv } from 'tailwind-variants';
-import { Divider } from '../../components';
+import { Divider } from '../../components/base/Divider';
 import { withFragment } from '../../withFragment';
 
 export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {

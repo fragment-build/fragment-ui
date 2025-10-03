@@ -54,4 +54,4 @@ export const fragmentui = (): ReturnType<typeof Plugin> => plugin(function({ add
   });
 });
 
-export { heroui } from '@heroui/react';
+export { heroui } from '@heroui/theme';

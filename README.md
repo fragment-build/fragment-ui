@@ -70,14 +70,14 @@ All done. Enjoy 🎉
 
 ```ts
 // fragment.ts
-import { fragmentui } from '@fragment-build/ui';
+import { fragmentui } from '@fragment-build/tailwind.plugin';
 
 export default fragmentui();
 ```
 
 ```ts
 // hero.ts
-import { heroui } from '@fragment-build/ui';
+import { heroui } from '@fragment-build/tailwind.plugin';
 
 export default heroui();
 ```

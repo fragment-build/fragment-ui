@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useState } from 'react';
-import { Button, ButtonGroup } from '../base';
+import { Button, ButtonGroup } from '../base/Button';
 import { withFragment } from '../../withFragment';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
 import type { ButtonGroupProps } from '@heroui/button';

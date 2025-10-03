@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Widget } from './Widget';
-import { Chart, Select, SelectItem } from '../../components';
+import { Select, SelectItem } from '../../components/base/Select';
+import { ChartCircle } from '../../components/charts/ChartCircle';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Widget> = {
@@ -29,7 +30,7 @@ export const Default: Story = {
       ),
     },
     children: (
-      <Chart
+      <ChartCircle
         type="line"
         series={[
           {
