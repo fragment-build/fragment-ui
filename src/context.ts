@@ -47,7 +47,7 @@ export interface FragmentUIContext {
     dropdownSection?: Partial<DropdownSectionProps>;
     dropdownTrigger?: Partial<DropdownTriggerProps>;
     form?: Partial<FormProps>;
-    formSection?: Partial<FormSectionProps>; // todo implement useFragment
+    formSection?: Partial<FormSectionProps>;
     image?: Partial<ImageProps>;
     input?: Partial<InputProps>;
     inputOtp?: Partial<InputOtpProps>;
