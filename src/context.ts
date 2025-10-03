@@ -1,11 +1,12 @@
 import type { AccordionItemProps, AccordionProps, AlertProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CalendarProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DateInputProps, DatePickerProps, DateRangePickerProps, DividerProps, DrawerBodyProps, DrawerContentProps, DrawerFooterProps, DrawerHeaderProps, DrawerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputOtpProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, NumberInputProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, RangeCalendarProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TimeInputProps, ToastProps, TooltipProps, UserProps } from '@heroui/react';
 import { createContext } from 'react';
 import type { Props as ApexChartProps } from 'react-apexcharts';
-import { ChartProps } from './components/charts/Chart';
-import { ColorInputProps } from './components/color-input/ColorInput';
-import { ColorSelectorProps } from './components/color-selector/ColorSelector';
+import type { ChartProps } from './components/chart/Chart';
+import type { ColorInputProps } from './components/color-input/ColorInput';
+import type { ColorSelectorProps } from './components/color-selector/ColorSelector';
 import type { FormProps } from './fragments/form/Form';
 import type { FormSectionProps } from './fragments/form/FormSection';
+import type { MultiSwitchProps } from './components/multi-switch/MultiSwitch';
 
 export interface FragmentUIContext {
   defaults: {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PageHeader } from './PageHeader';
-import { Button } from '../../components';
+import { Button } from '../../components/base/Button';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

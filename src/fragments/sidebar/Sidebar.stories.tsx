@@ -8,7 +8,10 @@ import {
   IconMessageCircle,
 } from '@tabler/icons-react';
 import { Sidebar } from './Sidebar';
-import { Button, Card, Input, ThemeSwitch } from '../../components';
+import { Input } from '../../components/base/Input';
+import { Button } from '../../components/base/Button';
+import { ThemeSwitch } from '../../components/theme-switch/ThemeSwitch';
+import { Card } from '../../components/base/Card';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {

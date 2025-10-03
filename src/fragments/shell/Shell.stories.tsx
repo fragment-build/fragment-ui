@@ -7,26 +7,16 @@ import {
   IconPlus,
 } from '@tabler/icons-react';
 import { Shell } from './Shell';
-import {
-  Card,
-  CardBody,
-  Chart,
-  Grid,
-  Input,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  Tab,
-  Tabs,
-  BreadcrumbItem,
-  Breadcrumbs,
-  Textarea,
-  Switch,
-  Button
-} from '../../components';
+import { Input } from '../../components/base/Input';
+import { Card, CardBody } from '../../components/base/Card';
+import { Button } from '../../components/base/Button';
+import { Tab, Tabs } from '../../components/base/Tabs';
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '../../components/base/Table';
+import { Textarea } from '../../components/base/Textarea';
+import { Switch } from '../../components/base/Switch';
+import { BreadcrumbItem, Breadcrumbs } from '../../components/base/Breadcrumbs';
+import { Grid } from '../../components/grid/Grid';
+import { Chart } from '../../components/chart/Chart';
 import { Form } from '../form/Form';
 import { FormSection } from '../form/FormSection';
 import { Widget } from '../widget/Widget';

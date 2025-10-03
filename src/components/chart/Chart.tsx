@@ -5,7 +5,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import type { Props as ApexChartProps } from 'react-apexcharts';
 import defaultsDeep from 'lodash.defaultsdeep';
-import { Spinner } from '../base';
+import { Spinner } from '../base/Spinner';
 import { FragmentUIContext } from '../../context';
 
 export interface ChartProps {
