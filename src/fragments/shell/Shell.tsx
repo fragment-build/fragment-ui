@@ -4,7 +4,7 @@ import { Sidebar, SidebarProps } from '../sidebar/Sidebar';
  * Primary UI component for Dashboard App Shell
  */
 
-interface ShellProps {
+export interface ShellProps {
   sidebar: SidebarProps;
   children: React.ReactNode;
 }

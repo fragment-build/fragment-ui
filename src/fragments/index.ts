@@ -1,6 +1,6 @@
-export * from './form/Form';
-export * from './form/FormSection';
-export * from './page/PageHeader';
-export * from './shell/Shell';
-export * from './sidebar/Sidebar';
-export * from './widget/Widget';
+export { Form, type FormProps } from './form/Form';
+export { FormSection, type FormSectionProps } from './form/FormSection';
+export { PageHeader, type PageHeaderProps } from './page/PageHeader';
+export { Shell, type ShellProps } from './shell/Shell';
+export { Sidebar, type SidebarProps } from './sidebar/Sidebar';
+export { Widget, type WidgetProps } from './widget/Widget';

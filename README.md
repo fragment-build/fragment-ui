@@ -121,7 +121,7 @@ When using Next.js you will need to add a file to re-export Fragment UI using `'
 ```ts
 'use client';
 
-export * from '@fragment-build/ui';
+export { ... } from '@fragment-build/ui';
 ```
 
 Now just import all the components you need from this file.

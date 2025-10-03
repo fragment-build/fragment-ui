@@ -11,7 +11,7 @@ export interface ColorInputProps extends InputProps {
   placeholderValue?: string;
 };
 
-export const ColorInput = withFragment(({
+export const ColorInput: React.FC<ColorInputProps> = withFragment(({
   defaultValue,
   placeholderValue,
   label = 'Color',
