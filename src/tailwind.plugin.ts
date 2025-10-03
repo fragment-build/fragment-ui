@@ -1,10 +1,6 @@
-// @ts-expect-error typescript doesn't notice the exports field in package.json of tailwindcss
-import plugin from 'tailwindcss/plugin.js';
-import type Plugin from 'tailwindcss/dist/plugin';
+import plugin from 'tailwindcss/plugin';
 
-type PluginAPI = Parameters<Parameters<typeof Plugin>[0]>[0]
-
-export const fragmentui = (): ReturnType<typeof Plugin> => plugin(function({ addBase, theme }: PluginAPI) {
+export const fragmentui = (): ReturnType<typeof plugin> => plugin(function({ addBase, theme }) {
   addBase({
     'h1': {
       fontSize: theme('fontSize.3xl'),

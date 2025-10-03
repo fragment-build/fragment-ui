@@ -4,6 +4,16 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tailwind.plugin": {
+      "import": "./dist/tailwind.plugin.js",
+      "types": "./dist/tailwind.plugin.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fragment-build/fragment-ui.git"
