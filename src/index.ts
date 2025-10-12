@@ -57,7 +57,6 @@ export { User } from './components/base/User'
 
 // fragment components
 export { Chart, type ChartProps } from './components/chart/Chart';
-export { ChartCircle, type ChartCircleProps } from './components/charts/ChartCircle';
 export { ColorInput, type ColorInputProps } from './components/color-input/ColorInput';
 export { ColorSelector, type ColorSelectorProps } from './components/color-selector/ColorSelector';
 export { Grid, type GridProps } from './components/grid/Grid';
