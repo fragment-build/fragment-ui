@@ -1,17 +1,16 @@
-import { HeroUIProvider, type HeroUIProviderProps } from '@heroui/system';
 import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 import defaultsDeep from 'lodash.defaultsdeep';
 import { FragmentUIContext, defaultContext } from './context';
 
-interface FragmentUIProviderProps extends HeroUIProviderProps {
+interface FragmentUIProviderProps {
   defaults?: FragmentUIContext['defaults'];
+  children: React.ReactNode;
 }
 
 export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
   children,
   defaults,
-  ...rest
 }) => {
   const initContext = defaults ? defaultsDeep({ defaults }, defaultContext) : defaultContext;
   const [context, setContext] = useState(initContext);
@@ -23,11 +22,9 @@ export const FragmentUIProvider: React.FC<FragmentUIProviderProps> = ({
 
   return (
     <FragmentUIContext.Provider value={context}>
-      <HeroUIProvider {...rest}>
-        <ThemeProvider attribute="class">
-          {children}
-        </ThemeProvider>
-      </HeroUIProvider>
+      <ThemeProvider attribute="class">
+        {children}
+      </ThemeProvider>
     </FragmentUIContext.Provider>
   );
 };

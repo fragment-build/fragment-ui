@@ -8,10 +8,8 @@ import {
   IconMessageCircle,
 } from '@tabler/icons-react';
 import { Sidebar } from './Sidebar';
-import { Input } from '../../components/base/Input';
-import { Button } from '../../components/base/Button';
+import { Input, Button, Card } from '@heroui/react';
 import { ThemeSwitch } from '../../components/theme-switch/ThemeSwitch';
-import { Card } from '../../components/base/Card';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Sidebar> = {
@@ -52,19 +50,18 @@ export const Primary: Story = {
           {
             key: 'organization-settings',
             label: 'Organization Settings',
-            showDivider: true,
           },
           {
             key: 'logout',
             label: 'Logout',
-            color: 'danger',
+            variant: 'danger',
           },
         ],
       },
       {
         type: 'custom',
         key: 'search',
-        render: <Input label="Search..." />,
+        render: <Input placeholder="Search..." />,
         showExpandedOnly: true,
       },
       {
@@ -82,7 +79,7 @@ export const Primary: Story = {
             link: '/projects',
             icon: <IconBoxMultiple stroke={1.5} />,
             endContent: (
-              <Button size="sm" variant="light" isIconOnly>
+              <Button size="sm" variant="tertiary" isIconOnly>
                 <IconCirclePlus stroke={1.5} />
               </Button>
             ),
@@ -153,7 +150,7 @@ export const Primary: Story = {
         type: 'custom',
         key: 'bottom-banner',
         render: (
-          <Card radius="lg" className="border-none">
+          <Card className="border-none">
             <img
               alt="Woman listing to music"
               className="object-cover w-full h-28"

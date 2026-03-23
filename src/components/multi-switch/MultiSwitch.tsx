@@ -1,8 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
-import { Button, ButtonGroup } from '../base/Button';
 import { withFragment } from '../../withFragment';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
-import type { ButtonGroupProps } from '@heroui/button';
+import { Button, ButtonGroup, type ButtonGroupProps } from '@heroui/react';
 import { tv } from 'tailwind-variants';
 
 /**
@@ -12,6 +11,7 @@ import { tv } from 'tailwind-variants';
 export interface MultiSwitchProps extends Omit<ButtonGroupProps, 'className'> {
   defaultValue?: number;
   onValueChange: (value: number) => void;
+  variant?: 'outline' | 'tertiary';
 }
 
 const multiSwitch = tv({
@@ -29,7 +29,7 @@ const multiSwitch = tv({
       lg: {
         button: 'px-5'
       }
-    }
+    },
   },
 });
 
@@ -37,6 +37,7 @@ export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitch
   defaultValue,
   onValueChange,
   size = 'md',
+  variant = 'outline',
   ...props
 }, ref) => {
   const [value, setValue] = useState(defaultValue ?? 0);
@@ -48,9 +49,9 @@ export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitch
     <>
       <input ref={ref} value={value} type="number" className="hidden" min={0} max={2} required />
       <ButtonGroup size={size} {...props}>
-        <Button className={button()} onPress={() => setValue(0)} {...value === 0 ? { color: 'danger' } : {}}><IconX size={20} /></Button>
-        <Button className={button()} onPress={() => setValue(1)} {...value === 1 ? { color: 'default', variant: 'solid' } : {}}><IconSlash size={20} /></Button>
-        <Button className={button()} onPress={() => setValue(2)} {...value === 2 ? { color: 'success' } : {}}><IconCheck size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(0)} variant={value === 0 ? 'danger' : variant}><IconX size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(1)} variant={value === 1 ? 'tertiary' : variant}><IconSlash size={20} /></Button>
+        <Button className={button()} onPress={() => setValue(2)} variant={value === 2 ? 'primary' : variant}><IconCheck size={20} /></Button>
       </ButtonGroup>
     </>
   );

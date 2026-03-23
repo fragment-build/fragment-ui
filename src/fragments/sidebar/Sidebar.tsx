@@ -1,20 +1,8 @@
-import type { AvatarProps } from '@heroui/avatar';
-import type { DropdownItemProps, DropdownProps } from '@heroui/dropdown';
-import type { ListboxProps } from '@heroui/listbox';
+import type { AvatarImageProps, AvatarProps, DropdownItemProps, DropdownProps, ListBoxProps } from '@heroui/react';
 
+import { Avatar, Badge, Button, Chip, Description, Dropdown, Header, Label, ListBox, Modal, ScrollShadow, Tooltip } from '@heroui/react';
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { Listbox, ListboxItem, ListboxSection } from '../../components/base/Listbox';
-import { Chip } from '../../components/base/Chip';
-import { Tooltip } from '../../components/base/Tooltip';
-import { Button } from '../../components/base/Button';
-import { Badge } from '../../components/base/Badge';
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '../../components/base/Dropdown';
-import { User } from '../../components/base/User';
-import { Avatar } from '../../components/base/Avatar';
-import { ScrollShadow } from '../../components/base/ScrollShadow';
-import { Link } from '../../components/base/Link';
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '../../components/base/Modal';
 import { sidebar } from './Sidebar.styles';
 import { breakpointsTailwind } from '../../constants';
 
@@ -41,12 +29,12 @@ interface SidebarItemNavigation extends SidebarItem {
   type: 'navigation';
   label?: string;
   navigation: SidebarNavigationItem[];
-  listboxProps?: Omit<ListboxProps, 'children'>;
+  listboxProps?: Omit<ListBoxProps<object>, 'children'>;
 }
 
 interface SidebarItemUser extends SidebarItem {
   type: 'user';
-  avatar?: AvatarProps;
+  avatar?: AvatarProps & AvatarImageProps;
   name: string;
   description?: string;
   dropdown?: Omit<DropdownProps, 'children'>;
@@ -83,87 +71,85 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
   switch (item.type) {
     case 'navigation':
       return options.layout === 'expanded' ? (
-        <Listbox
-          variant="flat"
+        <ListBox
           aria-label="Listbox menu with sections"
-          itemClasses={{
-            base: 'h-12 gap-6',
-          }}
           {...item.listboxProps}
         >
-          <ListboxSection title={item.label} classNames={{ group: 'flex flex-col gap-1' }}>
+          <ListBox.Section>
+            <Header>{item.label}</Header>
             {item.navigation.map((navItem) => (
-              <ListboxItem
+              <ListBox.Item
                 key={navItem.label}
-                startContent={navItem.icon}
-                endContent={typeof navItem.badgeContent === 'string' ? <Chip size="sm" color="primary" variant={navItem.badgeContent ? 'solid' : 'dot'} classNames={{ base: 'border-none' }}>{navItem.badgeContent}</Chip> : navItem.endContent}
                 href={navItem.link}
-                color={options.activeNav?.link === navItem.link ? 'primary' : 'default'}
+                variant={options.activeNav?.link === navItem.link ? 'danger' : 'default'}
                 className={options.activeNav?.link === navItem.link ? 'text-primary' : ''}
               >
+                {navItem.icon}
                 {navItem.label}
-              </ListboxItem>
+                {typeof navItem.badgeContent === 'string' ? <Chip size="sm" variant="primary">{navItem.badgeContent}</Chip> : navItem.endContent}
+              </ListBox.Item>
             ))}
-          </ListboxSection>
-        </Listbox>
+          </ListBox.Section>
+        </ListBox>
       ) : (
         <nav className="flex flex-col gap-1">
           {item.navigation.map((navItem) => (
-            <Tooltip
-              key={navItem.label}
-              placement="right"
-              content={navItem.label}
-            >
-              <Button
-                color={options.activeNav?.link === navItem.link ? 'primary' : 'default'}
-                variant="light"
-                size="lg"
-                as={Link}
-                href={navItem.link}
-                isIconOnly
-              >
-                <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
+            <Tooltip key={navItem.label}>
+              <Tooltip.Content placement="right" offset={10}>{navItem.label}</Tooltip.Content>
+              <Badge.Anchor>
+                <Button
+                  variant={options.activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
+                  size="lg"
+                  render={(props) => <a href={navItem.link}><button {...props} /></a>}
+                  isIconOnly
+                >
                   {navItem.icon}
+                </Button>
+                <Badge variant="primary" size="sm">
+                  {navItem.badgeContent}
                 </Badge>
-              </Button>
+              </Badge.Anchor>
             </Tooltip>
           ))}
         </nav>
       );
     case 'user':
       return (
-        <Dropdown
-          placement="bottom-start"
-          classNames={{ trigger: options.layout === 'expanded' ? 'justify-start px-2' : 'justify-start' }}
-          {...item.dropdown}
-        >
-          <DropdownTrigger>
+        <Dropdown {...item.dropdown}>
+          <Dropdown.Trigger className={options.layout === 'expanded' ? 'justify-start px-2' : 'justify-start'}>
             {options.layout === 'expanded' ? (
-              <User
-                as="button"
-                avatarProps={item.avatar}
-                className="transition-transform"
-                description={item.description}
-                name={item.name}
-              />
+              <Button variant="ghost">
+                <Avatar {...item.avatar}>
+                  <Avatar.Image {...item.avatar} />
+                  <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+                <div className="flex flex-col">
+                  <Label>{item.name}</Label>
+                  <Description>{item.description}</Description>
+                </div>
+              </Button>
             ) : (
-              <Avatar
-                as="button"
-                className="transition-transform"
-                {...item.avatar}
-              />
+              <button type="button">
+                <Avatar {...item.avatar}>
+                  <Avatar.Image {...item.avatar} />
+                  <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+              </button>
             )}
-          </DropdownTrigger>
-          <DropdownMenu aria-label="User Actions" color="primary" variant="flat" items={item.dropdownItems || []}>
+          </Dropdown.Trigger>
+          <Dropdown.Popover className="min-w-[256px]"
+          placement="bottom start">
+          <Dropdown.Menu aria-label="User Actions" items={item.dropdownItems || []}>
             {(dropdownItem) => (
-              <DropdownItem
+              <Dropdown.Item
                 {...dropdownItem}
                 key={dropdownItem.label}
               >
                 {dropdownItem.label}
-              </DropdownItem>
+              </Dropdown.Item>
             )}
-          </DropdownMenu>
+          </Dropdown.Menu>
+          </Dropdown.Popover>
         </Dropdown>
       );
     case 'custom':
@@ -261,7 +247,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         </div>
         <div className={v.placeholder()} />
         <div className={v.layoutButtonWrapper()}>
-          <Button size="sm" isIconOnly radius="full" className={v.layoutButton()} onPress={toggleLayout}>
+          <Button size="sm" isIconOnly className={v.layoutButton()} onPress={toggleLayout}>
             <IconChevronLeft size={14} />
           </Button>
         </div>
@@ -272,39 +258,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         onClick={() => setMobileMenuOpen(false)}
       >
         {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined )?.navigation?.map((navItem) => (
-          <Tooltip
-            key={navItem.label}
-            placement="top"
-            content={navItem.label}
-            offset={10}
-          >
-            <Button
-              as={Link}
-              radius="md"
-              className={v.bottomNavButton()}
-              variant="light"
-              isIconOnly
-              color={activeNav?.link === navItem.link ? 'primary' : 'default'}
-              onPress={() => setMobileMenuOpen(false)}
-              href={navItem.link}
-            >
-              <Badge content={navItem.badgeContent} color="primary" size="sm" isInvisible={typeof navItem.badgeContent !== 'string'}>
+          <Tooltip key={navItem.label}>
+            <Tooltip.Content placement="top" offset={10}>{navItem.label}</Tooltip.Content>
+            <Badge.Anchor>
+              <Button
+                render={(props) => <a href={navItem.link}><button {...props} /></a>}
+                className={v.bottomNavButton()}
+                isIconOnly
+                variant={activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
+                onPress={() => setMobileMenuOpen(false)}
+              >
                 {navItem.icon}
+              </Button>
+              <Badge variant="primary" size="sm">
+                {navItem.badgeContent}
               </Badge>
-            </Button>
+            </Badge.Anchor>
           </Tooltip>
         ))}
-        <Button radius="md" className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'flat' : 'light'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <Button className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'tertiary' : 'ghost'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <IconDots size={24} stroke={1.5} />
         </Button>
       </nav>
 
-      <Modal isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} classNames={{ wrapper: v.bottomNavModalWrapper(), backdrop: v.bottomNavModalBackdrop(), base: v.bottomNavModalBase() }} isDismissable={false} radius="none">
-        <ModalContent>
-          {() => (
-            <>
-              <ModalHeader />
-              <ModalBody as={ScrollShadow} hideScrollBar className={v.bottomNavModalFooter()}>
+      <Modal isOpen={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+        <Modal.Backdrop>
+          <Modal.Container>
+            <Modal.Dialog>+
+              <Modal.Header />
+              <Modal.Body className={v.bottomNavModalFooter()}>
                 {items.map((item) => {
                   const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
@@ -313,8 +295,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
                     </div>
                   ) : null;
                 })}
-              </ModalBody>
-              <ModalFooter className={v.bottomNavModalBody()}>
+              </Modal.Body>
+              <Modal.Footer className={v.bottomNavModalBody()}>
                 {items.map((item) => {
                   const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
@@ -323,10 +305,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
                     </div>
                   ) : null;
                 })}
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
+              </Modal.Footer>
+            </Modal.Dialog>
+          </Modal.Container>
+        </Modal.Backdrop>
       </Modal>
     </>
   );

@@ -1,137 +1,21 @@
-import type { AccordionItemProps, AccordionProps, AlertProps, AutocompleteItemProps, AutocompleteProps, AutocompleteSectionProps, AvatarGroupProps, AvatarProps, BadgeProps, BreadcrumbsProps, ButtonGroupProps, ButtonProps, CalendarProps, CardProps, CheckboxGroupProps, CheckboxProps, ChipProps, CircularProgressProps, CodeProps, DateInputProps, DatePickerProps, DateRangePickerProps, DividerProps, DrawerBodyProps, DrawerContentProps, DrawerFooterProps, DrawerHeaderProps, DrawerProps, DropdownItemProps, DropdownMenuProps, DropdownProps, DropdownSectionProps, DropdownTriggerProps, ImageProps, InputOtpProps, InputProps, KbdProps, LinkProps, ListboxItemProps, ListboxProps, ListboxSectionProps, ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps, ModalProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps, NavbarMenuItemProps, NavbarMenuToggleProps, NavbarProps, NumberInputProps, PaginationCursorProps, PaginationItemProps, PaginationProps, PopoverContentProps, PopoverProps, PopoverTriggerProps, ProgressProps, RadioGroupProps, RadioProps, RangeCalendarProps, ScrollShadowProps, SelectItemProps, SelectProps, SelectSectionProps, SkeletonProps, SliderProps, SnippetProps, SpacerProps, SpinnerProps, SwitchProps, TabItemProps, TableBodyProps, TableCellProps, TableColumnProps, TableHeaderProps, TableProps, TableRowProps, TabsProps, TextAreaProps, TimeInputProps, ToastProps, TooltipProps, UserProps } from '@heroui/react';
 import { createContext } from 'react';
 import type { Props as ApexChartProps } from 'react-apexcharts';
 import type { ChartProps } from './components/chart/Chart';
-import type { ColorInputProps } from './components/color-input/ColorInput';
-import type { ColorSelectorProps } from './components/color-selector/ColorSelector';
 import type { FormProps } from './fragments/form/Form';
 import type { FormSectionProps } from './fragments/form/FormSection';
 import type { MultiSwitchProps } from './components/multi-switch/MultiSwitch';
 
 export interface FragmentUIContext {
   defaults: {
-    accordion?: Partial<AccordionProps>;
-    accordionItem?: Partial<AccordionItemProps>;
-    alert?: Partial<AlertProps>;
-    autocomplete?: Partial<AutocompleteProps>;
-    autocompleteItem?: Partial<AutocompleteItemProps>;
-    autocompleteSection?: Partial<AutocompleteSectionProps>;
-    avatar?: Partial<AvatarProps>;
-    avatarGroup?: Partial<AvatarGroupProps>;
-    badge?: Partial<BadgeProps>;
-    breadcrumbs?: Partial<BreadcrumbsProps>;
-    button?: Partial<ButtonProps>;
-    buttonGroup?: Partial<ButtonGroupProps>;
-    calendar?: Partial<CalendarProps>;
-    card?: Partial<CardProps>;
     chart?: Partial<Record<ChartProps['type'], Partial<Pick<ApexChartProps, 'options' | 'series'>>>>;
-    checkbox?: Partial<CheckboxProps>;
-    checkboxGroup?: Partial<CheckboxGroupProps>;
-    chip?: Partial<ChipProps>;
-    circularProgress?: Partial<CircularProgressProps>;
-    code?: Partial<CodeProps>;
-    colorInput?: Partial<ColorInputProps>;
-    colorSelector?: Partial<ColorSelectorProps>;
-    dateInput?: Partial<DateInputProps>;
-    datePicker?: Partial<DatePickerProps>;
-    dateRangePicker?: Partial<DateRangePickerProps>;
-    divider?: Partial<DividerProps>;
-    drawer?: Partial<DrawerProps>;
-    drawerBody?: Partial<DrawerBodyProps>;
-    drawerContent?: Partial<DrawerContentProps>;
-    drawerFooter?: Partial<DrawerFooterProps>;
-    drawerHeader?: Partial<DrawerHeaderProps>;
-    dropdown?: Partial<DropdownProps>;
-    dropdownItem?: Partial<DropdownItemProps>;
-    dropdownMenu?: Partial<DropdownMenuProps>;
-    dropdownSection?: Partial<DropdownSectionProps>;
-    dropdownTrigger?: Partial<DropdownTriggerProps>;
     form?: Partial<FormProps>;
     formSection?: Partial<FormSectionProps>;
-    image?: Partial<ImageProps>;
-    input?: Partial<InputProps>;
-    inputOtp?: Partial<InputOtpProps>;
-    kbd?: Partial<KbdProps>;
-    link?: Partial<LinkProps>;
-    listbox?: Partial<ListboxProps>;
-    listboxItem?: Partial<ListboxItemProps>;
-    listboxSection?: Partial<ListboxSectionProps>;
-    modal?: Partial<ModalProps>;
-    modalBody?: Partial<ModalBodyProps>;
-    modalContent?: Partial<ModalContentProps>;
-    modalFooter?: Partial<ModalFooterProps>;
-    modalHeader?: Partial<ModalHeaderProps>;
     multiSwitch?: Partial<MultiSwitchProps>;
-    navbar?: Partial<NavbarProps>;
-    navbarBrand?: Partial<NavbarBrandProps>;
-    navbarContent?: Partial<NavbarContentProps>;
-    navbarItem?: Partial<NavbarItemProps>;
-    navbarMenuItem?: Partial<NavbarMenuItemProps>;
-    navbarMenuToggle?: Partial<NavbarMenuToggleProps>;
-    numberInput?: Partial<NumberInputProps>;
-    pagination?: Partial<PaginationProps>;
-    paginationItem?: Partial<PaginationItemProps>;
-    paginationCursor?: Partial<PaginationCursorProps>;
-    popover?: Partial<PopoverProps>;
-    popoverContent?: Partial<PopoverContentProps>;
-    popoverTrigger?: Partial<PopoverTriggerProps>;
-    progress?: Partial<ProgressProps>;
-    radio?: Partial<RadioProps>;
-    radioGroup?: Partial<RadioGroupProps>;
-    rangeCalendar?: Partial<RangeCalendarProps>;
-    scrollShadow?: Partial<ScrollShadowProps>;
-    select?: Partial<SelectProps>;
-    selectItem?: Partial<SelectItemProps>;
-    selectSection?: Partial<SelectSectionProps>;
-    skeleton?: Partial<SkeletonProps>;
-    slider?: Partial<SliderProps>;
-    snippet?: Partial<SnippetProps>;
-    spacer?: Partial<SpacerProps>;
-    spinner?: Partial<SpinnerProps>;
-    switch?: Partial<SwitchProps>;
-    table?: Partial<TableProps>;
-    tableBody?: Partial<TableBodyProps<unknown>>;
-    tableCell?: Partial<TableCellProps>;
-    tableColumn?: Partial<TableColumnProps<unknown>>;
-    tableHeader?: Partial<TableHeaderProps<unknown>>;
-    tableRow?: Partial<TableRowProps>;
-    tab?: Partial<TabItemProps>;
-    tabs?: Partial<TabsProps>;
-    textArea?: Partial<TextAreaProps>;
-    timeInput?: Partial<TimeInputProps>;
-    toast?: Partial<ToastProps>;
-    tooltip?: Partial<TooltipProps>;
-    user?: Partial<UserProps>;
   }
 }
 
 export const defaultContext: FragmentUIContext = {
   defaults: {
-    avatar: {
-      radius: 'full',
-    },
-    table: {
-      removeWrapper: true,
-    },
-    tabs: {
-      classNames: {
-        tabList: 'p-0',
-        panel: 'border-t-[1px] border-default-200 pt-6',
-      },
-      variant: 'underlined',
-    },
-    user: {
-      avatarProps: {
-        radius: 'full',
-      },
-    },
-    multiSwitch: {
-      variant: 'flat',
-    },
-    button: {
-      variant: 'flat',
-      radius: 'sm',
-    },
     chart: {
       area: {
         options: {
@@ -564,9 +448,6 @@ export const defaultContext: FragmentUIContext = {
         },
       },
     },
-    pagination: {
-      variant: 'light',
-    }
   },
 };
 

@@ -4,7 +4,7 @@
 
 import React, { isValidElement } from 'react';
 import { tv } from 'tailwind-variants';
-import { Divider } from '../../components/base/Divider';
+import { Separator } from '@heroui/react';
 import { withFragment } from '../../withFragment';
 
 export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
@@ -13,7 +13,7 @@ export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
 
 const form = tv({
   slots: {
-    divider: 'my-6',
+    separator: 'my-6',
   },
 });
 
@@ -24,7 +24,7 @@ export const Form: React.FC<FormProps> = withFragment(({ children, ...props }) =
     <form {...props}>
       {children.filter(isValidElement).map((child, index) => index === 0 ? child : (
         <React.Fragment key={index}>
-          <Divider className={v.divider()} />
+          <Separator className={v.separator()} />
           {child}
         </React.Fragment>
       ))}

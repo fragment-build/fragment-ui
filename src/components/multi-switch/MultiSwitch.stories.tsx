@@ -27,6 +27,14 @@ export const Medium: Story = {
   },
 };
 
+export const MediumTertiary: Story = {
+  args: {
+    onValueChange: console.log,
+    size: 'md',
+    variant: 'tertiary'
+  },
+};
+
 export const Large: Story = {
   args: {
     onValueChange: console.log,

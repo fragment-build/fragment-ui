@@ -86,14 +86,10 @@ export default heroui();
 // src/main.css
 
 @import 'tailwindcss';
-
-@plugin '../hero.ts';
-@plugin '../fragment.ts';
+@import "@heroui/styles"; 
 
 /* Note: You may need to change the path to fit your project structure */
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@source '../node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
+@source '../node_modules/@fragment-build/ui/**/*.{js}';
 ```
 
 It is essential to add the FragmentUIProvider at the root of your application.

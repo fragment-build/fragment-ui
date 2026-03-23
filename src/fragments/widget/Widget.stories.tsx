@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Widget } from './Widget';
-import { Select, SelectItem } from '../../components/base/Select';
+import { ListBox, Select } from '@heroui/react';
 import { Chart } from '../../components/chart/Chart';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -20,12 +20,19 @@ export const Default: Story = {
     title: 'Analytics',
     header: {
       endContent: (
-        <Select defaultSelectedKeys={['daily']} isRequired classNames={{ base: 'min-w-36' }}>
-          {[{ label: 'Daily', value: 'daily' }, { label: 'Weekly', value: 'weekly' }, { label: 'Monthly', value: 'monthly' }].map((timespan) => (
-            <SelectItem key={timespan.value} textValue={timespan.value}>
-              {timespan.label}
-            </SelectItem>
-          ))}
+        <Select defaultValue="daily" isRequired><Select.Trigger>
+          <Select.Value />
+            <Select.Indicator />
+          </Select.Trigger>
+          <Select.Popover>
+            <ListBox>
+              {[{ label: 'Daily', value: 'daily' }, { label: 'Weekly', value: 'weekly' }, { label: 'Monthly', value: 'monthly' }].map((timespan) => (
+                <ListBox.Item id={timespan.value} textValue={timespan.value}>
+                  {timespan.label}
+                </ListBox.Item>
+              ))}
+            </ListBox>
+          </Select.Popover>
         </Select>
       ),
     },
@@ -58,8 +65,6 @@ export const Flat: Story = {
         <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
       </>
     ),
-    color: 'primary',
-    variant: 'flat',
   },
 };
 
@@ -71,7 +76,5 @@ export const BorderedColored: Story = {
         <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
       </>
     ),
-    color: 'primary',
-    variant: 'bordered',
   },
 };

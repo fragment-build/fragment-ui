@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes';
 import { IconMoon, IconSun } from '@tabler/icons-react';
-import { Button } from '../base/Button';
-import type { ButtonProps } from '@heroui/button';
+import  { Button, type ButtonProps } from '@heroui/react';
 import { useEffect, useState } from 'react';
 
 /**

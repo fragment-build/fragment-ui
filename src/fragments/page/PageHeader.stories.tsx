@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PageHeader } from './PageHeader';
-import { Button } from '../../components/base/Button';
+import { Button } from '@heroui/react';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -26,7 +26,7 @@ export const WithAction: Story = {
   args: {
     title: 'Profile',
     description: 'These are my personal information.',
-    children: <Button endContent={<IconPlus stroke={1.5} />} fullWidth color="primary">Create</Button>,
+    children: <Button fullWidth variant="primary"><IconPlus stroke={1.5} />Create</Button>,
   },
 };
 
@@ -36,8 +36,8 @@ export const WithActions: Story = {
     description: 'These are my personal information.',
     children: (
       <>
-        <Button startContent={<IconPlus stroke={1.5} size={18} />} fullWidth color="primary">Create</Button>
-        <Button startContent={<IconTrash stroke={1.5} size={18} />} fullWidth color="danger">Delete</Button>
+        <Button fullWidth variant="primary"><IconPlus stroke={1.5} size={18} />Create</Button>
+        <Button fullWidth variant="danger"><IconTrash stroke={1.5} size={18} />Delete</Button>
       </>
     ),
   },

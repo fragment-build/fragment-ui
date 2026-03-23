@@ -7,14 +7,17 @@ import {
   IconPlus,
 } from '@tabler/icons-react';
 import { Shell } from './Shell';
-import { Input } from '../../components/base/Input';
-import { Card, CardBody } from '../../components/base/Card';
-import { Button } from '../../components/base/Button';
-import { Tab, Tabs } from '../../components/base/Tabs';
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '../../components/base/Table';
-import { Textarea } from '../../components/base/Textarea';
-import { Switch } from '../../components/base/Switch';
-import { BreadcrumbItem, Breadcrumbs } from '../../components/base/Breadcrumbs';
+import {
+  Input,
+  Button,
+  Card,
+  Table,
+  Tabs,
+  TextArea,
+  Breadcrumbs,
+  Switch,
+} from '@heroui/react';
+
 import { Grid } from '../../components/grid/Grid';
 import { Chart } from '../../components/chart/Chart';
 import { Form } from '../form/Form';
@@ -61,19 +64,18 @@ export const Primary: Story = {
             {
               key: 'organization-settings',
               label: 'Organization Settings',
-              showDivider: true,
             },
             {
               key: 'logout',
               label: 'Logout',
-              color: 'danger',
+              variant: 'danger',
             },
           ],
         },
         {
           type: 'custom',
           key: 'search',
-          render: <Input label="Search..." />,
+          render: <Input placeholder="Search..." />,
           showExpandedOnly: true,
         },
         {
@@ -124,7 +126,7 @@ export const Primary: Story = {
           type: 'custom',
           key: 'bottom-banner',
           render: (
-            <Card radius="lg" className="border-none">
+            <Card className="border-none">
               <img
                 alt="Woman listing to music"
                 className="object-cover w-full h-28"
@@ -167,73 +169,90 @@ export const WithTable: Story = {
     children: (
       <>
         <PageHeader title="Customers" description="Manage your customers and your profile.">
-          <Button endContent={<IconPlus stroke={1.5} />} fullWidth color="primary">Create</Button>
+          <Button fullWidth variant="primary"><IconPlus stroke={1.5} />Create</Button>
         </PageHeader>
         <Tabs aria-label="Options">
-          <Tab key="table" title="Table">
-            <Table
-              aria-label="Example static collection table"
-              selectionMode="multiple"
-            >
-              <TableHeader>
-                <TableColumn>NAME</TableColumn>
-                <TableColumn>ROLE</TableColumn>
-                <TableColumn>STATUS</TableColumn>
-              </TableHeader>
-              <TableBody>
-                <TableRow key={1}>
-                  <TableCell>Tony Reichert</TableCell>
-                  <TableCell>CEO</TableCell>
-                  <TableCell>Active</TableCell>
-                </TableRow>
-                <TableRow key={2}>
-                  <TableCell>Zoey Lang</TableCell>
-                  <TableCell>Technical Lead</TableCell>
-                  <TableCell>Paused</TableCell>
-                </TableRow>
-                <TableRow key={3}>
-                  <TableCell>Jane Fisher</TableCell>
-                  <TableCell>Senior Developer</TableCell>
-                  <TableCell>Active</TableCell>
-                </TableRow>
-                <TableRow key={4}>
-                  <TableCell>William Howard</TableCell>
-                  <TableCell>Community Manager</TableCell>
-                  <TableCell>Vacation</TableCell>
-                </TableRow>
-              </TableBody>
+          <Tabs.ListContainer>
+            <Tabs.Tab id="table">
+              Table
+              <Tabs.Indicator />
+            </Tabs.Tab>
+            <Tabs.Tab id="settings">
+              Settings
+              <Tabs.Indicator />
+            </Tabs.Tab>
+            <Tabs.Tab id="videos">
+              Videos
+              <Tabs.Indicator />
+            </Tabs.Tab>
+          </Tabs.ListContainer>
+          <Tabs.Panel id="table">
+            <Table>
+              <Table.ScrollContainer>
+                <Table.Content
+                  aria-label="Example static collection table"
+                >
+                  <Table.Header>
+                    <Table.Column>NAME</Table.Column>
+                    <Table.Column>ROLE</Table.Column>
+                    <Table.Column>STATUS</Table.Column>
+                  </Table.Header>
+                  <Table.Body>
+                    <Table.Row id={1}>
+                      <Table.Cell>Tony Reichert</Table.Cell>
+                      <Table.Cell>CEO</Table.Cell>
+                      <Table.Cell>Active</Table.Cell>
+                    </Table.Row>
+                    <Table.Row id={2}>
+                      <Table.Cell>Zoey Lang</Table.Cell>
+                      <Table.Cell>Technical Lead</Table.Cell>
+                      <Table.Cell>Paused</Table.Cell>
+                    </Table.Row>
+                    <Table.Row id={3}>
+                      <Table.Cell>Jane Fisher</Table.Cell>
+                      <Table.Cell>Senior Developer</Table.Cell>
+                      <Table.Cell>Active</Table.Cell>
+                    </Table.Row>
+                    <Table.Row id={4}>
+                      <Table.Cell>William Howard</Table.Cell>
+                      <Table.Cell>Community Manager</Table.Cell>
+                      <Table.Cell>Vacation</Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </Table.Content>
+              </Table.ScrollContainer>
             </Table>
-          </Tab>
-          <Tab key="settings" title="Settings">
+          </Tabs.Panel>
+          <Tabs.Panel id="settings">
             <Form>
               <FormSection title="Name" description="Description" direction="horizontal">
-                <Input label="First name" />
-                <Input label="Last name" />
+                <Input placeholder="First name" />
+                <Input placeholder="Last name" />
               </FormSection>
               <FormSection title="Biography" description="Description">
-                <Textarea label="Biography" minRows={6} />
+                <TextArea placeholder="Biography" rows={6} />
               </FormSection>
               <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
                 <Switch />
               </FormSection>
               <FormSection title="Title" description="Description" direction="horizontal">
-                <Input label="First name" />
-                <Input label="Last name" />
+                <Input placeholder="First name" />
+                <Input placeholder="Last name" />
               </FormSection>
               <FormSection title="Full Width" description="Description" direction="horizontal" fullWidth>
-                <Input label="First name" />
-                <Input label="Last name" />
+                <Input placeholder="First name" />
+                <Input placeholder="Last name" />
               </FormSection>
             </Form>
-          </Tab>
-          <Tab key="videos" title="Videos">
+          </Tabs.Panel>
+          <Tabs.Panel id="videos">
             <Card>
-              <CardBody>
+              <Card.Content>
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa
                 qui officia deserunt mollit anim id est laborum.
-              </CardBody>
+              </Card.Content>
             </Card>
-          </Tab>
+          </Tabs.Panel>
         </Tabs>
       </>
     ),
@@ -249,8 +268,8 @@ export const WithGrid: Story = {
     children: (
       <>
         <Breadcrumbs>
-          <BreadcrumbItem>Home</BreadcrumbItem>
-          <BreadcrumbItem>Customers</BreadcrumbItem>
+          <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+          <Breadcrumbs.Item>Customers</Breadcrumbs.Item>
         </Breadcrumbs>
         <PageHeader title="Dashboard" />
         <Grid size="lg">
