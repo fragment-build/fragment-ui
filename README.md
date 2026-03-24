@@ -26,6 +26,7 @@ Fragment UI is a design system and React component library which provides alread
 - [✨ Components](#-components)
 - [⏳ Installation](#-installation)
 - [🔧 Configuration](#-configuration)
+    - [`linkComponent`](#linkcomponent)
   - [Next.js 13+](#nextjs-13)
 - [🤝 Contributing](#-contributing)
 - [👨‍💻 Development](#-development)
@@ -74,9 +75,6 @@ All done. Enjoy 🎉
 @import 'tailwindcss';
 @import "@heroui/styles"; 
 @import "@fragment-build/ui";
-
-/* Note: You may need to change the path to fit your project structure */
-@source '../node_modules/@fragment-build/ui/**/*.{js}';
 ```
 
 It is essential to add the FragmentUIProvider at the root of your application.

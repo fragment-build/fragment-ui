@@ -1,0 +1,23 @@
+@layer components {
+  .fragment-navbar__topbar {
+    @apply flex gap-6 items-center px-6 py-4;
+  }
+
+  .fragment-navbar__end {
+    @apply ml-auto flex gap-4 items-center;
+  }
+
+  .fragment-navbar__bottom-nav {
+    @apply fixed md:hidden z-50 bottom-0 bg-background flex w-full gap-2 px-2 py-1 border-t border-border;
+    & > *:nth-child(n+5):not(:last-child) {
+      @apply hidden;
+    }
+  }
+
+  .fragment-navbar__bottom-nav-button {
+    @apply h-12 flex-1;
+    & > a {
+      @apply flex-1;
+    }
+  }
+}

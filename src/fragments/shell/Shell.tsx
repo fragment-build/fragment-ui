@@ -1,5 +1,6 @@
 import { Navbar, type NavbarProps } from '../navbar/Navbar';
 import { Sidebar, type SidebarProps } from '../sidebar/Sidebar';
+import { shell } from './Shell.styles';
 
 /**
  * Primary UI component for Dashboard App Shell
@@ -20,11 +21,13 @@ interface ShellPropsVertical {
 export type ShellProps = ShellPropsHorizontal | ShellPropsVertical;
 
 export const Shell: React.FC<ShellProps> = (props) => {
+  const v = shell({ direction: props.direction });
+
   if (props.direction === 'vertical') {
     return (
-      <div className="flex flex-col min-h-screen">
+      <div className={v.base()}>
         <Navbar {...props.navbar} />
-        <main className="flex-1 px-6 py-14 min-w-0 max-w-[2100px] mx-auto w-full">
+        <main className={v.main()}>
           {props.children}
         </main>
       </div>
@@ -32,9 +35,9 @@ export const Shell: React.FC<ShellProps> = (props) => {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className={v.base()}>
       <Sidebar {...props.sidebar} />
-      <main className="flex-1 px-6 lg:px-12 xl:px-20 py-14 min-w-0 max-w-[1920px] mx-auto">
+      <main className={v.main()}>
         {props.children}
       </main>
     </div>

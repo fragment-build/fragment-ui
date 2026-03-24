@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
 import { Button, ButtonGroup, type ButtonGroupProps } from '@heroui/react';
-import { tv } from 'tailwind-variants';
+import { multiSwitch } from './MultiSwitch.styles';
 
 /**
  * Primary UI component for selecting a color
@@ -12,25 +12,6 @@ export interface MultiSwitchProps extends Omit<ButtonGroupProps, 'className'> {
   onValueChange: (value: number) => void;
   variant?: 'outline' | 'tertiary';
 }
-
-const multiSwitch = tv({
-  slots: {
-    button: 'min-w-0',
-  },
-  variants: {
-    size: {
-      sm: {
-        button: 'px-3'
-      },
-      md: {
-        button: 'px-4'
-      },
-      lg: {
-        button: 'px-5'
-      }
-    },
-  },
-});
 
 export const MultiSwitch = forwardRef<HTMLInputElement, MultiSwitchProps>(({
   defaultValue,

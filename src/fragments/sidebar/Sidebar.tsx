@@ -57,16 +57,8 @@ export interface SidebarProps {
   currentPath?: string;
 }
 
-const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
-  switch (align) {
-    case 'center':
-      return 'my-auto max-w-full';
-    case 'bottom':
-      return 'mt-auto max-w-full sticky bottom-0';
-    default:
-      return '';
-  }
-};
+const getAlignmentClass = (align: SidebarItemNavigation['align']) =>
+  align ? `fragment-sidebar__item--${align}` : '';
 
 const ButtonLink: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { href: string }> = ({ href, ...props }) => {
   const { linkComponent: LinkComponent } = useFragmentUI();
@@ -98,7 +90,7 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
           </ListBox.Section>
         </ListBox>
       ) : (
-        <nav className="flex flex-col gap-1">
+        <nav className="fragment-sidebar__collapsed-nav">
           {item.navigation.map((navItem) => (
             <Tooltip key={navItem.label}>
               <Tooltip.Content placement="right" offset={10}>{navItem.label}</Tooltip.Content>
@@ -124,14 +116,14 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
     case 'user':
       return (
         <Dropdown {...item.dropdown}>
-          <Dropdown.Trigger className={options.layout === 'expanded' ? 'justify-start px-2' : 'justify-start'}>
+          <Dropdown.Trigger className={`fragment-sidebar__user-trigger${options.layout === 'expanded' ? ' fragment-sidebar__user-trigger--expanded' : ''}`}>
             {options.layout === 'expanded' ? (
-              <div className="flex items-center gap-2">
+              <div className="fragment-sidebar__user-info">
                 <Avatar {...item.avatar}>
                   <Avatar.Image {...item.avatar} />
                   <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
-                <div className="flex flex-col items-start">
+                <div className="fragment-sidebar__user-text">
                   <Label>{item.name}</Label>
                   <Description>{item.description}</Description>
                 </div>
@@ -164,7 +156,7 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
         (options.layout === 'expanded' && item.showExpandedOnly) ||
         (options.layout === 'collapsed' && item.showCollapsedOnly)
       )
-      ? <div className="px-2">{item.render}</div>
+      ? <div className="fragment-sidebar__custom-item">{item.render}</div>
       : null;
     default:
       return null;
@@ -213,7 +205,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
             {items.map((item) => {
               const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClasses(item.align)}>
+                <div key={item.key} className={getAlignmentClass(item.align)}>
                   {children}
                 </div>
               ) : null;
@@ -223,7 +215,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
             {items.map((item) => {
               const children = item.align === 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClasses(item.align)}>
+                <div key={item.key} className={getAlignmentClass(item.align)}>
                   {children}
                 </div>
               ) : null;
@@ -235,7 +227,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
             {items.map((item) => {
               const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClasses(item.align)}>
+                <div key={item.key} className={getAlignmentClass(item.align)}>
                   {children}
                 </div>
               ) : null;
@@ -245,7 +237,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
             {items.map((item) => {
               const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClasses(item.align)}>
+                <div key={item.key} className={getAlignmentClass(item.align)}>
                   {children}
                 </div>
               ) : null;
@@ -299,7 +291,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
                 {items.map((item) => {
                   const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
-                    <div key={item.key} className={getAlignmentClasses(item.align)}>
+                    <div key={item.key} className={getAlignmentClass(item.align)}>
                       {children}
                     </div>
                   ) : null;
@@ -309,7 +301,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
                 {items.map((item) => {
                   const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
                   return children ? (
-                    <div key={item.key} className={getAlignmentClasses(item.align)}>
+                    <div key={item.key} className={getAlignmentClass(item.align)}>
                       {children}
                     </div>
                   ) : null;

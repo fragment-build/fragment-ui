@@ -1,0 +1,17 @@
+@layer components {
+  .fragment-multi-switch__button {
+    @apply min-w-0;
+  }
+
+  .fragment-multi-switch__button--sm {
+    @apply px-3;
+  }
+
+  .fragment-multi-switch__button--md {
+    @apply px-4;
+  }
+
+  .fragment-multi-switch__button--lg {
+    @apply px-5;
+  }
+}

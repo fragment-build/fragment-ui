@@ -1,0 +1,29 @@
+@layer components {
+  .fragment-widget {
+    @apply px-7 py-5 gap-5;
+  }
+
+  .fragment-widget__header {
+    @apply p-0;
+  }
+
+  .fragment-widget__header-end {
+    @apply ml-auto;
+  }
+
+  .fragment-widget__content {
+    @apply p-0 overflow-visible;
+  }
+
+  .fragment-widget--sm {
+    @apply col-span-1;
+  }
+
+  .fragment-widget--md {
+    @apply col-span-1 lg:col-span-2;
+  }
+
+  .fragment-widget--lg {
+    @apply col-span-1 lg:col-span-2 2xl:col-span-3;
+  }
+}

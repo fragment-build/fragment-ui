@@ -3,18 +3,12 @@
  */
 
 import React, { isValidElement } from 'react';
-import { tv } from 'tailwind-variants';
 import { Separator } from '@heroui/react';
+import { form } from './Form.styles';
 
 export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode[];
 }
-
-const form = tv({
-  slots: {
-    separator: 'my-6',
-  },
-});
 
 export const Form: React.FC<FormProps> = ({ children, ...props }) => {
   const v = form();

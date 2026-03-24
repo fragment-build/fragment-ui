@@ -1,5 +1,14 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+@import "./fragments/navbar/navbar.css";
+@import "./fragments/sidebar/sidebar.css";
+@import "./fragments/shell/shell.css";
+@import "./fragments/page/page-header.css";
+@import "./fragments/widget/widget.css";
+@import "./components/grid/grid.css";
+@import "./components/multi-switch/multi-switch.css";
+@import "./fragments/form/form.css";
+@import "./fragments/form/form-section.css";
 
 @theme {
   --text-xs: 13px;

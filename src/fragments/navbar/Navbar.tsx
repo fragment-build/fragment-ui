@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
 
   return (
     <>
-      <div className="flex gap-6 items-center px-6 py-4">
+      <div className={v.topbar()}>
         {startContent}
         <ScrollShadow hideScrollBar orientation="horizontal">
           <Tabs
@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
             </Tabs.ListContainer>
           </Tabs>
         </ScrollShadow>
-        <div className="ml-auto flex gap-4 items-center">
+        <div className={v.end()}>
           {endContent}
           {user && (
             <Dropdown {...user.dropdown}>
