@@ -14,7 +14,7 @@ const decorators: Preview["decorators"] = [
 
     return (
       <FragmentUIProvider>
-        <div className="bg-dark" lang={locale} dir={direction}>
+        <div lang={locale} dir={direction}>
           <Story />
         </div>
       </FragmentUIProvider>

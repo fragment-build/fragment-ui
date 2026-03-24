@@ -4,7 +4,7 @@
   }
 
   .fragment-sidebar__collapsed {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface gap-8 transition-all;
+    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface-secondary text-surface-secondary-foreground gap-8 transition-all;
   }
 
   .fragment-sidebar__collapsed-body {
@@ -16,7 +16,7 @@
   }
 
   .fragment-sidebar__expanded {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface gap-8 overflow-hidden transition-all;
+    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface-secondary text-surface-secondary-foreground gap-8 overflow-hidden transition-all;
   }
 
   .fragment-sidebar__expanded-body {

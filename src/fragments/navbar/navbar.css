@@ -1,6 +1,6 @@
 @layer components {
   .fragment-navbar__topbar {
-    @apply flex gap-6 items-center px-6 py-4;
+    @apply flex gap-6 items-center px-8 py-5;
   }
 
   .fragment-navbar__end {

@@ -7,12 +7,18 @@
 }
 
 @layer base {
+  html {
+    @apply bg-background text-foreground;
+  }
+
   h1 {
     @apply text-3xl font-semibold;
   }
+
   h2 {
     @apply text-2xl font-semibold;
   }
+
   h3 {
     @apply text-xl font-semibold;
   }
@@ -20,7 +26,7 @@
 
 @layer components {
   .input, .textarea, .select__trigger {
-    @apply border border-border px-5 py-3 shadow-none;
+    @apply border border-border px-6 py-4 shadow-none;
   }
 
   .select__indicator {
@@ -31,22 +37,30 @@
     &:not(.tabs--secondary) {
       .tabs__list {
         @apply border border-border bg-surface;
+        
+        border-radius: calc(var(--radius-3xl) + 0.25rem);
+      }
+
+      .tabs__indicator {
+        @apply shadow-none bg-surface-tertiary;
+      }
+
+      .tabs__tab {
+        &[data-selected="true"] {
+          @apply text-surface-tertiary-foreground;
+        }
       }
     }
 
     .tabs__tab {
-      @apply h-9 px-6;
+      @apply h-10 px-10;
     }
 
     &.tabs--secondary {
       .tabs__tab {
-        @apply h-11 px-7;
+        @apply h-12 px-10;
       }
     }
-  }
-
-  .tabs__indicator {
-    @apply shadow-none;
   }
 
   .card {
@@ -55,10 +69,10 @@
 
   .button {
     &.button--md:not(.button--icon-only) {
-      @apply h-11 px-5;
+      @apply h-12 px-6;
 
       @media (width >= 48rem) {
-        @apply h-11 px-5;
+        @apply h-12 px-6;
       }
     }
   }
@@ -73,4 +87,16 @@
 @import "./components/multi-switch/multi-switch.css";
 @import "./fragments/form/form.css";
 @import "./fragments/form/form-section.css";
+
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+  /* Theme Colors (Light Mode) */
+  --background: #fff;
+  --border: rgba(0, 0, 0, 0.07);
+  --surface-secondary: rgba(0, 0, 0, 0.02);
+}
+
 /* @import "./theme.example.css"; */

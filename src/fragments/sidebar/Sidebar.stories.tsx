@@ -152,9 +152,8 @@ export const Primary: Story = {
         render: (
           <Card className="border-none">
             <img
-              alt="Woman listing to music"
               className="object-cover w-full h-28"
-              src="https://www.heroui.com/images/hero-card.jpeg"
+              src="https://heroui.pro/_next/image?url=%2Fimages%2Fomelette-with-cherry-tomatoes.png&w=750&q=75&dpl=dpl_9VDXjVuaANQtB2iRvgwLBgZB2ZCm"
             />
           </Card>
         ),

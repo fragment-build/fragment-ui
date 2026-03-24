@@ -90,9 +90,8 @@ const sidebarArgs: SidebarProps = {
       render: (
         <Card className="border-none">
           <img
-            alt="Woman listing to music"
             className="object-cover w-full h-28"
-            src="https://www.heroui.com/images/hero-card.jpeg"
+            src="https://heroui.pro/_next/image?url=%2Fimages%2Fomelette-with-cherry-tomatoes.png&w=750&q=75&dpl=dpl_9VDXjVuaANQtB2iRvgwLBgZB2ZCm"
           />
         </Card>
       ),
@@ -104,7 +103,7 @@ const sidebarArgs: SidebarProps = {
 
 const navbarArgs: NavbarProps = {
   currentPath: '/projects',
-  startContent: <img src="/assets/logo-light.svg" alt="Logo" className="h-7" />,
+  startContent: <img src="/assets/logo-light.svg" alt="Logo" className="h-8" />,
   user: {
     name: 'Tony Reichert',
     description: 'ACME Inc.',
