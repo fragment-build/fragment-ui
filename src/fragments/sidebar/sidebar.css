@@ -36,7 +36,7 @@
   }
 
   .fragment-sidebar__layout-button {
-    @apply h-6 w-6 min-w-6;
+    @apply h-6! w-6!;
   }
 
   .fragment-sidebar__bottom-nav {
