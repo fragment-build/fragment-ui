@@ -33,7 +33,7 @@
         @apply border border-border bg-surface;
       }
     }
-    
+
     .tabs__tab {
       @apply h-9 px-6;
     }
@@ -54,10 +54,12 @@
   }
 
   .button {
-    @apply h-11 px-5;
-
-    @media (width >= 48rem) {
+    &.button--md:not(.button--icon-only) {
       @apply h-11 px-5;
+
+      @media (width >= 48rem) {
+        @apply h-11 px-5;
+      }
     }
   }
 }
