@@ -27,20 +27,38 @@
     @apply right-4;
   }
 
-  .tabs__list {
-    @apply border border-border bg-surface;
+  .tabs {
+    &:not(.tabs--secondary) {
+      .tabs__list {
+        @apply border border-border bg-surface;
+      }
+    }
+    
+    .tabs__tab {
+      @apply h-9 px-6;
+    }
+
+    &.tabs--secondary {
+      .tabs__tab {
+        @apply h-11 px-7;
+      }
+    }
   }
 
   .tabs__indicator {
     @apply shadow-none;
   }
 
-  .tabs__tab {
-    @apply h-9 px-6;
-  }
-
   .card {
     @apply border border-border shadow-none;
+  }
+
+  .button {
+    @apply h-11 px-5;
+
+    @media (width >= 48rem) {
+      @apply h-11 px-5;
+    }
   }
 }
 

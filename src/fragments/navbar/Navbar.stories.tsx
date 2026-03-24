@@ -7,7 +7,7 @@ import {
   IconMessageCircle,
 } from '@tabler/icons-react';
 import { Navbar } from './Navbar';
-import { Button, Input, ListBox, Select } from '@heroui/react';
+import { Button, ListBox, Select } from '@heroui/react';
 import { ThemeSwitch } from '../../components/theme-switch/ThemeSwitch';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

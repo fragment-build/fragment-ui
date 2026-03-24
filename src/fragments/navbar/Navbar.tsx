@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
               setActiveNav(nav);
             }}
           >
-            <Tabs.ListContainer className="m-2">
+            <Tabs.ListContainer>
               <Tabs.List>
                 {navigation?.map((item) => (
                   <Tabs.Tab
