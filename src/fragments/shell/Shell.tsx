@@ -24,7 +24,7 @@ export const Shell: React.FC<ShellProps> = (props) => {
     return (
       <div className="flex flex-col min-h-screen">
         <Navbar {...props.navbar} />
-        <main className="flex-1 px-6 py-6 min-w-0 max-w-[1920px] mx-auto w-full">
+        <main className="flex-1 px-6 py-14 min-w-0 max-w-[2100px] mx-auto w-full">
           {props.children}
         </main>
       </div>
