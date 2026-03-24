@@ -12,6 +12,7 @@ export { ThemeSwitch, type ThemeSwitchProps }  from './components/theme-switch/T
 export { Form, type FormProps } from './fragments/form/Form';
 export { FormSection, type FormSectionProps } from './fragments/form/FormSection';
 export { PageHeader, type PageHeaderProps } from './fragments/page/PageHeader';
+export { Navbar, type NavbarProps } from './fragments/navbar/Navbar';
 export { Shell, type ShellProps } from './fragments/shell/Shell';
 export { Sidebar, type SidebarProps } from './fragments/sidebar/Sidebar';
 export { Widget, type WidgetProps } from './fragments/widget/Widget';

@@ -75,7 +75,7 @@ export const Primary: Story = {
         {
           type: 'custom',
           key: 'search',
-          render: <Input placeholder="Search..." />,
+          render: <Input placeholder="Search..." fullWidth />,
           showExpandedOnly: true,
         },
         {
@@ -171,9 +171,9 @@ export const WithTable: Story = {
         <PageHeader title="Customers" description="Manage your customers and your profile.">
           <Button fullWidth variant="primary"><IconPlus stroke={1.5} />Create</Button>
         </PageHeader>
-        <Tabs aria-label="Options" variant="secondary">
+        <Tabs variant="secondary">
           <Tabs.ListContainer>
-            <Tabs.List aria-label="Options">
+            <Tabs.List>
               <Tabs.Tab id="table">
                 Table
                 <Tabs.Indicator />
@@ -228,8 +228,8 @@ export const WithTable: Story = {
           <Tabs.Panel id="settings">
             <Form>
               <FormSection title="Name" description="Description" direction="horizontal">
-                <Input placeholder="First name" />
-                <Input placeholder="Last name" />
+                <Input placeholder="First name" fullWidth />
+                <Input placeholder="Last name" fullWidth />
               </FormSection>
               <FormSection title="Biography" description="Description">
                 <TextArea placeholder="Biography" rows={6} />
@@ -238,12 +238,12 @@ export const WithTable: Story = {
                 <Switch />
               </FormSection>
               <FormSection title="Title" description="Description" direction="horizontal">
-                <Input placeholder="First name" />
-                <Input placeholder="Last name" />
+                <Input placeholder="First name" fullWidth />
+                <Input placeholder="Last name" fullWidth />
               </FormSection>
               <FormSection title="Full Width" description="Description" direction="horizontal" fullWidth>
-                <Input placeholder="First name" />
-                <Input placeholder="Last name" />
+                <Input placeholder="First name" fullWidth />
+                <Input placeholder="Last name" fullWidth />
               </FormSection>
             </Form>
           </Tabs.Panel>
@@ -275,7 +275,7 @@ export const WithGrid: Story = {
         </Breadcrumbs>
         <PageHeader title="Dashboard" />
         <Grid size="lg">
-          <Widget title="Analytics" size="md">
+          <Widget title="Analytics" size="md" variant="secondary">
             <ApexChart
               type="line"
               options={{
@@ -298,7 +298,7 @@ export const WithGrid: Story = {
               height="350px"
             />
           </Widget>
-          <Widget title="Traffic">
+          <Widget title="Traffic" variant="secondary">
             <ApexChart
               type="pie"
               options={{
@@ -325,7 +325,7 @@ export const WithGrid: Story = {
               height="350px"
             />
           </Widget>
-          <Widget title="Origins" size="md">
+          <Widget title="Origins" size="md" variant="secondary">
             <ApexChart
               type="bar"
               options={{
@@ -364,7 +364,7 @@ export const WithGrid: Story = {
               height="350px"
             />
           </Widget>
-          <Widget title="Cost">
+          <Widget title="Cost" variant="secondary">
             <ApexChart
               type="bar"
               options={{
@@ -393,7 +393,7 @@ export const WithGrid: Story = {
               ]}
             />
           </Widget>
-          <Widget title="New Users">
+          <Widget title="New Users" variant="secondary">
             <ApexChart
               type="area"
               options={{
@@ -413,7 +413,7 @@ export const WithGrid: Story = {
               ]}
             />
           </Widget>
-          <Widget title="Website traffic">
+          <Widget title="Website traffic" variant="secondary">
             <ApexChart
               type="donut"
               options={{
@@ -462,7 +462,7 @@ export const WithGrid: Story = {
               height="350px"
             />
           </Widget>
-          <Widget title="New Users">
+          <Widget title="New Users" variant="secondary">
             <ApexChart
               type="donut"
               options={{

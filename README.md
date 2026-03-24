@@ -97,6 +97,25 @@ function App() {
 }
 ```
 
+#### `linkComponent`
+
+Fragment UI renders navigation links internally (e.g. in `Navbar`, `Sidebar`). By default it uses a plain `<a>` tag. Pass a `linkComponent` to use your router's link component instead so navigation stays client-side:
+
+```tsx
+import Link from 'next/link';
+import { FragmentUIProvider } from '@fragment-build/ui';
+
+function App() {
+  return (
+    <FragmentUIProvider linkComponent={Link}>
+      <YourApplication />
+    </FragmentUIProvider>
+  );
+}
+```
+
+Any component that accepts an `href` prop works — React Router's `<Link>`, TanStack Router's `<Link>`, etc.
+
 ### Next.js 13+
 
 You need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)

@@ -3,7 +3,7 @@
  */
 
 import { tv } from 'tailwind-variants';
-import { Card } from '@heroui/react';
+import { Card, CardProps } from '@heroui/react';
 
 export interface WidgetProps {
   children: React.ReactNode;
@@ -13,6 +13,7 @@ export interface WidgetProps {
   };
   title?: string;
   size?: 'sm' | 'md' | 'lg';
+  variant?: CardProps['variant'];
 }
 
 const widget = tv({
@@ -34,11 +35,11 @@ const widget = tv({
   },
 });
 
-export const Widget: React.FC<WidgetProps> = ({ children, title, header, ...props }) => {
+export const Widget: React.FC<WidgetProps> = ({ children, title, header, variant, ...props }) => {
   const { base, content, header: headerClasses, headerEndContent } = widget(props);
 
   return (
-    <Card className={base()}>
+    <Card className={base()} variant={variant}>
       {(title || header?.endContent) && (
         <Card.Header className={headerClasses()}>
           {title && <h3>{title}</h3>}

@@ -61,7 +61,7 @@ export const Primary: Story = {
       {
         type: 'custom',
         key: 'search',
-        render: <Input placeholder="Search..." />,
+        render: <Input placeholder="Search..." fullWidth />,
         showExpandedOnly: true,
       },
       {

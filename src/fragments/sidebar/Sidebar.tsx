@@ -3,6 +3,7 @@ import type { AvatarImageProps, AvatarProps, DropdownItemProps, DropdownProps, L
 import { Avatar, Badge, Button, Chip, Description, Dropdown, Header, Label, ListBox, Modal, ScrollShadow, Tooltip } from '@heroui/react';
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import { useFragmentUI } from '../../context';
 import { sidebar } from './Sidebar.styles';
 import { breakpointsTailwind } from '../../constants';
 
@@ -67,6 +68,11 @@ const getAlignmentClasses = (align: SidebarItemNavigation['align']) => {
   }
 };
 
+const ButtonLink: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { href: string }> = ({ href, ...props }) => {
+  const { linkComponent: LinkComponent } = useFragmentUI();
+  return <LinkComponent href={href}><button {...props} /></LinkComponent>;
+};
+
 const renderItems = (item: SidebarProps['items'][number], options: { layout: SidebarProps['layout'], activeNav: SidebarNavigationItem | undefined }) => {
   switch (item.type) {
     case 'navigation':
@@ -100,14 +106,16 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
                 <Button
                   variant={options.activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
                   size="lg"
-                  render={(props) => <a href={navItem.link}><button {...props} /></a>}
+                  render={(props) => <ButtonLink {...props} href={navItem.link} />}
                   isIconOnly
                 >
                   {navItem.icon}
                 </Button>
-                <Badge variant="primary" size="sm">
-                  {navItem.badgeContent}
-                </Badge>
+                {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
+                  <Badge variant="primary" size="sm">
+                    {navItem.badgeContent}
+                  </Badge>
+                ) : null}
               </Badge.Anchor>
             </Tooltip>
           ))}
@@ -118,23 +126,21 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
         <Dropdown {...item.dropdown}>
           <Dropdown.Trigger className={options.layout === 'expanded' ? 'justify-start px-2' : 'justify-start'}>
             {options.layout === 'expanded' ? (
-              <Button variant="ghost">
+              <div className="flex items-center gap-2">
                 <Avatar {...item.avatar}>
                   <Avatar.Image {...item.avatar} />
                   <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
-                <div className="flex flex-col">
+                <div className="flex flex-col items-start">
                   <Label>{item.name}</Label>
                   <Description>{item.description}</Description>
                 </div>
-              </Button>
+              </div>
             ) : (
-              <button type="button">
-                <Avatar {...item.avatar}>
-                  <Avatar.Image {...item.avatar} />
-                  <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
-                </Avatar>
-              </button>
+              <Avatar {...item.avatar}>
+                <Avatar.Image {...item.avatar} />
+                <Avatar.Fallback>{item.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
             )}
           </Dropdown.Trigger>
           <Dropdown.Popover className="min-w-[256px]"
@@ -193,6 +199,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
   };
 
   const v = sidebar({ layout });
+
   const [activeNav, setActiveNav] = useState<SidebarNavigationItem | undefined>(getActiveNav(currentPath, items))
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -247,7 +254,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         </div>
         <div className={v.placeholder()} />
         <div className={v.layoutButtonWrapper()}>
-          <Button size="sm" isIconOnly className={v.layoutButton()} onPress={toggleLayout}>
+          <Button size="sm" isIconOnly variant="tertiary" className={v.layoutButton()} onPress={toggleLayout}>
             <IconChevronLeft size={14} />
           </Button>
         </div>
@@ -262,7 +269,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
             <Tooltip.Content placement="top" offset={10}>{navItem.label}</Tooltip.Content>
             <Badge.Anchor>
               <Button
-                render={(props) => <a href={navItem.link}><button {...props} /></a>}
+                render={(props) => <ButtonLink {...props} href={navItem.link} />}
                 className={v.bottomNavButton()}
                 isIconOnly
                 variant={activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
@@ -270,9 +277,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
               >
                 {navItem.icon}
               </Button>
-              <Badge variant="primary" size="sm">
-                {navItem.badgeContent}
-              </Badge>
+              {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
+                <Badge variant="primary" size="sm">
+                  {navItem.badgeContent}
+                </Badge>
+              ) : null}
             </Badge.Anchor>
           </Tooltip>
         ))}

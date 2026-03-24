@@ -20,8 +20,8 @@ export const Default: Story = {
     description: 'These are my personal information.',
     children: (
       <>
-        <Input placeholder="Firstname" />
-        <Input placeholder="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -34,8 +34,8 @@ export const Horizontal: Story = {
     direction: 'horizontal',
     children: (
       <>
-        <Input placeholder="Firstname" />
-        <Input placeholder="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -49,8 +49,8 @@ export const FullWidth: Story = {
     fullWidth: true,
     children: (
       <>
-        <Input placeholder="Firstname" />
-        <Input placeholder="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -63,8 +63,8 @@ export const WithSectionTitle: Story = {
     direction: 'horizontal',
     children: (
       <>
-        <Input placeholder="Firstname" />
-        <Input placeholder="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
