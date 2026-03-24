@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Widget } from './Widget';
 import { ListBox, Select } from '@heroui/react';
-import { Chart } from '../../components/chart/Chart';
+import ApexChart from 'react-apexcharts';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Widget> = {
@@ -37,8 +37,13 @@ export const Default: Story = {
       ),
     },
     children: (
-      <Chart
+      <ApexChart
         type="line"
+        options={{
+          chart: {
+            type: 'line',
+          }
+        }}
         series={[
           {
             name: 'Clicks',

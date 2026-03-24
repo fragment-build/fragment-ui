@@ -17,9 +17,9 @@ import {
   Breadcrumbs,
   Switch,
 } from '@heroui/react';
+import ApexChart from 'react-apexcharts';
 
 import { Grid } from '../../components/grid/Grid';
-import { Chart } from '../../components/chart/Chart';
 import { Form } from '../form/Form';
 import { FormSection } from '../form/FormSection';
 import { Widget } from '../widget/Widget';
@@ -171,23 +171,25 @@ export const WithTable: Story = {
         <PageHeader title="Customers" description="Manage your customers and your profile.">
           <Button fullWidth variant="primary"><IconPlus stroke={1.5} />Create</Button>
         </PageHeader>
-        <Tabs aria-label="Options">
+        <Tabs aria-label="Options" variant="secondary">
           <Tabs.ListContainer>
-            <Tabs.Tab id="table">
-              Table
-              <Tabs.Indicator />
-            </Tabs.Tab>
-            <Tabs.Tab id="settings">
-              Settings
-              <Tabs.Indicator />
-            </Tabs.Tab>
-            <Tabs.Tab id="videos">
-              Videos
-              <Tabs.Indicator />
-            </Tabs.Tab>
+            <Tabs.List aria-label="Options">
+              <Tabs.Tab id="table">
+                Table
+                <Tabs.Indicator />
+              </Tabs.Tab>
+              <Tabs.Tab id="settings">
+                Settings
+                <Tabs.Indicator />
+              </Tabs.Tab>
+              <Tabs.Tab id="videos">
+                Videos
+                <Tabs.Indicator />
+              </Tabs.Tab>
+            </Tabs.List>
           </Tabs.ListContainer>
           <Tabs.Panel id="table">
-            <Table>
+            <Table variant="secondary">
               <Table.ScrollContainer>
                 <Table.Content
                   aria-label="Example static collection table"
@@ -274,8 +276,13 @@ export const WithGrid: Story = {
         <PageHeader title="Dashboard" />
         <Grid size="lg">
           <Widget title="Analytics" size="md">
-            <Chart
+            <ApexChart
               type="line"
+              options={{
+                chart: {
+                  type: 'line',
+                }
+              }}
               series={[
                 {
                   name: 'Clicks',
@@ -292,9 +299,12 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="Traffic">
-            <Chart
+            <ApexChart
               type="pie"
               options={{
+                chart: {
+                  type: 'pie',
+                },
                 labels: ['Direct', 'Organic search', 'Referrals'],
                 yaxis: {
                   labels: {
@@ -316,8 +326,13 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="Origins" size="md">
-            <Chart
-              type="column"
+            <ApexChart
+              type="bar"
+              options={{
+                chart: {
+                  type: 'bar',
+                },
+              }}
               series={[
                 {
                   name: 'Organic',
@@ -350,9 +365,12 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="Cost">
-            <Chart
+            <ApexChart
               type="bar"
               options={{
+                chart: {
+                  type: 'bar',
+                },
                 tooltip: {
                   y: {
                     formatter: function (value) {
@@ -376,9 +394,12 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="New Users">
-            <Chart
+            <ApexChart
               type="area"
               options={{
+                chart: {
+                  type: 'area',
+                },
                 xaxis: {
                   categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
                 }
@@ -393,9 +414,12 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="Website traffic">
-            <Chart
+            <ApexChart
               type="donut"
               options={{
+                chart: {
+                  type: 'donut',
+                },
                 labels: ['Direct', 'Sponsor', 'Affiliate', 'Email marketing'],
                 plotOptions: {
                   pie: {
@@ -439,9 +463,12 @@ export const WithGrid: Story = {
             />
           </Widget>
           <Widget title="New Users">
-            <Chart
-              type="radial"
+            <ApexChart
+              type="donut"
               options={{
+                chart: {
+                  type: 'donut',
+                },
                 labels: ['Done', 'In progress', 'To do'],
                 yaxis: {
                   labels: {

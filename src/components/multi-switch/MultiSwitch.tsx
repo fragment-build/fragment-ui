@@ -1,5 +1,4 @@
 import { forwardRef, useEffect, useState } from 'react';
-import { withFragment } from '../../withFragment';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
 import { Button, ButtonGroup, type ButtonGroupProps } from '@heroui/react';
 import { tv } from 'tailwind-variants';
@@ -33,7 +32,7 @@ const multiSwitch = tv({
   },
 });
 
-export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitchProps>(({
+export const MultiSwitch = forwardRef<HTMLInputElement, MultiSwitchProps>(({
   defaultValue,
   onValueChange,
   size = 'md',
@@ -55,4 +54,4 @@ export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitch
       </ButtonGroup>
     </>
   );
-}), 'multiSwitch');
+});

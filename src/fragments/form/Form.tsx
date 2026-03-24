@@ -5,7 +5,6 @@
 import React, { isValidElement } from 'react';
 import { tv } from 'tailwind-variants';
 import { Separator } from '@heroui/react';
-import { withFragment } from '../../withFragment';
 
 export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode[];
@@ -17,7 +16,7 @@ const form = tv({
   },
 });
 
-export const Form: React.FC<FormProps> = withFragment(({ children, ...props }) => {
+export const Form: React.FC<FormProps> = ({ children, ...props }) => {
   const v = form();
 
   return (
@@ -30,4 +29,4 @@ export const Form: React.FC<FormProps> = withFragment(({ children, ...props }) =
       ))}
     </form>
   );
-}, 'form');
+};

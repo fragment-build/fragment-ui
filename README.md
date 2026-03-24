@@ -69,24 +69,11 @@ All done. Enjoy 🎉
 ## 🔧 Configuration
 
 ```ts
-// fragment.ts
-import { fragmentui } from '@fragment-build/tailwind.plugin';
-
-export default fragmentui();
-```
-
-```ts
-// hero.ts
-import { heroui } from '@fragment-build/tailwind.plugin';
-
-export default heroui();
-```
-
-```ts
 // src/main.css
 
 @import 'tailwindcss';
 @import "@heroui/styles"; 
+@import "@fragment-build/ui";
 
 /* Note: You may need to change the path to fit your project structure */
 @source '../node_modules/@fragment-build/ui/**/*.{js}';
@@ -112,17 +99,7 @@ function App() {
 
 ### Next.js 13+
 
-When using Next.js you will need to add a file to re-export Fragment UI using `'use client';` to tell Next.js to render them as client components.
-
-```ts
-'use client';
-
-export { ... } from '@fragment-build/ui';
-```
-
-Now just import all the components you need from this file.
-
-And you need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+You need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 
 ```ts
 // postcss.config.mjs

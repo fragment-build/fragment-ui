@@ -7,18 +7,13 @@ import './style.css';
 import { commonTheme } from './manager';
 
 const decorators: Preview["decorators"] = [
-  (Story, {globals: { locale, disableAnimation, labelPlacement }}) => {
+  (Story, {globals: { locale }}) => {
     const direction =
       // @ts-ignore
       locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
 
     return (
-      <FragmentUIProvider
-        locale={locale}
-        defaults={{}}
-        disableAnimation={disableAnimation}
-        labelPlacement={labelPlacement}
-      >
+      <FragmentUIProvider>
         <div className="bg-dark" lang={locale} dir={direction}>
           <Story />
         </div>

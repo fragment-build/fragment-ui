@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { tv } from 'tailwind-variants';
-import { withFragment } from '../../withFragment';
 
 export interface FormSectionProps {
   children: React.ReactNode;
@@ -45,7 +44,7 @@ const formSection = tv({
   },
 });
 
-export const FormSection: React.FC<FormSectionProps> = withFragment(({ children, title, description, ...props }) => {
+export const FormSection: React.FC<FormSectionProps> = ({ children, title, description, ...props }) => {
   const v = formSection(props);
 
   return (
@@ -61,4 +60,4 @@ export const FormSection: React.FC<FormSectionProps> = withFragment(({ children,
       </div>
     </div>
   );
-}, 'formSection');
+};
