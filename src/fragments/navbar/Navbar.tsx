@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
           </Tooltip>
         ))}
         <Button className={v.bottomNavButton()} variant="ghost" isIconOnly fullWidth>
-          <IconDots size={24} stroke={1.5} />
+          <IconDots />
         </Button>
       </nav>
     </>

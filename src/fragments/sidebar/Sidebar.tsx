@@ -247,7 +247,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         <div className={v.placeholder()} />
         <div className={v.layoutButtonWrapper()}>
           <Button size="sm" isIconOnly variant="tertiary" className={v.layoutButton()} onPress={toggleLayout}>
-            <IconChevronLeft size={14} />
+            <IconChevronLeft />
           </Button>
         </div>
       </div>
@@ -278,7 +278,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
           </Tooltip>
         ))}
         <Button className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'tertiary' : 'ghost'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          <IconDots size={24} stroke={1.5} />
+          <IconDots />
         </Button>
       </nav>
 

@@ -26,7 +26,7 @@ export const WithAction: Story = {
   args: {
     title: 'Profile',
     description: 'These are my personal information.',
-    children: <Button fullWidth variant="primary"><IconPlus stroke={1.5} />Create</Button>,
+    children: <Button fullWidth variant="primary"><IconPlus />Create</Button>,
   },
 };
 
@@ -36,8 +36,8 @@ export const WithActions: Story = {
     description: 'These are my personal information.',
     children: (
       <>
-        <Button fullWidth variant="primary"><IconPlus stroke={1.5} size={18} />Create</Button>
-        <Button fullWidth variant="danger"><IconTrash stroke={1.5} size={18} />Delete</Button>
+        <Button fullWidth variant="primary"><IconPlus />Create</Button>
+        <Button fullWidth variant="danger"><IconTrash />Delete</Button>
       </>
     ),
   },
