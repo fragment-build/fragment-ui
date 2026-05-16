@@ -20,7 +20,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = (props) => {
   if(!mounted) return null;
 
   return (
-    <Button isIconOnly size="sm" onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')} {...props}>
+    <Button isIconOnly size="sm" variant="tertiary" onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')} {...props}>
       {theme === 'light' ? <IconSun size={18} /> : <IconMoon size={18} />}
     </Button>
   );
