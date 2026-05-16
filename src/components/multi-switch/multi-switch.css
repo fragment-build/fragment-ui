@@ -1,17 +1,24 @@
 @layer components {
-  .fragment-multi-switch__button {
-    @apply min-w-0;
+  .fragment-multi-switch.toggle-button-group--horizontal .toggle-button:first-child {
+    padding-inline-start: 2px;
   }
 
-  .fragment-multi-switch__button--sm {
-    @apply px-3;
+  .fragment-multi-switch.toggle-button-group--horizontal .toggle-button:last-child {
+    padding-inline-end: 2px;
   }
 
-  .fragment-multi-switch__button--md {
-    @apply px-4;
+
+  .fragment-multi-switch__btn--danger {
+    --toggle-button-bg-selected: var(--danger-soft);
+    --toggle-button-bg-selected-hover: var(--danger-soft-hover);
+    --toggle-button-bg-selected-pressed: var(--danger-soft-hover);
+    --toggle-button-fg-selected: var(--danger-soft-foreground);
   }
 
-  .fragment-multi-switch__button--lg {
-    @apply px-5;
+  .fragment-multi-switch__btn--neutral {
+    --toggle-button-bg-selected: var(--default-hover);
+    --toggle-button-bg-selected-hover: var(--default-hover);
+    --toggle-button-bg-selected-pressed: var(--default-hover);
+    --toggle-button-fg-selected: var(--default-foreground);
   }
 }
