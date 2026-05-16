@@ -7,7 +7,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-docs',
-    '@vueless/storybook-dark-mode'
   ],
 
   typescript: {

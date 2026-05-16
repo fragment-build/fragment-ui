@@ -7,15 +7,19 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # required for provenance
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        # version is auto-detected from package.json#packageManager
+      - uses: actions/setup-node@v6
         with:
-          node-version: "20"
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build:prod
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
+          node-version-file: "package.json" # reads engines.node
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:prod
+      - run: pnpm publish --access public --provenance --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
