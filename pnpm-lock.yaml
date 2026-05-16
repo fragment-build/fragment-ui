@@ -32,6 +32,9 @@ importers:
       react-apexcharts:
         specifier: 2.1.0
         version: 2.1.0(apexcharts@5.12.0)(react@19.2.6)
+      tailwind-variants:
+        specifier: ^3.2.2
+        version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.3.0)
       tailwindcss:
         specifier: 4.3.0
         version: 4.3.0
