@@ -26,6 +26,7 @@ Fragment UI is a design system and React component library which provides alread
 - [✨ Components](#-components)
 - [⏳ Installation](#-installation)
 - [🔧 Configuration](#-configuration)
+    - [`linkComponent`](#linkcomponent)
   - [Next.js 13+](#nextjs-13)
 - [🤝 Contributing](#-contributing)
 - [👨‍💻 Development](#-development)
@@ -69,31 +70,11 @@ All done. Enjoy 🎉
 ## 🔧 Configuration
 
 ```ts
-// fragment.ts
-import { fragmentui } from '@fragment-build/tailwind.plugin';
-
-export default fragmentui();
-```
-
-```ts
-// hero.ts
-import { heroui } from '@fragment-build/tailwind.plugin';
-
-export default heroui();
-```
-
-```ts
 // src/main.css
 
 @import 'tailwindcss';
-
-@plugin '../hero.ts';
-@plugin '../fragment.ts';
-
-/* Note: You may need to change the path to fit your project structure */
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@source '../node_modules/@fragment-build/ui/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
+@import "@heroui/styles"; 
+@import "@fragment-build/ui";
 ```
 
 It is essential to add the FragmentUIProvider at the root of your application.
@@ -114,19 +95,28 @@ function App() {
 }
 ```
 
-### Next.js 13+
+#### `linkComponent`
 
-When using Next.js you will need to add a file to re-export Fragment UI using `'use client';` to tell Next.js to render them as client components.
+Fragment UI renders navigation links internally (e.g. in `Navbar`, `Sidebar`). By default it uses a plain `<a>` tag. Pass a `linkComponent` to use your router's link component instead so navigation stays client-side:
 
-```ts
-'use client';
+```tsx
+import Link from 'next/link';
+import { FragmentUIProvider } from '@fragment-build/ui';
 
-export { ... } from '@fragment-build/ui';
+function App() {
+  return (
+    <FragmentUIProvider linkComponent={Link}>
+      <YourApplication />
+    </FragmentUIProvider>
+  );
+}
 ```
 
-Now just import all the components you need from this file.
+Any component that accepts an `href` prop works — React Router's `<Link>`, TanStack Router's `<Link>`, etc.
 
-And you need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+### Next.js 13+
+
+You need to [setup Tailwind 4 using PostCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 
 ```ts
 // postcss.config.mjs

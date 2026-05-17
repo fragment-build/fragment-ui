@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Widget } from './Widget';
-import { Select, SelectItem } from '../../components/base/Select';
-import { Chart } from '../../components/chart/Chart';
+import { ListBox, Select } from '@heroui/react';
+import ApexChart from 'react-apexcharts';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Widget> = {
@@ -20,18 +20,30 @@ export const Default: Story = {
     title: 'Analytics',
     header: {
       endContent: (
-        <Select defaultSelectedKeys={['daily']} isRequired classNames={{ base: 'min-w-36' }}>
-          {[{ label: 'Daily', value: 'daily' }, { label: 'Weekly', value: 'weekly' }, { label: 'Monthly', value: 'monthly' }].map((timespan) => (
-            <SelectItem key={timespan.value} textValue={timespan.value}>
-              {timespan.label}
-            </SelectItem>
-          ))}
+        <Select defaultValue="daily" isRequired><Select.Trigger>
+          <Select.Value />
+            <Select.Indicator />
+          </Select.Trigger>
+          <Select.Popover>
+            <ListBox>
+              {[{ label: 'Daily', value: 'daily' }, { label: 'Weekly', value: 'weekly' }, { label: 'Monthly', value: 'monthly' }].map((timespan) => (
+                <ListBox.Item id={timespan.value} textValue={timespan.value}>
+                  {timespan.label}
+                </ListBox.Item>
+              ))}
+            </ListBox>
+          </Select.Popover>
         </Select>
       ),
     },
     children: (
-      <Chart
+      <ApexChart
         type="line"
+        options={{
+          chart: {
+            type: 'line',
+          }
+        }}
         series={[
           {
             name: 'Clicks',
@@ -50,28 +62,38 @@ export const Default: Story = {
   },
 };
 
-export const Flat: Story = {
+export const Secondary: Story = {
   args: {
+    variant: 'secondary',
     children: (
       <>
         <h1 className="text-center text-5xl mt-3">30%</h1>
         <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
       </>
     ),
-    color: 'primary',
-    variant: 'flat',
   },
 };
 
-export const BorderedColored: Story = {
+export const Tertiary: Story = {
   args: {
+    variant: 'tertiary',
     children: (
       <>
         <h1 className="text-center text-5xl mt-3">30%</h1>
         <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
       </>
     ),
-    color: 'primary',
-    variant: 'bordered',
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    variant: 'transparent',
+    children: (
+      <>
+        <h1 className="text-center text-5xl mt-3">30%</h1>
+        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
+      </>
+    ),
   },
 };

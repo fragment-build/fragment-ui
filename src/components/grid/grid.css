@@ -1,0 +1,17 @@
+@layer components {
+  .fragment-grid {
+    @apply grid gap-6 grid-flow-row-dense;
+  }
+
+  .fragment-grid--sm {
+    @apply grid-cols-1;
+  }
+
+  .fragment-grid--md {
+    @apply grid-cols-1 lg:grid-cols-2;
+  }
+
+  .fragment-grid--lg {
+    @apply grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3;
+  }
+}

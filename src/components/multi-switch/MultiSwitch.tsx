@@ -1,57 +1,34 @@
-import { forwardRef, useEffect, useState } from 'react';
-import { Button, ButtonGroup } from '../base/Button';
-import { withFragment } from '../../withFragment';
+import { forwardRef } from 'react';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
-import type { ButtonGroupProps } from '@heroui/button';
-import { tv } from 'tailwind-variants';
+import { ToggleButton, ToggleButtonGroup, type ToggleButtonGroup as ToggleButtonGroupType } from '@heroui/react';
 
-/**
- * Primary UI component for selecting a color
- */
-
-export interface MultiSwitchProps extends Omit<ButtonGroupProps, 'className'> {
+export interface MultiSwitchProps extends Omit<ToggleButtonGroupType['RootProps'], 'defaultSelectedKeys' | 'onSelectionChange' | 'selectionMode' | 'disallowEmptySelection'> {
   defaultValue?: number;
   onValueChange: (value: number) => void;
 }
 
-const multiSwitch = tv({
-  slots: {
-    button: 'min-w-0',
-  },
-  variants: {
-    size: {
-      sm: {
-        button: 'px-3'
-      },
-      md: {
-        button: 'px-4'
-      },
-      lg: {
-        button: 'px-5'
-      }
-    }
-  },
-});
-
-export const MultiSwitch = withFragment(forwardRef<HTMLInputElement, MultiSwitchProps>(({
-  defaultValue,
+export const MultiSwitch = forwardRef<HTMLDivElement, MultiSwitchProps>(({
+  defaultValue = 1,
   onValueChange,
   size = 'md',
   ...props
-}, ref) => {
-  const [value, setValue] = useState(defaultValue ?? 0);
-  const { button } = multiSwitch({ size });
-
-  useEffect(() => onValueChange && onValueChange(value), [value, onValueChange]);
-
-  return (
-    <>
-      <input ref={ref} value={value} type="number" className="hidden" min={0} max={2} required />
-      <ButtonGroup size={size} {...props}>
-        <Button className={button()} onPress={() => setValue(0)} {...value === 0 ? { color: 'danger' } : {}}><IconX size={20} /></Button>
-        <Button className={button()} onPress={() => setValue(1)} {...value === 1 ? { color: 'default', variant: 'solid' } : {}}><IconSlash size={20} /></Button>
-        <Button className={button()} onPress={() => setValue(2)} {...value === 2 ? { color: 'success' } : {}}><IconCheck size={20} /></Button>
-      </ButtonGroup>
-    </>
-  );
-}), 'multiSwitch');
+}, ref) => (
+  <ToggleButtonGroup
+    ref={ref}
+    className="fragment-multi-switch"
+    selectionMode="single"
+    disallowEmptySelection
+    defaultSelectedKeys={[String(defaultValue)]}
+    onSelectionChange={(keys) => onValueChange(Number([...keys][0]))}
+    size={size}
+    {...props}
+  >
+    <ToggleButton id="0" isIconOnly className="fragment-multi-switch__btn--danger"><IconX /></ToggleButton>
+    <ToggleButton id="1" isIconOnly className="fragment-multi-switch__btn--neutral">
+      <IconSlash />
+    </ToggleButton>
+    <ToggleButton id="2" isIconOnly>
+      <IconCheck />
+    </ToggleButton>
+  </ToggleButtonGroup>
+));

@@ -1,0 +1,96 @@
+/*
+ * HeroUI Theme Customization
+ * Add this to your global.css after importing @heroui/styles
+ * Only includes base variables from variables.css
+ * @see https://v3.heroui.com/docs/react/getting-started/theming
+ */
+
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+  /* Theme Colors (Light Mode) */
+  --accent: #F56460;
+  --accent-foreground: #FCFAF6;
+  --background: #FCFAF6;
+  --border: #E8E8E8;
+
+  --scrollbar: #FCFAF6;
+  --separator: #E8E8E8;
+
+  --default: rgba(0, 0, 0, 0.02);
+  --default-foreground: rgba(0, 0, 0, 0.9);
+
+  --field-background: #fff;
+  --field-foreground: rgba(0, 0, 0, 0.9);
+  --field-placeholder: rgba(0, 0, 0, 0.5);
+
+  --focus: oklch(90.00% 0.0084 24.57);
+  --foreground: rgba(0, 0, 0, 0.9);
+  --muted: oklch(55.17% 0.0168 24.57);
+
+  --overlay: oklch(100.00% 0.0025 24.57);
+  --overlay-foreground: oklch(21.03% 0.0084 24.57);
+
+  --segment: rgba(0, 0, 0, 0.9);
+  --segment-foreground: #FCFAF6;
+
+  --surface: #fff;
+  --surface-foreground: rgba(0, 0, 0, 0.9);
+  --surface-secondary: rgba(0, 0, 0, 0.02);
+  --surface-secondary-foreground: rgba(0, 0, 0, 0.9);
+  --surface-tertiary: rgba(0, 0, 0, 0.9);
+  --surface-tertiary-foreground: #FCFAF6;
+
+  --success: oklch(73.29% 0.1968 123.30);
+  --success-foreground: rgba(0, 0, 0, 0.9);
+  --warning: oklch(78.19% 0.1612 44.82);
+  --warning-foreground: rgba(0, 0, 0, 0.9);
+  --danger: #cf383f;
+  --danger-foreground: #FCFAF6;
+
+  /* Border Radius */
+  --radius: 0.5rem;
+  --field-radius: 1rem;
+
+  /* Font Family */
+  /* Make sure to load Inter font in your app */
+  --font-sans: var(--font-inter);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Theme Colors (Dark Mode) */
+  --accent: oklch(68.60% 0.1794 24.57);
+  --accent-foreground: oklch(15% 0.0300 24.57);
+  --background: oklch(12.00% 0.0000 24.57);
+  --border: oklch(28.00% 0.0000 24.57);
+  --danger: oklch(59.40% 0.1967 357.12);
+  --danger-foreground: oklch(99.11% 0 0);
+  --default: oklch(27.40% 0.0000 24.57);
+  --default-foreground: oklch(99.11% 0 0);
+  --field-background: oklch(21.03% 0.0000 24.57);
+  --field-foreground: oklch(99.11% 0.0000 24.57);
+  --field-placeholder: oklch(70.50% 0.0000 24.57);
+  --focus: oklch(68.60% 0.1794 24.57);
+  --foreground: oklch(99.11% 0.0000 24.57);
+  --muted: oklch(70.50% 0.0000 24.57);
+  --overlay: oklch(21.03% 0.0000 24.57);
+  --overlay-foreground: oklch(99.11% 0.0000 24.57);
+  --scrollbar: oklch(70.50% 0.0000 24.57);
+  --segment: oklch(39.64% 0.0000 24.57);
+  --segment-foreground: oklch(99.11% 0.0000 24.57);
+  --separator: oklch(25.00% 0.0000 24.57);
+  --success: oklch(73.29% 0.1935 123.30);
+  --success-foreground: oklch(21.03% 0.0059 123.30);
+  --surface: oklch(21.03% 0.0000 24.57);
+  --surface-foreground: oklch(99.11% 0.0000 24.57);
+  --surface-secondary: oklch(25.70% 0.0000 24.57);
+  --surface-secondary-foreground: oklch(99.11% 0.0000 24.57);
+  --surface-tertiary: oklch(27.21% 0.0000 24.57);
+  --surface-tertiary-foreground: oklch(99.11% 0.0000 24.57);
+  --warning: oklch(82.03% 0.1388 48.83);
+  --warning-foreground: oklch(21.03% 0.0059 48.83);
+}

@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@theme {
+  --text-xs: 13px;
+  --text-sm: 15px;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    @apply text-3xl font-semibold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+}
+
+@layer components {
+  .input, .textarea, .select__trigger {
+    @apply border border-border px-6 py-4 shadow-none;
+  }
+
+  .select__indicator {
+    @apply right-4;
+  }
+
+  .tabs {
+    &:not(.tabs--secondary) {
+      .tabs__list {
+        @apply bg-surface p-0;
+        
+        border-radius: calc(var(--radius-3xl) + 0.25rem);
+      }
+
+      .tabs__indicator {
+        @apply shadow-none bg-surface-tertiary;
+      }
+
+      .tabs__tab {
+        &[data-selected="true"] {
+          @apply text-surface-tertiary-foreground;
+        }
+      }
+    }
+
+    .tabs__tab {
+      @apply h-10 px-6 text-xs text-nowrap;
+    }
+
+    .tabs__list {
+      &[data-orientation="horizontal"] {
+        @apply w-auto;
+      }
+    }
+
+    &.tabs--secondary {
+      .tabs__tab {
+        @apply h-12 px-10;
+      }
+    }
+  }
+
+  .card {
+    @apply border border-border shadow-none;
+  }
+
+  .button {
+    &.button--md:not(.button--icon-only) {
+      @apply h-12 px-6;
+
+      @media (width >= 48rem) {
+        @apply h-12 px-6;
+      }
+    }
+  }
+}
+
+@import "./fragments/navbar/navbar.css";
+@import "./fragments/sidebar/sidebar.css";
+@import "./fragments/shell/shell.css";
+@import "./fragments/page/page-header.css";
+@import "./fragments/widget/widget.css";
+@import "./components/grid/grid.css";
+@import "./components/multi-switch/multi-switch.css";
+@import "./fragments/form/form.css";
+@import "./fragments/form/form-section.css";
+
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+  /* Theme Colors (Light Mode) */
+  --background: #fff;
+  --border: rgba(0, 0, 0, 0.07);
+  --surface-secondary: rgba(0, 0, 0, 0.02);
+}
+
+.dark,
+[data-theme="dark"] {
+  /* Theme Colors (Dark Mode) */
+  --background: oklch(12% 0.005 285.823);
+  --foreground: var(--snow);
+  --border: rgba(255, 255, 255, 0.07);
+  --surface-secondary: rgba(255, 255, 255, 0.02);
+}
+
+/* @import "./theme.example.css"; */

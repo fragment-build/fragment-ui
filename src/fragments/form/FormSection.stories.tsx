@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormSection } from './FormSection';
-import { Input } from '../../components/base/Input';
-import { Switch } from '../../components/base/Switch';
+import { Input, Switch } from '@heroui/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof FormSection> = {
@@ -21,8 +20,8 @@ export const Default: Story = {
     description: 'These are my personal information.',
     children: (
       <>
-        <Input label="Firstname" />
-        <Input label="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -35,8 +34,8 @@ export const Horizontal: Story = {
     direction: 'horizontal',
     children: (
       <>
-        <Input label="Firstname" />
-        <Input label="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -50,8 +49,8 @@ export const FullWidth: Story = {
     fullWidth: true,
     children: (
       <>
-        <Input label="Firstname" />
-        <Input label="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },
@@ -64,8 +63,8 @@ export const WithSectionTitle: Story = {
     direction: 'horizontal',
     children: (
       <>
-        <Input label="Firstname" />
-        <Input label="Lastname" />
+        <Input placeholder="Firstname" fullWidth />
+        <Input placeholder="Lastname" fullWidth />
       </>
     ),
   },

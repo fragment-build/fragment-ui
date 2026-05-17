@@ -7,7 +7,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-docs',
-    '@vueless/storybook-dark-mode'
   ],
 
   typescript: {
@@ -30,7 +29,7 @@ const config: StorybookConfig = {
   refs: {
     'design-system': {
       title: 'HeroUI',
-      url: 'https://storybook.heroui.com/',
+      url: 'https://storybook-v3.heroui.com/',
     },
   }
 };

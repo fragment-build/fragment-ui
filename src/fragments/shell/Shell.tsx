@@ -1,20 +1,44 @@
+import { Navbar, type NavbarProps } from '../navbar/Navbar';
 import { Sidebar, type SidebarProps } from '../sidebar/Sidebar';
+import { shell } from './Shell.styles';
 
 /**
  * Primary UI component for Dashboard App Shell
  */
 
-export interface ShellProps {
+interface ShellPropsHorizontal {
+  direction: 'horizontal';
   sidebar: SidebarProps;
   children: React.ReactNode;
 }
 
-export const Shell: React.FC<ShellProps> = ({ sidebar, children }) => {
+interface ShellPropsVertical {
+  direction: 'vertical';
+  navbar: NavbarProps;
+  children: React.ReactNode;
+}
+
+export type ShellProps = ShellPropsHorizontal | ShellPropsVertical;
+
+export const Shell: React.FC<ShellProps> = (props) => {
+  const v = shell({ direction: props.direction });
+
+  if (props.direction === 'vertical') {
+    return (
+      <div className={v.base()}>
+        <Navbar {...props.navbar} />
+        <main className={v.main()}>
+          {props.children}
+        </main>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex min-h-screen">
-      <Sidebar {...sidebar} />
-      <main className="flex-1 px-6 lg:px-12 xl:px-20 py-14 min-w-0 max-w-[1920px] mx-auto">
-        {children}
+    <div className={v.base()}>
+      <Sidebar {...props.sidebar} />
+      <main className={v.main()}>
+        {props.children}
       </main>
     </div>
   );

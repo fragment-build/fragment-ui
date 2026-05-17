@@ -1,0 +1,41 @@
+@layer components {
+  .fragment-form-section__main {
+    @apply flex flex-col;
+  }
+
+  .fragment-form-section__info {
+    @apply flex-1 pb-4;
+  }
+
+  .fragment-form-section__content {
+    @apply flex flex-col gap-4 flex-1 min-w-0;
+  }
+
+  .fragment-form-section__description {
+    @apply text-sm text-muted;
+  }
+
+  .fragment-form-section--horizontal {
+    .fragment-form-section__main {
+      @apply sm:flex-row;
+    }
+    .fragment-form-section__info {
+      @apply sm:max-w-sm sm:pr-4 sm:pb-0;
+    }
+    .fragment-form-section__content {
+      @apply sm:items-end sm:justify-center sm:max-w-sm;
+    }
+  }
+
+  .fragment-form-section--vertical {
+    .fragment-form-section__content {
+      @apply sm:max-w-3xl;
+    }
+  }
+
+  .fragment-form-section--full-width {
+    .fragment-form-section__content {
+      @apply sm:max-w-full;
+    }
+  }
+}

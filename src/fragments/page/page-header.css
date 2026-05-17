@@ -1,0 +1,13 @@
+@layer components {
+  .fragment-page-header {
+    @apply flex gap-4 justify-between sm:items-end mb-8 flex-col sm:flex-row;
+  }
+
+  .fragment-page-header__description {
+    @apply mt-2 text-muted;
+  }
+
+  .fragment-page-header__actions {
+    @apply flex gap-4;
+  }
+}

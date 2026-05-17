@@ -1,0 +1,22 @@
+@layer components {
+  .fragment-shell {
+    @apply flex min-h-screen;
+  }
+
+  .fragment-shell--vertical {
+    @apply flex-col;
+  }
+
+  .fragment-shell__main {
+    @apply flex-1 min-w-0 mx-auto;
+
+    .fragment-shell--horizontal & {
+      @apply px-8 lg:px-12 xl:px-20 py-14 max-w-[2100px];
+    }
+
+    .fragment-shell--vertical & {
+      @apply px-8 py-6 max-w-[2100px] w-full;
+    }
+
+  }
+}

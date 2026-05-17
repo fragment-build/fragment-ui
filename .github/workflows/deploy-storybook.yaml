@@ -17,25 +17,28 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
+
+    - uses: pnpm/action-setup@v4
+      # version is auto-detected from package.json#packageManager
 
     - name: Setup Node
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: 22
-        cache: 'npm'
+        node-version-file: "package.json" # reads engines.node
+        cache: "pnpm"
 
-    - run: npm ci
-    - run: npm run build-storybook
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm build-storybook
 
     - name: 'upload'
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v5
       with: 
         path: ./storybook-static
 
     - id: deploy
       name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5
       if: ${{ github.ref == 'refs/heads/main' }}
       with:
         token: ${{ github.token }}
