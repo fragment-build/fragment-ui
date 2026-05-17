@@ -1,5 +1,4 @@
 // TODO: export as utils.ts
-export { VisuallyHidden } from '@react-aria/visually-hidden';
 export { useTheme } from 'next-themes';
 
 export { FragmentUIProvider } from './provider';
