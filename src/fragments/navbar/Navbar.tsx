@@ -50,11 +50,14 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
 
   useEffect(() => setActiveNav(getActiveNav(currentPath, navigation ?? [])), [currentPath, navigation]);
 
+  const overflowItems = (navigation ?? []).slice(4);
+  const isOverflowActive = overflowItems.some((item) => activeNav?.link === item.link);
+
   return (
     <>
       <div className={v.topbar()}>
         {startContent}
-        <ScrollShadow hideScrollBar orientation="horizontal">
+        <ScrollShadow hideScrollBar orientation="horizontal" className={v.tabs()}>
           <Tabs
             selectedKey={activeNav?.label}
             onSelectionChange={(key) => {
@@ -68,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
                   <Tabs.Tab
                     id={item.label}
                     key={item.label}
-                    className="text-nowrap"
+                    className={v.tab()}
                     render={(domProps) => <LinkComponent {...domProps} href={item.link} />}
                   >
                     {item.label}
@@ -109,30 +112,44 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
       <nav
         className={v.bottomNav()}
       >
-        {navigation?.map((navItem) => (
+        {navigation?.slice(0, 4).map((navItem) => (
           <Tooltip key={navItem.label}>
             <Tooltip.Content placement="top" offset={10}>{navItem.label}</Tooltip.Content>
-            <Badge.Anchor className={v.bottomNavButton()}>
-              <Button
-                render={(props) => <LinkComponent href={navItem.link}><button {...props} /></LinkComponent>}
-                isIconOnly
-                variant={activeNav?.link === navItem.link ? 'tertiary' : 'ghost'}
-                fullWidth
-                className={v.bottomNavButton()}
-              >
+            <Button
+              render={(props) => <LinkComponent href={navItem.link}><button {...props} /></LinkComponent>}
+              isIconOnly
+              variant={activeNav?.link === navItem.link ? 'tertiary' : 'ghost'}
+              fullWidth
+            >
+              <Badge.Anchor>
                 {navItem.icon}
-              </Button>
-              {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
-                <Badge variant="primary" size="sm">
-                  {navItem.badgeContent}
-                </Badge>
-              ) : null}
-            </Badge.Anchor>
+                {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
+                  <Badge variant="primary" color="accent" size="sm" className={v.bottomNavBadge()}>
+                    {navItem.badgeContent}
+                  </Badge>
+                ) : null}
+              </Badge.Anchor>
+            </Button>
           </Tooltip>
         ))}
-        <Button className={v.bottomNavButton()} variant="ghost" isIconOnly fullWidth>
-          <IconDots />
-        </Button>
+        {overflowItems.length > 0 && (
+          <Dropdown>
+            <Dropdown.Trigger>
+              <Button variant={isOverflowActive ? 'tertiary' : 'ghost'} isIconOnly fullWidth>
+                <IconDots />
+              </Button>
+            </Dropdown.Trigger>
+            <Dropdown.Popover placement="top end">
+              <Dropdown.Menu aria-label="More navigation">
+                {overflowItems.map((item) => (
+                  <Dropdown.Item key={item.label} href={item.link}>
+                    {item.icon}{item.label}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown.Popover>
+          </Dropdown>
+        )}
       </nav>
     </>
   );

@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    currentPath: '/projects',
+    currentPath: '/projects/1',
     items: [
       {
         type: 'user',
@@ -84,31 +84,18 @@ export const Primary: Story = {
               </Button>
             ),
             items: [
-              {
-                type: 'navigation',
-                key: 'navigation-projects',
-                navigation: [
-                  {
-                    label: 'Project 1',
-                    link: '/projects/1',
-                  },
-                  {
-                    label: 'Project 2',
-                    link: '/projects/2',
-                  },
-                  {
-                    label: 'Project 3',
-                    link: '/projects/3',
-                  },
-                ],
-              },
+              { label: 'Project 1', link: '/projects/1' },
+              { label: 'Project 2', link: '/projects/2' },
+              { label: 'Project 3', link: '/projects/3' },
             ],
           },
           {
             label: 'Chat',
             link: '/chat',
             icon: <IconMessageCircle stroke={1.5} />,
-            badgeContent: '',
+            endContent: <Button size="sm" variant="tertiary" isIconOnly>
+              <IconCirclePlus stroke={1.5} />
+            </Button>,
           },
           {
             label: 'Notifications',
@@ -150,9 +137,9 @@ export const Primary: Story = {
         type: 'custom',
         key: 'bottom-banner',
         render: (
-          <Card className="border-none">
+          <Card className="border-none p-0">
             <img
-              className="object-cover w-full h-28"
+              className="object-cover w-full h-34"
               src="https://heroui.pro/_next/image?url=%2Fimages%2Fomelette-with-cherry-tomatoes.png&w=750&q=75&dpl=dpl_9VDXjVuaANQtB2iRvgwLBgZB2ZCm"
             />
           </Card>

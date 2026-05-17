@@ -62,31 +62,33 @@ export const Default: Story = {
   },
 };
 
-export const Flat: Story = {
-  args: {
-    children: (
-      <>
-        <h1 className="text-center text-5xl mt-3">30%</h1>
-        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
-      </>
-    ),
-  },
-};
-
-export const BorderedColored: Story = {
-  args: {
-    children: (
-      <>
-        <h1 className="text-center text-5xl mt-3">30%</h1>
-        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
-      </>
-    ),
-  },
-};
-
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
+    children: (
+      <>
+        <h1 className="text-center text-5xl mt-3">30%</h1>
+        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
+      </>
+    ),
+  },
+};
+
+export const Tertiary: Story = {
+  args: {
+    variant: 'tertiary',
+    children: (
+      <>
+        <h1 className="text-center text-5xl mt-3">30%</h1>
+        <h3 className="text-center text-xl mt-2 mb-3">Project Cost Saving</h3>
+      </>
+    ),
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    variant: 'transparent',
     children: (
       <>
         <h1 className="text-center text-5xl mt-3">30%</h1>

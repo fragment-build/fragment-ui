@@ -13,8 +13,6 @@ export const sidebar = tv({
     layoutButtonWrapper: 'fragment-sidebar__layout-button-wrapper',
     layoutButton: 'fragment-sidebar__layout-button',
     bottomNav: 'fragment-sidebar__bottom-nav',
-    bottomNavButton: 'fragment-sidebar__bottom-nav-button',
-    bottomNavMenuButton: 'fragment-sidebar__bottom-nav-menu-button',
     bottomNavModalBody: 'fragment-sidebar__modal-body',
     bottomNavModalFooter: 'fragment-sidebar__modal-footer',
   },

@@ -7,7 +7,7 @@
 }
 
 @layer base {
-  html {
+  body {
     @apply bg-background text-foreground;
   }
 
@@ -36,7 +36,7 @@
   .tabs {
     &:not(.tabs--secondary) {
       .tabs__list {
-        @apply border border-border bg-surface;
+        @apply bg-surface p-0;
         
         border-radius: calc(var(--radius-3xl) + 0.25rem);
       }
@@ -53,7 +53,13 @@
     }
 
     .tabs__tab {
-      @apply h-10 px-10;
+      @apply h-10 px-6 text-xs text-nowrap;
+    }
+
+    .tabs__list {
+      &[data-orientation="horizontal"] {
+        @apply w-auto;
+      }
     }
 
     &.tabs--secondary {
@@ -88,7 +94,6 @@
 @import "./fragments/form/form.css";
 @import "./fragments/form/form-section.css";
 
-:root,
 .light,
 .default,
 [data-theme="light"],
@@ -97,6 +102,15 @@
   --background: #fff;
   --border: rgba(0, 0, 0, 0.07);
   --surface-secondary: rgba(0, 0, 0, 0.02);
+}
+
+.dark,
+[data-theme="dark"] {
+  /* Theme Colors (Dark Mode) */
+  --background: oklch(12% 0.005 285.823);
+  --foreground: var(--snow);
+  --border: rgba(255, 255, 255, 0.07);
+  --surface-secondary: rgba(255, 255, 255, 0.02);
 }
 
 /* @import "./theme.example.css"; */

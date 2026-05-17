@@ -3,21 +3,23 @@
     @apply flex gap-6 items-center px-8 py-5;
   }
 
+  .fragment-navbar__tabs {
+    @apply hidden md:block;
+  }
+
   .fragment-navbar__end {
     @apply ml-auto flex gap-4 items-center;
   }
 
   .fragment-navbar__bottom-nav {
     @apply fixed md:hidden z-50 bottom-0 bg-background flex w-full gap-2 px-2 py-1 border-t border-border;
-    & > *:nth-child(n+5):not(:last-child) {
-      @apply hidden;
+    & > *,
+    & > * > * {
+      @apply h-12 flex-1;
     }
   }
 
-  .fragment-navbar__bottom-nav-button {
-    @apply h-12 flex-1;
-    & > a {
-      @apply flex-1;
-    }
+  .fragment-navbar__bottom-nav-badge {
+    @apply -top-0.5 -right-2.5;
   }
 }

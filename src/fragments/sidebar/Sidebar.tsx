@@ -1,25 +1,17 @@
 import type { AvatarImageProps, AvatarProps, DropdownItemProps, DropdownProps, ListBoxProps } from '@heroui/react';
 
-import { Avatar, Badge, Button, Chip, Description, Dropdown, Header, Label, ListBox, Modal, ScrollShadow, Tooltip } from '@heroui/react';
+import { Avatar, Badge, Button, Description, Dropdown, Label, Modal, ScrollShadow, Tooltip } from '@heroui/react';
 import { IconChevronLeft, IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useFragmentUI } from '../../context';
 import { sidebar } from './Sidebar.styles';
 import { breakpointsTailwind } from '../../constants';
+import { SidebarNavigation } from './SidebarNavigation';
+import type { SidebarNavigationItem, SidebarChildNavigationItem } from './SidebarNavigation';
 
 /**
  * Primary UI component for Dashboard Sidebars
  */
-
-interface SidebarNavigationItem {
-  label: string;
-  link: string;
-  onClick?: React.MouseEventHandler; // TODO: is this used?
-  icon?: React.ReactNode;
-  endContent?: React.ReactNode;
-  badgeContent?: React.ReactNode;
-  items?: SidebarItemVariants[];
-}
 
 interface SidebarItem {
   key: string;
@@ -57,6 +49,8 @@ export interface SidebarProps {
   currentPath?: string;
 }
 
+export type { SidebarNavigationItem, SidebarChildNavigationItem };
+
 const getAlignmentClass = (align: SidebarItemNavigation['align']) =>
   align ? `fragment-sidebar__item--${align}` : '';
 
@@ -65,58 +59,24 @@ const ButtonLink: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { hre
   return <LinkComponent href={href}><button {...props} /></LinkComponent>;
 };
 
-const renderItems = (item: SidebarProps['items'][number], options: { layout: SidebarProps['layout'], activeNav: SidebarNavigationItem | undefined }) => {
+type RenderOptions = { layout: SidebarProps['layout'], activeLink: string | undefined };
+
+const renderItems = (item: SidebarProps['items'][number], options: RenderOptions) => {
   switch (item.type) {
     case 'navigation':
-      return options.layout === 'expanded' ? (
-        <ListBox
-          aria-label="Listbox menu with sections"
-          {...item.listboxProps}
-        >
-          <ListBox.Section>
-            <Header>{item.label}</Header>
-            {item.navigation.map((navItem) => (
-              <ListBox.Item
-                key={navItem.label}
-                href={navItem.link}
-                variant={options.activeNav?.link === navItem.link ? 'danger' : 'default'}
-                className={options.activeNav?.link === navItem.link ? 'text-primary' : ''}
-              >
-                {navItem.icon}
-                {navItem.label}
-                {typeof navItem.badgeContent === 'string' ? <Chip size="sm" variant="primary">{navItem.badgeContent}</Chip> : navItem.endContent}
-              </ListBox.Item>
-            ))}
-          </ListBox.Section>
-        </ListBox>
-      ) : (
-        <nav className="fragment-sidebar__collapsed-nav">
-          {item.navigation.map((navItem) => (
-            <Tooltip key={navItem.label}>
-              <Tooltip.Content placement="right" offset={10}>{navItem.label}</Tooltip.Content>
-              <Badge.Anchor>
-                <Button
-                  variant={options.activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
-                  size="lg"
-                  render={(props) => <ButtonLink {...props} href={navItem.link} />}
-                  isIconOnly
-                >
-                  {navItem.icon}
-                </Button>
-                {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
-                  <Badge variant="primary" size="sm">
-                    {navItem.badgeContent}
-                  </Badge>
-                ) : null}
-              </Badge.Anchor>
-            </Tooltip>
-          ))}
-        </nav>
+      return (
+        <SidebarNavigation
+          navigation={item.navigation}
+          label={item.label}
+          layout={options.layout === 'expanded' ? 'expanded' : 'collapsed'}
+          activeLink={options.activeLink}
+          listboxProps={item.listboxProps}
+        />
       );
     case 'user':
       return (
         <Dropdown {...item.dropdown}>
-          <Dropdown.Trigger className={`fragment-sidebar__user-trigger${options.layout === 'expanded' ? ' fragment-sidebar__user-trigger--expanded' : ''}`}>
+          <Dropdown.Trigger className="fragment-sidebar__user-trigger">
             {options.layout === 'expanded' ? (
               <div className="fragment-sidebar__user-info">
                 <Avatar {...item.avatar}>
@@ -135,18 +95,14 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
               </Avatar>
             )}
           </Dropdown.Trigger>
-          <Dropdown.Popover className="min-w-[256px]"
-          placement="bottom start">
-          <Dropdown.Menu aria-label="User Actions" items={item.dropdownItems || []}>
-            {(dropdownItem) => (
-              <Dropdown.Item
-                {...dropdownItem}
-                key={dropdownItem.label}
-              >
-                {dropdownItem.label}
-              </Dropdown.Item>
-            )}
-          </Dropdown.Menu>
+          <Dropdown.Popover className="min-w-[256px]" placement="bottom start">
+            <Dropdown.Menu aria-label="User Actions" items={item.dropdownItems || []}>
+              {(dropdownItem) => (
+                <Dropdown.Item {...dropdownItem} key={dropdownItem.label}>
+                  {dropdownItem.label}
+                </Dropdown.Item>
+              )}
+            </Dropdown.Menu>
           </Dropdown.Popover>
         </Dropdown>
       );
@@ -156,28 +112,33 @@ const renderItems = (item: SidebarProps['items'][number], options: { layout: Sid
         (options.layout === 'expanded' && item.showExpandedOnly) ||
         (options.layout === 'collapsed' && item.showCollapsedOnly)
       )
-      ? <div className="fragment-sidebar__custom-item">{item.render}</div>
-      : null;
+        ? <div className="fragment-sidebar__custom-item">{item.render}</div>
+        : null;
     default:
       return null;
   }
 };
 
-const getActiveNav = (currentPath: SidebarProps['currentPath'], items: SidebarProps['items']) => {
-  if (!currentPath) return;
+const getActiveLink = (currentPath: SidebarProps['currentPath'], items: SidebarProps['items']): string | undefined => {
+  if (!currentPath) return undefined;
 
-  const navigations: SidebarNavigationItem[][] = [];
-
+  const allNavItems: SidebarNavigationItem[] = [];
   items.forEach((item) => {
     if (item.type !== 'navigation') return;
-    navigations.push(item.navigation);
+    item.navigation.forEach((navItem) => {
+      allNavItems.push(navItem);
+      navItem.items?.forEach((child) => allNavItems.push(child as SidebarNavigationItem));
+    });
   });
 
-  const possibleMatches = navigations.flat().filter((navItem) => navItem.link.startsWith(currentPath)).sort((a, b) => b.link.length - a.link.length);
-  return possibleMatches.find((pMatch) => pMatch.link === currentPath) || possibleMatches[0];
-}
+  const possibleMatches = allNavItems
+    .filter((navItem) => navItem.link && (currentPath === navItem.link || currentPath.startsWith(navItem.link + '/')))
+    .sort((a, b) => b.link.length - a.link.length);
 
-export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: defaultLayout = "auto" }) => {
+  return (possibleMatches.find((m) => m.link === currentPath) || possibleMatches[0])?.link;
+};
+
+export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: defaultLayout = 'auto' }) => {
   const [layout, setLayout] = useState(defaultLayout);
 
   const toggleLayout = () => {
@@ -192,10 +153,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
 
   const v = sidebar({ layout });
 
-  const [activeNav, setActiveNav] = useState<SidebarNavigationItem | undefined>(getActiveNav(currentPath, items))
+  const [activeLink, setActiveLink] = useState<string | undefined>(getActiveLink(currentPath, items));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => setActiveNav(getActiveNav(currentPath, items)), [currentPath, items]);
+  useEffect(() => setActiveLink(getActiveLink(currentPath, items)), [currentPath, items]);
 
   return (
     <>
@@ -203,21 +164,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         <div className={v.collapsed()}>
           <ScrollShadow hideScrollBar className={v.collapsedBody()}>
             {items.map((item) => {
-              const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
+              const children = item.align !== 'bottom' ? renderItems(item, { layout: 'collapsed', activeLink }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClass(item.align)}>
-                  {children}
-                </div>
+                <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
               ) : null;
             })}
           </ScrollShadow>
           <div className={v.collapsedFooter()}>
             {items.map((item) => {
-              const children = item.align === 'bottom' ? renderItems(item, { layout: 'collapsed', activeNav }) : null;
+              const children = item.align === 'bottom' ? renderItems(item, { layout: 'collapsed', activeLink }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClass(item.align)}>
-                  {children}
-                </div>
+                <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
               ) : null;
             })}
           </div>
@@ -225,21 +182,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         <div className={v.expanded()}>
           <ScrollShadow hideScrollBar className={v.expandedBody()}>
             {items.map((item) => {
-              const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+              const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeLink }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClass(item.align)}>
-                  {children}
-                </div>
+                <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
               ) : null;
             })}
           </ScrollShadow>
           <div className={v.expandedFooter()}>
             {items.map((item) => {
-              const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+              const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeLink }) : null;
               return children ? (
-                <div key={item.key} className={getAlignmentClass(item.align)}>
-                  {children}
-                </div>
+                <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
               ) : null;
             })}
           </div>
@@ -252,32 +205,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
         </div>
       </div>
 
-      <nav
-        className={v.bottomNav()}
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined )?.navigation?.map((navItem) => (
+      <nav className={v.bottomNav()} onClick={() => setMobileMenuOpen(false)}>
+        {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined)?.navigation?.map((navItem) => (
           <Tooltip key={navItem.label}>
-            <Tooltip.Content placement="top" offset={10}>{navItem.label}</Tooltip.Content>
-            <Badge.Anchor>
+            <Tooltip.Trigger>
               <Button
                 render={(props) => <ButtonLink {...props} href={navItem.link} />}
-                className={v.bottomNavButton()}
                 isIconOnly
-                variant={activeNav?.link === navItem.link ? 'primary' : 'tertiary'}
+                variant={activeLink === navItem.link ? 'tertiary' : 'ghost'}
                 onPress={() => setMobileMenuOpen(false)}
               >
-                {navItem.icon}
+                <Badge.Anchor>
+                  {navItem.icon}
+                  {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
+                    <Badge variant="primary" color="accent" size="sm" className="fragment-sidebar__bottom-nav-badge">{navItem.badgeContent}</Badge>
+                  ) : null}
+                </Badge.Anchor>
               </Button>
-              {typeof navItem.badgeContent === 'string' && navItem.badgeContent ? (
-                <Badge variant="primary" size="sm">
-                  {navItem.badgeContent}
-                </Badge>
-              ) : null}
-            </Badge.Anchor>
+            </Tooltip.Trigger>
+            <Tooltip.Content placement="top" offset={10}>{navItem.label}</Tooltip.Content>
           </Tooltip>
         ))}
-        <Button className={v.bottomNavMenuButton()} variant={mobileMenuOpen ? 'tertiary' : 'ghost'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <Button variant={mobileMenuOpen ? 'tertiary' : 'ghost'} isIconOnly onPress={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <IconDots />
         </Button>
       </nav>
@@ -285,25 +234,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
       <Modal isOpen={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <Modal.Backdrop>
           <Modal.Container>
-            <Modal.Dialog>+
+            <Modal.Dialog>
               <Modal.Header />
-              <Modal.Body className={v.bottomNavModalFooter()}>
+              <Modal.Body className={v.bottomNavModalBody()}>
                 {items.map((item) => {
-                  const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+                  const children = item.align !== 'bottom' ? renderItems(item, { layout: 'expanded', activeLink }) : null;
                   return children ? (
-                    <div key={item.key} className={getAlignmentClass(item.align)}>
-                      {children}
-                    </div>
+                    <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
                   ) : null;
                 })}
               </Modal.Body>
-              <Modal.Footer className={v.bottomNavModalBody()}>
+              <Modal.Footer className={v.bottomNavModalFooter()}>
                 {items.map((item) => {
-                  const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeNav }) : null;
+                  const children = item.align === 'bottom' ? renderItems(item, { layout: 'expanded', activeLink }) : null;
                   return children ? (
-                    <div key={item.key} className={getAlignmentClass(item.align)}>
-                      {children}
-                    </div>
+                    <div key={item.key} className={getAlignmentClass(item.align)}>{children}</div>
                   ) : null;
                 })}
               </Modal.Footer>

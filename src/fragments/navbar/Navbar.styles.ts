@@ -3,8 +3,10 @@ import { tv } from 'tailwind-variants';
 export const navbar = tv({
   slots: {
     topbar: 'fragment-navbar__topbar',
+    tabs: 'fragment-navbar__tabs',
+    tab: 'fragment-navbar__tab',
     end: 'fragment-navbar__end',
     bottomNav: 'fragment-navbar__bottom-nav',
-    bottomNavButton: 'fragment-navbar__bottom-nav-button',
+    bottomNavBadge: 'fragment-navbar__bottom-nav-badge',
   },
 });

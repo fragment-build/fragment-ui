@@ -29,7 +29,7 @@ const config: StorybookConfig = {
   refs: {
     'design-system': {
       title: 'HeroUI',
-      url: 'https://storybook.heroui.com/',
+      url: 'https://storybook-v3.heroui.com/',
     },
   }
 };

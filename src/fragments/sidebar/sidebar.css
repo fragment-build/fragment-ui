@@ -4,7 +4,7 @@
   }
 
   .fragment-sidebar__collapsed {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface-secondary text-surface-secondary-foreground gap-8 transition-all;
+    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen gap-8 transition-all;
   }
 
   .fragment-sidebar__collapsed-body {
@@ -16,7 +16,7 @@
   }
 
   .fragment-sidebar__expanded {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen bg-surface-secondary text-surface-secondary-foreground gap-8 overflow-hidden transition-all;
+    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen gap-8 overflow-hidden transition-all;
   }
 
   .fragment-sidebar__expanded-body {
@@ -44,14 +44,16 @@
     & > *:nth-child(n+5):not(:last-child) {
       @apply hidden;
     }
+
+    & > *,
+    & > * > *,
+    & > * > * > * {
+      @apply h-12 flex-1 w-full;
+    }
   }
 
-  .fragment-sidebar__bottom-nav-button {
-    @apply h-12 flex-1;
-  }
-
-  .fragment-sidebar__bottom-nav-menu-button {
-    @apply flex-col gap-0 h-12 flex-1;
+  .fragment-sidebar__bottom-nav-badge {
+    @apply -top-0.5 -right-2.5;
   }
 
   .fragment-sidebar__modal-body {
@@ -64,6 +66,9 @@
 
   .fragment-sidebar__collapsed-nav {
     @apply flex flex-col gap-1;
+    & svg {
+      @apply size-5! shrink-0 self-center;
+    }
   }
 
   .fragment-sidebar__item {
@@ -77,13 +82,10 @@
 
   .fragment-sidebar__user-trigger {
     @apply justify-start;
-    &--expanded {
-      @apply px-2;
-    }
   }
 
   .fragment-sidebar__user-info {
-    @apply flex items-center gap-2;
+    @apply flex items-center gap-2 px-2;
   }
 
   .fragment-sidebar__user-text {
@@ -92,6 +94,70 @@
 
   .fragment-sidebar__custom-item {
     @apply px-2;
+  }
+
+  .fragment-sidebar__nav {
+    @apply text-sm;
+
+    .list-box-item {
+      @apply px-3! pr-1! py-1! h-10!;
+    }
+
+    & svg {
+      @apply size-5 shrink-0 self-center;
+    }
+  }
+
+  .fragment-sidebar__accordion-trigger {
+    @apply w-full flex items-center gap-3 h-10 px-3 pr-1 py-1 rounded-2xl text-sm font-normal cursor-pointer
+           text-foreground transition-colors;
+    &:hover, &[data-hovered="true"] {
+      @apply bg-default!;
+    }
+    &--active {
+      @apply text-accent-soft-foreground;
+    }
+    & > .fragment-sidebar__accordion-label {
+      @apply flex-1 text-left;
+    }
+  }
+
+  .fragment-sidebar__accordion-trigger .accordion__indicator {
+    @apply w-8! shrink-0;
+  }
+
+  .fragment-sidebar__accordion-indicator {
+    @apply size-4 transition-transform duration-200;
+    [data-expanded] & {
+      @apply rotate-90;
+    }
+  }
+
+  .fragment-sidebar__tree-list {
+    @apply relative pl-7;
+    &::before {
+      content: '';
+      @apply absolute top-0 bottom-0 w-px bg-foreground opacity-15 rounded-full left-5;
+    }
+    .list-box {
+      @apply overflow-visible;
+    }
+  }
+
+  .fragment-sidebar__nav-item--active {
+    @apply bg-accent-soft! text-accent-soft-foreground!;
+  }
+
+  .fragment-sidebar__sub-item {
+    @apply pl-8! relative;
+    &::before {
+      content: '';
+      @apply absolute -left-3 ml-px top-1/2 -translate-y-1/2 w-3 h-px bg-foreground opacity-15;
+    }
+  }
+
+  .fragment-sidebar__collapsed-subnav-label {
+    @apply px-3 py-2 text-xs font-medium opacity-60;
   }
 
   /* Layout modifier variants */

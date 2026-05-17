@@ -88,9 +88,9 @@ const sidebarArgs: SidebarProps = {
       type: 'custom',
       key: 'bottom-banner',
       render: (
-        <Card className="border-none">
+        <Card className="border-none p-0">
           <img
-            className="object-cover w-full h-28"
+            className="object-cover w-full h-34"
             src="https://heroui.pro/_next/image?url=%2Fimages%2Fomelette-with-cherry-tomatoes.png&w=750&q=75&dpl=dpl_9VDXjVuaANQtB2iRvgwLBgZB2ZCm"
           />
         </Card>
@@ -107,7 +107,7 @@ const navbarArgs: NavbarProps = {
   user: {
     name: 'Tony Reichert',
     description: 'ACME Inc.',
-    avatar: { size: 'lg', src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d' },
+    avatar: { size: 'md', src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d' },
     dropdownItems: [
       { key: 'profile', label: 'My Profile' },
       { key: 'settings', label: 'Settings' },
