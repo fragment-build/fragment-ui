@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Primary UI component for Form Sections
  */

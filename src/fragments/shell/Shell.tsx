@@ -1,3 +1,5 @@
+'use client';
+
 import { Navbar, type NavbarProps } from '../navbar/Navbar';
 import { Sidebar, type SidebarProps } from '../sidebar/Sidebar';
 import { shell } from './Shell.styles';

@@ -1,3 +1,5 @@
+'use client';
+
 import type { AvatarImageProps, AvatarProps, DropdownItemProps, DropdownProps, ListBoxProps } from '@heroui/react';
 
 import { Avatar, Badge, Button, Description, Dropdown, Label, Modal, ScrollShadow, Tooltip } from '@heroui/react';

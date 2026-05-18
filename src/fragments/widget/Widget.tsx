@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Primary UI component for Dashboard Widgets
  */

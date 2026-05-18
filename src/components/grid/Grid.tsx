@@ -1,3 +1,5 @@
+'use client';
+
 import { grid } from './Grid.styles';
 
 /**

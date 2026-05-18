@@ -1,3 +1,5 @@
+'use client';
+
 import type { ListBoxProps } from '@heroui/react';
 import { Accordion, Badge, Button, Chip, Header, ListBox, Tooltip } from '@heroui/react';
 import { IconChevronRight } from '@tabler/icons-react';

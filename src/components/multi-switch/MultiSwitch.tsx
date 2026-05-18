@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 import { IconCheck, IconSlash, IconX } from '@tabler/icons-react';
 import { ToggleButton, ToggleButtonGroup, type ToggleButtonGroup as ToggleButtonGroupType } from '@heroui/react';
