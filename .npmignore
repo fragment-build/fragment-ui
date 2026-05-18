@@ -2,5 +2,6 @@
 !**/*.js
 !**/*.js.map
 !**/*.d.ts
+!**/*.css
 !package.json
 node_modules

@@ -8,14 +8,15 @@
   },
   "main": "index.js",
   "types": "index.d.ts",
+  "style": "index.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fragment-build/fragment-ui.git"
   },
   "license": "Apache-2.0",
   "scripts": {
-    "build": "tsc",
-    "build:prod": "tsc --outDir .",
+    "build": "tsc && rsync -a --prune-empty-dirs --include='*/' --include='*.css' --exclude='*' src/ dist/",
+    "build:prod": "tsc --outDir . && rsync -a --prune-empty-dirs --include='*/' --include='*.css' --exclude='*' src/ .",
     "lint": "eslint --report-unused-disable-directives --max-warnings 0 ./src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
