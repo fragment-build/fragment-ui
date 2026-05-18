@@ -58,9 +58,9 @@ Fragment UI is a design system and React component library which provides alread
 1. Setup Tailwind CSS  
 [Installation Guide](https://tailwindcss.com/docs/installation)
 
-2. Install Fragment UI
+2. Install Fragment UI and its peer dependencies
 ```bash
-npm install -S @fragment-build/ui
+npm install -S @fragment-build/ui @heroui/react @heroui/styles
 ```
 
 As a next step you must configure the library the way you want to. See [**Configuration**](#🔧-configuration) section.
@@ -69,24 +69,23 @@ All done. Enjoy 🎉
 
 ## 🔧 Configuration
 
+Import the HeroUI styles and Fragment UI styles in your global CSS file:
+
 ```ts
 // src/main.css
 
 @import 'tailwindcss';
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 @import "@fragment-build/ui";
 ```
 
-It is essential to add the FragmentUIProvider at the root of your application.
+Add `FragmentUIProvider` at the root of your application:
 
 ```tsx
 import React from 'react';
-
-// 1. import `FragmentUIProvider` component
 import { FragmentUIProvider } from '@fragment-build/ui';
 
 function App() {
-  // 2. Wrap FragmentUIProvider at the root of your app
   return (
     <FragmentUIProvider>
       <YourApplication />
