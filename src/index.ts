@@ -1,5 +1,5 @@
 // TODO: export as utils.ts
-export { useTheme } from 'next-themes';
+export { useTheme, ThemeScript } from 'next-themes';
 
 export { FragmentUIProvider } from './provider';
 
