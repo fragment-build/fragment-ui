@@ -4,6 +4,8 @@ export { useTheme } from 'next-themes';
 export { FragmentUIProvider } from './provider';
 
 // fragment components
+export { Code, type CodeProps } from './components/code/Code';
+export { CodeSnippet, type CodeSnippetProps } from './components/code-snippet/CodeSnippet';
 export { Grid, type GridProps } from './components/grid/Grid';
 export { MultiSwitch, type MultiSwitchProps } from './components/multi-switch/MultiSwitch';
 export { ThemeSwitch, type ThemeSwitchProps }  from './components/theme-switch/ThemeSwitch';

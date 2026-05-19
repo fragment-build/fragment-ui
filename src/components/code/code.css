@@ -1,0 +1,5 @@
+@layer components {
+  .fragment-code {
+    @apply px-2 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap rounded-sm bg-default/40 text-default-foreground text-sm;
+  }
+}

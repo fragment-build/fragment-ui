@@ -88,6 +88,8 @@
 @import "./fragments/widget/widget.css";
 @import "./components/grid/grid.css";
 @import "./components/multi-switch/multi-switch.css";
+@import "./components/code/code.css";
+@import "./components/code-snippet/code-snippet.css";
 @import "./fragments/form/form.css";
 @import "./fragments/form/form-section.css";
 

@@ -1,0 +1,13 @@
+@layer components {
+  .fragment-code-snippet {
+    @apply inline-flex items-center gap-2 rounded-lg bg-default pr-2;
+  }
+
+  .fragment-code-snippet__code {
+    @apply text-sm font-mono pl-4 py-3;
+  }
+
+  .fragment-code-snippet__prefix {
+    @apply text-muted;
+  }
+}
