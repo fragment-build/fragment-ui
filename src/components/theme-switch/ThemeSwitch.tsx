@@ -3,27 +3,15 @@
 import { useTheme } from '@teispace/next-themes';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import  { Button, type ButtonProps } from '@heroui/react';
-import { useEffect, useState } from 'react';
-
-/**
- * Primary UI component for selecting a color
- */
 
 export type ThemeSwitchProps = ButtonProps;
 
 export const ThemeSwitch: React.FC<ThemeSwitchProps> = (props) => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if(!mounted) return null;
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
-    <Button isIconOnly size="sm" variant="tertiary" onPress={() => setTheme(theme === 'light' ? 'dark' : 'light')} {...props}>
-      {theme === 'light' ? <IconSun size={18} /> : <IconMoon size={18} />}
+    <Button isIconOnly size="sm" variant="tertiary" onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')} {...props}>
+      {resolvedTheme === 'light' ? <IconSun size={18} /> : <IconMoon size={18} />}
     </Button>
   );
 };
