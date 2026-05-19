@@ -14,9 +14,6 @@ importers:
       apexcharts:
         specifier: 5.12.0
         version: 5.12.0
-      next-themes:
-        specifier: 0.4.6
-        version: 0.4.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-apexcharts:
         specifier: 2.1.0
         version: 2.1.0(apexcharts@5.12.0)(react@19.2.6)
@@ -48,6 +45,9 @@ importers:
       '@tailwindcss/vite':
         specifier: 4.3.0
         version: 4.3.0(vite@8.0.13(esbuild@0.27.7)(jiti@2.7.0))
+      '@teispace/next-themes':
+        specifier: 0.5.0
+        version: 0.5.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@types/react':
         specifier: 19.2.14
         version: 19.2.14
@@ -1290,6 +1290,16 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
+  '@teispace/next-themes@0.5.0':
+    resolution: {integrity: sha512-Y/wijExDhEGmEbL3r8cDdTRsamOHxkDPJG78pqDJEqT6u35tlazC0qrwUXcRHz59YXzjlvyfQSRCIbuo5dGUiA==}
+    peerDependencies:
+      next: '>=13.0.0'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    peerDependenciesMeta:
+      next:
+        optional: true
+
   '@testing-library/dom@10.4.1':
     resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
     engines: {node: '>=18'}
@@ -1980,12 +1990,6 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
-
-  next-themes@0.4.6:
-    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   node-releases@2.0.44:
     resolution: {integrity: sha512-5WUyunoPMsvvEhS8AxHtRzP+oA8UCkJ7YRxatWKjngndhDGLiqEVAQKWjFAiAiuL8zMRGzGSJxFnLetoa43qGQ==}
@@ -3365,6 +3369,11 @@ snapshots:
       tailwindcss: 4.3.0
       vite: 8.0.13(esbuild@0.27.7)(jiti@2.7.0)
 
+  '@teispace/next-themes@0.5.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+    dependencies:
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
+
   '@testing-library/dom@10.4.1':
     dependencies:
       '@babel/code-frame': 7.29.0
@@ -4045,11 +4054,6 @@ snapshots:
   nanoid@3.3.12: {}
 
   natural-compare@1.4.0: {}
-
-  next-themes@0.4.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
-    dependencies:
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
 
   node-releases@2.0.44: {}
 

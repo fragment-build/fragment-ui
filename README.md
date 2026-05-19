@@ -60,7 +60,7 @@ Fragment UI is a design system and React component library which provides alread
 
 2. Install Fragment UI and its peer dependencies
 ```bash
-npm install -S @fragment-build/ui @heroui/react @heroui/styles
+npm install -S @fragment-build/ui @heroui/react @heroui/styles @teispace/next-themes
 ```
 
 As a next step you must configure the library the way you want to. See [**Configuration**](#🔧-configuration) section.
@@ -127,6 +127,56 @@ const config = {
 };
 
 export default config;
+```
+
+Set up your root layout with server-side theme reading to avoid flash of unstyled content:
+
+```tsx
+// app/layout.tsx
+import { FragmentUIProvider } from '@fragment-build/ui';
+import { ThemeProvider } from '@teispace/next-themes';
+import { getTheme } from '@teispace/next-themes/server';
+
+export default async function RootLayout({ children }) {
+  const initialTheme = await getTheme();
+
+  return (
+    <html suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" initialTheme={initialTheme ?? undefined}>
+          <FragmentUIProvider>
+            {children}
+          </FragmentUIProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Toggle the theme in a client component using the `useTheme` hook:
+
+```tsx
+// components/ThemeToggle.tsx
+'use client';
+import { useTheme } from '@teispace/next-themes';
+
+export function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  return (
+    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      Toggle theme
+    </button>
+  );
+}
+```
+
+Or use the built-in `ThemeSwitch` component:
+
+```tsx
+import { ThemeSwitch } from '@fragment-build/ui';
+
+<ThemeSwitch />
 ```
 
 ## 🤝 Contributing

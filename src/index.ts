@@ -1,6 +1,4 @@
 // TODO: export as utils.ts
-export { useTheme } from 'next-themes';
-
 export { FragmentUIProvider } from './provider';
 
 // fragment components

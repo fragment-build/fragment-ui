@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from '@teispace/next-themes';
 import { FragmentUIProvider } from '../src/provider';
 import type { Preview } from '@storybook/react-vite';
 import { themes } from "storybook/theming";
@@ -13,11 +14,13 @@ const decorators: Preview["decorators"] = [
       locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
 
     return (
-      <FragmentUIProvider>
-        <div lang={locale} dir={direction}>
-          <Story />
-        </div>
-      </FragmentUIProvider>
+      <ThemeProvider attribute="class" storage="local">
+        <FragmentUIProvider>
+          <div lang={locale} dir={direction}>
+            <Story />
+          </div>
+        </FragmentUIProvider>
+      </ThemeProvider>
     );
   },
 ];

@@ -1,6 +1,6 @@
 'use client';
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@teispace/next-themes';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import  { Button, type ButtonProps } from '@heroui/react';
 import { useEffect, useState } from 'react';
