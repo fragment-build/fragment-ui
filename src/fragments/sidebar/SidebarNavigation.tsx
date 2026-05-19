@@ -34,7 +34,7 @@ const NavItemBadge = ({ badgeContent, endContent }: Pick<SidebarNavigationItem, 
   const content = typeof badgeContent === 'string'
     ? <Chip size="sm" color="accent" variant="primary">{badgeContent}</Chip>
     : endContent ?? null;
-  return content ? <span className="ml-auto">{content}</span> : null;
+  return content ? <span className="fragment-sidebar__nav-badge">{content}</span> : null;
 };
 
 const NavSubList: React.FC<{
@@ -151,8 +151,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         const isParentActive = activeLink === navItem.link;
 
         return (
-          <div key={navItem.label} className="px-1">
-          <Accordion hideSeparator defaultExpandedKeys={isParentActive || hasActiveChild ? [navItem.label] : []}>
+          <Accordion key={navItem.label} className="fragment-sidebar__accordion" hideSeparator defaultExpandedKeys={isParentActive || hasActiveChild ? [navItem.label] : []}>
             <Accordion.Item id={navItem.label}>
               <Accordion.Heading>
                 <Accordion.Trigger className={`fragment-sidebar__accordion-trigger${isParentActive ? ' fragment-sidebar__accordion-trigger--active' : ''}`}>
@@ -168,7 +167,6 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
-          </div>
         );
       })}
     </div>

@@ -19,6 +19,10 @@
     }
   }
 
+  .fragment-navbar__user-popover {
+    min-width: 256px;
+  }
+
   .fragment-navbar__bottom-nav-badge {
     @apply -top-0.5 -right-2.5;
   }

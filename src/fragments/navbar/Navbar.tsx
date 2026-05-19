@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
                   <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
               </Dropdown.Trigger>
-              <Dropdown.Popover className="min-w-[256px]" placement="bottom start">
+              <Dropdown.Popover className="fragment-navbar__user-popover" placement="bottom start">
                 <Dropdown.Menu aria-label="User Actions" items={user.dropdownItems || []}>
                   {(dropdownItem) => (
                     <Dropdown.Item

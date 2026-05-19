@@ -97,7 +97,7 @@ const renderItems = (item: SidebarProps['items'][number], options: RenderOptions
               </Avatar>
             )}
           </Dropdown.Trigger>
-          <Dropdown.Popover className="min-w-[256px]" placement="bottom start">
+          <Dropdown.Popover className="fragment-sidebar__user-popover" placement="bottom start">
             <Dropdown.Menu aria-label="User Actions" items={item.dropdownItems || []}>
               {(dropdownItem) => (
                 <Dropdown.Item {...dropdownItem} key={dropdownItem.label}>

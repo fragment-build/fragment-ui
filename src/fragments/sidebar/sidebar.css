@@ -80,6 +80,18 @@
     }
   }
 
+  .fragment-sidebar__accordion {
+    @apply p-1;
+  }
+
+  .fragment-sidebar__nav-badge {
+    @apply ml-auto;
+  }
+
+  .fragment-sidebar__user-popover {
+    min-width: 256px;
+  }
+
   .fragment-sidebar__user-trigger {
     @apply justify-start;
   }
