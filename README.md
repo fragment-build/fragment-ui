@@ -129,26 +129,6 @@ const config = {
 export default config;
 ```
 
-To avoid the React 19 warning about inline scripts, add `ThemeScript` to your root layout's `<head>`:
-
-```tsx
-// app/layout.tsx
-import { ThemeScript } from '@fragment-build/ui';
-
-export default function RootLayout({ children }) {
-  return (
-    <html suppressHydrationWarning>
-      <head>
-        <ThemeScript />
-      </head>
-      <body>{children}</body>
-    </html>
-  );
-}
-```
-
-> `suppressHydrationWarning` on `<html>` is required because `next-themes` modifies the `class` attribute on the server vs. client.
-
 ## 🤝 Contributing
 
 Feel free to fork and make a Pull Request to this project. All the input is warmly welcome!
