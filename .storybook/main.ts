@@ -1,4 +1,8 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import type { StorybookConfig } from '@storybook/react-vite';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -31,7 +35,16 @@ const config: StorybookConfig = {
       title: 'HeroUI',
       url: 'https://storybook-v3.heroui.com/',
     },
-  }
+  },
+
+  viteFinal: (config) => {
+    config.resolve ??= {};
+    config.resolve.alias = {
+      ...config.resolve.alias as object,
+      'next/navigation': path.resolve(__dirname, './mocks/next-navigation.ts'),
+    };
+    return config;
+  },
 };
 
 export default config;
