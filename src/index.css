@@ -26,6 +26,14 @@
     @apply border border-border px-6 py-4 shadow-none;
   }
 
+  .input-group {
+    @apply border border-border shadow-none;
+
+    .input-group__input {
+      @apply px-6 py-4;
+    }
+  }
+
   .select__indicator {
     @apply right-4;
   }
