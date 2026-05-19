@@ -189,7 +189,9 @@ export const Vertical: Story = {
               <TextArea placeholder="Biography" rows={6} />
             </FormSection>
             <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
-              <Switch />
+              <Switch>
+                <Switch.Control><Switch.Thumb /></Switch.Control>
+              </Switch>
             </FormSection>
             <FormSection title="Full Width" description="Description" direction="horizontal" fullWidth>
               <Input placeholder="First name" fullWidth />
@@ -248,7 +250,9 @@ export const WithTable: Story = {
               <TextArea placeholder="Biography" rows={6} />
             </FormSection>
             <FormSection title="Notifications" description="Turn on/off email notifications." direction="horizontal">
-              <Switch />
+              <Switch>
+                <Switch.Control><Switch.Thumb /></Switch.Control>
+              </Switch>
             </FormSection>
             <FormSection title="Full Width" description="Description" direction="horizontal" fullWidth>
               <Input placeholder="First name" fullWidth />

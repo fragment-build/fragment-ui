@@ -26,11 +26,27 @@
     @apply border border-border px-6 py-4 shadow-none;
   }
 
-  .input-group {
-    @apply border border-border shadow-none;
+  .input-group, .search-field__group, .number-field__group{
+    @apply border border-border shadow-none h-auto;
 
-    .input-group__input {
+    .input-group__input, .search-field__input, .number-field__input {
       @apply px-6 py-4;
+    }
+  }
+
+  .slider {
+    .slider__thumb {
+      @apply bg-transparent;
+    }
+    &[data-orientation="horizontal"] {
+      .slider__track {
+        @apply h-1;
+      }
+    }
+    &[data-orientation="vertical"] {
+      .slider__track {
+        @apply w-1;
+      }
     }
   }
 
