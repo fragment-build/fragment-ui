@@ -54,6 +54,14 @@
     @apply right-4;
   }
 
+  .select__trigger:has(.select__indicator) {
+    @apply pr-10;
+  }
+
+  .select__popover {
+    @apply rounded-xl;
+  }
+
   .tabs {
     &:not(.tabs--secondary) {
       .tabs__list {
