@@ -3,12 +3,13 @@ import {
   IconBell,
   IconBoxMultiple,
   IconCirclePlus,
+  IconGraph,
   IconHome,
   IconMessageCircle,
   IconSettings,
 } from '@tabler/icons-react';
 import { Navbar } from './Navbar';
-import { Button, ListBox, Select } from '@heroui/react';
+import { Button } from '@heroui/react';
 import { ThemeSwitch } from '../../components/theme-switch/ThemeSwitch';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -67,6 +68,11 @@ export const Primary: Story = {
         label: 'Home',
         link: '/',
         icon: <IconHome stroke={1.5} />,
+      },
+      {
+        label: 'Analytics',
+        link: '/analytics',
+        icon: <IconGraph stroke={1.5} />,
       },
       {
         label: 'My Projects',

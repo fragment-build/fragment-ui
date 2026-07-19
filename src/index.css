@@ -71,6 +71,10 @@
           @apply text-surface-tertiary-foreground;
         }
       }
+
+      .tabs__list-container {
+        @apply bg-transparent;
+      }
     }
 
     .tabs__tab {

@@ -2,7 +2,7 @@
 
 import type { AvatarImageProps, AvatarProps, DropdownItemProps, DropdownProps } from '@heroui/react';
 
-import { Avatar, Badge, Button, Dropdown, ScrollShadow, Tabs, Tooltip } from '@heroui/react';
+import { Avatar, Badge, Button, Dropdown, Tabs, Tooltip } from '@heroui/react';
 import { IconDots } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useFragmentUI } from '../../context';
@@ -59,31 +59,30 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
     <>
       <div className={v.topbar()}>
         {startContent}
-        <ScrollShadow hideScrollBar orientation="horizontal" className={v.tabs()}>
-          <Tabs
-            selectedKey={activeNav?.label}
-            onSelectionChange={(key) => {
-              const nav = navigation?.find((item) => item.label === key);
-              setActiveNav(nav);
-            }}
-          >
-            <Tabs.ListContainer>
-              <Tabs.List>
-                {navigation?.map((item) => (
-                  <Tabs.Tab
-                    id={item.label}
-                    key={item.label}
-                    className={v.tab()}
-                    render={(domProps) => <LinkComponent {...domProps} href={item.link} />}
-                  >
-                    {item.label}
-                    <Tabs.Indicator />
-                  </Tabs.Tab>
-                ))}
-              </Tabs.List>
-            </Tabs.ListContainer>
-          </Tabs>
-        </ScrollShadow>
+        <Tabs
+          className={v.tabs()}
+          selectedKey={activeNav?.label}
+          onSelectionChange={(key) => {
+            const nav = navigation?.find((item) => item.label === key);
+            setActiveNav(nav);
+          }}
+        >
+          <Tabs.ListContainer>
+            <Tabs.List>
+              {navigation?.map((item) => (
+                <Tabs.Tab
+                  id={item.label}
+                  key={item.label}
+                  className={v.tab()}
+                  render={(domProps) => <LinkComponent {...domProps} href={item.link} />}
+                >
+                  {item.label}
+                  <Tabs.Indicator />
+                </Tabs.Tab>
+              ))}
+            </Tabs.List>
+          </Tabs.ListContainer>
+        </Tabs>
         <div className={v.end()}>
           {endContent}
           {user && (

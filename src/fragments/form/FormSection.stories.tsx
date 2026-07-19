@@ -140,16 +140,16 @@ export const AllInputs: Story = {
       </FormSection>
       <FormSection title="CheckboxGroup" description="Multiple selection.">
         <CheckboxGroup>
-          <Checkbox value="design"><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control><Checkbox.Content>Design</Checkbox.Content></Checkbox>
-          <Checkbox value="engineering"><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control><Checkbox.Content>Engineering</Checkbox.Content></Checkbox>
-          <Checkbox value="marketing"><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control><Checkbox.Content>Marketing</Checkbox.Content></Checkbox>
+          <Checkbox value="design"><Checkbox.Content><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control>Design</Checkbox.Content></Checkbox>
+          <Checkbox value="engineering"><Checkbox.Content><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control>Engineering</Checkbox.Content></Checkbox>
+          <Checkbox value="marketing"><Checkbox.Content><Checkbox.Control><Checkbox.Indicator /></Checkbox.Control>Marketing</Checkbox.Content></Checkbox>
         </CheckboxGroup>
       </FormSection>
       <FormSection title="RadioGroup" description="Single selection.">
         <RadioGroup>
-          <Radio value="free"><Radio.Control><Radio.Indicator /></Radio.Control><Radio.Content>Free</Radio.Content></Radio>
-          <Radio value="pro"><Radio.Control><Radio.Indicator /></Radio.Control><Radio.Content>Pro</Radio.Content></Radio>
-          <Radio value="enterprise"><Radio.Control><Radio.Indicator /></Radio.Control><Radio.Content>Enterprise</Radio.Content></Radio>
+          <Radio value="free"><Radio.Content><Radio.Control><Radio.Indicator /></Radio.Control>Free</Radio.Content></Radio>
+          <Radio value="pro"><Radio.Content><Radio.Control><Radio.Indicator /></Radio.Control>Pro</Radio.Content></Radio>
+          <Radio value="enterprise"><Radio.Content><Radio.Control><Radio.Indicator /></Radio.Control>Enterprise</Radio.Content></Radio>
         </RadioGroup>
       </FormSection>
       <FormSection title="Slider" description="Range selection.">
@@ -161,7 +161,7 @@ export const AllInputs: Story = {
         </Slider>
       </FormSection>
       <FormSection title="Switch" description="Boolean toggle." direction="horizontal">
-        <Switch><Switch.Control><Switch.Thumb /></Switch.Control></Switch>
+        <Switch aria-label="Boolean toggle"><Switch.Content><Switch.Control><Switch.Thumb /></Switch.Control></Switch.Content></Switch>
       </FormSection>
     </Form>
   ),
@@ -172,6 +172,14 @@ export const HorizontalSimple: Story = {
     title: 'Notifications',
     description: 'Turn on/off email notifications.',
     direction: 'horizontal',
-    children: <Switch><Switch.Control><Switch.Thumb /></Switch.Control></Switch>,
+    children: (
+      <Switch aria-label="Email notifications">
+        <Switch.Content>
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+        </Switch.Content>
+      </Switch>
+    ),
   },
 };

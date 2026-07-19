@@ -4,7 +4,7 @@
   }
 
   .fragment-navbar__tabs {
-    @apply hidden md:block;
+    @apply hidden md:block min-w-0;
   }
 
   .fragment-navbar__end {
