@@ -71,13 +71,12 @@
     }
   }
 
-  .fragment-sidebar__item {
-    &--center {
-      @apply my-auto max-w-full;
-    }
-    &--bottom {
-      @apply mt-auto max-w-full sticky bottom-0;
-    }
+  .fragment-sidebar__item--center {
+    @apply my-auto max-w-full;
+  }
+
+  .fragment-sidebar__item--bottom {
+    @apply mt-auto max-w-full sticky bottom-0;
   }
 
   .fragment-sidebar__accordion {
@@ -126,12 +125,13 @@
     &:hover, &[data-hovered="true"] {
       @apply bg-default!;
     }
-    &--active {
-      @apply text-accent-soft-foreground;
-    }
     & > .fragment-sidebar__accordion-label {
       @apply flex-1 text-left;
     }
+  }
+
+  .fragment-sidebar__accordion-trigger--active {
+    @apply text-accent-soft-foreground;
   }
 
   .fragment-sidebar__accordion-trigger .accordion__indicator {
