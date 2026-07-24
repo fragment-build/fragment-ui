@@ -74,6 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
                   id={item.label}
                   key={item.label}
                   className={v.tab()}
+                  href={item.link}
                   render={(domProps) => <LinkComponent {...domProps} href={item.link} />}
                 >
                   {item.label}
