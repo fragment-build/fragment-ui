@@ -135,11 +135,14 @@ export const Navbar: React.FC<NavbarProps> = ({ navigation, user, startContent, 
         ))}
         {overflowItems.length > 0 && (
           <Dropdown>
-            <Dropdown.Trigger>
-              <Button variant={isOverflowActive ? 'tertiary' : 'ghost'} isIconOnly fullWidth>
-                <IconDots />
-              </Button>
-            </Dropdown.Trigger>
+            <Button
+              aria-label="More navigation"
+              variant={isOverflowActive ? 'tertiary' : 'ghost'}
+              isIconOnly
+              fullWidth
+            >
+              <IconDots />
+            </Button>
             <Dropdown.Popover placement="top end">
               <Dropdown.Menu aria-label="More navigation">
                 {overflowItems.map((item) => (
