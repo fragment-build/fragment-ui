@@ -43,6 +43,23 @@
   --surface-tertiary: rgba(0, 0, 0, 0.9);
   --surface-tertiary-foreground: #FCFAF6;
 
+  /*
+   * Fragment surfaces — Sidebar / Navbar.
+   * Omit them and each fragment stays on the page surface, exactly as before.
+   * Set --sidebar to give the rail its own ground; --sidebar-foreground moves the ink with it.
+   */
+  --sidebar: #F7F5F0;
+  --sidebar-foreground: var(--foreground);
+  --navbar: var(--background);
+  --navbar-foreground: var(--foreground);
+
+  /*
+   * Optional. The states inside the rail are page-level palette roles, so they do not
+   * follow --sidebar on their own. Set these when the rail contrasts with the page.
+   */
+  /* --sidebar-default: rgba(0, 0, 0, 0.04); */
+  /* --sidebar-accent-soft-foreground: color-mix(in oklab, var(--accent) 70%, var(--sidebar-foreground) 30%); */
+
   --success: oklch(73.29% 0.1968 123.30);
   --success-foreground: rgba(0, 0, 0, 0.9);
   --warning: oklch(78.19% 0.1612 44.82);
@@ -91,6 +108,15 @@
   --surface-secondary-foreground: oklch(99.11% 0.0000 24.57);
   --surface-tertiary: oklch(27.21% 0.0000 24.57);
   --surface-tertiary-foreground: oklch(99.11% 0.0000 24.57);
+
+  /* Fragment surfaces — Sidebar / Navbar */
+  --sidebar: oklch(16.00% 0.0000 24.57);
+  --sidebar-foreground: var(--foreground);
+  --navbar: var(--background);
+  --navbar-foreground: var(--foreground);
+
+  /* --sidebar-default: rgba(255, 255, 255, 0.06); */
+  /* --sidebar-accent-soft-foreground: color-mix(in oklab, var(--accent) 80%, var(--sidebar-foreground) 30%); */
   --warning: oklch(82.03% 0.1388 48.83);
   --warning-foreground: oklch(21.03% 0.0059 48.83);
 }

@@ -1,6 +1,6 @@
 @layer components {
   .fragment-navbar__topbar {
-    @apply flex gap-6 items-center px-8 py-5;
+    @apply flex gap-6 items-center px-8 py-5 bg-navbar text-navbar-foreground;
   }
 
   .fragment-navbar__tabs {
@@ -12,7 +12,7 @@
   }
 
   .fragment-navbar__bottom-nav {
-    @apply fixed md:hidden z-50 bottom-0 bg-background flex w-full gap-2 px-2 py-1 border-t border-border;
+    @apply fixed md:hidden z-50 bottom-0 bg-navbar text-navbar-foreground flex w-full gap-2 px-2 py-1 border-t border-border;
     & > *,
     & > * > * {
       @apply h-12 flex-1;

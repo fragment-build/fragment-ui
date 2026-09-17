@@ -28,6 +28,8 @@ Fragment UI is a design system and React component library which provides alread
 - [🔧 Configuration](#-configuration)
     - [`linkComponent`](#linkcomponent)
   - [Next.js 13+](#nextjs-13)
+- [🎨 Theming](#-theming)
+  - [Fragment surfaces](#fragment-surfaces)
 - [🤝 Contributing](#-contributing)
 - [👨‍💻 Development](#-development)
 - [🤝 Community support](#-community-support)
@@ -177,6 +179,77 @@ Or use the built-in `ThemeSwitch` component:
 import { ThemeSwitch } from '@fragment-build/ui';
 
 <ThemeSwitch />
+```
+
+## 🎨 Theming
+
+Fragment UI builds on the [HeroUI theme tokens](https://v3.heroui.com/docs/react/getting-started/theming).
+Override any of them in your own stylesheet — see [`theme.example.css`](src/theme.example.css)
+for the full list. Import Fragment UI first, then declare your overrides: both blocks are
+unlayered and equally specific, so the later one wins.
+
+```css
+@import 'tailwindcss';
+@import "@heroui/styles";
+@import "@fragment-build/ui";
+
+:root,
+.light,
+[data-theme="light"] {
+  --accent: #F56460;
+}
+```
+
+### Fragment surfaces
+
+The `Sidebar` and `Navbar` fragments paint their own surface so they can be themed
+independently of the page. Each defaults to the page surface, so a theme that declares none of
+these renders exactly as it did before.
+
+| Token | Default | Applies to |
+| --- | --- | --- |
+| `--sidebar` | `var(--background)` | Sidebar rail (collapsed + expanded) and its mobile bottom nav |
+| `--sidebar-foreground` | `var(--foreground)` | Text, icons and tree guides inside the rail |
+| `--navbar` | `var(--background)` | Navbar topbar and its mobile bottom nav |
+| `--navbar-foreground` | `var(--foreground)` | Text and icons inside the navbar |
+
+A tinted rail on a white page:
+
+```css
+:root,
+.light,
+[data-theme="light"] {
+  --sidebar: #F7F5F0;
+}
+```
+
+They are also available as Tailwind utilities — `bg-sidebar`, `text-sidebar-foreground`,
+`bg-navbar`, `text-navbar-foreground` — so you can reuse the same surface in your own markup.
+
+#### Contrasting rails
+
+The interactive states inside the rail are page-level palette roles, not sidebar roles, and
+they do **not** follow `--sidebar` on their own. The active nav pill (`--accent-soft`) is
+translucent, so it composites over whatever the rail is painted and needs nothing. The other
+two do, once the rail contrasts noticeably with the page:
+
+| Token | Default | Controls |
+| --- | --- | --- |
+| `--sidebar-default` | `var(--default)` | Hover ground of collapsible nav groups |
+| `--sidebar-accent-soft-foreground` | `var(--accent-soft-foreground)` | Ink of the active nav item and active group |
+
+A dark rail on a light page:
+
+```css
+:root,
+.light,
+[data-theme="light"] {
+  --sidebar: oklch(21% 0.006 285.89);
+  --sidebar-foreground: oklch(99.11% 0 0);
+
+  --sidebar-default: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-soft-foreground: color-mix(in oklab, var(--accent) 70%, var(--sidebar-foreground) 30%);
+}
 ```
 
 ## 🤝 Contributing

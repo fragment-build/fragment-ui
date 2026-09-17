@@ -4,7 +4,8 @@
   }
 
   .fragment-sidebar__collapsed {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen gap-8 transition-all;
+    @apply fixed top-0 left-0 border-r border-border bg-sidebar text-sidebar-foreground
+           flex flex-col h-screen gap-8 transition-all;
   }
 
   .fragment-sidebar__collapsed-body {
@@ -16,7 +17,8 @@
   }
 
   .fragment-sidebar__expanded {
-    @apply fixed top-0 left-0 border-r border-border flex flex-col h-screen gap-8 overflow-hidden transition-all;
+    @apply fixed top-0 left-0 border-r border-border bg-sidebar text-sidebar-foreground
+           flex flex-col h-screen gap-8 overflow-hidden transition-all;
   }
 
   .fragment-sidebar__expanded-body {
@@ -40,7 +42,7 @@
   }
 
   .fragment-sidebar__bottom-nav {
-    @apply fixed md:hidden z-50 bottom-0 bg-background flex w-full gap-2 px-2 py-1 border-t border-border;
+    @apply fixed md:hidden z-50 bottom-0 bg-sidebar text-sidebar-foreground flex w-full gap-2 px-2 py-1 border-t border-border;
     & > *:nth-child(n+5):not(:last-child) {
       @apply hidden;
     }
@@ -121,9 +123,10 @@
 
   .fragment-sidebar__accordion-trigger {
     @apply w-full flex items-center gap-3 h-10 px-3 pr-1 py-1 rounded-2xl text-sm font-normal cursor-pointer
-           text-foreground transition-colors;
+           text-sidebar-foreground transition-colors;
     &:hover, &[data-hovered="true"] {
-      @apply bg-default!;
+      /* `--default` is a page-level palette colour; opt out per-rail with `--sidebar-default`. */
+      background-color: var(--sidebar-default, var(--default)) !important;
     }
     & > .fragment-sidebar__accordion-label {
       @apply flex-1 text-left;
@@ -131,7 +134,7 @@
   }
 
   .fragment-sidebar__accordion-trigger--active {
-    @apply text-accent-soft-foreground;
+    color: var(--sidebar-accent-soft-foreground, var(--accent-soft-foreground));
   }
 
   .fragment-sidebar__accordion-trigger .accordion__indicator {
@@ -149,7 +152,7 @@
     @apply relative pl-7;
     &::before {
       content: '';
-      @apply absolute top-0 bottom-0 w-px bg-foreground opacity-15 rounded-full left-5;
+      @apply absolute top-0 bottom-0 w-px bg-sidebar-foreground opacity-15 rounded-full left-5;
     }
     .list-box {
       @apply overflow-visible;
@@ -157,14 +160,16 @@
   }
 
   .fragment-sidebar__nav-item--active {
-    @apply bg-accent-soft! text-accent-soft-foreground!;
+    /* `--accent-soft` is translucent, so it composites over the rail, not the page. */
+    @apply bg-accent-soft!;
+    color: var(--sidebar-accent-soft-foreground, var(--accent-soft-foreground)) !important;
   }
 
   .fragment-sidebar__sub-item {
     @apply pl-8! relative;
     &::before {
       content: '';
-      @apply absolute -left-3 ml-px top-1/2 -translate-y-1/2 w-3 h-px bg-foreground opacity-15;
+      @apply absolute -left-3 ml-px top-1/2 -translate-y-1/2 w-3 h-px bg-sidebar-foreground opacity-15;
     }
   }
 

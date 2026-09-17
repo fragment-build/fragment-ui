@@ -3,6 +3,21 @@
   --text-sm: 15px;
 }
 
+/*
+ * Fragment surface roles.
+ *
+ * `inline` so the utilities compile to `var(--sidebar)` / `var(--navbar)` and are
+ * therefore resolved on the element, not frozen at `:root`. Each falls back to the
+ * page role, so a theme that never declares them renders exactly as before.
+ */
+@theme inline {
+  --color-sidebar: var(--sidebar, var(--background));
+  --color-sidebar-foreground: var(--sidebar-foreground, var(--foreground));
+
+  --color-navbar: var(--navbar, var(--background));
+  --color-navbar-foreground: var(--navbar-foreground, var(--foreground));
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground;
@@ -137,6 +152,12 @@
   --background: #fff;
   --border: rgba(0, 0, 0, 0.07);
   --surface-secondary: rgba(0, 0, 0, 0.02);
+
+  /* Fragment surfaces: default to the page surface */
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --navbar: var(--background);
+  --navbar-foreground: var(--foreground);
 }
 
 .dark,
@@ -146,6 +167,12 @@
   --foreground: var(--snow);
   --border: rgba(255, 255, 255, 0.07);
   --surface-secondary: rgba(255, 255, 255, 0.02);
+
+  /* Fragment surfaces: default to the page surface */
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --navbar: var(--background);
+  --navbar-foreground: var(--foreground);
 }
 
 /* @import "./theme.example.css"; */
