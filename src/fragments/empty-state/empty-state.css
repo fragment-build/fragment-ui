@@ -1,0 +1,39 @@
+@layer components {
+  .fragment-empty-state {
+    @apply flex flex-col items-center justify-center text-center px-6 py-12;
+  }
+
+  .fragment-empty-state--sm {
+    @apply py-8;
+
+    .fragment-empty-state__icon {
+      @apply size-9 mb-3;
+      & svg {
+        @apply size-[18px];
+      }
+    }
+  }
+
+  .fragment-empty-state--bordered {
+    @apply rounded-2xl border border-dashed border-border bg-surface;
+  }
+
+  .fragment-empty-state__icon {
+    @apply mb-4 flex size-11 items-center justify-center rounded-xl bg-default text-muted;
+    & svg {
+      @apply size-5;
+    }
+  }
+
+  .fragment-empty-state__title {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  .fragment-empty-state__description {
+    @apply mt-1 max-w-sm text-sm text-muted text-balance;
+  }
+
+  .fragment-empty-state__actions {
+    @apply mt-5 flex flex-wrap items-center justify-center gap-2;
+  }
+}

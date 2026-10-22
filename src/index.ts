@@ -15,3 +15,5 @@ export { Navbar, type NavbarProps } from './fragments/navbar/Navbar';
 export { Shell, type ShellProps } from './fragments/shell/Shell';
 export { Sidebar, type SidebarProps } from './fragments/sidebar/Sidebar';
 export { Widget, type WidgetProps } from './fragments/widget/Widget';
+export { StatCard, type StatCardProps, type StatCardDelta } from './fragments/stat/StatCard';
+export { EmptyState, type EmptyStateProps } from './fragments/empty-state/EmptyState';

@@ -1,5 +1,5 @@
 @layer components {
   .fragment-form__separator {
-    @apply my-6;
+    @apply my-7;
   }
 }

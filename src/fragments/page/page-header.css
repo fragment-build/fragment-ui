@@ -1,13 +1,33 @@
 @layer components {
   .fragment-page-header {
-    @apply flex gap-4 justify-between sm:items-end mb-8 flex-col sm:flex-row;
+    @apply flex flex-col gap-5 mb-8;
+  }
+
+  .fragment-page-header--with-footer {
+    @apply mb-6;
+  }
+
+  .fragment-page-header__row {
+    @apply flex gap-4 justify-between flex-col sm:flex-row sm:items-end;
+  }
+
+  .fragment-page-header__heading {
+    @apply min-w-0;
+  }
+
+  .fragment-page-header__eyebrow {
+    @apply mb-1.5 flex items-center gap-1.5 text-xs font-medium text-muted;
   }
 
   .fragment-page-header__description {
-    @apply mt-2 text-muted;
+    @apply mt-1 max-w-2xl text-sm text-muted;
   }
 
   .fragment-page-header__actions {
-    @apply flex gap-4;
+    @apply flex flex-wrap gap-2 items-center shrink-0;
+  }
+
+  .fragment-page-header__footer {
+    @apply min-w-0;
   }
 }

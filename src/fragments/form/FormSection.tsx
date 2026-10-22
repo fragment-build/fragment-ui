@@ -9,21 +9,28 @@ import { formSection } from './FormSection.styles';
 
 export interface FormSectionProps {
   children: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   description?: React.ReactNode;
+  /** Sits beside the title, for a status chip or a "reset to default" link. */
+  titleEndContent?: React.ReactNode;
   direction?: 'vertical' | 'horizontal';
   fullWidth?: boolean;
 }
 
-export const FormSection: React.FC<FormSectionProps> = ({ children, title, description, ...props }) => {
+export const FormSection: React.FC<FormSectionProps> = ({
+  children, title, description, titleEndContent, ...props
+}) => {
   const v = formSection(props);
 
   return (
     <div className={v.base()}>
       <div className={v.main()}>
         <div className={v.info()}>
-          <h3>{title}</h3>
-          <div className={v.description()}>{description}</div>
+          <div className={v.titleRow()}>
+            <h3 className={v.title()}>{title}</h3>
+            {titleEndContent}
+          </div>
+          {description && <div className={v.description()}>{description}</div>}
         </div>
         <div className={v.content()}>
           {children}

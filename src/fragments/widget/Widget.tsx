@@ -13,26 +13,40 @@ export interface WidgetProps {
     startContent?: React.ReactNode;
     endContent?: React.ReactNode;
   };
-  title?: string;
-  size?: 'sm' | 'md' | 'lg';
+  title?: React.ReactNode;
+  /** One line under the title saying what the widget measures. */
+  description?: React.ReactNode;
+  /** Pinned to the bottom of the card, behind a hairline: a "view all" link, a timestamp. */
+  footer?: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg' | 'full';
+  /** `none` lets a table or a list run edge to edge inside the card. */
+  padding?: 'none' | 'sm' | 'md';
   variant?: CardProps['variant'];
+  className?: string;
 }
 
-
-export const Widget: React.FC<WidgetProps> = ({ children, title, header, variant, ...props }) => {
-  const { base, content, header: headerClasses, headerEndContent } = widget(props);
+export const Widget: React.FC<WidgetProps> = ({
+  children, title, description, header, footer, variant, className, ...props
+}) => {
+  const v = widget(props);
+  const hasHeader = !!(title || description || header?.startContent || header?.endContent);
 
   return (
-    <Card className={base()} variant={variant}>
-      {(title || header?.endContent) && (
-        <Card.Header className={headerClasses()}>
-          {title && <h3>{title}</h3>}
-          <div className={headerEndContent()}>{header?.endContent}</div>
+    <Card className={v.base({ className })} variant={variant}>
+      {hasHeader && (
+        <Card.Header className={v.header()}>
+          {header?.startContent && <div className={v.headerStartContent()}>{header.startContent}</div>}
+          <div className={v.heading()}>
+            {title && <h3 className={v.title()}>{title}</h3>}
+            {description && <p className={v.description()}>{description}</p>}
+          </div>
+          {header?.endContent && <div className={v.headerEndContent()}>{header.endContent}</div>}
         </Card.Header>
       )}
-      <Card.Content className={content()}>
+      <Card.Content className={v.content()}>
         {children}
       </Card.Content>
+      {footer && <Card.Footer className={v.footer()}>{footer}</Card.Footer>}
     </Card>
   );
 };

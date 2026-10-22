@@ -1,7 +1,12 @@
-@theme {
-  --text-xs: 13px;
-  --text-sm: 15px;
-}
+/*
+ * Type scale.
+ *
+ * Tailwind's own steps (12 / 14 / 16). Fragment used to pin `text-xs` to 13px and `text-sm` to
+ * 15px, which made every HeroUI control one step larger than the component library was drawn for
+ * and pushed dashboards towards a consumer-app density. Body copy is set to `text-sm` below, which
+ * is the size HeroUI's fields, list boxes and tables already use, so running text and controls now
+ * share one size.
+ */
 
 /*
  * Fragment surface roles.
@@ -20,33 +25,41 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-sm antialiased;
   }
 
+  /*
+   * Page title, section, card. A dashboard has many more card titles than page titles, so the
+   * steps are tight and the weight carries the hierarchy rather than the size.
+   */
   h1 {
-    @apply text-3xl font-semibold;
+    @apply text-2xl font-semibold tracking-tight;
   }
 
   h2 {
-    @apply text-2xl font-semibold;
+    @apply text-lg font-semibold tracking-tight;
   }
 
   h3 {
-    @apply text-xl font-semibold;
+    @apply text-base font-semibold;
+  }
+
+  h4 {
+    @apply text-sm font-semibold;
   }
 }
 
 @layer components {
-  .input, .textarea, .select__trigger {
-    @apply border border-border px-6 py-4 shadow-none;
+  /*
+   * Fields keep HeroUI's own height and padding. They get a hairline border instead of the
+   * default shadow, so a form reads as a set of crisp boxes on a flat surface.
+   */
+  .input, .textarea, .select__trigger, .combo-box__input-group {
+    @apply border border-border shadow-none;
   }
 
-  .input-group, .search-field__group, .number-field__group{
-    @apply border border-border shadow-none h-auto;
-
-    .input-group__input, .search-field__input, .number-field__input {
-      @apply px-6 py-4;
-    }
+  .input-group, .search-field__group, .number-field__group {
+    @apply border border-border shadow-none;
   }
 
   .slider {
@@ -65,14 +78,6 @@
     }
   }
 
-  .select__indicator {
-    @apply right-4;
-  }
-
-  .select__trigger:has(.select__indicator) {
-    @apply pr-10;
-  }
-
   .select__popover {
     @apply rounded-xl;
   }
@@ -80,18 +85,18 @@
   .tabs {
     &:not(.tabs--secondary) {
       .tabs__list {
-        @apply bg-surface p-0;
-        
-        border-radius: calc(var(--radius-3xl) + 0.25rem);
+        @apply bg-default p-1;
+
+        border-radius: calc(var(--radius-xl) + 0.25rem);
       }
 
       .tabs__indicator {
-        @apply shadow-none bg-surface-tertiary;
+        @apply bg-surface shadow-sm;
       }
 
       .tabs__tab {
         &[data-selected="true"] {
-          @apply text-surface-tertiary-foreground;
+          @apply text-surface-foreground;
         }
       }
 
@@ -101,7 +106,7 @@
     }
 
     .tabs__tab {
-      @apply h-10 px-6 text-xs text-nowrap;
+      @apply h-8 px-4 text-sm text-nowrap;
     }
 
     .tabs__list {
@@ -112,23 +117,19 @@
 
     &.tabs--secondary {
       .tabs__tab {
-        @apply h-12 px-10;
+        @apply h-11 px-1 mr-6;
       }
     }
   }
 
+  /*
+   * Cards sit apart from the page by a hairline and an optional, very soft lift. The lift is a
+   * token so a theme on a white page (where the border is all there is) can turn it off.
+   */
   .card {
-    @apply border border-border shadow-none;
-  }
+    @apply border border-border;
 
-  .button {
-    &.button--md:not(.button--icon-only) {
-      @apply h-12 px-6;
-
-      @media (width >= 48rem) {
-        @apply h-12 px-6;
-      }
-    }
+    box-shadow: var(--fragment-card-shadow, none);
   }
 }
 
@@ -143,6 +144,8 @@
 @import "./components/code-snippet/code-snippet.css";
 @import "./fragments/form/form.css";
 @import "./fragments/form/form-section.css";
+@import "./fragments/stat/stat-card.css";
+@import "./fragments/empty-state/empty-state.css";
 
 .light,
 .default,

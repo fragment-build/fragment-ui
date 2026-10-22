@@ -5,28 +5,29 @@
 
   .fragment-sidebar__collapsed {
     @apply fixed top-0 left-0 border-r border-border bg-sidebar text-sidebar-foreground
-           flex flex-col h-screen gap-8 transition-all;
+           flex flex-col h-screen gap-4 transition-all z-40;
   }
 
   .fragment-sidebar__collapsed-body {
-    @apply w-20 items-center flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1;
+    @apply w-16 items-center flex flex-col gap-6 px-2 pt-5 overflow-y-auto flex-1;
   }
 
   .fragment-sidebar__collapsed-footer {
-    @apply w-20 items-center flex flex-col gap-8 px-3 pb-8;
+    @apply w-16 items-center flex flex-col gap-3 px-2 pb-4;
   }
 
   .fragment-sidebar__expanded {
     @apply fixed top-0 left-0 border-r border-border bg-sidebar text-sidebar-foreground
-           flex flex-col h-screen gap-8 overflow-hidden transition-all;
+           flex flex-col h-screen gap-4 overflow-hidden transition-all z-40;
   }
 
   .fragment-sidebar__expanded-body {
-    @apply w-72 flex flex-col gap-8 px-3 pt-8 overflow-y-auto flex-1;
+    @apply w-64 flex flex-col gap-6 px-3 pt-5 overflow-y-auto flex-1;
   }
 
+  /* The footer is chrome (account, workspace), so it is tucked behind a hairline. */
   .fragment-sidebar__expanded-footer {
-    @apply w-72 flex flex-col gap-8 px-3 pb-8;
+    @apply w-64 flex flex-col gap-2 px-3 pt-3 pb-4 border-t border-border;
   }
 
   .fragment-sidebar__placeholder {
@@ -34,11 +35,14 @@
   }
 
   .fragment-sidebar__layout-button-wrapper {
-    @apply fixed top-6 transition-all;
+    @apply fixed top-6 transition-all z-50;
   }
 
   .fragment-sidebar__layout-button {
-    @apply h-6! w-6!;
+    @apply h-6! w-6! min-w-6! bg-surface! border border-border shadow-sm text-muted;
+    & svg {
+      @apply size-3.5;
+    }
   }
 
   .fragment-sidebar__bottom-nav {
@@ -69,7 +73,7 @@
   .fragment-sidebar__collapsed-nav {
     @apply flex flex-col gap-1;
     & svg {
-      @apply size-5! shrink-0 self-center;
+      @apply size-[18px]! shrink-0 self-center;
     }
   }
 
@@ -106,23 +110,36 @@
   }
 
   .fragment-sidebar__custom-item {
-    @apply px-2;
+    @apply px-1;
   }
 
   .fragment-sidebar__nav {
-    @apply text-sm;
+    @apply text-sm flex flex-col gap-0.5;
+
+    /* Group label: quiet, so it organises the list without competing with it. */
+    & > .header {
+      @apply px-3 pb-1 text-xs font-medium text-muted;
+    }
+
+    .list-box {
+      @apply gap-0.5;
+    }
 
     .list-box-item {
-      @apply px-3! pr-1! py-1! h-10!;
+      @apply px-3! pr-1! py-1! h-9! gap-3! rounded-lg! font-normal text-sidebar-foreground/80;
+      &:hover, &[data-hovered="true"] {
+        background-color: var(--sidebar-default, var(--default)) !important;
+        @apply text-sidebar-foreground;
+      }
     }
 
     & svg {
-      @apply size-5 shrink-0 self-center;
+      @apply size-[18px] shrink-0 self-center;
     }
   }
 
   .fragment-sidebar__accordion-trigger {
-    @apply w-full flex items-center gap-3 h-10 px-3 pr-1 py-1 rounded-2xl text-sm font-normal cursor-pointer
+    @apply w-full flex items-center gap-3 h-9 px-3 pr-1 py-1 rounded-lg text-sm font-normal cursor-pointer
            text-sidebar-foreground transition-colors;
     &:hover, &[data-hovered="true"] {
       /* `--default` is a page-level palette colour; opt out per-rail with `--sidebar-default`. */
@@ -161,7 +178,7 @@
 
   .fragment-sidebar__nav-item--active {
     /* `--accent-soft` is translucent, so it composites over the rail, not the page. */
-    @apply bg-accent-soft!;
+    @apply bg-accent-soft! font-medium!;
     color: var(--sidebar-accent-soft-foreground, var(--accent-soft-foreground)) !important;
   }
 
@@ -180,13 +197,13 @@
   /* Layout modifier variants */
   .fragment-sidebar--auto {
     .fragment-sidebar__expanded {
-      @apply w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-auto;
+      @apply w-16 opacity-0 pointer-events-none xl:w-64 xl:opacity-100 xl:pointer-events-auto;
     }
     .fragment-sidebar__placeholder {
-      @apply w-20 opacity-0 pointer-events-none xl:w-72 xl:opacity-100 xl:pointer-events-auto;
+      @apply w-16 opacity-0 pointer-events-none xl:w-64 xl:opacity-100 xl:pointer-events-auto;
     }
     .fragment-sidebar__layout-button-wrapper {
-      @apply left-20 translate-x-1/2 rotate-180 xl:left-72 xl:-translate-x-1/2 xl:rotate-0;
+      @apply left-16 translate-x-1/2 rotate-180 xl:left-64 xl:-translate-x-1/2 xl:rotate-0;
     }
     .fragment-sidebar__collapsed {
       @apply xl:opacity-0;
@@ -195,13 +212,13 @@
 
   .fragment-sidebar--collapsed {
     .fragment-sidebar__expanded {
-      @apply w-20 opacity-0 pointer-events-none;
+      @apply w-16 opacity-0 pointer-events-none;
     }
     .fragment-sidebar__placeholder {
-      @apply w-20 opacity-0 pointer-events-none;
+      @apply w-16 opacity-0 pointer-events-none;
     }
     .fragment-sidebar__layout-button-wrapper {
-      @apply left-20 translate-x-1/2 rotate-180;
+      @apply left-16 translate-x-1/2 rotate-180;
     }
   }
 
@@ -210,13 +227,13 @@
       @apply opacity-0;
     }
     .fragment-sidebar__expanded {
-      @apply w-72;
+      @apply w-64;
     }
     .fragment-sidebar__placeholder {
-      @apply w-72;
+      @apply w-64;
     }
     .fragment-sidebar__layout-button-wrapper {
-      @apply left-72 -translate-x-1/2;
+      @apply left-64 -translate-x-1/2;
     }
   }
 }

@@ -7,16 +7,20 @@
     @apply flex-col;
   }
 
+  /*
+   * The content column is capped at a width a table or a two-column dashboard still reads well at.
+   * Past ~1600px the eye travels too far between a label and its value, and a wide monitor is
+   * better spent on margin than on stretching every card.
+   */
   .fragment-shell__main {
-    @apply flex-1 min-w-0 mx-auto;
+    @apply flex-1 min-w-0 mx-auto w-full;
 
     .fragment-shell--horizontal & {
-      @apply px-8 lg:px-12 xl:px-20 py-14 max-w-[2100px];
+      @apply px-4 sm:px-6 lg:px-10 pt-6 pb-24 md:pt-8 md:pb-12 max-w-[1600px];
     }
 
     .fragment-shell--vertical & {
-      @apply px-8 py-6 max-w-[2100px] w-full;
+      @apply px-4 sm:px-6 lg:px-10 py-6 max-w-[1600px];
     }
-
   }
 }

@@ -1,18 +1,59 @@
 @layer components {
   .fragment-widget {
-    @apply px-7 py-5 gap-5;
+    @apply p-5 gap-4 min-w-0;
   }
 
   .fragment-widget__header {
-    @apply p-0;
+    @apply p-0 flex flex-row items-start gap-3;
+  }
+
+  .fragment-widget__header-start {
+    @apply shrink-0;
+  }
+
+  .fragment-widget__heading {
+    @apply min-w-0 flex-1;
+  }
+
+  .fragment-widget__title {
+    @apply text-sm font-semibold;
+  }
+
+  .fragment-widget__description {
+    @apply mt-0.5 text-xs text-muted;
   }
 
   .fragment-widget__header-end {
-    @apply ml-auto;
+    @apply ml-auto flex items-center gap-2 shrink-0;
   }
 
   .fragment-widget__content {
-    @apply p-0 overflow-visible;
+    @apply p-0 overflow-visible min-w-0;
+  }
+
+  .fragment-widget__footer {
+    @apply -mx-5 -mb-5 mt-auto px-5 py-3 border-t border-separator text-xs text-muted;
+  }
+
+  .fragment-widget--padding-sm {
+    @apply p-4 gap-3;
+
+    .fragment-widget__footer {
+      @apply -mx-4 -mb-4 px-4;
+    }
+  }
+
+  /* Edge-to-edge content: the header keeps its inset, the body does not. */
+  .fragment-widget--flush {
+    @apply p-0 gap-0;
+
+    .fragment-widget__header {
+      @apply px-5 pt-5 pb-4;
+    }
+
+    .fragment-widget__footer {
+      @apply mx-0 mb-0;
+    }
   }
 
   .fragment-widget--sm {
@@ -25,5 +66,9 @@
 
   .fragment-widget--lg {
     @apply col-span-1 lg:col-span-2 2xl:col-span-3;
+  }
+
+  .fragment-widget--full {
+    @apply col-span-full;
   }
 }

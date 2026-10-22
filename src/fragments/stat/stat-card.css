@@ -1,0 +1,64 @@
+@layer components {
+  .fragment-stat-card {
+    @apply p-4 gap-2 min-w-0;
+  }
+
+  .fragment-stat-card__top {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .fragment-stat-card__label {
+    @apply flex items-center gap-1 text-xs font-medium text-muted min-w-0;
+  }
+
+  .fragment-stat-card__help {
+    @apply inline-flex text-muted/70 hover:text-foreground cursor-help rounded-full outline-none
+           focus-visible:ring-2 focus-visible:ring-focus;
+  }
+
+  .fragment-stat-card__icon {
+    @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-default text-muted;
+    & svg {
+      @apply size-4;
+    }
+  }
+
+  .fragment-stat-card__value-row {
+    @apply flex flex-wrap items-baseline gap-x-2 gap-y-1;
+  }
+
+  /* Proportional figures: a standalone number with tabular digits looks loosely set. */
+  .fragment-stat-card__value {
+    @apply text-2xl font-semibold tracking-tight text-foreground truncate;
+  }
+
+  .fragment-stat-card__delta {
+    @apply inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-xs font-medium;
+  }
+
+  .fragment-stat-card__delta--positive {
+    @apply bg-success-soft text-success-soft-foreground;
+  }
+
+  .fragment-stat-card__delta--negative {
+    @apply bg-danger-soft text-danger-soft-foreground;
+  }
+
+  .fragment-stat-card__delta--neutral {
+    @apply bg-default text-muted;
+  }
+
+  .fragment-stat-card__hint {
+    @apply text-xs text-muted;
+  }
+
+  .fragment-stat-card__skeleton {
+    @apply h-8 w-24 rounded-lg;
+  }
+
+  .fragment-stat-card--emphasis {
+    .fragment-stat-card__value {
+      @apply text-3xl;
+    }
+  }
+}

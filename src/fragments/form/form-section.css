@@ -1,41 +1,53 @@
 @layer components {
   .fragment-form-section__main {
-    @apply flex flex-col;
+    @apply flex flex-col gap-4;
   }
 
   .fragment-form-section__info {
-    @apply flex-1 pb-4;
+    @apply min-w-0;
   }
 
-  .fragment-form-section__content {
-    @apply flex flex-col gap-4 flex-1 min-w-0;
+  .fragment-form-section__title-row {
+    @apply flex items-center gap-2;
+  }
+
+  .fragment-form-section__title {
+    @apply text-sm font-semibold;
   }
 
   .fragment-form-section__description {
-    @apply text-sm text-muted;
+    @apply mt-1 text-sm text-muted;
   }
 
+  .fragment-form-section__content {
+    @apply flex flex-col gap-5 flex-1 min-w-0;
+  }
+
+  /*
+   * Label column and control column. The label column is narrow and fixed so that, down a long
+   * settings page, every control starts on the same vertical line.
+   */
   .fragment-form-section--horizontal {
     .fragment-form-section__main {
-      @apply sm:flex-row;
+      @apply md:flex-row md:gap-10;
     }
     .fragment-form-section__info {
-      @apply sm:max-w-sm sm:pr-4 sm:pb-0;
+      @apply md:w-72 md:shrink-0;
     }
     .fragment-form-section__content {
-      @apply sm:items-end sm:justify-center sm:max-w-sm;
+      @apply md:max-w-xl;
     }
   }
 
   .fragment-form-section--vertical {
     .fragment-form-section__content {
-      @apply sm:max-w-3xl;
+      @apply md:max-w-3xl;
     }
   }
 
   .fragment-form-section--full-width {
     .fragment-form-section__content {
-      @apply sm:max-w-full;
+      @apply md:max-w-full;
     }
   }
 }

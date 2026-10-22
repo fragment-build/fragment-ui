@@ -208,7 +208,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ items, currentPath, layout: de
       </div>
 
       <nav className={v.bottomNav()} onClick={() => setMobileMenuOpen(false)}>
-        {(items.find((item) => item.type === 'navigation') as SidebarItemNavigation | undefined)?.navigation?.map((navItem) => (
+        {items
+          .filter((item): item is SidebarItemNavigation => item.type === 'navigation')
+          .flatMap((item) => item.navigation)
+          .map((navItem) => (
           <Tooltip key={navItem.label}>
             <Tooltip.Trigger>
               <Button
