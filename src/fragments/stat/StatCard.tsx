@@ -30,6 +30,8 @@ export interface StatCardProps {
   hint?: React.ReactNode;
   /** Shown behind an info icon beside the label. */
   help?: React.ReactNode;
+  /** Accessible name of the info icon. */
+  helpLabel?: string;
   isLoading?: boolean;
   /** Marks the card as the one the view is about: a lifted surface and a larger value. */
   emphasis?: boolean;
@@ -43,7 +45,7 @@ const deltaIcon = {
 } as const;
 
 export const StatCard: React.FC<StatCardProps> = ({
-  label, value, icon, delta, hint, help, isLoading, emphasis, className,
+  label, value, icon, delta, hint, help, helpLabel = 'More information', isLoading, emphasis, className,
 }) => {
   const sentiment = delta?.sentiment ?? (
     delta?.direction === 'up' ? 'positive' : delta?.direction === 'down' ? 'negative' : 'neutral'
@@ -58,7 +60,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           {label}
           {help && (
             <Tooltip delay={0}>
-              <Tooltip.Trigger className={v.help()} aria-label="More information" tabIndex={0}>
+              <Tooltip.Trigger className={v.help()} aria-label={helpLabel} tabIndex={0}>
                 <IconInfoCircle size={14} stroke={1.75} />
               </Tooltip.Trigger>
               <Tooltip.Content className="max-w-xs">{help}</Tooltip.Content>

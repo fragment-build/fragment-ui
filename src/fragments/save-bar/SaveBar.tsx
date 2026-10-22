@@ -29,10 +29,15 @@ export const SaveBar: React.FC<SaveBarProps> = ({
 
   return (
     <div aria-hidden={!isVisible} className={v.base()} inert={!isVisible}>
-      <div className={v.bar()} role="status">
-        <span className={v.message()}>
-          <IconAlertCircle size={16} stroke={1.75} />
-          {message}
+      <div className={v.bar()}>
+        {/* A live region that is empty while hidden, so the message is announced once, when it appears. */}
+        <span aria-live="polite" className={v.message()}>
+          {isVisible && (
+            <>
+              <IconAlertCircle size={16} stroke={1.75} />
+              {message}
+            </>
+          )}
         </span>
         <div className={v.actions()}>
           {onDiscard && discardLabel && (

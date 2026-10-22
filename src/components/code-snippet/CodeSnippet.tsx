@@ -24,7 +24,13 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      // Denied outside a secure context and in some embedded browsers. The code is on screen and
+      // selectable either way, so the button simply does not claim a copy that did not happen.
+      return;
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

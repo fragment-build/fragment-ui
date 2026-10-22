@@ -28,13 +28,15 @@ consumer, which is why this is a major version: check your screens after upgradi
 ### Added
 
 - `StatCard` — a KPI tile: label, value, optional delta (with `sentiment` for metrics where down
-  is good), hint, help tooltip, icon, loading skeleton.
+  is good), hint, help tooltip (`helpLabel` names it), icon, loading skeleton.
 - `EmptyState` — icon, title, description and actions; `sm` size and a `bordered` variant.
 - `SegmentedControl` — two to five exclusive options shown at once, on `ToggleButtonGroup`.
 - `FormCard` — a settings group on its own card, with `titleEndContent`, `footer` and a `danger`
   variant.
-- `SaveBar` — a sticky save bar that appears with unsaved changes and takes no room when hidden.
+- `SaveBar` — a sticky save bar that appears with unsaved changes, announces itself once through a
+  polite live region, and takes no room when hidden.
 - `CodeSnippet` `variant="block"` with a titled header, and `copyLabel` / `copiedLabel` for i18n.
+  A denied clipboard write no longer claims to have copied.
 - `PageHeader` `eyebrow` and `footer` slots; `title` accepts any node.
 - `Widget` `description`, `footer`, `padding` (`none` | `sm` | `md`), `size="full"`, `className`.
 - `FormSection` `titleEndContent`.
