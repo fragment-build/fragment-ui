@@ -54,7 +54,7 @@
    * Fields keep HeroUI's own height and padding. They get a hairline border instead of the
    * default shadow, so a form reads as a set of crisp boxes on a flat surface.
    */
-  .input, .textarea, .select__trigger, .combo-box__input-group {
+  .input, .textarea, .select__trigger {
     @apply border border-border shadow-none;
   }
 
@@ -138,6 +138,55 @@
           @apply absolute inset-x-0 bottom-0 h-0.5 bg-accent;
         }
       }
+    }
+  }
+
+  /*
+   * The primary table as one flat card: a hairline frame, a header band and row dividers, instead
+   * of HeroUI's grey frame with a white card inset in it — which on a tinted page reads as a box
+   * in a box. Rows get a visible hover, since the default (`surface` at 40%) vanishes on white.
+   */
+  .table-root--primary {
+    @apply border border-border bg-surface p-0;
+
+    border-radius: var(--radius-3xl);
+    box-shadow: var(--fragment-card-shadow, none);
+
+    .table__column {
+      @apply py-2.5 whitespace-nowrap;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    .table__header {
+      @apply border-b border-separator;
+    }
+
+    .table__body tr td {
+      border-radius: 0 !important;
+    }
+
+    .table__cell {
+      @apply border-b border-separator;
+    }
+
+    .table__body tr:last-child .table__cell {
+      @apply border-b-0;
+    }
+
+    .table__row {
+      @media (hover: hover) {
+        &:hover .table__cell,
+        &[data-hovered="true"] .table__cell {
+          @apply bg-surface-secondary;
+        }
+      }
+    }
+
+    .table__footer {
+      @apply border-t border-separator;
     }
   }
 
