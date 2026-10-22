@@ -7,6 +7,9 @@ export { CodeSnippet, type CodeSnippetProps } from './components/code-snippet/Co
 export { Grid, type GridProps } from './components/grid/Grid';
 export { MultiSwitch, type MultiSwitchProps } from './components/multi-switch/MultiSwitch';
 export { ThemeSwitch, type ThemeSwitchProps }  from './components/theme-switch/ThemeSwitch';
+export {
+  SegmentedControl, type SegmentedControlProps, type SegmentedControlOption,
+} from './components/segmented-control/SegmentedControl';
 
 export { Form, type FormProps } from './fragments/form/Form';
 export { FormSection, type FormSectionProps } from './fragments/form/FormSection';

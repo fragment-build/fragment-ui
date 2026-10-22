@@ -1,0 +1,41 @@
+@layer components {
+  .fragment-segmented-control {
+    @apply inline-flex items-center gap-0.5 rounded-[var(--field-radius)] bg-default p-0.5;
+  }
+
+  .fragment-segmented-control--full-width {
+    @apply flex w-full;
+
+    .fragment-segmented-control__item {
+      @apply flex-1;
+    }
+  }
+
+  .fragment-segmented-control__item.toggle-button {
+    @apply h-8 rounded-[calc(var(--field-radius)-0.125rem)] px-3 text-sm font-medium text-muted md:h-8;
+
+    --toggle-button-bg: transparent;
+    --toggle-button-bg-hover: transparent;
+    --toggle-button-bg-pressed: transparent;
+    --toggle-button-bg-selected: var(--surface);
+    --toggle-button-bg-selected-hover: var(--surface);
+    --toggle-button-bg-selected-pressed: var(--surface);
+    --toggle-button-fg-selected: var(--surface-foreground, var(--foreground));
+
+    &:hover, &[data-hovered="true"] {
+      @apply text-foreground;
+    }
+
+    &[data-selected="true"] {
+      @apply shadow-sm text-foreground;
+    }
+
+    & svg {
+      @apply size-4;
+    }
+  }
+
+  .fragment-segmented-control--sm .fragment-segmented-control__item.toggle-button {
+    @apply h-7 px-2.5 text-xs md:h-7;
+  }
+}
