@@ -1,0 +1,42 @@
+@layer components {
+  .fragment-form-card {
+    @apply p-0 gap-0 overflow-visible;
+  }
+
+  .fragment-form-card__header {
+    @apply flex items-start gap-4 px-6 pt-5;
+  }
+
+  .fragment-form-card__heading {
+    @apply min-w-0 flex-1;
+  }
+
+  .fragment-form-card__title {
+    @apply text-base font-semibold;
+  }
+
+  .fragment-form-card__description {
+    @apply mt-1 text-sm text-muted;
+  }
+
+  .fragment-form-card__header-end {
+    @apply shrink-0 flex items-center gap-2;
+  }
+
+  .fragment-form-card__body {
+    @apply flex flex-col gap-5 px-6 pt-5 pb-6;
+  }
+
+  .fragment-form-card__footer {
+    @apply flex items-center justify-between gap-3 rounded-b-[inherit] border-t border-separator bg-surface-secondary px-6 py-3
+           text-xs text-muted;
+  }
+
+  .fragment-form-card--danger {
+    @apply border-danger/30;
+
+    .fragment-form-card__title {
+      @apply text-danger;
+    }
+  }
+}

@@ -115,9 +115,28 @@
       }
     }
 
+    /* Underline tabs size to their label, so a short list sits left instead of spreading out. */
     &.tabs--secondary {
+      .tabs__list[data-orientation="horizontal"] {
+        @apply gap-6;
+      }
+
       .tabs__tab {
-        @apply h-11 px-1 mr-6;
+        @apply h-11 w-auto min-w-0 px-0.5 gap-2;
+        & svg {
+          @apply size-4;
+        }
+
+        /*
+         * A static underline for tab lists that render no <Tabs.Indicator>. The animated indicator
+         * slides from the previous tab with an inline translate, and when the selection is decided
+         * during hydration (a tab read from the URL) its first frame can stick, leaving the line
+         * under the wrong tab.
+         */
+        &[data-selected="true"]:not(:has(.tabs__indicator))::after {
+          content: '';
+          @apply absolute inset-x-0 bottom-0 h-0.5 bg-accent;
+        }
       }
     }
   }
@@ -145,6 +164,8 @@
 @import "./components/code-snippet/code-snippet.css";
 @import "./fragments/form/form.css";
 @import "./fragments/form/form-section.css";
+@import "./fragments/form/form-card.css";
+@import "./fragments/save-bar/save-bar.css";
 @import "./fragments/stat/stat-card.css";
 @import "./fragments/empty-state/empty-state.css";
 

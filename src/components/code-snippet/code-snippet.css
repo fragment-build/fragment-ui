@@ -11,3 +11,21 @@
     @apply text-muted;
   }
 }
+
+@layer components {
+  .fragment-code-snippet--block {
+    @apply overflow-hidden rounded-xl border border-border bg-surface-secondary;
+  }
+
+  .fragment-code-snippet__header {
+    @apply flex items-center justify-between gap-2 border-b border-border py-1 pr-1 pl-4;
+  }
+
+  .fragment-code-snippet__title {
+    @apply text-xs font-medium text-muted;
+  }
+
+  .fragment-code-snippet__block-code {
+    @apply overflow-x-auto px-4 py-3 font-mono text-xs leading-relaxed text-foreground;
+  }
+}
