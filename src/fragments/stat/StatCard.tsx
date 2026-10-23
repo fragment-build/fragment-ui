@@ -57,7 +57,7 @@ export const StatCard: React.FC<StatCardProps> = ({
     <Card className={v.base({ className })}>
       <div className={v.top()}>
         <span className={v.label()}>
-          {label}
+          <span className="truncate">{label}</span>
           {help && (
             <Tooltip delay={0}>
               <Tooltip.Trigger className={v.help()} aria-label={helpLabel} tabIndex={0}>

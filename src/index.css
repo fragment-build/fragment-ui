@@ -62,10 +62,27 @@
     @apply border border-border shadow-none;
   }
 
+  /*
+   * Text that has to fit, in any language. Single-line controls keep one line and end in an
+   * ellipsis when a translation is longer than the room it has: HeroUI breaks a Select's value
+   * onto a second line instead ("Alle / Oberflächen"), which grows the trigger out of its row.
+   * The trigger may shrink, so the ellipsis — not an overflow — is what absorbs the difference.
+   */
+  .select__trigger {
+    @apply min-w-0 items-center;
+  }
+
+  .select__value {
+    @apply min-w-0 truncate;
+    overflow-wrap: normal;
+  }
+
+  .chip {
+    @apply max-w-full whitespace-nowrap;
+  }
+
+  /* The thumb keeps HeroUI's accent ring: transparent, only a white knob was left, invisible on a white card. */
   .slider {
-    .slider__thumb {
-      @apply bg-transparent;
-    }
     &[data-orientation="horizontal"] {
       .slider__track {
         @apply h-1;
@@ -80,6 +97,19 @@
 
   .select__popover {
     @apply rounded-xl;
+  }
+
+  /*
+   * HeroUI sets a modal's body in the muted colour, which suits a one-line confirmation and greys
+   * out every heading and label in a dialog that holds a form. Body copy is ink here; a dialog that
+   * only says something mutes its own message. The heading gets the weight of a page section.
+   */
+  .modal__body {
+    @apply text-foreground;
+  }
+
+  .modal__heading {
+    @apply text-lg font-semibold;
   }
 
   .tabs {

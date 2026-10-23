@@ -72,6 +72,13 @@
 
   .fragment-sidebar__collapsed-nav {
     @apply flex flex-col gap-1;
+
+    /* The active item looks selected the same way at either rail width: the soft fill. */
+    .button--primary {
+      @apply bg-accent-soft;
+      color: var(--sidebar-accent-soft-foreground, var(--accent-soft-foreground));
+    }
+
     & svg {
       @apply size-[18px]! shrink-0 self-center;
     }

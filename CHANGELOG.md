@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## 4.0.1
+
+### Fixed
+
+- **Long translations.** A Select's value stays on one line and ends in an ellipsis when it does
+  not fit, and its trigger may shrink; HeroUI broke it onto a second line instead ("Alle /
+  Oberflächen"). Chips never wrap. Widget headers wrap, so a long title and its controls stack
+  instead of overflowing, and a StatCard's label truncates.
+- **Slider thumbs** keep HeroUI's accent ring. The transparent override left only a white knob,
+  which disappeared on a white card.
+- **Collapsed sidebar** marks the active item with the same soft fill as the expanded rail, not a
+  solid primary button.
+- **Modals** set body copy in the foreground colour (HeroUI's muted default greyed out every form
+  inside a dialog) and give the heading the weight of a page section.
+
 ## 4.0.0
 
 A dashboard-density release. Nothing is removed from the API, but the look changes for every
